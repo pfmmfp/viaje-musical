@@ -20,6 +20,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label" for="instruments">Instruments</label>
+					<div class="controls">				
+						<select multiselect multiple="multiple" ng-data="Instruments" data-ng-model="region.instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
+					</div>
+				</div>						
+				<div class="form-group">
 					<input type="submit" value="Update" class="btn btn-default">
 				</div>
 				<div data-ng-show="error" class="text-danger">

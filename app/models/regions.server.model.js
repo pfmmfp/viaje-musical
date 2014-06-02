@@ -40,7 +40,7 @@ var RegionSchema = new Schema({
         default: '',
         trim: true
     },
-    instruments: [{id:{type: String}}],
+    instruments: [],
     pic: [MediaSchema],
     audio: [MediaSchema],
     user: {

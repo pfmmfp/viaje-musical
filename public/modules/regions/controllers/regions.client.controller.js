@@ -1,16 +1,20 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', '$modalStack', 'Authentication', 'Regions', 'Instruments',
-	function($scope, $stateParams, $location, $modalStack, Authentication, Regions, Instruments) {
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Regions', 'Instruments',
+	function($scope, $stateParams, $location, Authentication, Regions, Instruments) {
 		$scope.authentication = Authentication;
-		$scope.instruments = Instruments.query();
-		
+		$scope.Instruments = Instruments.query();
 		
 		$scope.create = function() {
+			
 			var region = new Regions({
 				name: this.name,
-				description: this.description
+				description: this.description,
+				instruments: this.instruments
 			});
+			
+			console.log(region);
+			
 			region.$save(function(response) {
 				$location.path('admin/regions/' + response._id);
 			}, function(errorResponse) {
@@ -39,7 +43,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 
 		$scope.update = function() {
 			var region = $scope.region;
-
+			console.log(region);
 			region.$update(function() {
 				$location.path('admin/regions/' + region._id);
 			}, function(errorResponse) {
@@ -52,10 +56,50 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		};
 
 		$scope.findOne = function() {
-			$scope.region = Regions.get({
-				regionId: $stateParams.regionId
+			var Region = Regions.get({ regionId: $stateParams.regionId}, function()
+			{
+				var instrumentList = [];
+				$scope.region = Region;
+				$.each(Region['instruments'], function( index, selectedElement ) {
+					instrumentList.push(Instruments.get({instrumentId: selectedElement}));
+				});		
+				$scope.instruments = instrumentList;
 			});
 		};
 	}
 ]);
 
+//TODO: esta directive es una mochada, cambiar por algo mejor...
+angular.module('regions').directive('multiselect', [ '$stateParams','Instruments', 'Regions', function($stateParams, Instruments, Regions) {
+    return function(scope, element, attrs) {        
+        var resourceDependencies = {'Instruments': Instruments}
+        var Resource = attrs.ngData;
+        var elementId = attrs.id;
+        var selectedItems = attrs.ngSelection;
+        		
+        element = $(element[0]);
+        element.multiselect({
+			enableFiltering: true,
+		})
+		
+		resourceDependencies[Resource].query(function(response){
+		 var itemsList = [];
+		 $.each(response, function( index, resource ) {
+			  var item = {'label': resource.name, 'value': resource._id}
+			  itemsList.push(item) ;
+			});
+			element.multiselect('dataprovider', itemsList);
+
+			if($stateParams.regionId)
+			{	
+				var Region = Regions.get({regionId: $stateParams.regionId}, function(){
+					$.each(Region[elementId], function( index, selectedElement ) {
+						element.multiselect('select', selectedElement);
+					});	
+				});
+			}
+		}); 		
+		
+
+    }
+}]);

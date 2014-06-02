@@ -3,6 +3,15 @@
 <section data-ng-controller="RegionsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="region.name"></h1>
+		
+		<p data-ng-bind="region.description"></p>	
+		
+		<div class="list-group">
+			<h2>Instruments</h2>
+			<a data-ng-repeat="instrument in instruments" data-ng-href="#!/admin/instruments/{{instrument._id}}" class="list-group-item">
+				<h4 class="list-group-item-heading" data-ng-bind="instrument.name"></h4>
+			</a>
+		</div>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == region.user._id">
 		<a class="btn btn-primary" href="/#!/admin/regions/{{region._id}}/edit">
@@ -12,13 +21,6 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="region.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="region.user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="region.description"></p>
+
+	
 </section>

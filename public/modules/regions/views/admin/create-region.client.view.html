@@ -1,6 +1,6 @@
 <header data-ng-include="'/modules/core/views/admin/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
 
-<section data-ng-controller="RegionsController">
+<section data-ng-controller="RegionsController" >
 	<div class="page-header">
 		<h1>New Region</h1>
 	</div>
@@ -20,6 +20,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label" for="instruments">Instruments</label>
+					<div class="controls">				
+						<select multiselect multiple="multiple" ng-data="Instruments" data-ng-model="instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
+					</div>
+				</div>				
+				<div class="form-group">
 					<input type="submit" class="btn btn-default">
 				</div>
 				<div data-ng-show="error" class="text-danger">
@@ -29,23 +35,10 @@
 		</form>
 	</div>
 	
-	<div data-ng-include="'/modules/regions/views/admin/modal.region.client.view.html'"></div>
-	
-	<select class="multiselect" multiple="multiple">
-  <option value="cheese">Cheese</option>
-  <option value="tomatoes">Tomatoes</option>
-  <option value="mozarella">Mozzarella</option>
-  <option value="mushrooms">Mushrooms</option>
-  <option value="pepperoni">Pepperoni</option>
-  <option value="onions">Onions</option>
-</select>
- 
-<!-- Initialize the plugin: -->
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.multiselect').multiselect();
-  });
-</script>
+	<!-- <div data-ng-include="'/modules/regions/views/admin/modal.region.client.view.html'"></div> -->
 
+	
+
+	
 </section>
 	
