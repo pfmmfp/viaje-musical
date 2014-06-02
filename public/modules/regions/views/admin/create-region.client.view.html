@@ -28,5 +28,24 @@
 			</fieldset>
 		</form>
 	</div>
+	
+	<div data-ng-include="'/modules/regions/views/admin/modal.region.client.view.html'"></div>
+	
+	<select class="multiselect" multiple="multiple">
+  <option value="cheese">Cheese</option>
+  <option value="tomatoes">Tomatoes</option>
+  <option value="mozarella">Mozzarella</option>
+  <option value="mushrooms">Mushrooms</option>
+  <option value="pepperoni">Pepperoni</option>
+  <option value="onions">Onions</option>
+</select>
+ 
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.multiselect').multiselect();
+  });
+</script>
+
 </section>
 	

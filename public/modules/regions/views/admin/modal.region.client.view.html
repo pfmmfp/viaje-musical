@@ -1,0 +1,27 @@
+<section data-ng-controller="ModalController">
+
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li data-ng-repeat="item in items">
+                    <a data-ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-ng-click="ok()">OK</button>
+            <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <button class="btn btn-default" data-ng-click="open()">Open me!</button>
+    <button class="btn btn-default" data-ng-click="open('lg')">Large modal</button>
+    <button class="btn btn-default" data-ng-click="open('sm')">Small modal</button>
+    <div data-ng-show="selected">Selection from a modal: {{ selected }}</div>
+	
+</section>
+	
