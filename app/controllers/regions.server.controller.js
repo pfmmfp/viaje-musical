@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
 	Region = mongoose.model('Region'),
 	_ = require('lodash');
 
+var fs = require("fs");
+
 /**
  * Get the error message from error object
  */
@@ -37,16 +39,25 @@ var getErrorMessage = function(err) {
 exports.create = function(req, res) {
 	var region = new Region(req.body);
 	region.user = req.user;
-
+	
 	region.save(function(err) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(region);
+			//Move files from tmp to server
+			fs.mkdir("public/common/images/regions/"+ region._id, function(){ 
+				region.pics.forEach(function (pic) {
+					fs.rename("public/tmp/"+pic, "public/common/images/regions/" + region._id + "/"+pic,function (err) {
+					  if (err) throw err;
+					  console.log('renamed complete');
+					});				
+				});
+			});	
+			res.jsonp(region);	
 		}
-	});
+	});		
 };
 
 /**

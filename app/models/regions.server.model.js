@@ -41,8 +41,8 @@ var RegionSchema = new Schema({
         trim: true
     },
     instruments: [],
-    pic: [MediaSchema],
-    audio: [MediaSchema],
+    pics: [],
+    audio: [],
     user: {
         type: Schema.ObjectId,
         ref: 'User'

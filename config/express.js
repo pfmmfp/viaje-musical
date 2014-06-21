@@ -7,6 +7,7 @@ var express = require('express'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	session = require('express-session'),
+	multer = require('multer'),
 	compress = require('compression'),
 	methodOverride = require('method-override'),
 	cookieParser = require('cookie-parser'),
@@ -23,6 +24,8 @@ var express = require('express'),
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
+	
+	app.use(multer({ dest: './public/tmp/'}))
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {

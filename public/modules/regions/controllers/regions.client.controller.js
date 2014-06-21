@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Regions', 'Instruments',
-	function($scope, $stateParams, $location, Authentication, Regions, Instruments) {
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', '$upload', '$modal', 'Authentication', 'Regions', 'Instruments', 
+	function($scope, $stateParams, $location, $upload, $modal, Authentication, Regions, Instruments) {
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
 		
@@ -10,10 +10,9 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			var region = new Regions({
 				name: this.name,
 				description: this.description,
-				instruments: this.instruments
+				instruments: this.instruments,
+				pics: $scope.filelist
 			});
-			
-			console.log(region);
 			
 			region.$save(function(response) {
 				$location.path('admin/regions/' + response._id);
@@ -66,6 +65,75 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				$scope.instruments = instrumentList;
 			});
 		};
+		
+
+		//////////////// FileUpload ////////////////
+		$scope.filelist = [];
+		$scope.percent = parseInt(0);
+
+		$scope.removeFile = function($file)
+		{
+			$scope.filelist .splice($scope.filelist.indexOf( $file ), 1);	
+		};
+
+		$scope.onFileSelect = function($files)
+		{
+			for (var i = 0; i < $files.length; i++) {
+				var file = $files[i];
+				$scope.upload = $upload.upload({
+					url: '/upload', 
+					method: 'POST',
+					file: file,
+				}).progress(function(evt){
+					$scope.percent = parseInt(100.0 * evt.loaded / evt.total);
+				}).success(function(data, status, headers, config) {
+					$scope.filelist.push( data.file.name );
+					$scope.percent = parseInt(0);
+				}).error( function(){ 
+					console.log('error') 
+				})
+				;
+			}
+		};		
+		//////////////// FileUpload ////////////////		
+		
+		////////////////   Modal   ////////////////		
+		$scope.items = ['item1', 'item2', 'item3'];
+
+		$scope.open = function (size) {
+
+		var modalInstance = $modal.open({
+		  templateUrl: 'myModalContent.html',
+		  controller: ModalInstanceCtrl,
+		  size: size,
+		  resolve: {
+			items: function () {
+			  return $scope.items;
+			}
+		  }
+		});
+
+		modalInstance.result.then(function (selectedItem) {
+		  $scope.selected = selectedItem;
+		}, function () {
+
+		});
+		};
+		////////////////   Modal   ////////////////		
+		
+		//////////////// Carrousel ////////////////		
+		$scope.slides = [
+			{
+			  img: 'http://lorempixel.com/400/200/food'
+			},
+			{
+			  img: 'http://lorempixel.com/400/200/sports'
+			},
+			{
+			  img: 'http://lorempixel.com/400/200/people'
+			}
+		];
+		//////////////// Carrousel ////////////////		
 	}
 ]);
 
@@ -103,3 +171,19 @@ angular.module('regions').directive('multiselect', [ '$stateParams','Instruments
 
     }
 }]);
+
+var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+};

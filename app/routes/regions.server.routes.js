@@ -8,6 +8,7 @@ var users = require('../../app/controllers/users'),
 
 module.exports = function(app) {
 	// Article Routes
+	
 	app.route('/regions')
 		.get(regions.list)
 		.post(users.requiresLogin, regions.create);
