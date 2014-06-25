@@ -24,7 +24,21 @@
 					<div class="controls">				
 						<select multiselect multiple="multiple" ng-data="Instruments" data-ng-model="region.instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
 					</div>
-				</div>						
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label" for="pics">Pics</label>
+					<div class="controls">				
+						<input type="file" id="pics" class="form-control" data-ng-file-select="onFileSelect($files)" multiple>
+						<progressbar ng-hide="percent == 0 || percent == 100" style="margin-top: 5px;" class="progress-striped active" value="percent" type="success"><b>{{percent}}%</b></progressbar>
+					</div>
+
+					<div data-ng-repeat="file in piclist" style="widht: 100px; height: 150px; padding:10px; float:left;" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
+						<button ng-hide="show == 0" type="button" class="btn btn-default btn-xs" style="position: absolute; margin: 5px; margin-left: 70px;" ng-click="removeFile( file )"><span class="glyphicon glyphicon-remove"></span></button>
+						<img src="{{file.path + file.name}}" width="100px" height="100px">
+					</div>
+				</div>
+										
 				<div class="form-group">
 					<input type="submit" value="Update" class="btn btn-default">
 				</div>
@@ -33,12 +47,7 @@
 				</div>
 			</fieldset>
 		</form>
-		
-		<div class="list-group">
-			<a data-ng-repeat="instrument in instruments" data-ng-href="#!/admin/instruments/{{instrument._id}}" class="list-group-item">
-				<h4 class="list-group-item-heading" data-ng-bind="instrument.name"></h4>
-			</a>
-		</div>
+
 		
 	</div>
 </section>

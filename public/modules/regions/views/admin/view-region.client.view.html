@@ -13,6 +13,12 @@
 			</a>
 		</div>
 	</div>
+
+
+	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
+		<li ng-repeat="pic in piclist|limitTo:5" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
+	</ul>
+
 	<div class="pull-right" data-ng-show="authentication.user._id == region.user._id">
 		<a class="btn btn-primary" href="/#!/admin/regions/{{region._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
@@ -20,7 +26,5 @@
 		<a class="btn btn-primary" data-ng-click="remove();">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
-	</div>
-
-	
+	</div>	
 </section>

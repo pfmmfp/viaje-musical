@@ -1,6 +1,54 @@
 'use strict';
 
+var fs = require("fs");
+
 exports.uploadfile = function(req, res){
 	console.log('fileupload');
 	res.send(200, req.files);
+};
+
+exports.saveModelFiles = function(model, res, callback)
+{
+
+	var PUBLIC_IMAGE_PATH = 'public/common/images/regions/';
+	var PUBLIC_TMP_PATH    = 'public/tmp/';
+
+	fs.exists(PUBLIC_IMAGE_PATH + model._id, function (exists) {
+		if(!exists)
+		{
+			fs.mkdir(PUBLIC_IMAGE_PATH + model._id, function(){ 
+				model.pics.forEach(function (pic, index) {						
+					var tmpPath = PUBLIC_TMP_PATH + pic;
+					var imgPath = PUBLIC_IMAGE_PATH + model._id + "/" + pic;
+
+					fs.exists(tmpPath, function (exists) {
+						if(exists)
+						{
+							fs.rename( tmpPath, imgPath ,function (err) {
+							  if (err) throw err;
+							  console.log('renamed complete');
+							});												
+						}});	
+				});
+			});	
+		}
+		else
+		{
+			model.pics.forEach(function (pic, index) {						
+				var tmpPath = PUBLIC_TMP_PATH + pic;
+				var imgPath = PUBLIC_IMAGE_PATH + model._id + "/" + pic;
+
+				fs.exists(tmpPath, function (exists) {
+					if(exists)
+					{
+						fs.rename( tmpPath, imgPath ,function (err) {
+						  if (err) throw err;
+						  console.log('renamed complete');
+						});												
+					}});	
+			});
+		}
+		callback(res, model);	  
+	});
+
 };

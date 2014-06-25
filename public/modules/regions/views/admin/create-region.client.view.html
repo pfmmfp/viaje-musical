@@ -33,9 +33,9 @@
 						<progressbar ng-hide="percent == 0 || percent == 100" style="margin-top: 5px;" class="progress-striped active" value="percent" type="success"><b>{{percent}}%</b></progressbar>
 					</div>
 
-					<div data-ng-repeat="file in filelist" style="widht: 100px; height: 150px; padding:10px; float:left;" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
+					<div data-ng-repeat="file in piclist" style="widht: 100px; height: 150px; padding:10px; float:left;" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
 						<button ng-hide="show == 0" type="button" class="btn btn-default btn-xs" style="position: absolute; margin: 5px; margin-left: 70px;" ng-click="removeFile( file )"><span class="glyphicon glyphicon-remove"></span></button>
-						<img src="/tmp/{{file}}" width="100px" height="100px">
+						<img src="{{file.path + file.name}}" width="100px" height="100px">
 					</div>
 				</div>
 				

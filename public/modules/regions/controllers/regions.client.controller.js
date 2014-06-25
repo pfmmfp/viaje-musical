@@ -2,18 +2,26 @@
 
 angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', '$upload', '$modal', 'Authentication', 'Regions', 'Instruments', 
 	function($scope, $stateParams, $location, $upload, $modal, Authentication, Regions, Instruments) {
+	
+		var PUBLIC_IMAGE_PATH = 'common/images/regions/';
+		var PUBLIC_TMP_PATH    = 'tmp/';
+		
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
 		
 		$scope.create = function() {
-			
+			var picList = [];
+			$scope.piclist.forEach(function (pic, index) {	
+				picList.push(pic.name); 
+			});					
+				
 			var region = new Regions({
 				name: this.name,
 				description: this.description,
 				instruments: this.instruments,
-				pics: $scope.filelist
+				pics: picList,
 			});
-			
+
 			region.$save(function(response) {
 				$location.path('admin/regions/' + response._id);
 			}, function(errorResponse) {
@@ -42,7 +50,14 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 
 		$scope.update = function() {
 			var region = $scope.region;
-			console.log(region);
+			
+			var picList = [];
+			$scope.piclist.forEach(function (pic, index) {	
+				picList.push(pic.name); 
+			});				
+			
+			region.pics = picList;
+			
 			region.$update(function() {
 				$location.path('admin/regions/' + region._id);
 			}, function(errorResponse) {
@@ -63,17 +78,27 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 					instrumentList.push(Instruments.get({instrumentId: selectedElement}));
 				});		
 				$scope.instruments = instrumentList;
+				
+				var piclist = [];
+				$scope.region = Region;
+				$.each(Region['pics'], function( index, pic ) {
+					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic}
+				console.log(picFullData);
+					piclist.push( picFullData );
+				});			
+				$scope.piclist = piclist;
 			});
+			
 		};
 		
 
 		//////////////// FileUpload ////////////////
-		$scope.filelist = [];
+		$scope.piclist = [];
 		$scope.percent = parseInt(0);
 
 		$scope.removeFile = function($file)
 		{
-			$scope.filelist .splice($scope.filelist.indexOf( $file ), 1);	
+			$scope.piclist .splice($scope.piclist.indexOf( $file ), 1);	
 		};
 
 		$scope.onFileSelect = function($files)
@@ -87,7 +112,8 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				}).progress(function(evt){
 					$scope.percent = parseInt(100.0 * evt.loaded / evt.total);
 				}).success(function(data, status, headers, config) {
-					$scope.filelist.push( data.file.name );
+					var picFullData = {'path': PUBLIC_TMP_PATH, 'name': data.file.name}
+					$scope.piclist.push( picFullData );
 					$scope.percent = parseInt(0);
 				}).error( function(){ 
 					console.log('error') 
@@ -120,20 +146,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		});
 		};
 		////////////////   Modal   ////////////////		
-		
-		//////////////// Carrousel ////////////////		
-		$scope.slides = [
-			{
-			  img: 'http://lorempixel.com/400/200/food'
-			},
-			{
-			  img: 'http://lorempixel.com/400/200/sports'
-			},
-			{
-			  img: 'http://lorempixel.com/400/200/people'
-			}
-		];
-		//////////////// Carrousel ////////////////		
+	
 	}
 ]);
 

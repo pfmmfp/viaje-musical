@@ -8,4 +8,5 @@ angular.module('regions').run(['Menus',
 			Menus.addSubMenuItem('topbar', 'regions', 'List Regions', 'admin/regions', '/admin/regions','false');
 			Menus.addSubMenuItem('topbar', 'regions', 'New Region', 'admin/regions/create', 'admin/regions/create','false');		
 	}
+	
 ]);

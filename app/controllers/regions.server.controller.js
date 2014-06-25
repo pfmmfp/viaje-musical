@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 	Region = mongoose.model('Region'),
 	_ = require('lodash');
 
-var fs = require("fs");
+var uploadCtrl = require('./upload.server.controller.js');
 
 /**
  * Get the error message from error object
@@ -46,16 +46,9 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			//Move files from tmp to server
-			fs.mkdir("public/common/images/regions/"+ region._id, function(){ 
-				region.pics.forEach(function (pic) {
-					fs.rename("public/tmp/"+pic, "public/common/images/regions/" + region._id + "/"+pic,function (err) {
-					  if (err) throw err;
-					  console.log('renamed complete');
-					});				
-				});
+			uploadCtrl.saveModelFiles(region, res, function(res, region){
+				res.jsonp(region);	
 			});	
-			res.jsonp(region);	
 		}
 	});		
 };
@@ -81,7 +74,9 @@ exports.update = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(region);
+			uploadCtrl.saveModelFiles(region, res, function(res, region){
+				res.jsonp(region);	
+			});	
 		}
 	});
 };
