@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', '$upload', '$modal', 'Authentication', 'Regions', 'Instruments', 
-	function($scope, $stateParams, $location, $upload, $modal, Authentication, Regions, Instruments) {
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', '$upload', '$modal', 'Authentication', 'Regions', 'openModal', 'Instruments', 
+	function($scope, $stateParams, $location, $upload, $modal, Authentication, Regions, openModal, Instruments) {
 	
 		var PUBLIC_IMAGE_PATH = 'common/images/regions/';
 		var PUBLIC_TMP_PATH    = 'tmp/';
@@ -9,6 +9,12 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
 		
+		$scope.open = function(){
+			openModal($modal, function(data){
+				console.log(data);
+			}, ['a','b']);
+		};
+			
 		$scope.create = function() {
 			var picList = [];
 			$scope.piclist.forEach(function (pic, index) {	
@@ -83,7 +89,6 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				$scope.region = Region;
 				$.each(Region['pics'], function( index, pic ) {
 					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic}
-				console.log(picFullData);
 					piclist.push( picFullData );
 				});			
 				$scope.piclist = piclist;
@@ -116,36 +121,11 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 					$scope.piclist.push( picFullData );
 					$scope.percent = parseInt(0);
 				}).error( function(){ 
-					console.log('error') 
+					console.log('error uploading file') 
 				})
 				;
 			}
 		};		
-		//////////////// FileUpload ////////////////		
-		
-		////////////////   Modal   ////////////////		
-		$scope.items = ['item1', 'item2', 'item3'];
-
-		$scope.open = function (size) {
-
-		var modalInstance = $modal.open({
-		  templateUrl: 'myModalContent.html',
-		  controller: ModalInstanceCtrl,
-		  size: size,
-		  resolve: {
-			items: function () {
-			  return $scope.items;
-			}
-		  }
-		});
-
-		modalInstance.result.then(function (selectedItem) {
-		  $scope.selected = selectedItem;
-		}, function () {
-
-		});
-		};
-		////////////////   Modal   ////////////////		
 	
 	}
 ]);
@@ -184,19 +164,3 @@ angular.module('regions').directive('multiselect', [ '$stateParams','Instruments
 
     }
 }]);
-
-var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
-
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
-  $scope.ok = function () {
-    $modalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-};

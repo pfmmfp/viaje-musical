@@ -13,10 +13,6 @@ angular.module('regions').config(['$stateProvider',
 			url: '/admin/regions/create',
 			templateUrl: 'modules/regions/views/admin/create-region.client.view.html'
 		}).
-		state('createRegionModalAdmin', {
-			url: '/admin/regions/modal',
-			templateUrl: 'modules/regions/views/admin/modal.region.client.view.html'
-		}).
 		state('viewRegionAdmin', {
 			url: '/admin/regions/:regionId',
 			templateUrl: 'modules/regions/views/admin/view-region.client.view.html'

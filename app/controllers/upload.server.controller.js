@@ -3,11 +3,11 @@
 var fs = require("fs");
 
 exports.uploadfile = function(req, res){
-	console.log('fileupload');
+	console.log('uploading files', req.files);
 	res.send(200, req.files);
 };
 
-exports.saveModelFiles = function(model, res, callback)
+exports.saveModelFiles = function(model, res, next)
 {
 
 	var PUBLIC_IMAGE_PATH = 'public/common/images/regions/';
@@ -26,7 +26,7 @@ exports.saveModelFiles = function(model, res, callback)
 						{
 							fs.rename( tmpPath, imgPath ,function (err) {
 							  if (err) throw err;
-							  console.log('renamed complete');
+							  console.log('moving ', tmpPath, ' to ', imgPath);
 							});												
 						}});	
 				});
@@ -43,12 +43,12 @@ exports.saveModelFiles = function(model, res, callback)
 					{
 						fs.rename( tmpPath, imgPath ,function (err) {
 						  if (err) throw err;
-						  console.log('renamed complete');
+							console.log('moving ', tmpPath, ' to ', imgPath);
 						});												
 					}});	
 			});
 		}
-		callback(res, model);	  
+		next(res, model);	  
 	});
 
 };
