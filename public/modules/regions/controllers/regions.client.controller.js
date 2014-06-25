@@ -80,15 +80,15 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			{
 				var instrumentList = [];
 				$scope.region = Region;
-				$.each(Region['instruments'], function( index, selectedElement ) {
+				Region.instruments.forEach(function( selectedElement, index ) {
 					instrumentList.push(Instruments.get({instrumentId: selectedElement}));
 				});		
 				$scope.instruments = instrumentList;
 				
 				var piclist = [];
 				$scope.region = Region;
-				$.each(Region['pics'], function( index, pic ) {
-					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic}
+				Region.pics.forEach(function( pic, index ) {
+					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic};
 					piclist.push( picFullData );
 				});			
 				$scope.piclist = piclist;
@@ -117,11 +117,11 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				}).progress(function(evt){
 					$scope.percent = parseInt(100.0 * evt.loaded / evt.total);
 				}).success(function(data, status, headers, config) {
-					var picFullData = {'path': PUBLIC_TMP_PATH, 'name': data.file.name}
+					var picFullData = {'path': PUBLIC_TMP_PATH, 'name': data.file.name};
 					$scope.piclist.push( picFullData );
 					$scope.percent = parseInt(0);
 				}).error( function(){ 
-					console.log('error uploading file') 
+					console.log('error uploading file'); 
 				})
 				;
 			}
@@ -133,28 +133,27 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 //TODO: esta directive es una mochada, cambiar por algo mejor...
 angular.module('regions').directive('multiselect', [ '$stateParams','Instruments', 'Regions', function($stateParams, Instruments, Regions) {
     return function(scope, element, attrs) {        
-        var resourceDependencies = {'Instruments': Instruments}
+        var resourceDependencies = {'Instruments': Instruments};
         var Resource = attrs.ngData;
         var elementId = attrs.id;
         var selectedItems = attrs.ngSelection;
-        		
-        element = $(element[0]);
+
         element.multiselect({
 			enableFiltering: true,
-		})
+		});
 		
 		resourceDependencies[Resource].query(function(response){
 		 var itemsList = [];
-		 $.each(response, function( index, resource ) {
-			  var item = {'label': resource.name, 'value': resource._id}
-			  itemsList.push(item) ;
+		 response.forEach(function( resource, index ) {
+			  var item = {'label': resource.name, 'value': resource._id};
+			  itemsList.push(item);
 			});
 			element.multiselect('dataprovider', itemsList);
 
 			if($stateParams.regionId)
 			{	
 				var Region = Regions.get({regionId: $stateParams.regionId}, function(){
-					$.each(Region[elementId], function( index, selectedElement ) {
+					Region[elementId].forEach(function( selectedElement, index  ) {
 						element.multiselect('select', selectedElement);
 					});	
 				});
@@ -162,5 +161,5 @@ angular.module('regions').directive('multiselect', [ '$stateParams','Instruments
 		}); 		
 		
 
-    }
+    };
 }]);

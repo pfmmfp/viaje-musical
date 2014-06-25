@@ -1,6 +1,6 @@
 'use strict';
 
-var fs = require("fs");
+var fs = require('fs');
 
 exports.uploadfile = function(req, res){
 	console.log('uploading files', req.files);
@@ -19,7 +19,7 @@ exports.saveModelFiles = function(model, res, next)
 			fs.mkdir(PUBLIC_IMAGE_PATH + model._id, function(){ 
 				model.pics.forEach(function (pic, index) {						
 					var tmpPath = PUBLIC_TMP_PATH + pic;
-					var imgPath = PUBLIC_IMAGE_PATH + model._id + "/" + pic;
+					var imgPath = PUBLIC_IMAGE_PATH + model._id + '/' + pic;
 
 					fs.exists(tmpPath, function (exists) {
 						if(exists)
@@ -36,7 +36,7 @@ exports.saveModelFiles = function(model, res, next)
 		{
 			model.pics.forEach(function (pic, index) {						
 				var tmpPath = PUBLIC_TMP_PATH + pic;
-				var imgPath = PUBLIC_IMAGE_PATH + model._id + "/" + pic;
+				var imgPath = PUBLIC_IMAGE_PATH + model._id + '/' + pic;
 
 				fs.exists(tmpPath, function (exists) {
 					if(exists)

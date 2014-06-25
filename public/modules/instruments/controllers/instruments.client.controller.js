@@ -3,18 +3,6 @@
 angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', '$modal', 'Authentication', 'Instruments',
 	function($scope, $stateParams, $location, $modal, Authentication, Instruments) {
 		$scope.authentication = Authentication;
-
-		 $scope.open = function () {
-
-			var modalInstance = $modal.open({
-			  templateUrl: 'myModalContent.html',
-			  controller: InstrumentsController
-			});
-
-			modalInstance.result.then( function () {
-			  $log.info('Modal dismissed at: ' + new Date());
-			});
-		  };
 		
 		$scope.create = function() {
 			var instrument = new Instruments({

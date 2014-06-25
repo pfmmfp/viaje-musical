@@ -6,19 +6,20 @@
  *
  * Dual licensed under the BSD-3-Clause and the Apache License, Version 2.0.
  */
-!function($) {
+!(function($) {
 
-    "use strict";// jshint ;_;
+    'use strict'; 
     
     if (Array.prototype.forEach === null || Array.prototype.forEach === undefined) {
         Array.prototype.forEach = function (func) {
             var index;
             for (index = 0; index < this.length; ++index) {
                 func(this[index]);
-            }
+            } 
         };
     }
-
+	var ko;
+	
     if (typeof ko !== 'undefined' && ko.bindingHandlers && !ko.bindingHandlers.multiselect) {
         ko.bindingHandlers.multiselect = {
 
@@ -45,11 +46,11 @@
                         });
                         if (addedArray.length > 0) {
                             $(element).multiselect('select', addedArray);
-                        };
+                        }
                         if (deletedArray.length > 0) {
                             $(element).multiselect('deselect', deletedArray);
-                        };
-                    }, null, "arrayChange");
+                        }
+                    }, null, 'arrayChange');
                 }
             },
 
@@ -77,7 +78,7 @@
     }
 
     function isObservableArray(obj) {
-        return ko.isObservable(obj) && !(obj.destroyAll === undefined);
+        return ko.isObservable(obj) && (obj.destroyAll !== undefined);
     }
 
     /**
@@ -98,7 +99,7 @@
         this.query = '';
         this.searchTimeout = null;
 
-        this.options.multiple = this.$select.attr('multiple') === "multiple";
+        this.options.multiple = this.$select.attr('multiple') === 'multiple';
         this.options.onChange = $.proxy(this.options.onChange, this);
         this.options.onDropdownShow = $.proxy(this.options.onDropdownShow, this);
         this.options.onDropdownHide = $.proxy(this.options.onDropdownHide, this);
@@ -115,7 +116,7 @@
         this.updateSelectAll();
         
         this.$select.hide().after(this.$container);
-    };
+    }
 
     Multiselect.prototype = {
 
@@ -383,8 +384,8 @@
                             this.$button.click();
                         }
 
-                        if (this.options.selectedClass === "active") {
-                            $optionsNotThis.parents("a").css("outline", "");
+                        if (this.options.selectedClass === 'active') {
+                            $optionsNotThis.parents('a').css('outline', '');
                         }
                     }
                     else {
@@ -422,18 +423,18 @@
                         var prevIdx = prev.index();
 
                         if (currentIdx > prevIdx) {
-                            $target.parents("li:last").prevUntil(prev).each(
+                            $target.parents('li:last').prevUntil(prev).each(
                                 function() {
-                                    $(this).find("input:first").prop("checked", true)
-                                        .trigger("change");
+                                    $(this).find('input:first').prop('checked', true)
+                                        .trigger('change');
                                 }
                             );
                         }
                         else {
-                            $target.parents("li:last").nextUntil(prev).each(
+                            $target.parents('li:last').nextUntil(prev).each(
                                 function() {
-                                    $(this).find("input:first").prop("checked", true)
-                                        .trigger("change");
+                                    $(this).find('input:first').prop('checked', true)
+                                        .trigger('change');
                                 }
                             );
                         }
@@ -448,14 +449,12 @@
                 if ($('input[type="text"]', this.$container).is(':focus')) {
                     return;
                 }
-                if ((event.keyCode === 9 || event.keyCode === 27)
-                        && this.$container.hasClass('open')) {
-                    
+                if ((event.keyCode === 9 || event.keyCode === 27) && this.$container.hasClass('open')) {
                     // Close on tab or escape.
                     this.$button.click();
                 }
                 else {
-                    var $items = $(this.$container).find("li:not(.divider):not(.disabled) a").filter(":visible");
+                    var $items = $(this.$container).find('li:not(.divider):not(.disabled) a').filter(':visible');
 
                     if (!$items.length) {
                         return;
@@ -481,7 +480,7 @@
                     if (event.keyCode === 32 || event.keyCode === 13) {
                         var $checkbox = $current.find('input');
 
-                        $checkbox.prop("checked", !$checkbox.prop("checked"));
+                        $checkbox.prop('checked', !$checkbox.prop('checked'));
                         $checkbox.change();
                     }
 
@@ -504,7 +503,7 @@
             // Support the label attribute on options.
             var label = this.options.label(element);
             var value = $(element).val();
-            var inputType = this.options.multiple ? "checkbox" : "radio";
+            var inputType = this.options.multiple ? 'checkbox' : 'radio';
 
             var $li = $(this.options.templates.li);
             $('label', $li).addClass(inputType);
@@ -515,12 +514,12 @@
             $checkbox.val(value);
 
             if (value === this.options.selectAllValue) {
-                $li.addClass("multiselect-item multiselect-all");
+                $li.addClass('multiselect-item multiselect-all');
                 $checkbox.parent().parent()
                     .addClass('multiselect-all');
             }
 
-            $('label', $li).append(" " + label);
+            $('label', $li).append(' ' + label);
 
             this.$ul.append($li);
 
@@ -528,7 +527,7 @@
                 $checkbox.attr('disabled', 'disabled')
                     .prop('disabled', true)
                     .parents('a')
-                    .attr("tabindex", "-1")
+                    .attr('tabindex', '-1')
                     .parents('li')
                     .addClass('disabled');
             }
@@ -582,8 +581,7 @@
         buildSelectAll: function() {
             var alreadyHasSelectAll = this.hasSelectAll();
             
-            if (!alreadyHasSelectAll && this.options.includeSelectAllOption && this.options.multiple
-                    && $('option', this.$select).length > this.options.includeSelectAllIfMoreThan) {
+            if (!alreadyHasSelectAll && this.options.includeSelectAllOption && this.options.multiple && $('option', this.$select).length > this.options.includeSelectAllIfMoreThan) {
                 
                 // Check whether to add a divider after the select all.
                 if (this.options.includeSelectAllDivider) {
@@ -591,17 +589,17 @@
                 }
 
                 var $li = $(this.options.templates.li);
-                $('label', $li).addClass("checkbox");
+                $('label', $li).addClass('checkbox');
                 $('label', $li).append('<input type="checkbox" name="' + this.options.checkboxName + '" />');
 
                 var $checkbox = $('input', $li);
                 $checkbox.val(this.options.selectAllValue);
 
-                $li.addClass("multiselect-item multiselect-all");
+                $li.addClass('multiselect-item multiselect-all');
                 $checkbox.parent().parent()
                     .addClass('multiselect-all');
 
-                $('label', $li).append(" " + this.options.selectAllText);
+                $('label', $li).append(' ' + this.options.selectAllText);
 
                 this.$ul.prepend($li);
 
@@ -663,10 +661,10 @@
                                         }
 
                                         if (showElement) {
-                                            $(element).show().removeClass("filter-hidden");
+                                            $(element).show().removeClass('filter-hidden');
                                         }
                                         else {
-                                            $(element).hide().addClass("filter-hidden");
+                                            $(element).hide().addClass('filter-hidden');
                                         }
                                     }
                                 }, this));
@@ -714,7 +712,7 @@
                     }
                 }
 
-                if ($(element).is(":disabled")) {
+                if ($(element).is(':disabled')) {
                     $input.attr('disabled', 'disabled')
                         .prop('disabled', true)
                         .parents('li')
@@ -803,20 +801,20 @@
          * 
          */
         selectall: function () {
-            var allCheckboxes = $("li input[type='checkbox']:enabled", this.$ul),
-                visibleCheckboxes = allCheckboxes.filter(":visible"),
+            var allCheckboxes = $('li input[type="checkbox"]:enabled', this.$ul),
+                visibleCheckboxes = allCheckboxes.filter(':visible'),
                 allCheckboxesCount = allCheckboxes.length,
                 visibleCheckboxesCount = visibleCheckboxes.length;
                 
             visibleCheckboxes.prop('checked', true);
-            $("li:not(.divider):not(.disabled)", this.$ul).filter(":visible").addClass(this.options.selectedClass);
+            $('li:not(.divider):not(.disabled)', this.$ul).filter(':visible').addClass(this.options.selectedClass);
             
             if (allCheckboxesCount === visibleCheckboxesCount) {
-                $("option:enabled", this.$select).prop('selected', true);
+                $('option:enabled', this.$select).prop('selected', true);
             }
             else {
-                var values = visibleCheckboxes.map(function() { return $(this).val() }).get();
-                $("option:enabled", this.$select).filter(function(index){ return $.inArray($(this).val(), values) !== -1; }).prop('selected', true);
+                var values = visibleCheckboxes.map(function() { return $(this).val(); }).get();
+                $('option:enabled', this.$select).filter(function(index){ return $.inArray($(this).val(), values) !== -1; }).prop('selected', true);
             }
         },
 
@@ -827,25 +825,27 @@
          * @param {Boolean} justVisible
          */
         deselectall: function (justVisible) {
-            var allCheckboxes = $("li input[type='checkbox']:enabled", this.$ul),                
-                justVisible = typeof justVisible === 'undefined' ? true : justVisible,
-                visibleCheckboxes = void(0);
+            var allCheckboxes = $('li input[type="checkbox"]:enabled', this.$ul);                
+			var visibleCheckboxes = void(0);
+			
+			justVisible = typeof justVisible === 'undefined' ? true : justVisible;
+			
             
             if(justVisible) {
                 var values = void(0);                
-                visibleCheckboxes = allCheckboxes.filter(":visible");
+                visibleCheckboxes = allCheckboxes.filter(':visible');
                 visibleCheckboxes.prop('checked', false);
                 
-                values = visibleCheckboxes.map(function() { return $(this).val() }).get();
+                values = visibleCheckboxes.map(function() { return $(this).val(); }).get();
                 
-                $("option:enabled", this.$select).filter(function(index){ return $.inArray($(this).val(), values) !== -1; }).prop('selected', false);
+                $('option:enabled', this.$select).filter(function(index){ return $.inArray($(this).val(), values) !== -1; }).prop('selected', false);
                 
-                $("li:not(.divider):not(.disabled)", this.$ul).filter(":visible").removeClass(this.options.selectedClass);
+                $('li:not(.divider):not(.disabled)', this.$ul).filter(':visible').removeClass(this.options.selectedClass);
                 
             }else {
                 allCheckboxes.prop('checked', false);
-                $("option:enabled", this.$select).prop('selected', false);
-                $("li:not(.divider):not(.disabled)", this.$ul).removeClass(this.options.selectedClass);
+                $('option:enabled', this.$select).prop('selected', false);
+                $('li:not(.divider):not(.disabled)', this.$ul).removeClass(this.options.selectedClass);
             }
         },
 
@@ -857,7 +857,7 @@
             this.$ul.html('');
 
             // Important to distinguish between radios and checkboxes.
-            this.options.multiple = this.$select.attr('multiple') === "multiple";
+            this.options.multiple = this.$select.attr('multiple') === 'multiple';
 
             this.buildSelectAll();
             this.buildDropdownOptions();
@@ -873,7 +873,7 @@
          * @param {Array} dataprovider
          */
         dataprovider: function(dataprovider) {
-            var optionDOM = "";
+            var optionDOM = '';
             dataprovider.forEach(function (option) {
                 optionDOM += '<option value="' + option.value + '">' + option.label + '</option>';
             });
@@ -933,18 +933,18 @@
          */
         updateSelectAll: function() {
             if (this.hasSelectAll()) {
-                var allBoxes = $("li:not(.multiselect-item):not(.filter-hidden) input:enabled", this.$ul),
+                var allBoxes = $('li:not(.multiselect-item):not(.filter-hidden) input:enabled', this.$ul),
                     allBoxesLength = allBoxes.length,
-                    checkedBoxesLength = allBoxes.filter(":checked").length,
-                    selectAllLi  = $("li." + this.options.selectAllValue, this.$ul),
-                    selectAllInput = selectAllLi.find("input");
+                    checkedBoxesLength = allBoxes.filter(':checked').length,
+                    selectAllLi  = $('li.' + this.options.selectAllValue, this.$ul),
+                    selectAllInput = selectAllLi.find('input');
                 
                 if (checkedBoxesLength > 0 && checkedBoxesLength === allBoxesLength) {
-                    selectAllInput.prop("checked", true);
+                    selectAllInput.prop('checked', true);
                     selectAllLi.addClass(this.options.selectedClass);
                 }
                 else {
-                    selectAllInput.prop("checked", false);
+                    selectAllInput.prop('checked', false);
                     selectAllLi.removeClass(this.options.selectedClass);
                 }
             }
@@ -970,7 +970,7 @@
          * @returns {jQUery}
          */
         getSelected: function() {
-            return $('option', this.$select).filter(":selected");
+            return $('option', this.$select).filter(':selected');
         },
 
         /**
@@ -1051,7 +1051,7 @@
     $.fn.multiselect.Constructor = Multiselect;
 
     $(function() {
-        $("select[data-role=multiselect]").multiselect();
+        $('select[data-role=multiselect]').multiselect();
     });
 
-}(window.jQuery);
+})(window.jQuery);
