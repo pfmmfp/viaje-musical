@@ -6,8 +6,8 @@
  *
  * Dual licensed under the BSD-3-Clause and the Apache License, Version 2.0.
  */
+/* jshint ignore:start */
 !(function($) {
-
     'use strict'; 
     
     if (Array.prototype.forEach === null || Array.prototype.forEach === undefined) {
@@ -1055,3 +1055,4 @@
     });
 
 })(window.jQuery);
+/* jshint ignore:end */
