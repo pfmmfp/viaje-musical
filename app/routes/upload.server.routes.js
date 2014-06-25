@@ -9,5 +9,5 @@ var users = require('../../app/controllers/users'),
 module.exports = function(app) {
 	// Article Routes
 	app.route('/upload')
-		.post(users.requiresLogin, uploadCtrl.uploadfile)
+		.post(users.requiresLogin, uploadCtrl.uploadfile);
 };
