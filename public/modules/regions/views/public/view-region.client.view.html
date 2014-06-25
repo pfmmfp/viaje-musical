@@ -6,14 +6,14 @@
 		<h1 data-ng-bind="region.name"></h1>
 	</div>
 	<p class="lead" data-ng-bind="region.description"></p>
-	
-    <button class="btn btn-default" data-ng-click="open('lg')">Pictures</button>
 
 	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
-		<li ng-repeat="slide in slides|limitTo:5" ng-style="{'background-image': 'url(' + slide.img + ')'}"></li>
+		<li ng-repeat="pic in piclist|limitTo:5" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
 	</ul>
-
-
+	
+	<br/>
+	<button class="btn btn-default" data-ng-click="open('lg')">Modal Test</button>
+	
 	<script type="text/ng-template" id="myModalContent.html">
 	<div class="modal-header">
 		<h3 class="modal-title">I'm a modal!</h3>
@@ -34,7 +34,7 @@
 		<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
 	</div>
 	</script>
-
+	
 </section>
 
 
