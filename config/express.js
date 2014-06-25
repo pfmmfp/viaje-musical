@@ -25,7 +25,7 @@ module.exports = function(db) {
 	// Initialize express app
 	var app = express();
 	
-	app.use(multer({ dest: './public/tmp/'}))
+	app.use(multer({ dest: './public/tmp/'}));
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
