@@ -13,10 +13,12 @@ exports.uploadfile = function(req, res){
 
 exports.saveModelFiles = function(model, res, next)
 {	
+	var fullPath;
+	
 	//////////////// AUDIO UPLOAD ////////////////			
-	if(model.audio !== 'undefined')
+	if(typeof(model.audio) !== 'undefined')
 	{
-		var fullPath = PUBLIC_AUDIO_PATH + '/' + model.type + '/' + model._id;
+		fullPath = PUBLIC_AUDIO_PATH + '/' + model.type + '/' + model._id;
 		
 		fs.exists(fullPath, function (exists) {
 			if(!exists)
@@ -57,10 +59,10 @@ exports.saveModelFiles = function(model, res, next)
 		});
 	}
 	
-	//////////////// IMAGE UPLOAD ////////////////				
-	if(model.pics !== 'undefined')
+	//////////////// IMAGE UPLOAD ////////////////					
+	if(typeof(model.pics) !== 'undefined')
 	{
-		var fullPath = PUBLIC_IMAGE_PATH + '/' + model.type + '/' + model._id;
+		fullPath = PUBLIC_IMAGE_PATH + '/' + model.type + '/' + model._id;
 		
 		fs.exists(fullPath, function (exists) {
 			if(!exists)
