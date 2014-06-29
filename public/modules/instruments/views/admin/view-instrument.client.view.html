@@ -3,7 +3,15 @@
 <section data-ng-controller="InstrumentsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="instrument.name"></h1>
+		
+		<p data-ng-bind="instrument.description"></p>	
 	</div>
+	
+	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
+		<li ng-repeat="pic in piclist|limitTo:5" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
+		
+	</ul>
+
 	<div class="pull-right" data-ng-show="authentication.user._id == instrument.user._id">
 		<a class="btn btn-primary" href="/#!/admin/instruments/{{instrument._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
@@ -11,14 +19,5 @@
 		<a class="btn btn-primary" data-ng-click="remove();">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="instrument.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="instrument.user.displayName"></span>
-		</em>
-	</small>
-	<p class="lead" data-ng-bind="instrument.description"></p>
+	</div>	
 </section>

@@ -21,6 +21,10 @@ var MediaSchema = new Schema({
 });
 
 var InstrumentSchema = new Schema({
+	type: {
+		type: String,
+		default: 'instrument'
+	},
     created: {
         type: Date,
         default: Date.now
@@ -40,8 +44,8 @@ var InstrumentSchema = new Schema({
         default: '',
         trim: true
     },
-    pic: [MediaSchema],
-    audio: [MediaSchema],
+    pics: [],
+    audio: [],
     user: {
         type: Schema.ObjectId,
         ref: 'User'

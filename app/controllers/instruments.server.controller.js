@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
 	Instrument = mongoose.model('Instrument'),
 	_ = require('lodash');
 
+var uploadCtrl = require('./upload.server.controller.js');
+
 /**
  * Get the error message from error object
  */
@@ -44,7 +46,9 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(instrument);
+			uploadCtrl.saveModelFiles(instrument, res, function(res, instrument){
+				res.jsonp(instrument);	
+			});	
 		}
 	});
 };
@@ -70,7 +74,9 @@ exports.update = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(instrument);
+			uploadCtrl.saveModelFiles(instrument, res, function(res, instrument){
+				res.jsonp(instrument);	
+			});	
 		}
 	});
 };
