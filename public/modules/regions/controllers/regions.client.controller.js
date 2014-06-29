@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', '$upload', '$modal', 'Authentication', 'Regions', 'openModal', 'Instruments', 
-	function($scope, $stateParams, $location, $upload, $modal, Authentication, Regions, openModal, Instruments) {
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 
+	function($scope, $stateParams, $location, Authentication, Regions, openModal, fileupload, Instruments) {
 	
 		var PUBLIC_IMAGE_PATH = 'common/images/regions/';
 		var PUBLIC_TMP_PATH    = 'tmp/';
@@ -9,12 +9,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
 		
-		$scope.open = function(){
-			openModal($modal, function(data){
-				console.log(data);
-			}, ['a','b']);
-		};
-			
+		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
 			var picList = [];
 			$scope.piclist.forEach(function (pic, index) {	
@@ -38,6 +33,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			this.description = '';
 		};
 
+		//////////////// DELETE REGION ////////////////
 		$scope.remove = function(region) {
 			if (region) {
 				region.$remove();
@@ -54,6 +50,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			}
 		};
 
+		//////////////// EDIT REGION ////////////////
 		$scope.update = function() {
 			var region = $scope.region;
 			
@@ -71,10 +68,12 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			});
 		};
 
+		//////////////// LIST REGIONS ////////////////
 		$scope.find = function() {
 			$scope.regions = Regions.query();
 		};
 
+		//////////////// VIEW REGION ////////////////
 		$scope.findOne = function() {
 			var Region = Regions.get({ regionId: $stateParams.regionId}, function()
 			{
@@ -99,34 +98,29 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 
 		//////////////// FileUpload ////////////////
 		$scope.piclist = [];
-		$scope.percent = parseInt(0);
+		$scope.percent = {value: parseInt(0), set: function(value){ this.value = value; }};
 
 		$scope.removeFile = function($file)
 		{
-			$scope.piclist .splice($scope.piclist.indexOf( $file ), 1);	
+			$scope.piclist.splice($scope.piclist.indexOf( $file ), 1);	
 		};
-
+								
 		$scope.onFileSelect = function($files)
 		{
 			for (var i = 0; i < $files.length; i++) {
-				var file = $files[i];
-				$scope.upload = $upload.upload({
-					url: '/upload', 
-					method: 'POST',
-					file: file,
-				}).progress(function(evt){
-					$scope.percent = parseInt(100.0 * evt.loaded / evt.total);
-				}).success(function(data, status, headers, config) {
-					var picFullData = {'path': PUBLIC_TMP_PATH, 'name': data.file.name};
-					$scope.piclist.push( picFullData );
-					$scope.percent = parseInt(0);
-				}).error( function(){ 
-					console.log('error uploading file'); 
-				})
-				;
+				var upl = fileupload.upload($files[i]);	
+				fileupload.progress(upl, $scope.percent);				
+				fileupload.success(upl, $scope.piclist);		
 			}
-		};		
-	
+		};
+
+		//////////////// MODAL ////////////////
+		$scope.open = function(){
+			openModal(function(data){
+				console.log(data);
+			}, ['a','b']);
+		};					
+		
 	}
 ]);
 

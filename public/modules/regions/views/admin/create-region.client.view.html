@@ -30,7 +30,7 @@
 					<label class="control-label" for="pics">Pics</label>
 					<div class="controls">				
 						<input type="file" id="pics" class="form-control" data-ng-file-select="onFileSelect($files)" multiple>
-						<progressbar ng-hide="percent == 0 || percent == 100" style="margin-top: 5px;" class="progress-striped active" value="percent" type="success"><b>{{percent}}%</b></progressbar>
+						<progressbar ng-hide="percent.value == 0 || percent.value == 100" style="margin-top: 5px;" class="progress-striped active" value="percent.value" type="success"><b>{{percent.value}}%</b></progressbar>
 					</div>
 
 					<div data-ng-repeat="file in piclist" style="widht: 100px; height: 150px; padding:10px; float:left;" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
@@ -48,11 +48,6 @@
 			</fieldset>
 		</form>
 	</div>
-	
-	<!-- <div data-ng-include="'/modules/regions/views/admin/modal.region.client.view.html'"></div> -->
-
-	
-
 	
 </section>
 	
