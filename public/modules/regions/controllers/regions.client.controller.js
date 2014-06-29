@@ -3,8 +3,7 @@
 angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 
 	function($scope, $stateParams, $location, Authentication, Regions, openModal, fileupload, Instruments) {
 	
-		var PUBLIC_IMAGE_PATH = 'common/images/regions/';
-		var PUBLIC_TMP_PATH    = 'tmp/';
+		var PUBLIC_IMAGE_PATH = 'common/images/region/';
 		
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();

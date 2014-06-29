@@ -21,6 +21,10 @@ var MediaSchema = new Schema({
 });
 
 var RegionSchema = new Schema({
+    type: {
+		type: String,
+		default: 'region'
+	},
     created: {
         type: Date,
         default: Date.now
@@ -42,7 +46,6 @@ var RegionSchema = new Schema({
     },
     instruments: [],
     pics: [],
-    audio: [],
     user: {
         type: Schema.ObjectId,
         ref: 'User'
