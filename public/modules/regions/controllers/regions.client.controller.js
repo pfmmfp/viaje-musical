@@ -11,7 +11,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
 			var picList = [];
-			$scope.piclist.forEach(function (pic, index) {	
+			$scope.picList.forEach(function (pic, index) {	
 				picList.push(pic.name); 
 			});					
 				
@@ -54,7 +54,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			var region = $scope.region;
 			
 			var picList = [];
-			$scope.piclist.forEach(function (pic, index) {	
+			$scope.picList.forEach(function (pic, index) {	
 				picList.push(pic.name); 
 			});				
 			
@@ -83,25 +83,25 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				});		
 				$scope.instruments = instrumentList;
 				
-				var piclist = [];
+				var picList = [];
 				$scope.region = Region;
 				Region.pics.forEach(function( pic, index ) {
 					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic};
-					piclist.push( picFullData );
+					picList.push( picFullData );
 				});			
-				$scope.piclist = piclist;
+				$scope.picList = picList;
 			});
 			
 		};
 		
 
 		//////////////// FileUpload ////////////////
-		$scope.piclist = [];
+		$scope.picList = [];
 		$scope.percent = {value: parseInt(0), set: function(value){ this.value = value; }};
 
 		$scope.removeFile = function($file)
 		{
-			$scope.piclist.splice($scope.piclist.indexOf( $file ), 1);	
+			$scope.picList.splice($scope.picList.indexOf( $file ), 1);	
 		};
 								
 		$scope.onFileSelect = function($files)
@@ -109,7 +109,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			for (var i = 0; i < $files.length; i++) {
 				var upl = fileupload.upload($files[i]);	
 				fileupload.progress(upl, $scope.percent);				
-				fileupload.success(upl, $scope.piclist);		
+				fileupload.success(upl, $scope.picList);		
 			}
 		};
 
