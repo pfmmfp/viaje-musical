@@ -13,27 +13,27 @@ exports.uploadfile = function(req, res){
 
 exports.saveModelFiles = function(model, res, next)
 {	
-	var fullPath;
-	
+
 	//////////////// AUDIO UPLOAD ////////////////			
 	if(typeof(model.audio) !== 'undefined')
 	{
-		fullPath = PUBLIC_AUDIO_PATH + '/' + model.type + '/' + model._id;
+		var audioFullPath = PUBLIC_AUDIO_PATH + model.type + '/' + model._id;
 		
-		fs.exists(fullPath, function (exists) {
+		fs.exists(audioFullPath, function (exists) {
 			if(!exists)
 			{
-				fs.mkdir(fullPath, function(){ 
+				console.log("NO existe");
+				fs.mkdir(audioFullPath, function(){ 
 					model.audio.forEach(function (audio, index) {						
 						var tmpPath = PUBLIC_TMP_PATH + audio;
-						var audioPath = fullPath + '/' + audio;
+						var audioFile = audioFullPath + '/' + audio;
 
 						fs.exists(tmpPath, function (exists) {
 							if(exists)
 							{
-								fs.rename( tmpPath, audioPath ,function (err) {
+								fs.rename( tmpPath, audioFile ,function (err) {
 								  if (err) throw err;
-								  console.log('moving ', tmpPath, ' to ', audioPath);
+								  console.log('moving ', tmpPath, ' to ', audioFile);
 								});												
 							}});	
 					});
@@ -41,16 +41,17 @@ exports.saveModelFiles = function(model, res, next)
 			}
 			else
 			{
+				console.log("existe");
 				model.audio.forEach(function (audio, index) {						
 					var tmpPath = PUBLIC_TMP_PATH + audio;
-					var audioPath = fullPath + '/' + audio;
+					var audioFile = audioFullPath + '/' + audio;
 
 					fs.exists(tmpPath, function (exists) {
 						if(exists)
 						{
-							fs.rename( tmpPath, audioPath ,function (err) {
+							fs.rename( tmpPath, audioFile ,function (err) {
 							  if (err) throw err;
-								console.log('moving ', tmpPath, ' to ', audioPath);
+								console.log('moving ', tmpPath, ' to ', audioFile);
 							});												
 						}});	
 				});
@@ -62,22 +63,22 @@ exports.saveModelFiles = function(model, res, next)
 	//////////////// IMAGE UPLOAD ////////////////					
 	if(typeof(model.pics) !== 'undefined')
 	{
-		fullPath = PUBLIC_IMAGE_PATH + '/' + model.type + '/' + model._id;
+		var picFullPath = PUBLIC_IMAGE_PATH + model.type + '/' + model._id;
 		
-		fs.exists(fullPath, function (exists) {
+		fs.exists(picFullPath, function (exists) {
 			if(!exists)
 			{
-				fs.mkdir(fullPath, function(){ 
+				fs.mkdir(picFullPath, function(){ 
 					model.pics.forEach(function (pic, index) {						
 						var tmpPath = PUBLIC_TMP_PATH + pic;
-						var imgPath = fullPath + '/' + pic;
+						var imgFile = picFullPath + '/' + pic;
 
 						fs.exists(tmpPath, function (exists) {
 							if(exists)
 							{
-								fs.rename( tmpPath, imgPath ,function (err) {
+								fs.rename( tmpPath, imgFile ,function (err) {
 								  if (err) throw err;
-								  console.log('moving ', tmpPath, ' to ', imgPath);
+								  console.log('moving ', tmpPath, ' to ', imgFile);
 								});												
 							}});	
 					});
@@ -87,14 +88,14 @@ exports.saveModelFiles = function(model, res, next)
 			{
 				model.pics.forEach(function (pic, index) {						
 					var tmpPath = PUBLIC_TMP_PATH + pic;
-					var imgPath = fullPath + '/' + pic;
+					var imgFile = picFullPath + '/' + pic;
 
 					fs.exists(tmpPath, function (exists) {
 						if(exists)
 						{
-							fs.rename( tmpPath, imgPath ,function (err) {
+							fs.rename( tmpPath, imgFile ,function (err) {
 							  if (err) throw err;
-								console.log('moving ', tmpPath, ' to ', imgPath);
+								console.log('moving ', tmpPath, ' to ', imgFile);
 							});												
 						}});	
 				});
