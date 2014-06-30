@@ -8,10 +8,19 @@
 	</div>
 	
 	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
-		<li ng-repeat="pic in piclist|limitTo:5" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
-		
+		<li ng-repeat="pic in picList" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
 	</ul>
 
+	<div style="margin-bottom: 20px; margin-top: 20px;float: left;width: 100%;">
+		<div class="page-header">
+			<h3>Audio files</h3>
+		</div>	
+		<div ng-repeat="audio in audioList" style="widht: 40px; height: 35px; padding:10px; float:left;" >
+			<audio id="{{ audio.name }}"><source src="{{ audio.path + audio.name }}" type="audio/mp3"></audio>
+			<a class="btn btn-success" data-ng-audio="{{ audio.name }}"><i class="glyphicon glyphicon-play-circle"> Play</i></a>
+		</div>	
+	</div>
+	
 	<div class="pull-right" data-ng-show="authentication.user._id == instrument.user._id">
 		<a class="btn btn-primary" href="/#!/admin/instruments/{{instrument._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>

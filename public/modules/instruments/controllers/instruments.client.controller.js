@@ -1,22 +1,29 @@
 'use strict';
 
-angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Instruments', 'fileupload', 
-	function($scope, $stateParams, $location, Authentication, Instruments, fileupload) {
+angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Instruments', 'fileupload', 'ngAudio',
+	function($scope, $stateParams, $location, Authentication, Instruments, fileupload, ngAudio) {
 		$scope.authentication = Authentication;
 		
 		var PUBLIC_IMAGE_PATH = 'common/images/instrument/';
+		var PUBLIC_AUDIO_PATH = 'common/audio/instrument/';
 		
 		//////////////// CREATE INSTRUMENT ////////////////
 		$scope.create = function() {
 			var picList = [];
-			$scope.piclist.forEach(function (pic, index) {	
+			$scope.picList.forEach(function (pic, index) {	
 				picList.push(pic.name); 
 			});				
-			
+
+			var audioList = [];
+			$scope.audioList.forEach(function (audio, index) {	
+				audioList.push(audio.name); 
+			});				
+						
 			var instrument = new Instruments({
 				name: this.name,
 				description: this.description,
 				pics: picList,
+				audio: audioList,
 			});
 			
 			instrument.$save(function(response) {
@@ -51,11 +58,18 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 			var instrument = $scope.instrument;
 
 			var picList = [];
-			$scope.piclist.forEach(function (pic, index) {	
+			$scope.picList.forEach(function (pic, index) {	
 				picList.push(pic.name); 
 			});				
 			
 			instrument.pics = picList;
+			
+			var audioList = [];
+			$scope.audioList.forEach(function (audio, index) {	
+				audioList.push(audio.name); 
+			});				
+			
+			instrument.audio = audioList;
 			
 			instrument.$update(function() {
 				$location.path('admin/instruments/' + instrument._id);
@@ -73,33 +87,56 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 		$scope.findOne = function() {
 			var Instrument = Instruments.get({ instrumentId: $stateParams.instrumentId }, function()
 			{
-				var piclist = [];
+				var picList   = [];
+				var audioList = [];
 				$scope.instrument = Instrument;
+				
 				Instrument.pics.forEach(function( pic, index ) {
 					var picFullData = {'path': PUBLIC_IMAGE_PATH + Instrument._id + '/', 'name': pic};
-					piclist.push( picFullData );
+					picList.push( picFullData );
 				});			
-				$scope.piclist = piclist;				
+				$scope.picList = picList;				
+				
+				Instrument.audio.forEach(function( audio, index ) {
+					var audioFullData = {'path': PUBLIC_AUDIO_PATH + Instrument._id + '/', 'name': audio};
+					audioList.push( audioFullData );
+				});			
+				$scope.audioList = audioList;				
+				
 			});
 		};
 		
 		//////////////// FileUpload ////////////////
-		$scope.piclist = [];
-		$scope.percent = {value: parseInt(0), set: function(value){ this.value = value; }};
+		$scope.audioList = [];
+		$scope.picList 	 = [];
+		$scope.picPercent   = {value: parseInt(0), set: function(value){ this.value = value; }};
+		$scope.audioPercent = {value: parseInt(0), set: function(value){ this.value = value; }};
 
-		$scope.removeFile = function($file)
+		$scope.removeFile = function($file, type)
 		{
-			$scope.piclist.splice($scope.piclist.indexOf( $file ), 1);	
+			if(type === 'image')
+				$scope.picList.splice($scope.picList.indexOf( $file ), 1);	
+			
+			if(type === 'audio')
+				$scope.audioList.splice($scope.audioList.indexOf( $file ), 1);	
 		};
 								
-		$scope.onFileSelect = function($files)
+		$scope.onFileSelect = function($files, type)
 		{
 			for (var i = 0; i < $files.length; i++) {
 				var upl = fileupload.upload($files[i]);	
-				fileupload.progress(upl, $scope.percent);				
-				fileupload.success(upl, $scope.piclist);		
+				if(type === 'image')
+				{
+					fileupload.progress(upl, $scope.picPercent);				
+					fileupload.success(upl, $scope.picList);		
+				}
+				
+				if(type === 'audio')
+				{
+					fileupload.progress(upl, $scope.audioPercent);				
+					fileupload.success(upl, $scope.audioList);						
+				}	
 			}
 		};
 	}
 ]);
-
