@@ -1,0 +1,50 @@
+.composer > .title {
+  background: url(/modules/composer/img/viaje-musical.png);
+  height: 125px;
+  width: 172px;
+  position: absolute;
+  top: -19px;
+  left: 1%;
+  text-indent: -9999px; 
+  direction: ltr;
+}
+
+.composer > .back {
+  background: url(/modules/composer/img/volver.png);
+  height: 128px;
+  width: 142px;
+  position: absolute;
+  bottom: 0;
+  right: 1%;
+  text-indent: -9999px;   
+  direction: ltr;
+}
+
+.composer .nav-items {
+  list-style: none;
+  position: absolute;
+  top: 20px;
+  right: 10%;
+}
+
+.composer .nav-items > .nav-item {
+  float: left;
+  margin-right: 10px;
+}
+
+.composer .nav-items > .nav-item {
+  text-indent: -9999px;   
+  direction: ltr;
+}
+
+.composer .nav-items > .nav-item.wipe {
+  background: url(/modules/composer/img/papelera.png);
+  width: 61px;
+  height: 59px;
+}
+
+.composer .nav-items > .nav-item.menu {
+  background: url(/modules/composer/img/menu.png);
+  width: 67px;
+  height: 65px;
+}
