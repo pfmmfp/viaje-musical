@@ -34,7 +34,9 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/ng-file-upload/angular-file-upload.min.js',
-				'public/lib/angular-carousel/dist/angular-carousel.js'
+				'public/lib/angular-carousel/dist/angular-carousel.js',
+				'public/lib/ng-audio/angular.audio.js',
+				'public/lib/ng-audio/underscore.js'
 			]
 		},
 		css: [
