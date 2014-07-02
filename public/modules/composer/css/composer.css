@@ -1,0 +1,15 @@
+@import url(main-box.css);
+@import url(track.css);
+@import url(controls.css);
+@import url(nav.css);
+
+body {
+  background-color: #47C0C0;
+}
+
+button:focus { outline: none; }
+button { border: none; }
+
+.composer {
+  margin-bottom: 50px;
+}

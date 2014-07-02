@@ -1,0 +1,37 @@
+.controls {
+  text-align: center;
+  position: relative;
+}
+
+.controls .control {
+  height: 78px;
+  width: 82px;
+}
+
+.controls .stop {
+  background: url(/modules/composer/img/stop.png);
+}
+
+.controls .play {
+  background: url(/modules/composer/img/play.png);
+}
+
+.controls:before {
+  content: " ";
+  background: url(/modules/composer/img/viajera.png);
+  height: 203px;
+  width: 151px;
+  position: absolute;
+  top: -80px;
+  left: 25%;
+}
+
+.controls:after {
+  content: " ";
+  background: url(/modules/composer/img/viajero.png);
+  height: 212px;
+  width: 125px;
+  position: absolute;
+  top: -95px;
+  right: 25%;
+}

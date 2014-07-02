@@ -1,0 +1,21 @@
+<section data-ng-controller="ComposerController" class="composer">
+  <h1 class="title">Viaje musical</h1>
+  <div class="main-box">
+    <div class="main-box-common main-box-top">
+      <menu class="nav-items">
+        <button class="nav-item wipe">Borrar</button>
+        <button class="nav-item menu">Menu</button>
+      </menu>
+      <ul>
+        <track data-ng-repeat="track in tracks" name="track"></track>
+      </ul>
+    </div>
+    <div class="main-box-common main-box-bottom">
+      <div class="controls">
+        <button data-ng-click="play()" class="control play"></button>
+        <button data-ng-click="stop()" class="control stop"></button>
+      </div>
+    </div>
+  </div>
+  <button class="back">Volver</button>
+</section>
