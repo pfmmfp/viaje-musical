@@ -1,13 +1,11 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 
-	function($scope, $stateParams, $location, Authentication, Regions, openModal, fileupload, Instruments) {
-	
-		var PUBLIC_IMAGE_PATH = 'common/images/region/';
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'CONFIG', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 
+	function($scope, $stateParams, $location, CONFIG, Authentication, Regions, openModal, fileupload, Instruments) {
 		
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
-		
+
 		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
 			var picList = [];
@@ -86,7 +84,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				var picList = [];
 				$scope.region = Region;
 				Region.pics.forEach(function( pic, index ) {
-					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic};
+					var picFullData = {'path': CONFIG.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic};
 					picList.push( picFullData );
 				});			
 				$scope.picList = picList;
