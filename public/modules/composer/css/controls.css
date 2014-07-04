@@ -16,7 +16,7 @@
   background: url(/modules/composer/img/play.png);
 }
 
-.composer_controls:before {
+.control:before {
   content: " ";
   background: url(/modules/composer/img/viajera.png);
   height: 203px;
@@ -26,7 +26,7 @@
   left: 25%;
 }
 
-.composer_controls:after {
+.control:after {
   content: " ";
   background: url(/modules/composer/img/viajero.png);
   height: 212px;
