@@ -1,22 +1,22 @@
-.controls {
+.composer_controls {
   text-align: center;
   position: relative;
 }
 
-.controls .control {
+.composer_controls .control {
   height: 78px;
   width: 82px;
 }
 
-.controls .stop {
+.composer_controls .stop {
   background: url(/modules/composer/img/stop.png);
 }
 
-.controls .play {
+.composer_controls .play {
   background: url(/modules/composer/img/play.png);
 }
 
-.controls:before {
+.composer_controls:before {
   content: " ";
   background: url(/modules/composer/img/viajera.png);
   height: 203px;
@@ -26,7 +26,7 @@
   left: 25%;
 }
 
-.controls:after {
+.composer_controls:after {
   content: " ";
   background: url(/modules/composer/img/viajero.png);
   height: 212px;
