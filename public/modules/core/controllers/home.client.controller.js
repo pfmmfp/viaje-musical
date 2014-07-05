@@ -13,7 +13,7 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
     return {
         removeClass: function (element, className, done) {
             if (className === 'volar') {
-                jQuery(element)
+                element
                     .css({
 					"width"  : "381px", 
 					"height" : "683px",
@@ -32,7 +32,7 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
         },
         addClass: function (element, className, done) {
             if (className === 'volar') {
-                jQuery(element)
+                element
                     .css({
                     "left"    : "65%",
 					"height"  : "140px",
@@ -49,5 +49,5 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
                 done();
             }
         }
-    }
+    };
 }]);
