@@ -16,8 +16,6 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/angular-carousel/dist/angular-carousel.css'
 			],
 			js: [
@@ -40,6 +38,7 @@ module.exports = {
 			]
 		},
 		css: [
+			'public/css/*.css',
 			'public/modules/**/css/*.css'
 		],
 		js: [

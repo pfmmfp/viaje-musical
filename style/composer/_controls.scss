@@ -1,11 +1,13 @@
 .controls {
-  text-align: center;
   position: relative;
+  float: right;
 }
 
 .controls .control {
-  height: 78px;
-  width: 82px;
+  height: 63px;
+  width: 66px;
+  text-indent: -9999px; 
+  direction: ltr;
 }
 
 .controls .stop {
@@ -16,22 +18,26 @@
   background: url(/modules/composer/img/play.png);
 }
 
-.controls:before {
+/* VIAJEROS 
+.controls:before,
+.controls:after {
   content: " ";
+  position: absolute;
+  z-index: 99;
+}
+
+.controls:before {
   background: url(/modules/composer/img/viajera.png);
   height: 203px;
   width: 151px;
-  position: absolute;
   top: -80px;
   left: 25%;
 }
 
 .controls:after {
-  content: " ";
   background: url(/modules/composer/img/viajero.png);
   height: 212px;
   width: 125px;
-  position: absolute;
   top: -95px;
   right: 25%;
-}
+} */
