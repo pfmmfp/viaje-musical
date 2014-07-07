@@ -1,11 +1,8 @@
 'use strict';
 
-angular.module('subregions').controller('SubregionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Subregions', 'fileupload', 'ngAudio',
-	function($scope, $stateParams, $location, Authentication, Subregions, fileupload, ngAudio) {
+angular.module('subregions').controller('SubregionsController', ['$scope', '$stateParams', '$location', 'config', 'Authentication', 'Subregions', 'fileupload', 'ngAudio',
+	function($scope, $stateParams, $location, config, Authentication, Subregions, fileupload, ngAudio) {
 		$scope.authentication = Authentication;
-		
-		var PUBLIC_IMAGE_PATH = 'common/images/subregion/';
-		var PUBLIC_AUDIO_PATH = 'common/audio/subregion/';
 		
 		//////////////// CREATE INSTRUMENT ////////////////
 		$scope.create = function() {
@@ -24,14 +21,17 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 				description: this.description,
 				pics: picList,
 				audio: audioList,
+				pic: $scope.pic.value.name,
 			});
+			
+			console.log(subregion);
 			
 			subregion.$save(function(response) {
 				$location.path('admin/subregions/' + response._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-
+            
 			this.name = '';
 			this.description = '';
 		};
@@ -56,7 +56,9 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 		//////////////// EDIT INSTRUMENT ////////////////
 		$scope.update = function() {
 			var subregion = $scope.subregion;
-
+			
+			region.pic = $scope.pic.value.name;
+			
 			var picList = [];
 			$scope.picList.forEach(function (pic, index) {	
 				picList.push(pic.name); 
@@ -92,21 +94,21 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 				$scope.subregion = Subregion;
 				
 				Subregion.pics.forEach(function( pic, index ) {
-					var picFullData = {'path': PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': pic};
+					var picFullData = {'path': config.PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': pic};
 					picList.push( picFullData );
 				});			
 				$scope.picList = picList;				
 				
 				Subregion.audio.forEach(function( audio, index ) {
-					var audioFullData = {'path': PUBLIC_AUDIO_PATH + Subregion._id + '/', 'name': audio};
+					var audioFullData = {'path': config.PUBLIC_AUDIO_PATH + Subregion._id + '/', 'name': audio};
 					audioList.push( audioFullData );
 				});			
 				$scope.audioList = audioList;				
-				
+				$scope.pic.value = {'path': config.PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': Subregion.pic};
 			});
 		};
 		
-		//////////////// FileUpload ////////////////
+		//////////////// Media FileUpload ////////////////
 		$scope.audioList = [];
 		$scope.picList 	 = [];
 		$scope.picPercent   = {value: parseInt(0), set: function(value){ this.value = value; }};
@@ -138,5 +140,24 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 				}	
 			}
 		};
+
+		//////////////// Marker FileUpload ////////////////
+		$scope.pic = {value: "", set: function(value){ this.value = value; }};
+		$scope.singlePicPercent = {value: parseInt(0), set: function(value){ this.value = value; }};
+
+		$scope.removePic = function()
+		{
+			$scope.pic.value = false;
+		};
+								
+		$scope.picSelect = function($files)
+		{
+			for (var i = 0; i < $files.length; i++) {
+				var upl = fileupload.upload($files[i]);	
+				fileupload.progress(upl, $scope.singlePicPercent);				
+				fileupload.success(upl, $scope.pic);		
+			}
+		};
+		
 	}
 ]);

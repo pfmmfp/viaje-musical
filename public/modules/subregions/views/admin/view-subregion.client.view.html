@@ -6,11 +6,13 @@
 		
 		<p data-ng-bind="subregion.description"></p>	
 	</div>
+
+	<img src="{{ pic.value.path + pic.value.name }}" />		
 	
 	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
 		<li ng-repeat="pic in picList" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
 	</ul>
-
+	
 	<div style="margin-bottom: 20px; margin-top: 20px;float: left;width: 100%;">
 		<div class="page-header">
 			<h3>Audio files</h3>
