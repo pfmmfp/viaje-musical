@@ -1,7 +1,9 @@
-@import url(main-box.css);
-@import url(track.css);
-@import url(controls.css);
-@import url(nav.css);
+@import "controls";
+@import "nav";
+@import "main-box";
+@import "message";
+@import "sample-dock";
+@import "track";
 
 body {
   background-color: #47C0C0;
