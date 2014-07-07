@@ -12,12 +12,9 @@
 				<h4 class="list-group-item-heading" data-ng-bind="instrument.name"></h4>
 			</a>
 		</div>
+
+		<img src="{{ pic.value.path + pic.value.name }}" />		
 	</div>
-
-
-	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
-		<li ng-repeat="pic in picList|limitTo:5" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
-	</ul>
 
 	<div class="pull-right" data-ng-show="authentication.user._id == region.user._id">
 		<a class="btn btn-primary" href="/#!/admin/regions/{{region._id}}/edit">
