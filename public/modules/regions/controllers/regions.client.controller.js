@@ -1,25 +1,21 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 
-	function($scope, $stateParams, $location, Authentication, Regions, openModal, fileupload, Instruments) {
-	
-		var PUBLIC_IMAGE_PATH = 'common/images/region/';
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'CONFIG', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
+	function($scope, $stateParams, $location, CONFIG, Authentication, Regions, openModal, fileupload, Instruments, Subregions) {
 		
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
-		
+		$scope.subregions = [];
+
 		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
-			var picList = [];
-			$scope.picList.forEach(function (pic, index) {	
-				picList.push(pic.name); 
-			});					
-				
+			
 			var region = new Regions({
 				name: this.name,
 				description: this.description,
 				instruments: this.instruments,
-				pics: picList,
+				pic: $scope.pic.value.name,
+				subregions: $scope.subregions,
 			});
 
 			region.$save(function(response) {
@@ -53,12 +49,8 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		$scope.update = function() {
 			var region = $scope.region;
 			
-			var picList = [];
-			$scope.picList.forEach(function (pic, index) {	
-				picList.push(pic.name); 
-			});				
-			
-			region.pics = picList;
+			region.pic = $scope.pic.value.name;
+			region.subregions = $scope.subregions;
 			
 			region.$update(function() {
 				$location.path('admin/regions/' + region._id);
@@ -81,27 +73,35 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				Region.instruments.forEach(function( selectedElement, index ) {
 					instrumentList.push(Instruments.get({instrumentId: selectedElement}));
 				});		
-				$scope.instruments = instrumentList;
+
+				var subregionsList = []
+				Region.subregions.forEach(function( selectedElement, index ) {
+					Subregions.get({subregionId: selectedElement.id}, function(subregion){
+						var markerArray = {'id': subregion._id, 'offsetX': selectedElement.offsetX, 'offsetY': selectedElement.offsetY, 'pic': subregion.pic};
+						subregionsList.push(markerArray);
+					});
+				});		
 				
-				var picList = [];
+				
+				$scope.subregions = subregionsList;	
+				
+				$scope.instruments = instrumentList;			
 				$scope.region = Region;
-				Region.pics.forEach(function( pic, index ) {
-					var picFullData = {'path': PUBLIC_IMAGE_PATH + Region._id + '/', 'name': pic};
-					picList.push( picFullData );
-				});			
-				$scope.picList = picList;
+				$scope.pic.value = {'path': CONFIG.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
+				
+				
 			});
 			
 		};
 		
 
 		//////////////// FileUpload ////////////////
-		$scope.picList = [];
+		$scope.pic = {value: "", set: function(value){ this.value = value; }};
 		$scope.percent = {value: parseInt(0), set: function(value){ this.value = value; }};
 
-		$scope.removeFile = function($file)
+		$scope.removeFile = function()
 		{
-			$scope.picList.splice($scope.picList.indexOf( $file ), 1);	
+			$scope.pic.value = false;
 		};
 								
 		$scope.onFileSelect = function($files)
@@ -109,16 +109,41 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			for (var i = 0; i < $files.length; i++) {
 				var upl = fileupload.upload($files[i]);	
 				fileupload.progress(upl, $scope.percent);				
-				fileupload.success(upl, $scope.picList);		
+				fileupload.success(upl, $scope.pic);		
 			}
 		};
+		
+		//////////////// Subregions Markers ////////////////
+		$scope.addMarker = function(event) {	
+			Subregions.query( function(response){
+				var itemsList = [];
+				response.forEach(function( resource, index ) {
+					var item = {'label': resource.name, 'value': resource._id};
+					itemsList.push(item);
+				});
+				openModal(function(id){
+					$scope.subregions.push( {id: id, offsetX: event.offsetX, offsetY: event.offsetY} );
+					Subregions.get({subregionId: id}, function(subregion){
+						var markerArray = {'id': subregion._id, 'offsetX': event.offsetX, 'offsetY': event.offsetY, 'pic': subregion.pic};
+						$scope.subregions.push( markerArray );
+					});					
+				}, itemsList);			
+			});
+	    };
 
-		//////////////// MODAL ////////////////
-		$scope.open = function(){
-			openModal(function(data){
+		
+		$scope.removeSubregion = function(subregion)
+		{
+			$scope.subregions.splice($scope.subregions.indexOf( subregion ), 1);	
+		};
+		
+		//////////////// Modal ////////////////
+		$scope.open = function($scope){
+			openModal(function(data, $scope){
 				console.log(data);
 			}, ['a','b']);
 		};					
+
 		
 	}
 ]);

@@ -1,20 +1,12 @@
-<section data-ng-controller="HomeController">
-	<div class="jumbotron text-center">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<p class="lead">
-				Public Home for Viaje Musical
-			</p>
-		</div>
-		<div class="row">
-			<p>
-				<a class="btn btn-primary btn-lg" href="/#!/regions">Enter</a>
-			</p>
-		</div>
-	</div>
-	
-</section>
+<div class="valle-home"></div>
+<div class="mapa-home"></div>
+<!--
+<div class="aterrizar" ng-if="aterrizar"  id="globo"></div>
+<div id="comenzar" ng-click="aterrizar = !aterrizar" ng-click="aterrizar = true"></div>
+-->
+<div class="globo aterrizar" ng-class="{ volar: !aterrizar }"></div>
+<div class="comenzar" ng-click="aterrizar = !aterrizar" ng-click="aterrizar = true"></div>
+<div class="botones">
+	<a href="#!/compositor"   class="compositor"></a>
+	<a href="#!/instrumentos" class="instrumentos"></a>
+</div>

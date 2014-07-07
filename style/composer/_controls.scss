@@ -1,32 +1,32 @@
-.controls {
+.composer .controls {
   position: relative;
   float: right;
 }
 
-.controls .control {
+.composer .controls .control {
   height: 63px;
   width: 66px;
   text-indent: -9999px; 
   direction: ltr;
 }
 
-.controls .stop {
+.composer .controls .stop {
   background: url(/modules/composer/img/stop.png);
 }
 
-.controls .play {
+.composer .controls .play {
   background: url(/modules/composer/img/play.png);
 }
 
 /* VIAJEROS 
-.controls:before,
-.controls:after {
+.control:before,
+.control:after {
   content: " ";
   position: absolute;
   z-index: 99;
 }
 
-.controls:before {
+.control:before {
   background: url(/modules/composer/img/viajera.png);
   height: 203px;
   width: 151px;
@@ -34,7 +34,8 @@
   left: 25%;
 }
 
-.controls:after {
+.control:after {
+  content: " ";
   background: url(/modules/composer/img/viajero.png);
   height: 212px;
   width: 125px;

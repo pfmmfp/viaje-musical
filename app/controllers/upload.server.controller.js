@@ -14,15 +14,17 @@ exports.uploadfile = function(req, res){
 exports.saveModelFiles = function(model, res, next)
 {	
 
-	//////////////// AUDIO UPLOAD ////////////////			
+	var audioFullPath;
+	var picFullPath;
+	
+	//////////////// MULTIPLE AUDIO UPLOAD ////////////////			
 	if(typeof(model.audio) !== 'undefined')
 	{
-		var audioFullPath = PUBLIC_AUDIO_PATH + model.type + '/' + model._id;
+		audioFullPath = PUBLIC_AUDIO_PATH + model.type + '/' + model._id;
 		
 		fs.exists(audioFullPath, function (exists) {
 			if(!exists)
 			{
-				console.log("NO existe");
 				fs.mkdir(audioFullPath, function(){ 
 					model.audio.forEach(function (audio, index) {						
 						var tmpPath = PUBLIC_TMP_PATH + audio;
@@ -41,7 +43,6 @@ exports.saveModelFiles = function(model, res, next)
 			}
 			else
 			{
-				console.log("existe");
 				model.audio.forEach(function (audio, index) {						
 					var tmpPath = PUBLIC_TMP_PATH + audio;
 					var audioFile = audioFullPath + '/' + audio;
@@ -60,10 +61,10 @@ exports.saveModelFiles = function(model, res, next)
 		});
 	}
 	
-	//////////////// IMAGE UPLOAD ////////////////					
+	//////////////// MULTIPLE IMAGE UPLOAD ////////////////					
 	if(typeof(model.pics) !== 'undefined')
 	{
-		var picFullPath = PUBLIC_IMAGE_PATH + model.type + '/' + model._id;
+		picFullPath = PUBLIC_IMAGE_PATH + model.type + '/' + model._id;
 		
 		fs.exists(picFullPath, function (exists) {
 			if(!exists)
@@ -99,6 +100,48 @@ exports.saveModelFiles = function(model, res, next)
 							});												
 						}});	
 				});
+			}
+			next(res, model);	  
+		});
+	}
+	
+	//////////////// SINGLE IMAGE UPLOAD ////////////////					
+	if(typeof(model.pic) !== 'undefined')
+	{
+		picFullPath = PUBLIC_IMAGE_PATH + model.type + '/' + model._id;
+		
+		fs.exists(picFullPath, function (exists) {
+			if(!exists)
+			{
+				fs.mkdir(picFullPath, function(){ 
+					var pic = model.pic;
+					var tmpPath = PUBLIC_TMP_PATH + pic;
+					var imgFile = picFullPath + '/' + pic;
+
+					fs.exists(tmpPath, function (exists) {
+						if(exists)
+						{
+							fs.rename( tmpPath, imgFile ,function (err) {
+							  if (err) throw err;
+							  console.log('moving ', tmpPath, ' to ', imgFile);
+							});												
+						}});	
+				});	
+			}
+			else
+			{
+				var pic = model.pic;
+				var tmpPath = PUBLIC_TMP_PATH + pic;
+				var imgFile = picFullPath + '/' + pic;
+
+				fs.exists(tmpPath, function (exists) {
+					if(exists)
+					{
+						fs.rename( tmpPath, imgFile ,function (err) {
+						  if (err) throw err;
+							console.log('moving ', tmpPath, ' to ', imgFile);
+						});												
+					}});	
 			}
 			next(res, model);	  
 		});

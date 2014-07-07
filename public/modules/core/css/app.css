@@ -1,0 +1,63 @@
+.valle-home{
+	background: url('/modules/core/img/app/valle.png');
+	width: 615px; 
+	height: 375px;
+	position: absolute;
+	top: 50%;
+	left: -90px;
+}
+
+.mapa-home{
+	background: url('/modules/core/img/app/mapa_home.png');
+	width: 411px; 
+	height: 563px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.globo{
+	background: url('/modules/core/img/app/globo.png');
+	background-size: 100% 100%;
+	width: 381px; 
+	height: 683px;
+	position: absolute;
+	top: -30px;
+	left: -30px;
+	z-index: 1;
+}
+
+.comenzar{
+	background: url('/modules/core/img/app/comenzar.png');
+	width: 335px; 
+	height: 233px;
+	position: absolute;
+	top: 15%;
+	left: 15%;
+	z-index: 2;
+	cursor: pointer;
+}
+
+.botones{
+	width: 450px; 
+	height: 137px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+}
+.compositor{
+	background: url('/modules/core/img/app/compositor.png');
+	width: 229px; 
+	height: 117px;
+	float: left;
+	cursor: pointer;
+}
+
+.instrumentos{
+	background: url('/modules/core/img/app/instrumentos.png');
+	width: 200px; 
+	height: 137px;
+	float: left;
+	cursor: pointer;
+}
+
