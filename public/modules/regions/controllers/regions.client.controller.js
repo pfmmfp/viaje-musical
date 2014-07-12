@@ -50,6 +50,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			var region = $scope.region;
 			
 			region.pic = $scope.pic.value.name;
+			console.log($scope.subregions);
 			region.subregions = $scope.subregions;
 			
 			region.$update(function() {
@@ -65,7 +66,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		};
 
 		//////////////// VIEW REGION ////////////////
-		$scope.findOne = function() {
+		$scope.findOne = function(){
 			var Region = Regions.get({ regionId: $stateParams.regionId}, function()
 			{
 				var instrumentList = [];
@@ -73,25 +74,12 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				Region.instruments.forEach(function( selectedElement, index ) {
 					instrumentList.push(Instruments.get({instrumentId: selectedElement}));
 				});		
-
-				var subregionsList = []
-				Region.subregions.forEach(function( selectedElement, index ) {
-					Subregions.get({subregionId: selectedElement.id}, function(subregion){
-						var markerArray = {'id': subregion._id, 'offsetX': selectedElement.offsetX, 'offsetY': selectedElement.offsetY, 'pic': subregion.pic};
-						subregionsList.push(markerArray);
-					});
-				});		
-				
-				
-				$scope.subregions = subregionsList;	
-				
+			
+				$scope.subregions = Region.subregions;
 				$scope.instruments = instrumentList;			
 				$scope.region = Region;
 				$scope.pic.value = {'path': CONFIG.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
-				
-				
 			});
-			
 		};
 		
 
@@ -122,9 +110,8 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 					itemsList.push(item);
 				});
 				openModal(function(id){
-					$scope.subregions.push( {id: id, offsetX: event.offsetX, offsetY: event.offsetY} );
-					Subregions.get({subregionId: id}, function(subregion){
-						var markerArray = {'id': subregion._id, 'offsetX': event.offsetX, 'offsetY': event.offsetY, 'pic': subregion.pic};
+					Subregions.get({subregionId: id}, function(srgn){
+						var markerArray = {'id': srgn._id,  'pics': srgn.pics, 'pic': srgn.pic, 'name': srgn.name, 'description': srgn.description, 'offsetX': event.offsetX, 'offsetY': event.offsetY};
 						$scope.subregions.push( markerArray );
 					});					
 				}, itemsList);			
@@ -138,6 +125,9 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		};
 		
 		//////////////// Modal ////////////////
+		$scope.openSubregionModal = function(marker){
+			openModal(function(){}, marker, subregionModalCtrl);	
+		};					
 		$scope.open = function($scope){
 			openModal(function(data, $scope){
 				console.log(data);
@@ -181,3 +171,17 @@ angular.module('regions').directive('multiselect', [ '$stateParams','Instruments
 
     };
 }]);
+
+var subregionModalCtrl = function ($scope, $modalInstance, items) {
+$scope.subregion = items;
+
+console.log(items);
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+};
+

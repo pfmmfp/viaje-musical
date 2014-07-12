@@ -20,21 +20,6 @@ var MediaSchema = new Schema({
 	}
 });
 
-var Marker = {
-	id: {
-		type: String,
-		default: ''
-	},
-	offsetX: {
-		type: String,
-		default: ''
-	},
-	offsetY: {
-		type: String,
-		default: ''
-	}
-};
-
 var RegionSchema = new Schema({
     type: {
 		type: String,
@@ -64,7 +49,7 @@ var RegionSchema = new Schema({
         default: '',
         trim: true
     },
-    subregions: [Marker],	
+    subregions: [],	
     instruments: [],
     user: {
         type: Schema.ObjectId,

@@ -57,7 +57,7 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 		$scope.update = function() {
 			var subregion = $scope.subregion;
 			
-			region.pic = $scope.pic.value.name;
+			subregion.pic = $scope.pic.value.name;
 			
 			var picList = [];
 			$scope.picList.forEach(function (pic, index) {	

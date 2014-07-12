@@ -1,0 +1,20 @@
+.region-map
+{
+	z-index: 0; 
+	width: 420px; 
+	height: 409px;
+	position: absolute;
+}
+
+.subregion-marker
+{
+	z-index: 9;
+	cursor: pointer;
+	position: absolute; 
+	width: 50px; 
+	height: 50px;
+	/*
+	 * background-size: 100% 200%;
+	 * background: url('/common/images/subregion/{{marker.id}}/{{marker.pic}}')
+	*/
+}
