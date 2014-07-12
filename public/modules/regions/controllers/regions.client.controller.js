@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'CONFIG', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
-	function($scope, $stateParams, $location, CONFIG, Authentication, Regions, openModal, fileupload, Instruments, Subregions) {
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
+	function($scope, $stateParams, $location, regionsConfig, Authentication, Regions, openModal, fileupload, Instruments, Subregions) {
 		
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
@@ -78,7 +78,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				$scope.subregions = Region.subregions;
 				$scope.instruments = instrumentList;			
 				$scope.region = Region;
-				$scope.pic.value = {'path': CONFIG.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
+				$scope.pic.value = {'path': regionsConfig.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
 			});
 		};
 		

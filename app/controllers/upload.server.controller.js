@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 
-var PUBLIC_TMP_PATH    = 'public/tmp/';
+var PUBLIC_TMP_PATH   = 'public/tmp/';
 var PUBLIC_IMAGE_PATH = 'public/common/images/';
 var PUBLIC_AUDIO_PATH = 'public/common/audio/';
 
