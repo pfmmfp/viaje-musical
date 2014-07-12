@@ -44,6 +44,11 @@ var InstrumentSchema = new Schema({
         default: '',
         trim: true
     },
+	pic: {
+        type: String,
+        default: '',
+        trim: true
+    },    
     pics: [],
     audio: [],
     user: {

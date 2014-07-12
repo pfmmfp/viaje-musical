@@ -1,11 +1,8 @@
 'use strict';
 
-angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Instruments', 'fileupload', 'ngAudio',
-	function($scope, $stateParams, $location, Authentication, Instruments, fileupload, ngAudio) {
+angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', 'instrumentConfig', 'Authentication', 'Instruments', 'fileupload', 'ngAudio',
+	function($scope, $stateParams, $location, instrumentConfig, Authentication, Instruments, fileupload, ngAudio) {
 		$scope.authentication = Authentication;
-		
-		var PUBLIC_IMAGE_PATH = 'common/images/instrument/';
-		var PUBLIC_AUDIO_PATH = 'common/audio/instrument/';
 		
 		//////////////// CREATE INSTRUMENT ////////////////
 		$scope.create = function() {
@@ -24,6 +21,7 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 				description: this.description,
 				pics: picList,
 				audio: audioList,
+				pic: $scope.pic.value.name,
 			});
 			
 			instrument.$save(function(response) {
@@ -56,7 +54,9 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 		//////////////// EDIT INSTRUMENT ////////////////
 		$scope.update = function() {
 			var instrument = $scope.instrument;
-
+			
+			instrument.pic = $scope.pic.value.name;
+			
 			var picList = [];
 			$scope.picList.forEach(function (pic, index) {	
 				picList.push(pic.name); 
@@ -92,17 +92,17 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 				$scope.instrument = Instrument;
 				
 				Instrument.pics.forEach(function( pic, index ) {
-					var picFullData = {'path': PUBLIC_IMAGE_PATH + Instrument._id + '/', 'name': pic};
+					var picFullData = {'path': instrumentConfig.PUBLIC_IMAGE_PATH + Instrument._id + '/', 'name': pic};
 					picList.push( picFullData );
 				});			
 				$scope.picList = picList;				
 				
 				Instrument.audio.forEach(function( audio, index ) {
-					var audioFullData = {'path': PUBLIC_AUDIO_PATH + Instrument._id + '/', 'name': audio};
+					var audioFullData = {'path': instrumentConfig.PUBLIC_AUDIO_PATH + Instrument._id + '/', 'name': audio};
 					audioList.push( audioFullData );
 				});			
 				$scope.audioList = audioList;				
-				
+				$scope.pic.value = {'path': instrumentConfig.PUBLIC_IMAGE_PATH + Instrument._id + '/', 'name': Instrument.pic};
 			});
 		};
 		
@@ -138,5 +138,24 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 				}	
 			}
 		};
+
+		//////////////// Pic FileUpload ////////////////
+		$scope.pic = {value: "", set: function(value){ this.value = value; }};
+		$scope.singlePicPercent = {value: parseInt(0), set: function(value){ this.value = value; }};
+
+		$scope.removePic = function()
+		{
+			$scope.pic.value = false;
+		};
+								
+		$scope.picSelect = function($files)
+		{
+			for (var i = 0; i < $files.length; i++) {
+				var upl = fileupload.upload($files[i]);	
+				fileupload.progress(upl, $scope.singlePicPercent);				
+				fileupload.success(upl, $scope.pic);		
+			}
+		};
+				
 	}
 ]);

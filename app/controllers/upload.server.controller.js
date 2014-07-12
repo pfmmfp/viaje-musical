@@ -137,6 +137,7 @@ exports.saveModelFiles = function(model, res, next)
 				fs.exists(tmpPath, function (exists) {
 					if(exists)
 					{
+						console.log('moving ', tmpPath, ' to ', imgFile);
 						fs.rename( tmpPath, imgFile ,function (err) {
 						  if (err) throw err;
 							console.log('moving ', tmpPath, ' to ', imgFile);

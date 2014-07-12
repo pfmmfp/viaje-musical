@@ -8,4 +8,7 @@ angular.module('instruments').run(['Menus',
 			Menus.addSubMenuItem('topbar', 'instruments', 'List Instruments', 'admin/instruments', '/admin/instruments','false');
 			Menus.addSubMenuItem('topbar', 'instruments', 'New Instrument', 'admin/instruments/create', 'admin/instruments/create','false');		
 	}
-]);
+]).constant('instrumentConfig',{
+    'PUBLIC_IMAGE_PATH': 'common/images/instrument/',
+	'PUBLIC_AUDIO_PATH' : 'common/audio/instrument/',
+  });
