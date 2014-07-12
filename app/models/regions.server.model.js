@@ -9,17 +9,6 @@ var mongoose = require('mongoose'),
 /**
  * Region Schema
  */
-var MediaSchema = new Schema({
-	name: {
-		type: String,
-		default: ''
-	},
-	ext: {
-		type: String,
-		default: ''
-	}
-});
-
 var RegionSchema = new Schema({
     type: {
 		type: String,
@@ -39,16 +28,12 @@ var RegionSchema = new Schema({
         default: '',
         trim: true
     },
-    family: {
-        type: String,
-        default: '',
-        trim: true
-    },
 	pic: {
         type: String,
         default: '',
         trim: true
     },
+    genres: [],	
     subregions: [],	
     instruments: [],
     user: {

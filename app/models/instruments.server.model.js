@@ -9,17 +9,6 @@ var mongoose = require('mongoose'),
 /**
  * Instrument Schema
  */
-var MediaSchema = new Schema({
-	name: {
-		type: String,
-		default: ''
-	},
-	ext: {
-		type: String,
-		default: ''
-	}
-});
-
 var InstrumentSchema = new Schema({
 	type: {
 		type: String,

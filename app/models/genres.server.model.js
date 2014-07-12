@@ -9,17 +9,6 @@ var mongoose = require('mongoose'),
 /**
  * Genre Schema
  */
-var MediaSchema = new Schema({
-	name: {
-		type: String,
-		default: ''
-	},
-	ext: {
-		type: String,
-		default: ''
-	}
-});
-
 var GenreSchema = new Schema({
 	type: {
 		type: String,
@@ -35,11 +24,6 @@ var GenreSchema = new Schema({
         trim: true
     },
     description: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    family: {
         type: String,
         default: '',
         trim: true
