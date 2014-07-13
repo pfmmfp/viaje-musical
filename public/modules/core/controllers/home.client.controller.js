@@ -13,6 +13,7 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
     return {
         removeClass: function (element, className, done) {
             if (className === 'volar') {
+                console.log(element);
                 element
                     .css({
 					"width"  : "381px", 

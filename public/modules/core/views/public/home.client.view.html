@@ -1,11 +1,11 @@
 <div class="valle-home"></div>
 <div class="mapa-home"></div>
-<!--
-<div class="aterrizar" ng-if="aterrizar"  id="globo"></div>
-<div id="comenzar" ng-click="aterrizar = !aterrizar" ng-click="aterrizar = true"></div>
--->
-<div class="globo aterrizar" ng-class="{ volar: !aterrizar }"></div>
-<div class="comenzar" ng-click="aterrizar = !aterrizar" ng-click="aterrizar = true"></div>
+
+<div class="globo aterrizar" ng-class="{ volar: !aterrizar }">
+	<div ng-hide="aterrizar" class="bienvenido_home"></div>
+</div>
+
+<div class="comenzar" ng-click="aterrizar = !aterrizar" ng-init="aterrizar = false"></div>
 <div class="botones">
 	<a href="#!/compositor"   class="compositor"></a>
 	<a href="#!/instrumentos" class="instrumentos"></a>
