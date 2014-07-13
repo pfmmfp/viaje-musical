@@ -28,6 +28,10 @@ angular.module('regions').config(['$stateProvider',
 		state('viewRegionPublic', {
 			url: '/regions/:regionId',
 			templateUrl: 'modules/regions/views/public/view-region.client.view.html'
+		}).
+		state('viewRegionPublicInstruments', {
+			url: '/regions/:regionId/instruments',
+			templateUrl: 'modules/regions/views/public/view-region-instruments.client.view.html'
 		})
 		;
 	}

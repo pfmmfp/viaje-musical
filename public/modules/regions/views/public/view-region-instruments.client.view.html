@@ -1,0 +1,25 @@
+<section data-ng-controller="RegionsController" data-ng-init="findOne()">
+
+<div class="botones">
+	<a href="#!/compositor"   class="compositor"></a>
+	<a href="#!/instrumentos" class="instrumentos"></a>
+</div>
+
+<div class="logo_instrumentos"></div>
+
+<div class="contenedor-instrumentos">
+	<div class="instrumentos-controles">
+		<div class="flecha-horizontal izquierda"></div>
+	</div>
+	
+	<ul class="instrumentos-lista">
+		<li data-ng-repeat="instrument in regionInstruments" class="instrumento-grande" style="background: url('common/images/instrument/{{instrument._id}}/{{ instrument.pic }}') no-repeat center;">
+		</li>
+	</ul>
+	
+	<div class="instrumentos-controles">
+		<div class="flecha-horizontal derecha"></div>
+	</div>
+</div>
+
+<a href="#!/" class="volver"></div>
