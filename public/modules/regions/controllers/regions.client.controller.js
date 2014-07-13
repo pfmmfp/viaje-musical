@@ -3,11 +3,12 @@
 angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
 	function($scope, $stateParams, $location, regionsConfig, Authentication, Regions, openModal, fileupload, Instruments, Subregions) {
 		
+		$scope.regionsConfig = regionsConfig;
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();
 		$scope.regionInstruments = [];
 		$scope.subregions = [];
-
+		
 		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
 			
@@ -16,7 +17,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				description: this.description,
 				instruments: this.instruments,
 				pic: $scope.pic.value.name,
-				subregions: $scope.subregions,
+				subregions: this.subregions,
 			});
 
 			region.$save(function(response) {
@@ -47,7 +48,6 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		$scope.update = function() {
 			var region = $scope.region;	
 			region.pic = $scope.pic.value.name;
-			region.subregions = $scope.subregions;
 			
 			region.$update(function() {
 				$location.path('admin/regions/' + region._id);
@@ -100,7 +100,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 				openModal(function(id){
 					Subregions.get({subregionId: id}, function(srgn){
 						var markerArray = {'id': srgn._id,  'pics': srgn.pics, 'pic': srgn.pic, 'name': srgn.name, 'description': srgn.description, 'offsetX': event.offsetX, 'offsetY': event.offsetY};
-						$scope.subregions.push( markerArray );
+						$scope.region.subregions.push( markerArray );
 					});					
 				}, itemsList);			
 			});
@@ -108,7 +108,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 
 		$scope.removeSubregion = function(subregion)
 		{
-			$scope.subregions.splice($scope.subregions.indexOf( subregion ), 1);	
+			$scope.region.subregions.splice($scope.region.subregions.indexOf( subregion ), 1);	
 		};
 		
 		//////////////// Modal ////////////////

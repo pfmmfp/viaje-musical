@@ -47,7 +47,10 @@ angular.module('core').factory('fileupload', [ '$upload',
 			success: function(upl, scope){
 				return upl.success(function(data, status, headers, config){
 					var fileFullData = {'path': PUBLIC_TMP_PATH, 'name': data.file.name};
-					scope.set( fileFullData );
+					if(typeof(scope.set) === 'undefined')
+						scope.push( fileFullData );
+					else
+						scope.set( fileFullData );
 				});
 			},
 		};
