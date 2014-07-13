@@ -1,7 +1,7 @@
 <section data-ng-controller="RegionsController" data-ng-init="findOne()">
 
 <div class="region-map" style="background: url('{{pic.value.path + pic.value.name}}');" >
-	<div class="subregion-marker" data-ng-repeat="subregion in subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px; background: url('/common/images/subregion/{{subregion.id}}/{{subregion.pic}}');" data-ng-click="openSubregionModal(subregion)"></div>
+	<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px; background: url('/common/images/subregion/{{subregion.id}}/{{subregion.pic}}');" data-ng-click="openSubregionModal(subregion)"></div>
 </div>
 	
 	<script type="text/ng-template" id="myModalContent.html">

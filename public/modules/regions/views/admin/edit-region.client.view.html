@@ -22,7 +22,7 @@
 				<div class="form-group">
 					<label class="control-label" for="instruments">Instruments</label>
 					<div class="controls">				
-						<select multiselect multiple="multiple" ng-data="Instruments" data-ng-model="region.instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
+						<select multiselect multiple="multiple" ng-selection="regionInstruments" ng-resource="{{ region }}" ng-data="Instruments" data-ng-model="region.instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
 					</div>
 				</div>
 				

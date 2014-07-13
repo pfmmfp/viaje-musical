@@ -8,14 +8,14 @@
 		
 		<div class="list-group">
 			<h2>Instruments</h2>
-			<a data-ng-repeat="instrument in instruments" data-ng-href="#!/admin/instruments/{{instrument._id}}" class="list-group-item">
+			<a data-ng-repeat="instrument in regionInstruments" data-ng-href="#!/admin/instruments/{{instrument._id}}" class="list-group-item">
 				<h4 class="list-group-item-heading" data-ng-bind="instrument.name"></h4>
 			</a>
 		</div>
 		
 		<div class="form-group" style="position: relative; widht: 100%; height: 500px;">
 		<div class="region-map" style="background: url('{{pic.value.path + pic.value.name}}');" >
-			<div class="subregion-marker" data-ng-repeat="subregion in subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px; background: url('/common/images/subregion/{{subregion.id}}/{{subregion.pic}}');"></div>
+			<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px; background: url('/common/images/subregion/{{subregion.id}}/{{subregion.pic}}');"></div>
 		</div>
 		</div>
 		
