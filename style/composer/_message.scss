@@ -1,0 +1,71 @@
+.composer .message {
+  position: absolute;
+  background-color: rgb(49,49,64);
+  background-color: rgba(49,49,64,0.95);
+  color: #A2A2A9;
+  font-size: 24px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding: 100px;
+  text-align: center;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  height: 500px;
+  width: 500px;  
+}
+
+.composer .message.ng-hide-add, 
+.composer .message.ng-hide-remove {
+  -webkit-transition:all 0.2s ease-in-out;
+  -moz-transition:all 0.2s ease-in-out;
+  -o-transition:all 0.2s ease-in-out;
+  transition:all 0.2s ease-in-out;
+  display:block!important;
+}
+
+.composer .message.ng-hide-add.ng-hide-add-active,
+.composer .message.ng-hide-remove {
+  opacity: 0;
+}
+
+.composer .message.ng-hide-add,
+.composer .message.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+
+.composer .message .message-options {
+  float: left;
+  clear: both;
+  margin: 20px auto;
+}
+
+.composer .message .message-options > .message-option {
+  text-indent: -9999px; 
+  direction: ltr;
+  float: left;
+  margin-right: 15px;
+}
+
+.composer .message .message-options > .ok {
+  height: 92px;
+  width: 96px;
+  background: url(/modules/composer/img/ok.png);
+}
+
+.composer .message .message-options > .cancel {
+  height: 92px;
+  width: 96px;
+  background: url(/modules/composer/img/cancel.png);
+}
+
+.composer .message.wipe {
+  padding-top: 120px;
+}
+
+.composer .message.wipe .message-options {
+  padding-top: 50px;
+}

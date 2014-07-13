@@ -1,27 +1,35 @@
-.composer_controls {
-  text-align: center;
+.composer .controls {
   position: relative;
+  float: right;
 }
 
-.composer_controls .control {
-  height: 78px;
-  width: 82px;
+.composer .controls .control {
+  height: 63px;
+  width: 66px;
+  text-indent: -9999px; 
+  direction: ltr;
 }
 
-.composer_controls .stop {
+.composer .controls .stop {
   background: url(/modules/composer/img/stop.png);
 }
 
-.composer_controls .play {
+.composer .controls .play {
   background: url(/modules/composer/img/play.png);
 }
 
-.control:before {
+/* VIAJEROS 
+.control:before,
+.control:after {
   content: " ";
+  position: absolute;
+  z-index: 99;
+}
+
+.control:before {
   background: url(/modules/composer/img/viajera.png);
   height: 203px;
   width: 151px;
-  position: absolute;
   top: -80px;
   left: 25%;
 }
@@ -31,7 +39,6 @@
   background: url(/modules/composer/img/viajero.png);
   height: 212px;
   width: 125px;
-  position: absolute;
   top: -95px;
   right: 25%;
-}
+} */

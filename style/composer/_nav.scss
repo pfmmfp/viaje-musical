@@ -39,12 +39,18 @@
 
 .composer .nav-items > .nav-item.wipe {
   background: url(/modules/composer/img/papelera.png);
-  width: 61px;
-  height: 59px;
+  width: 53px;
+  height: 50px;
 }
 
 .composer .nav-items > .nav-item.menu {
   background: url(/modules/composer/img/menu.png);
-  width: 67px;
-  height: 65px;
+  width: 52px;
+  height: 51px;
+}
+
+.composer .nav-items > .nav-item.new {
+  background: url(/modules/composer/img/new.png);
+  width: 52px;
+  height: 51px;
 }
