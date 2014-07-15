@@ -1,13 +1,14 @@
 .composer .controls {
   position: relative;
   float: right;
+  height: 100%;
+  padding-top: 20px;
 }
 
 .composer .controls .control {
   height: 63px;
   width: 66px;
-  text-indent: -9999px; 
-  direction: ltr;
+  @include text-hide();
 }
 
 .composer .controls .stop {

@@ -1,4 +1,5 @@
 .main-box > .main-box-common {
+  @include make-row();
   background-clip: padding-box;
 }
 

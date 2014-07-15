@@ -1,0 +1,40 @@
+@mixin sample-box($sample) {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7;
+  border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7 fill;
+}
+
+@mixin beat-classes($beat-column-rate) {
+  @for $i from 1 to 20 {
+    &.beats-#{$i} {
+      @if $i % 3 == 0 {
+        @include sample-box(sample3);
+      } @else if $i % 2 == 0 {
+        @include sample-box(sample2);
+      } @else {
+        @include sample-box(sample1);
+      }
+      @include make-xs-column($i / $beat-column-rate, 0);
+      @include make-sm-column($i / $beat-column-rate, 0);
+      @include make-md-column($i / $beat-column-rate, 0);
+    }          
+  }
+}
+
+.composer .sample-dock .sample-controls .sample-list .sample,
+.composer .track .track-bar .sample {
+  height: 40px;
+  margin-top: 2px;
+}
+
+.composer .sample-dock .sample-controls .sample-list .sample {
+  @include beat-classes(2);
+}
+
+.composer .track .track-bar .sample {
+  @include beat-classes(4.5);
+}

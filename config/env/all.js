@@ -34,7 +34,10 @@ module.exports = {
 				'public/lib/ng-file-upload/angular-file-upload.min.js',
 				'public/lib/angular-carousel/dist/angular-carousel.js',
 				'public/lib/ng-audio/angular.audio.js',
-				'public/lib/ng-audio/underscore.js'
+				'public/lib/underscore/underscore.js',
+				'public/lib/angular-underscore-module/angular-underscore-module.js',
+				'public/lib/jquery-ui/jquery-ui.js',
+				'public/lib/angular-dragdrop/src/angular-dragdrop.js'
 			]
 		},
 		css: [

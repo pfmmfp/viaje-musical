@@ -6695,13 +6695,18 @@ button.close {
 .composer .controls {
   position: relative;
   float: right;
+  height: 100%;
+  padding-top: 20px;
 }
 
 .composer .controls .control {
   height: 63px;
   width: 66px;
-  text-indent: -9999px;
-  direction: ltr;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
 }
 
 .composer .controls .stop {
@@ -6794,7 +6799,16 @@ button.close {
 }
 
 .main-box > .main-box-common {
+  margin-left: -15px;
+  margin-right: -15px;
   background-clip: padding-box;
+}
+.main-box > .main-box-common:before, .main-box > .main-box-common:after {
+  content: " ";
+  display: table;
+}
+.main-box > .main-box-common:after {
+  clear: both;
 }
 
 .main-box > .main-box-top {
@@ -6846,11 +6860,13 @@ button.close {
 .composer .message.ng-hide-add.ng-hide-add-active,
 .composer .message.ng-hide-remove {
   opacity: 0;
+  z-index: -1;
 }
 
 .composer .message.ng-hide-add,
 .composer .message.ng-hide-remove.ng-hide-remove-active {
   opacity: 1;
+  z-index: 1;
 }
 
 .composer .message .message-options {
@@ -6886,49 +6902,314 @@ button.close {
   padding-top: 50px;
 }
 
-.sample-dock > .selected-instrument {
-  width: 145px;
+.composer .sample-dock > .selected-instrument {
+  position: relative;
+  float: left;
+  width: 16.66667%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
 }
-
-.sample-dock > .sample-controls > .sample-list {
+@media (min-width: 768px) {
+  .composer .sample-dock > .selected-instrument {
+    float: left;
+    width: 16.66667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock > .selected-instrument {
+    float: left;
+    width: 12.5%;
+  }
+}
+.composer .sample-dock > .selected-instrument > * {
+  width: 110px;
+}
+.composer .sample-dock > .selected-instrument > .quena {
+  width: 40px;
+}
+.composer .sample-dock > .sample-controls {
+  position: relative;
+  float: left;
+  width: 58.33333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock > .sample-controls {
+    float: left;
+    width: 58.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock > .sample-controls {
+    float: left;
+    width: 70.83333%;
+  }
+}
+.composer .sample-dock > .sample-controls:before, .composer .sample-dock > .sample-controls:after {
+  content: " ";
+  display: table;
+}
+.composer .sample-dock > .sample-controls:after {
+  clear: both;
+}
+.composer .sample-dock > .sample-controls > .move-left, .composer .sample-dock > .sample-controls > .move-right {
+  position: relative;
+  float: left;
+  width: 8.33333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 36px;
+  height: 100%;
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock > .sample-controls > .move-left, .composer .sample-dock > .sample-controls > .move-right {
+    float: left;
+    width: 8.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock > .sample-controls > .move-left, .composer .sample-dock > .sample-controls > .move-right {
+    float: left;
+    width: 8.33333%;
+  }
+}
+.composer .sample-dock > .sample-controls > .move-left {
+  background-image: url(/modules/composer/img/left.png);
+}
+.composer .sample-dock > .sample-controls > .move-right {
+  background-image: url(/modules/composer/img/right.png);
+}
+.composer .sample-dock > .sample-controls > .sample-list {
+  margin-left: -15px;
+  margin-right: -15px;
+  position: relative;
+  float: left;
+  width: 83.33333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
   list-style: none;
+  height: 100%;
+  padding-top: 20px;
+}
+.composer .sample-dock > .sample-controls > .sample-list:before, .composer .sample-dock > .sample-controls > .sample-list:after {
+  content: " ";
+  display: table;
+}
+.composer .sample-dock > .sample-controls > .sample-list:after {
+  clear: both;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock > .sample-controls > .sample-list {
+    float: left;
+    width: 83.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock > .sample-controls > .sample-list {
+    float: left;
+    width: 83.33333%;
+  }
+}
+.composer .sample-dock > .controls {
+  position: relative;
+  float: left;
+  width: 25%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock > .controls {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock > .controls {
+    float: left;
+    width: 16.66667%;
+  }
+}
+.composer .sample-dock > .controls:before, .composer .sample-dock > .controls:after {
+  content: " ";
+  display: table;
+}
+.composer .sample-dock > .controls:after {
+  clear: both;
 }
 
 .track {
   list-style: none;
-  float: left;
-  clear: both;
-  width: 100%;
-  height: 50px;
+  height: 53px;
   margin-bottom: 10px;
   position: relative;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.track:before, .track:after {
+  content: " ";
+  display: table;
+}
+.track:after {
+  clear: both;
 }
 
 .track > .track-icon,
 .track > .track-sound-control,
-.track > .track-bar {
+.track > .track-bar-container {
   float: left;
 }
 
 .track > .track-icon {
   height: 100%;
-  width: 5%;
-  margin-right: 20px;
+  position: relative;
+  float: left;
+  width: 8.33333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: none;
+}
+@media (min-width: 768px) {
+  .track > .track-icon {
+    float: left;
+    width: 8.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .track > .track-icon {
+    float: left;
+    width: 8.33333%;
+  }
 }
 
 .track > .track-icon > img {
   max-height: 50px;
 }
 
-.track > .track-bar {
-  width: 80%;
+.track > .track-bar-container {
+  margin-left: -15px;
+  margin-right: -15px;
+  position: relative;
+  float: left;
+  width: 83.33333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
   height: 100%;
   background-color: #d2d2d2;
   background-color: rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+  padding: 5px;
+}
+.track > .track-bar-container:before, .track > .track-bar-container:after {
+  content: " ";
+  display: table;
+}
+.track > .track-bar-container:after {
+  clear: both;
+}
+@media (min-width: 768px) {
+  .track > .track-bar-container {
+    float: left;
+    width: 83.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .track > .track-bar-container {
+    float: left;
+    width: 83.33333%;
+  }
+}
+.track > .track-bar-container, .track > .track-bar-container .track-bar {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  margin-right: 20px;
+}
+.track > .track-bar-container > .track-bar {
+  padding: 0;
+  height: 100%;
+  list-style: none;
+}
+.track > .track-bar-container > .track-bar.acceptable-sample {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.track > .track-bar-container > .track-bar.incoming-sample {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .track > .track-sound-control {
@@ -6946,6 +7227,1344 @@ button.close {
 
 .track > .track-sound-control.off {
   background: url(/modules/composer/img/sound-off.png);
+}
+
+.composer .sample-dock .sample-controls .sample-list .sample,
+.composer .track .track-bar .sample {
+  height: 40px;
+  margin-top: 2px;
+}
+
+.composer .sample-dock .sample-controls .sample-list .sample.beats-1 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 4.16667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-1 {
+    float: left;
+    width: 4.16667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-1 {
+    float: left;
+    width: 4.16667%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-2 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 8.33333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-2 {
+    float: left;
+    width: 8.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-2 {
+    float: left;
+    width: 8.33333%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-3 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 12.5%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-3 {
+    float: left;
+    width: 12.5%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-3 {
+    float: left;
+    width: 12.5%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-4 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 16.66667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-4 {
+    float: left;
+    width: 16.66667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-4 {
+    float: left;
+    width: 16.66667%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-5 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 20.83333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-5 {
+    float: left;
+    width: 20.83333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-5 {
+    float: left;
+    width: 20.83333%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-6 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 25%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-6 {
+    float: left;
+    width: 25%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-6 {
+    float: left;
+    width: 25%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-7 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 29.16667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-7 {
+    float: left;
+    width: 29.16667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-7 {
+    float: left;
+    width: 29.16667%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-8 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 33.33333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-8 {
+    float: left;
+    width: 33.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-8 {
+    float: left;
+    width: 33.33333%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-9 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 37.5%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-9 {
+    float: left;
+    width: 37.5%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-9 {
+    float: left;
+    width: 37.5%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-10 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 41.66667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-10 {
+    float: left;
+    width: 41.66667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-10 {
+    float: left;
+    width: 41.66667%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-11 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 45.83333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-11 {
+    float: left;
+    width: 45.83333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-11 {
+    float: left;
+    width: 45.83333%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-12 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-12 {
+    float: left;
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-12 {
+    float: left;
+    width: 50%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-13 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 54.16667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-13 {
+    float: left;
+    width: 54.16667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-13 {
+    float: left;
+    width: 54.16667%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-14 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 58.33333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-14 {
+    float: left;
+    width: 58.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-14 {
+    float: left;
+    width: 58.33333%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-15 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 62.5%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-15 {
+    float: left;
+    width: 62.5%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-15 {
+    float: left;
+    width: 62.5%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-16 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 66.66667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-16 {
+    float: left;
+    width: 66.66667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-16 {
+    float: left;
+    width: 66.66667%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-17 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 70.83333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-17 {
+    float: left;
+    width: 70.83333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-17 {
+    float: left;
+    width: 70.83333%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-18 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 75%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-18 {
+    float: left;
+    width: 75%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-18 {
+    float: left;
+    width: 75%;
+  }
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-19 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 79.16667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-19 {
+    float: left;
+    width: 79.16667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock .sample-controls .sample-list .sample.beats-19 {
+    float: left;
+    width: 79.16667%;
+  }
+}
+
+.composer .track .track-bar .sample.beats-1 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 1.85185%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-1 {
+    float: left;
+    width: 1.85185%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-1 {
+    float: left;
+    width: 1.85185%;
+  }
+}
+.composer .track .track-bar .sample.beats-2 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 3.7037%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-2 {
+    float: left;
+    width: 3.7037%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-2 {
+    float: left;
+    width: 3.7037%;
+  }
+}
+.composer .track .track-bar .sample.beats-3 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 5.55556%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-3 {
+    float: left;
+    width: 5.55556%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-3 {
+    float: left;
+    width: 5.55556%;
+  }
+}
+.composer .track .track-bar .sample.beats-4 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 7.40741%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-4 {
+    float: left;
+    width: 7.40741%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-4 {
+    float: left;
+    width: 7.40741%;
+  }
+}
+.composer .track .track-bar .sample.beats-5 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 9.25926%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-5 {
+    float: left;
+    width: 9.25926%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-5 {
+    float: left;
+    width: 9.25926%;
+  }
+}
+.composer .track .track-bar .sample.beats-6 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 11.11111%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-6 {
+    float: left;
+    width: 11.11111%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-6 {
+    float: left;
+    width: 11.11111%;
+  }
+}
+.composer .track .track-bar .sample.beats-7 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 12.96296%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-7 {
+    float: left;
+    width: 12.96296%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-7 {
+    float: left;
+    width: 12.96296%;
+  }
+}
+.composer .track .track-bar .sample.beats-8 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 14.81481%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-8 {
+    float: left;
+    width: 14.81481%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-8 {
+    float: left;
+    width: 14.81481%;
+  }
+}
+.composer .track .track-bar .sample.beats-9 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 16.66667%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-9 {
+    float: left;
+    width: 16.66667%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-9 {
+    float: left;
+    width: 16.66667%;
+  }
+}
+.composer .track .track-bar .sample.beats-10 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 18.51852%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-10 {
+    float: left;
+    width: 18.51852%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-10 {
+    float: left;
+    width: 18.51852%;
+  }
+}
+.composer .track .track-bar .sample.beats-11 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 20.37037%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-11 {
+    float: left;
+    width: 20.37037%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-11 {
+    float: left;
+    width: 20.37037%;
+  }
+}
+.composer .track .track-bar .sample.beats-12 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 22.22222%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-12 {
+    float: left;
+    width: 22.22222%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-12 {
+    float: left;
+    width: 22.22222%;
+  }
+}
+.composer .track .track-bar .sample.beats-13 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 24.07407%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-13 {
+    float: left;
+    width: 24.07407%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-13 {
+    float: left;
+    width: 24.07407%;
+  }
+}
+.composer .track .track-bar .sample.beats-14 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 25.92593%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-14 {
+    float: left;
+    width: 25.92593%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-14 {
+    float: left;
+    width: 25.92593%;
+  }
+}
+.composer .track .track-bar .sample.beats-15 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 27.77778%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-15 {
+    float: left;
+    width: 27.77778%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-15 {
+    float: left;
+    width: 27.77778%;
+  }
+}
+.composer .track .track-bar .sample.beats-16 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 29.62963%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-16 {
+    float: left;
+    width: 29.62963%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-16 {
+    float: left;
+    width: 29.62963%;
+  }
+}
+.composer .track .track-bar .sample.beats-17 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 31.48148%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-17 {
+    float: left;
+    width: 31.48148%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-17 {
+    float: left;
+    width: 31.48148%;
+  }
+}
+.composer .track .track-bar .sample.beats-18 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 33.33333%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-18 {
+    float: left;
+    width: 33.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-18 {
+    float: left;
+    width: 33.33333%;
+  }
+}
+.composer .track .track-bar .sample.beats-19 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  position: relative;
+  float: left;
+  width: 35.18519%;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 768px) {
+  .composer .track .track-bar .sample.beats-19 {
+    float: left;
+    width: 35.18519%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track .track-bar .sample.beats-19 {
+    float: left;
+    width: 35.18519%;
+  }
 }
 
 body {
