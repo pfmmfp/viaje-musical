@@ -30,11 +30,13 @@
 .composer .message.ng-hide-add.ng-hide-add-active,
 .composer .message.ng-hide-remove {
   opacity: 0;
+  z-index: -1;
 }
 
 .composer .message.ng-hide-add,
 .composer .message.ng-hide-remove.ng-hide-remove-active {
   opacity: 1;
+  z-index: 1;
 }
 
 .composer .message .message-options {

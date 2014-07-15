@@ -1,28 +1,30 @@
 <section data-ng-controller="ComposerController" class="composer">
   <h1 class="title">Viaje musical</h1>
   <div class="main-box">
-    <div class="main-box-common main-box-top row">
+    <div class="main-box-common main-box-top">
       <menu class="nav-items">
-        <button class="nav-item new" data-ng-click="new()">Nuevo</button>
-        <button class="nav-item wipe" data-ng-click="wipe()">Borrar</button>
-        <button class="nav-item menu">Menu</button>
+        <button class="nav-item new" data-ng-click="confirmNew()">Nuevo</button>
+        <!-- <button class="nav-item wipe" data-ng-click="wipe()">Borrar</button> -->
+        <button class="nav-item menu" data-ng-click="confirmExample()">Menu</button>
       </menu>
       <ul>
-        <track data-ng-repeat="track in tracks" name="track"></track>
+        <track data-ng-repeat="instrument in instruments" instrument="instrument" on-choose-instrument="changeInstrument(instrument)" />
       </ul>
     </div>
-    <div class="main-box-common main-box-bottom sample-dock row">
-      <img class="selected-instrument col-md-2" data-ng-src="/modules/composer/img/{{selectedInstrument}}-grande.png">
-      <div class="sample-controls col-md-8 row">
-        <span class="move-left col-md-1">&lt;-</span>
-        <ul class="sample-list col-md-10">
-          <li class="sample">sample</li>
-        </ul>
-        <span class="move-right col-md-1">-&gt;</span>
+    <div class="main-box-common main-box-bottom sample-dock">
+      <div class="selected-instrument">
+        <img ng-class="selectedInstrument.name | lowercase" title="{{selectedInstrument.name}}" alt="{{selectedInstrument.name}}" data-ng-src="/modules/composer/img/{{selectedInstrument.name | lowercase}}-grande.png">
       </div>
-      <div class="controls col-md-2 row">
-        <button data-ng-click="play()" class="control play col-md-6">Play</button>
-        <button data-ng-click="stop()" class="control stop col-md-6">Stop</button>
+      <div class="sample-controls">
+        <button class="move-left">&lt;-</button>
+        <ul class="sample-list">
+          <sample data-ng-repeat="sample in selectedInstrument.samples" instrument="selectedInstrument.name" beats="sample.beats" file="sample.file" />
+        </ul>
+        <button class="move-right">-&gt;</button>
+      </div>
+      <div class="controls">
+        <button data-ng-click="play()" class="control play">Play</button>
+        <button data-ng-click="stop()" class="control stop">Stop</button>
       </div>
     </div>
   </div>
@@ -38,13 +40,13 @@
   <script type="text/ng-template" id="new.html">
     <p class="message-text">¿Querés comenzar una nueva composición?</p>
     <menu class="message-options">
-      <button class="message-option ok">Sí</button>
+      <button class="message-option ok" data-ng-click="new()">Sí</button>
       <button class="message-option cancel" data-ng-click="closeMessage()">Cancelar</button>
     </menu>
   </script>
 
-  <script type="text/ng-template" id="wipe.html">
-    <p class="message-text">¿Querés borrar todo?</p>
+  <script type="text/ng-template" id="example.html">
+    <p class="message-text">¿Querés abandonar tu composición e ir a la composición de muestra?</p>
     <menu class="message-options">
       <button class="message-option ok">Sí</button>
       <button class="message-option cancel" data-ng-click="closeMessage()">Cancelar</button>

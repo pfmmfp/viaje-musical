@@ -1,42 +1,37 @@
 'use strict';
 
-angular.module('composer').controller('ComposerController', ['$scope', 'player',
-	function($scope, player) {
-
+angular.module('composer').controller('ComposerController', ['$scope', 'composer',
+	function($scope, composer) {
     angular.extend($scope, {
-
-      tracks : ['quena', 'charango', 'chaschas', 'bombo'],
-      selectedInstrument: 'bombo',
-
-      selectedInstrumentImg: function() {
-        return this.selectedInstrument + '-grande.png';
+      instruments : composer.tracksConfig,
+      selectedInstrument: composer.tracksConfig[0],
+      changeInstrument: function(instrument) {
+        $scope.selectedInstrument = instrument;
       },
-
       play : function() {
-        player.play();
+        composer.play();
       },
-
       stop : function() {
-        player.stop();
+        composer.stop();
       },
-
       closeMessage: function() {
         $scope.messageTemplate = null;
       },
-
       templateName : function(messageTemplate) {
-        console.log(messageTemplate ? messageTemplate + '.html' : null);
         return messageTemplate ? messageTemplate + '.html' : null;
       },
-
-      new : function() {
+      confirmNew : function() {
         $scope.messageTemplate = 'new';
-        console.log($scope.messageTemplate);
       },
-
+      confirmExample : function() {
+        $scope.messageTemplate = 'example';
+      },
+      new: function() {
+        composer.cleanUp();
+        $scope.closeMessage();
+      },
       wipe : function() {
         $scope.messageTemplate = 'wipe';
-        console.log($scope.messageTemplate);
       }
     });
 	}

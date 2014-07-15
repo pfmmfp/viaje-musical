@@ -1,38 +1,61 @@
+$track-height: 53px;
+
 .track {
   list-style: none;
-  float: left;
-  clear: both;
-  width: 100%;
-  height: 50px;
+  height: $track-height;
   margin-bottom: 10px;
   position: relative;
+  @include make-row();
 }
 
 .track > .track-icon,
 .track > .track-sound-control,
-.track > .track-bar {
+.track > .track-bar-container {
   float: left;
 }
 
 .track > .track-icon {
   height: 100%;
-  width: 5%;
-  margin-right: 20px;
+  @include make-xs-column(1);
+  @include make-sm-column(1);
+  @include make-md-column(1);
+  background: none;
 }
 
 .track > .track-icon > img {
-  max-height: 50px;
+  max-height: $track-height - 3px;
 }
 
-.track > .track-bar {
-  width: 80%;
+.track > .track-bar-container {
+  @include make-row();
+  @include make-xs-column(10);
+  @include make-sm-column(10);
+  @include make-md-column(10);
   height: 100%;
   background-color: #d2d2d2;
   background-color: rgba(0,0,0,0.1);
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
   margin-right: 20px;  
+  padding: 5px;
+
+  &, .track-bar {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;    
+  }
+
+  & > .track-bar {
+    padding: 0;
+    height: 100%;
+    list-style: none;
+
+    &.acceptable-sample {
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    &.incoming-sample {
+      background-color: rgba(0,0,0,0.5);
+    }
+  }
 }
 
 .track > .track-sound-control {

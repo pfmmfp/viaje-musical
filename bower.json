@@ -16,6 +16,9 @@
     "angular-ui-router": "~0.2.10",
     "ng-file-upload": "~1.4",
     "angular-carousel": "~0.2",
-    "bootstrap-sass-official": "~3.2.0"
+    "bootstrap-sass-official": "~3.2.0",
+    "angular-dragdrop": "~1.0.7",
+    "underscore": "~1.6.0",
+    "angular-underscore-module": "*"
   }
 }

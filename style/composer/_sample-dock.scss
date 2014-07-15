@@ -1,7 +1,52 @@
-.sample-dock > .selected-instrument {
-  width: 145px;
-}
 
-.sample-dock > .sample-controls > .sample-list {
-  list-style: none;
+.composer .sample-dock {
+
+  & > .selected-instrument {
+    @include make-xs-column(2);
+    @include make-sm-column(2);
+    @include make-md-column(1.5);
+    text-align: center;
+    & > * { width: 110px; }
+    & > .quena { width: 40px; }
+  }
+
+  & > .sample-controls {
+    @include make-xs-column(7);
+    @include make-sm-column(7);
+    @include make-md-column(8.5);
+    @include make-row();
+    height: 100%;
+
+    & > .move-left,
+    & > .move-right {
+      @include make-xs-column(1);
+      @include make-sm-column(1);
+      @include make-md-column(1);
+      width: 36px;
+      height: 100%; //31px;
+      @include text-hide();
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    & > .move-left { background-image: url(/modules/composer/img/left.png); }
+    & > .move-right { background-image: url(/modules/composer/img/right.png); }
+
+    & > .sample-list {
+      @include make-row();
+      @include make-xs-column(10);
+      @include make-sm-column(10);
+      @include make-md-column(10);
+      list-style: none;
+      height: 100%;
+      padding-top: 20px;
+    }
+  }
+
+  & > .controls {
+    @include make-xs-column(3);
+    @include make-sm-column(3);
+    @include make-md-column(2);
+    @include make-row();
+  }
+
 }
