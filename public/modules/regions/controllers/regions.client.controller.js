@@ -112,19 +112,40 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		};
 		
 		//////////////// Modal ////////////////
+		var subregionModalCtrl = function ($scope, $modalInstance, items)
+		{
+			$scope.subregion = items;
+			$scope.close = function()
+			{
+				$modalInstance.close();
+			};
+		};		
+		
 		$scope.openSubregionModal = function(marker){
 			openModal(function(){}, marker, subregionModalCtrl);	
 		};							
 		
+		//////////////// Slider ////////////////
+		$scope.offset = 0;
+			
+		$scope.slider = function(action, elements){
+			var limit = elements.length; 
+			
+			if(action === 'next')
+			{
+				if($scope.offset < limit){ $scope.offset = $scope.offset + 1};
+				if($scope.offset === limit){ $scope.offset = 0};
+			}
+
+			if(action === 'prev')
+			{
+				if($scope.offset === 0){ $scope.offset = 0};
+				if($scope.offset > 0){ $scope.offset = $scope.offset - 1};
+			}
+		}
+		
 	}
 ]);
 
-var subregionModalCtrl = function ($scope, $modalInstance, items)
-{
-	$scope.subregion = items;
-	$scope.close = function()
-	{
-		$modalInstance.close();
-	};
-};
+
 
