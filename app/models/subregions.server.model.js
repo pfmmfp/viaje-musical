@@ -9,17 +9,6 @@ var mongoose = require('mongoose'),
 /**
  * Subregion Schema
  */
-var MediaSchema = new Schema({
-	name: {
-		type: String,
-		default: ''
-	},
-	ext: {
-		type: String,
-		default: ''
-	}
-});
-
 var SubregionSchema = new Schema({
 	type: {
 		type: String,
@@ -35,11 +24,6 @@ var SubregionSchema = new Schema({
         trim: true
     },
     description: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    family: {
         type: String,
         default: '',
         trim: true

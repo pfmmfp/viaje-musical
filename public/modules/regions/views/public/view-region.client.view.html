@@ -1,40 +1,36 @@
 <section data-ng-controller="RegionsController" data-ng-init="findOne()">
-	
 
-	
-	<div class="page-header">
-		<h1 data-ng-bind="region.name"></h1>
-	</div>
-	<p class="lead" data-ng-bind="region.description"></p>
+<div class="botones">
+	<a href="#!/compositor"   class="compositor"></a>
+	<a href="#!/instrumentos" class="instrumentos"></a>
+</div>
 
-	<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width:500px; height: 300px;">
-		<li ng-repeat="pic in picList|limitTo:5" ng-style="{'background-image': 'url(' + pic.path + pic.name  + ')', 'background-size': '100% 100%'}"></li>
-	</ul>
-	
-	<br/>
-	<button class="btn btn-default" data-ng-click="open('lg')">Modal Test</button>
-	
+<div class="logo_mapa"></div>
+
+<div class="region-map" style="background: url('{{pic.value.path + pic.value.name}}');" >
+	<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px;" data-ng-click="openSubregionModal(subregion)"></div>
+</div>
+
+<div class="region-chicos">
+	<div class="region-bienvenido"></div>
+	<div class="region-chica"></div>
+	<div class="region-chico"></div>
+</div>	
+
 	<script type="text/ng-template" id="myModalContent.html">
-	<div class="modal-header">
-		<h3 class="modal-title">I'm a modal!</h3>
-	</div>
-	<div class="modal-body">
-     
-	</div>
-        <div class="modal-body">
-            <ul>
-                <li data-ng-repeat="item in items">
-                    <a data-ng-click="selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" data-ng-click="ok()">OK</button>
-		<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
-	</div>
+		<div class="subregion-modal">
+			<div class="modal-text">
+				<p class="subregion-title">{{ subregion.name }}</p>
+				<p class="subregion-description">{{ subregion.description }}</p>
+			</div>
+			<div class="subregion-pics">
+			<ul rn-carousel rn-carousel-buffered rn-carousel-indicator rn-carousel-control class="my-slider ng-cloak" style="width: 140px; height: 140px;" >
+				<li ng-repeat="pic in subregion.pics" ng-style="{'background-image': 'url( common/images/subregion/' + subregion.id + '/' + pic  + ')', 'background-size': '100% 100%'}"></li>
+			</ul>
+			</div>								
+		</div>
 	</script>
-	
+			
 </section>
 
 

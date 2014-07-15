@@ -61,3 +61,11 @@
 	cursor: pointer;
 }
 
+.bienvenido_home{
+	background: url('/modules/core/img/app/bienvenido_1.png');
+	width: 197px; 
+	height: 105px;
+	position: relative;
+	top: 55%;
+	left: 94%;
+}

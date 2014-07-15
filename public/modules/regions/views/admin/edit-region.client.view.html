@@ -22,7 +22,7 @@
 				<div class="form-group">
 					<label class="control-label" for="instruments">Instruments</label>
 					<div class="controls">				
-						<select multiselect multiple="multiple" ng-data="Instruments" data-ng-model="region.instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
+						<select multiselect multiple="multiple" ng-selection="regionInstruments" ng-resource="{{ region }}" ng-data="Instruments" data-ng-model="region.instruments" id="instruments" class="form-control"  placeholder="Instruments"></select>
 					</div>
 				</div>
 				
@@ -40,10 +40,10 @@
 				</div>
 				<div class="form-group" style="position: relative; widht: 100%; height: 500px;">
 				<div style="z-index: 0; width: 420px; height: 409px; background: url('{{pic.value.path + pic.value.name}}'); position: absolute; " ng-click="addMarker($event)" >
-					<div data-ng-repeat="marker in subregions" style="z-index: 9; position: absolute; top: {{ marker.offsetY - 50}}px; left: {{ marker.offsetX - 50 }}px; width: 50px; height: 50px; background: url('/common/images/subregion/{{marker.id}}/{{marker.pic}}'); background-size: 100% 200%;" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
+				</div>
+				<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="z-index: 9; position: absolute; top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px; background: url('/common/images/subregion/{{subregion.id}}/{{subregion.pic}}');" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
 						<button ng-hide="show == 0" type="button" class="btn btn-default btn-xs" style="position: absolute" ng-click="removeSubregion(marker)"><span class="glyphicon glyphicon-remove"></span></button>
 					</div>
-				</div>
 				</div>
 				
 				<div class="form-group">
@@ -56,22 +56,15 @@
 		</form>
 
 		<script type="text/ng-template" id="myModalContent.html">
-		<div class="modal-header">
-			<h3 class="modal-title">Pick a subregion!</h3>
-		</div>
-		<div class="modal-body">
-		 
-		</div>
-			<div class="modal-body">
 
-			<select ng-model="selected.item">
+			<h3 class="modal-title" style="margin: 10px">Pick a subregion!</h3>
+			<select ng-model="selected.item" style="margin: 20px;">
 			  <option data-ng-repeat="item in items" value="{{ item.value }}">{{ item.label }}</option>
 			</select>
-
-			</div>
-		<div class="modal-footer">
+			<div style="margin-top: 110px; float: right; margin-right: 10px;">
 			<button class="btn btn-primary" data-ng-click="ok()">OK</button>
 			<button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+			</div>
 		</div>
 		</script>		
 		

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('subregions').controller('SubregionsController', ['$scope', '$stateParams', '$location', 'config', 'Authentication', 'Subregions', 'fileupload', 'ngAudio',
-	function($scope, $stateParams, $location, config, Authentication, Subregions, fileupload, ngAudio) {
+angular.module('subregions').controller('SubregionsController', ['$scope', '$stateParams', '$location', 'subregionsConfig', 'Authentication', 'Subregions', 'fileupload', 'ngAudio',
+	function($scope, $stateParams, $location, subregionsConfig, Authentication, Subregions, fileupload, ngAudio) {
 		$scope.authentication = Authentication;
 		
 		//////////////// CREATE INSTRUMENT ////////////////
@@ -57,7 +57,7 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 		$scope.update = function() {
 			var subregion = $scope.subregion;
 			
-			region.pic = $scope.pic.value.name;
+			subregion.pic = $scope.pic.value.name;
 			
 			var picList = [];
 			$scope.picList.forEach(function (pic, index) {	
@@ -94,17 +94,17 @@ angular.module('subregions').controller('SubregionsController', ['$scope', '$sta
 				$scope.subregion = Subregion;
 				
 				Subregion.pics.forEach(function( pic, index ) {
-					var picFullData = {'path': config.PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': pic};
+					var picFullData = {'path': subregionsConfig.PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': pic};
 					picList.push( picFullData );
 				});			
 				$scope.picList = picList;				
 				
 				Subregion.audio.forEach(function( audio, index ) {
-					var audioFullData = {'path': config.PUBLIC_AUDIO_PATH + Subregion._id + '/', 'name': audio};
+					var audioFullData = {'path': subregionsConfig.PUBLIC_AUDIO_PATH + Subregion._id + '/', 'name': audio};
 					audioList.push( audioFullData );
 				});			
 				$scope.audioList = audioList;				
-				$scope.pic.value = {'path': config.PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': Subregion.pic};
+				$scope.pic.value = {'path': subregionsConfig.PUBLIC_IMAGE_PATH + Subregion._id + '/', 'name': Subregion.pic};
 			});
 		};
 		

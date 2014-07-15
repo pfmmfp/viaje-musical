@@ -8,8 +8,7 @@ angular.module('regions').run(['Menus',
 			Menus.addSubMenuItem('topbar', 'regions', 'List Regions', 'admin/regions', '/admin/regions','false');
 			Menus.addSubMenuItem('topbar', 'regions', 'New Region', 'admin/regions/create', 'admin/regions/create','false');		
 	}
-	
-	
-]).constant('CONFIG',{
-    'PUBLIC_IMAGE_PATH': 'common/images/region/'
-  });
+]).constant('regionsConfig',{
+    'PUBLIC_IMAGE_PATH': 'common/images/region/',
+	'PUBLIC_AUDIO_PATH' : 'common/audio/region/',
+});

@@ -23,6 +23,19 @@
 				</div>
 
 				<div class="form-group">
+					<label class="control-label" for="pics">Instrument image</label>
+					<div class="controls">				
+						<input type="file" id="pics" class="form-control" data-ng-file-select="picSelect($files)">
+						<progressbar ng-hide="singlePicPercent.value == 0 || singlePicPercent.value == 100" style="margin-top: 5px;" class="progress-striped active" value="singlePicPercent.value" type="success"><b>{{singlePicPercent.value}}%</b></progressbar>
+					</div>
+
+					<div ng-hide="!pic.value" style="widht: 100px; height: 150px; padding:10px; float:left;" ng-mouseover="show = 1" ng-mouseleave="show = 0" ng-init="show = 0">
+						<button ng-hide="show == 0" type="button" class="btn btn-default btn-xs" style="position: absolute; margin: 5px; margin-left: 70px;" ng-click="removePic()"><span class="glyphicon glyphicon-remove"></span></button>
+						<img src="{{pic.value.path + pic.value.name}}" width="100px" height="100px">
+					</div>
+				</div>
+				
+				<div class="form-group">
 					<label class="control-label" for="pics">Pics</label>
 					<div class="controls">				
 						<input type="file" id="pics" class="form-control" data-ng-file-select="onFileSelect($files, 'image')" multiple>

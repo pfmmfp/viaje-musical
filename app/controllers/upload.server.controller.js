@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 
-var PUBLIC_TMP_PATH    = 'public/tmp/';
+var PUBLIC_TMP_PATH   = 'public/tmp/';
 var PUBLIC_IMAGE_PATH = 'public/common/images/';
 var PUBLIC_AUDIO_PATH = 'public/common/audio/';
 
@@ -137,6 +137,7 @@ exports.saveModelFiles = function(model, res, next)
 				fs.exists(tmpPath, function (exists) {
 					if(exists)
 					{
+						console.log('moving ', tmpPath, ' to ', imgFile);
 						fs.rename( tmpPath, imgFile ,function (err) {
 						  if (err) throw err;
 							console.log('moving ', tmpPath, ' to ', imgFile);

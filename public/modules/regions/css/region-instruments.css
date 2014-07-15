@@ -1,0 +1,81 @@
+.logo_instrumentos{
+	background: url('/modules/core/img/app/logo.png');
+	width: 172px; 
+	height: 126px;
+	position: absolute;
+	top: 5%;
+	left: 2%;
+	cursor: pointer;
+}
+
+.contenedor-instrumentos{
+	background-clip: padding-box;
+	padding: 15px;  
+	border-image: url(/modules/core/img/app/fondo_instrumentos.png) 30 20 50 20 stretch;
+	border-width: 30px 20px 50px 20px;
+	width: 90%;
+	min-width: 300px; 
+	height: 350px;
+	position: absolute;
+	top: 25%;
+	left: 5%;
+	background-color: #dfd7a9;
+}
+
+.instrumentos-lista{
+	list-style: none outside;
+	padding: 0;
+	margin: 0;
+}
+
+.slider-instrumentos{
+	overflow: hidden;
+	width: 82%;
+	height: 300px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+.instrumento-grande{
+	float: left;
+	width: 207px;
+	height: 300px;
+	cursor: pointer;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.instrumentos-controles{
+	width: 45px;
+	height: 300px;
+}
+
+.flecha-horizontal{
+	background: url('/modules/core/img/app/flechas_instrumentos.png') no-repeat;
+	width: 35px; 
+	height: 52px;	
+	float: left;
+	margin-top: 100px;
+	cursor: pointer;
+}
+
+.derecha{
+	background-position: -35px 0;
+	float: right;
+}
+
+.izquierda{
+	background-position: 0 0;
+	float: left;
+}
+
+.volver{
+	background: url('/modules/core/img/app/volver.png');
+	width: 143px; 
+	height: 128px;
+	position: absolute;
+	top: 78%;
+	left: 82%;
+	cursor: pointer;	
+}

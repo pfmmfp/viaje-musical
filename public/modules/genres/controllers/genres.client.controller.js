@@ -1,11 +1,8 @@
 'use strict';
 
-angular.module('genres').controller('GenresController', ['$scope', '$stateParams', '$location', 'Authentication', 'Genres', 'fileupload', 'ngAudio',
-	function($scope, $stateParams, $location, Authentication, Genres, fileupload, ngAudio) {
+angular.module('genres').controller('GenresController', ['$scope', '$stateParams', '$location', 'genresConfig', 'Authentication', 'Genres', 'fileupload', 'ngAudio',
+	function($scope, $stateParams, $location, genresConfig, Authentication, Genres, fileupload, ngAudio) {
 		$scope.authentication = Authentication;
-		
-		var PUBLIC_IMAGE_PATH = 'common/images/genre/';
-		var PUBLIC_AUDIO_PATH = 'common/audio/genre/';
 		
 		//////////////// CREATE INSTRUMENT ////////////////
 		$scope.create = function() {
@@ -92,13 +89,13 @@ angular.module('genres').controller('GenresController', ['$scope', '$stateParams
 				$scope.genre = Genre;
 				
 				Genre.pics.forEach(function( pic, index ) {
-					var picFullData = {'path': PUBLIC_IMAGE_PATH + Genre._id + '/', 'name': pic};
+					var picFullData = {'path': genresConfig.PUBLIC_IMAGE_PATH + Genre._id + '/', 'name': pic};
 					picList.push( picFullData );
 				});			
 				$scope.picList = picList;				
 				
 				Genre.audio.forEach(function( audio, index ) {
-					var audioFullData = {'path': PUBLIC_AUDIO_PATH + Genre._id + '/', 'name': audio};
+					var audioFullData = {'path': genresConfig.PUBLIC_AUDIO_PATH + Genre._id + '/', 'name': audio};
 					audioList.push( audioFullData );
 				});			
 				$scope.audioList = audioList;				
