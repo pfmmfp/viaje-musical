@@ -1,6 +1,26 @@
 <section data-ng-controller="InstrumentsController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="instrument.name"></h1>
+
+<div class="botones">
+	<a href="#!/composer"   class="compositor"></a>
+	<a href="#!/instruments" class="instrumentos"></a>
+</div>
+
+<div class="logo_instrumentos"></div>
+
+<div class="contenedor-instrumento">
+	<img class="instrument-pic" src="common/images/instrument/{{instrument._id}}/{{ instrument.pic }}"/>
+	<div class="instrument-text">
+		<h2 class="instrument-title">{{instrument.name}}</h2>
+		<p class="instrument-text">{{instrument.description}}</p>
+	</div>	
+	<div class="instrument-audio">
+		<div class="instrument-audio-player" ng-repeat="audio in instrument.audio">
+			<div class="instrument-audio-play" ng-click="play()"></div>
+			<div class="instrument-audio-stop" ng-click="stop()"></div>
+		</div>
 	</div>
-	<p class="lead" data-ng-bind="instrument.description"></p>
+</div>
+
+<a href="#!/" class="volver"></div>
+
 </section>
