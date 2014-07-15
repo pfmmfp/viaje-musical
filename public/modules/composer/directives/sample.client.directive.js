@@ -14,7 +14,6 @@ angular.module('composer').directive('sample', [
 				angular.extend(scope, {
 					jquiOptions: function() {
 						var instrumentName = scope.instrument.toLowerCase();
-						console.log(instrumentName);
 						return {
 							grid: [20, 10],
 							revert: 'invalid',
