@@ -6,6 +6,7 @@ node_modules/
 public/tmp
 public/common
 public/lib
+public/css/
 app/tests/coverage/
 .bower-*/
 .idea/
