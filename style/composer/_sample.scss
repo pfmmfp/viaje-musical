@@ -1,3 +1,7 @@
+$timeline-grid-size: 20px;
+$max-sample-beat: 20;
+$max-sample-pos: 25;
+
 @mixin sample-box($sample) {
   cursor: pointer;
   border-style: solid;
@@ -8,8 +12,12 @@
   border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7 fill;
 }
 
-@mixin beat-classes($beat-column-rate) {
-  @for $i from 1 to 20 {
+.composer .sample-dock .sample-controls .sample-list .sample,
+.composer .track .track-bar .sample {
+  height: 40px;
+  margin-top: 2px;
+
+  @for $i from 1 to $max-sample-beat {
     &.beats-#{$i} {
       @if $i % 3 == 0 {
         @include sample-box(sample3);
@@ -18,23 +26,20 @@
       } @else {
         @include sample-box(sample1);
       }
-      @include make-xs-column($i / $beat-column-rate, 0);
-      @include make-sm-column($i / $beat-column-rate, 0);
-      @include make-md-column($i / $beat-column-rate, 0);
-    }          
+      width: $timeline-grid-size * $i;
+    }       
+  }
+  @for $i from 0 to $max-sample-pos {
+    &.pos-#{$i} {
+      left: $timeline-grid-size * $i;
+    }
   }
 }
 
-.composer .sample-dock .sample-controls .sample-list .sample,
-.composer .track .track-bar .sample {
-  height: 40px;
-  margin-top: 2px;
-}
-
 .composer .sample-dock .sample-controls .sample-list .sample {
-  @include beat-classes(2);
+  float: left;
 }
 
 .composer .track .track-bar .sample {
-  @include beat-classes(4.5);
+  position: absolute;
 }

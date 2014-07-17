@@ -1,8 +1,8 @@
 <li 
   class="sample" 
-  data-ng-class="'beats-' + beats" 
+  data-ng-class="'beats-' + sample.beats + (sample.pos !== undefined ? ' pos-' + sample.pos : '')" 
   data-drag="true" 
   data-jqyoui-options="jquiOptions()" 
   jqyoui-draggable="draggableOptions()"
-  ng-model="file">
+  ng-model="sample">
 </li>

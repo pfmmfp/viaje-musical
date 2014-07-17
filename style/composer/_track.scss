@@ -27,7 +27,6 @@ $track-height: 53px;
 }
 
 .track > .track-bar-container {
-  @include make-row();
   @include make-xs-column(10);
   @include make-sm-column(10);
   @include make-md-column(10);
@@ -47,6 +46,7 @@ $track-height: 53px;
     padding: 0;
     height: 100%;
     list-style: none;
+    position: relative;
 
     &.acceptable-sample {
       background-color: rgba(0,0,0,0.4);

@@ -15,7 +15,6 @@ angular.module('composer').factory('composer', ['$window', '_',
 	    this.samplesBuffer = [];
 	    this.sourcesBuffer = [];
 	    this.playing = false;
-	    this.KICK_DELTA = 0;
 	  };
 
 	  SampleTrack.prototype.loadSamples = function() {
@@ -37,7 +36,7 @@ angular.module('composer').factory('composer', ['$window', '_',
 	        console.log("All samples retrieved! ", $this.sampleRefs[0]);
 	        // TODO trigger event       
 	      }
-	    }, function() { console.log("ERROR"); }); 
+	    }, function() { console.log("Error decoding sample ", sample); }); 
 	  };
 
 	  SampleTrack.prototype.empty = function() {
@@ -57,6 +56,7 @@ angular.module('composer').factory('composer', ['$window', '_',
 
 	  SampleTrack.prototype.createSource = function(sampleBuffer) {
 	    return { 
+        pos: sampleBuffer.pos,
 	      beats: sampleBuffer.beats,
 	      source: this.createNode(sampleBuffer.buffer)
 	    };
@@ -67,23 +67,23 @@ angular.module('composer').factory('composer', ['$window', '_',
 	    this.samplesBuffer.splice(this.samplesBuffer.indexOf(sample), 1);
 	  };
 
-	  SampleTrack.prototype.addSample = function(sample) {
-	    var beats = beatsFromName(sample);
-	    this.samplesBuffer.push({
-	      beats: beats,
-	      buffer: this.samples[sample],
-	      file: sample
-	    });
-	    return beats;
-	  };
+    SampleTrack.prototype.moveSample = function(sample, newPos) {
+      var sampleToMove = _.find(this.samplesBuffer, function(sampleBuffer) {
+        return (sample.file === sampleBuffer.file && 
+          sample.pos === sampleBuffer.pos);
+      });
+      sampleToMove.pos = newPos;
+    };
 
-	  function beatsFromName(name) {
-	    return name.replace(/T.*$/,'')
-	      .replace(/Quena-/, '')
-	      .replace(/Char-/, '')
-	      .replace(/Chas-/, '')
-	      .replace(/Bombo-/, '');
-	  }
+	  SampleTrack.prototype.addSample = function(sample, position) {
+	    this.samplesBuffer.push({
+	      beats: sample.beats,
+	      buffer: this.samples[sample.file],
+	      file: sample.file,
+        pos: position
+	    });
+	    return sample.beats;
+	  };
 
 	  SampleTrack.prototype.duration = function() {
 	    return _.reduce(this.samplesBuffer, function(memo, sample) {
@@ -113,12 +113,13 @@ angular.module('composer').factory('composer', ['$window', '_',
 	      var tempo = 96; // BPM (beats per minute)
 	      var beat = (60 / tempo); // negra
 	      angular.forEach(this.sourcesBuffer, function(sourceBuffer) {
-	        sourceBuffer.source.start(time);
-	        time += sourceBuffer.beats * beat;
+	        sourceBuffer.source.start(time + sourceBuffer.pos * beat);
+	        // time += sourceBuffer.beats * beat;
 	      });   
         this.playing = true;
       }   
 	  };
+
 
     var Player = function() {
       this.tracks = [];
@@ -156,6 +157,7 @@ angular.module('composer').factory('composer', ['$window', '_',
       {
         name: 'Charango',
         samples: [
+          { beats: 1, file: 'Char-1T-Am' },
           { beats: 2, file: 'Char-2T-Am' },
           { beats: 3, file: 'Char-3T-E7' },
 				],
@@ -184,6 +186,7 @@ angular.module('composer').factory('composer', ['$window', '_',
 
 		return {
 			tracksConfig: tracksConfig,
+      gridSize: 20,
 			createTrack: function(name) {
 				var track = _.find(tracksConfig, function(track) { return track.name === name });
         return player.createTrack(name, track.samples);

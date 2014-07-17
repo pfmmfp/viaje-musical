@@ -9,7 +9,11 @@
       data-jqyoui-options="jquiOptions()"
       jqyoui-droppable="droppableOptions()"
       ng-model="newSample">
-      <sample data-ng-repeat="sample in track.samplesBuffer" instrument="track.name | lowercase" beats="sample.beats" file="sample.file" />
+      <sample 
+        data-ng-repeat="sample in track.samplesBuffer" 
+        instrument="track.name | lowercase" 
+        sample="sample"
+        tracked="true" />
     </ul>
   </div>
   <button class="track-sound-control" data-ng-class="'on'" title="Prender / Apagar" data-ng-click="toggleMute(track)"></button>

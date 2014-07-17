@@ -18,7 +18,7 @@
       <div class="sample-controls">
         <button class="move-left">&lt;-</button>
         <ul class="sample-list">
-          <sample data-ng-repeat="sample in selectedInstrument.samples" instrument="selectedInstrument.name" beats="sample.beats" file="sample.file" />
+          <sample data-ng-repeat="sample in selectedInstrument.samples" instrument="selectedInstrument.name" sample="sample" />
         </ul>
         <button class="move-right">-&gt;</button>
       </div>

@@ -32,7 +32,6 @@
     & > .move-right { background-image: url(/modules/composer/img/right.png); }
 
     & > .sample-list {
-      @include make-row();
       @include make-xs-column(10);
       @include make-sm-column(10);
       @include make-md-column(10);
