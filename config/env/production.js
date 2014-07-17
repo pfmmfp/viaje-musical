@@ -30,14 +30,10 @@ module.exports = {
 			]
 		},
 		css: [
-			'public/css/*.css',
-			'public/modules/**/css/*.css'
+			'public/dist/application.min.css'
 		],
 		js: [
-			'public/config.js',
-			'public/application.js',
-			'public/modules/*/*.js',
-			'public/modules/*/*[!tests]*/*.js'
+			'public/dist/application.min.js'
 		],
 	},
 	facebook: {
