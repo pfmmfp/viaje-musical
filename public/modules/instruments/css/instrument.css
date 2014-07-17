@@ -5,14 +5,62 @@
 	border-width: 30px 20px 50px 20px;
 	width: 70%;
 	min-width: 300px; 
-	height: 400px;
+	height: 350px;
 	position: absolute;
 	top: 25%;
-	left: 20%;
+	left: 15%;
 	background-color: #dfd7a9;
 }
 
 .instrument-pic{
+	float: left;
+	width: 210px;
+	height: 300px;
+	margin-right: 20px;
+}
+
+.instrument-text-container{
 	position: relative;
-	top: 60px;	
+	width: 100%;
+	height: 220px;
+}
+
+.instrument-title{
+	font-size: 30px;
+	width: 100%;
+	padding-left: 210px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 0;
+	color: #57380b;
+    text-shadow: -1px 0 #eab21f, 0 1px #eab21f, 1px 0 #eab21f, 0 -1px #eab21f;
+}
+
+.instrument-text{
+	color: #57380b;
+	overflow-y: scroll;
+	height: 130px;
+}
+
+.instrument-audio-player{
+	position: relative;
+	width: 100%;
+	height: 50px;	
+}
+
+.instrument-audio{
+	width: 42px;
+	height: 41px;
+	float: right;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.play{
+	background: url('/modules/core/img/app/play.png');
+}
+
+.stop{
+	background: url('/modules/core/img/app/stop.png');
 }

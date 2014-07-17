@@ -47,7 +47,7 @@
 }
 
 .subregion-pics{
-	width: 150px; 
+	width: 149px; 
 	height: 170px; 
 	margin-top: 30px; 
 	float: left;
@@ -87,4 +87,20 @@
 	width: 169px; 
 	height: 90px;
 	float: left;
+}
+
+.subregion-title{
+	font-size: 30px;
+	text-align: center;
+	text-transform: capitalize;
+	font-weight: bold;
+	color: #4edcab;
+    text-shadow: -1px 0 #39a580, 0 1px #39a580, 1px 0 #39a580, 0 -1px #39a580;
+}
+
+.subregion-description{
+	color: #92322A;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 135px;
 }

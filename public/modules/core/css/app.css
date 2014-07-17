@@ -1,3 +1,7 @@
+.overflow-hidden{
+	overflow: hidden;
+}
+
 .valle-home{
 	background: url('/modules/core/img/app/valle.png');
 	width: 615px; 
@@ -5,6 +9,15 @@
 	position: absolute;
 	top: 50%;
 	left: -90px;
+}
+
+.home-fondo{
+	background: url('/modules/core/img/app/back-gradient.png');
+	width: 1000px; 
+	height: 600px;
+	position: absolute;
+	bottom: -80px;
+	right: -115px;
 }
 
 .mapa-home{

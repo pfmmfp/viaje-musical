@@ -133,19 +133,16 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 			
 			if(action === 'next')
 			{
-				if($scope.offset < limit){ $scope.offset = $scope.offset + 1};
-				if($scope.offset === limit){ $scope.offset = 0};
+				if($scope.offset < limit){ $scope.offset = $scope.offset + 1}
+				if($scope.offset === limit){ $scope.offset = 0}
 			}
 
 			if(action === 'prev')
 			{
-				if($scope.offset === 0){ $scope.offset = 0};
-				if($scope.offset > 0){ $scope.offset = $scope.offset - 1};
+				if($scope.offset === 0){ $scope.offset = 0}
+				if($scope.offset > 0){ $scope.offset = $scope.offset - 1}
 			}
-		}
+		};
 		
 	}
 ]);
-
-
-

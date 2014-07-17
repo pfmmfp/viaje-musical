@@ -3,6 +3,7 @@
 angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', 'instrumentsConfig', 'Authentication', 'Instruments', 'fileupload', 'ngAudio',
 	function($scope, $stateParams, $location, instrumentsConfig, Authentication, Instruments, fileupload, ngAudio) {
 		$scope.authentication = Authentication;
+		$scope.instrumentsConfig = instrumentsConfig;
 		
 		//////////////// CREATE INSTRUMENT ////////////////
 		$scope.create = function() {
@@ -156,6 +157,26 @@ angular.module('instruments').controller('InstrumentsController', ['$scope', '$s
 				fileupload.success(upl, $scope.pic);		
 			}
 		};
-				
+
+		//////////////// Slider ////////////////
+		$scope.offset = 0;
+			
+		$scope.slider = function(action, elements){
+			var limit = elements.length; 
+			
+			if(action === 'next')
+			{
+				if($scope.offset < limit){ $scope.offset = $scope.offset + 1}
+				if($scope.offset === limit){ $scope.offset = 0}
+			}
+
+			if(action === 'prev')
+			{
+				if($scope.offset === 0){ $scope.offset = 0}
+				if($scope.offset > 0){ $scope.offset = $scope.offset - 1}
+			}
+		};		
+		
+		$scope.stop = function() { ngAudio.stopAll() };		
 	}
 ]);

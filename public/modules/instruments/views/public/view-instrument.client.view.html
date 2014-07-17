@@ -1,26 +1,31 @@
 <section data-ng-controller="InstrumentsController" data-ng-init="findOne()">
 
 <div class="botones">
-	<a href="#!/composer"   class="compositor"></a>
+	<a href="#!/compositor"   class="compositor"></a>
 	<a href="#!/instruments" class="instrumentos"></a>
 </div>
 
-<div class="logo_instrumentos"></div>
+<a href="#!" class="logo_instrumentos"></a>
 
 <div class="contenedor-instrumento">
-	<img class="instrument-pic" src="common/images/instrument/{{instrument._id}}/{{ instrument.pic }}"/>
-	<div class="instrument-text">
+	
+	<div class="instrument-pic">
+		<img src="common/images/instrument/{{instrument._id}}/{{ instrument.pic }}"/>
+	</div>
+		
+	<div class="instrument-text-container">
 		<h2 class="instrument-title">{{instrument.name}}</h2>
 		<p class="instrument-text">{{instrument.description}}</p>
 	</div>	
-	<div class="instrument-audio">
-		<div class="instrument-audio-player" ng-repeat="audio in instrument.audio">
-			<div class="instrument-audio-play" ng-click="play()"></div>
-			<div class="instrument-audio-stop" ng-click="stop()"></div>
-		</div>
+
+	<div class="instrument-audio-player" ng-repeat="audio in instrument.audio">
+		<audio id="{{ audio }}"><source src="{{ instrumentsConfig.PUBLIC_AUDIO_PATH + instrument._id + '/' + audio }}" type="audio/mp3"></audio>
+		<a data-ng-audio="{{ audio }}"><div class="instrument-audio play"></div></a>
+		<div class="instrument-audio stop" ng-click="stop()"></div>
 	</div>
+	
 </div>
 
-<a href="#!/" class="volver"></div>
+<a href="#!/instruments" class="volver"></div>
 
 </section>

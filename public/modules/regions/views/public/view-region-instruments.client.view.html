@@ -1,11 +1,12 @@
 <section data-ng-controller="RegionsController" data-ng-init="findOne()">
 
 <div class="botones">
-	<a href="#!/composer"   class="compositor"></a>
-	<a href="#!/instruments" class="instrumentos"></a>
+	<a href="#!/compositor"   class="compositor"></a>
+	<a href="#!/regions/{{region._id}}/instruments" class="instrumentos"></a>
 </div>
 
-<div class="logo_instrumentos"></div>
+<a href="#!/"   class="logo_instrumentos"></a>
+
 
 <div class="contenedor-instrumentos">
 	<div class="instrumentos-controles izquierda">
@@ -25,5 +26,6 @@
 	</div>
 </div>
 
-<a href="#!/" class="volver"></div>
+<a href="#!/regions/{{region._id}}" class="volver"></a>
+
 </section>

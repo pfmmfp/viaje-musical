@@ -2,10 +2,10 @@
 
 <div class="botones">
 	<a href="#!/compositor"   class="compositor"></a>
-	<a href="#!/instrumentos" class="instrumentos"></a>
+	<a href="#!/regions/{{region._id}}/instruments" class="instrumentos"></a>
 </div>
 
-<div class="logo_mapa"></div>
+<a href="#!/" class="logo_mapa"></a>
 
 <div class="region-map" style="background: url('{{pic.value.path + pic.value.name}}');" >
 	<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px;" data-ng-click="openSubregionModal(subregion)"></div>
