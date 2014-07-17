@@ -4,7 +4,9 @@ module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/viaje-musical',
 	assets: {
 		lib: {
-			css: [],
+			css: [
+				'public/lib/angular-carousel/dist/angular-carousel.css'
+			],
 			js: [
 				'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
@@ -27,8 +29,15 @@ module.exports = {
 				'public/lib/angular-dragdrop/src/angular-dragdrop.js'
 			]
 		},
-		css: 'public/dist/application.min.css',
-		js: 'public/dist/application.min.js'
+		css: [
+			'public/css/*.css',
+			'public/modules/**/css/*.css'
+		],
+		js: [
+			'public/config.js',
+			'public/application.js',
+			'public/modules/*/*.js',
+		],
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
