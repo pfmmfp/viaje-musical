@@ -102,7 +102,20 @@ exports.delete = function(req, res) {
  * List of instruments
  */
 exports.list = function(req, res) {
-	Instrument.find().sort('-created').populate('user', 'displayName').exec(function(err, instruments) {
+	var query = Instrument.find();
+	if ( req.query.by )
+	{
+		query.where( req.query.by );
+	}
+
+	if ( req.query.$in )
+	{
+		query.in( req.query.$in );
+	}
+
+	query.sort('-created').populate('user', 'displayName');
+	
+	query.exec(function(err, instruments) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)

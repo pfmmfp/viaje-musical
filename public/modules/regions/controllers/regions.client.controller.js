@@ -65,7 +65,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		$scope.findOne = function(){
 			var Region = Regions.get({ regionId: $stateParams.regionId}, function()
 			{
-				$scope.regionInstruments = Instruments.query( { field : { $in : Region.instruments } } );
+				$scope.regionInstruments =  Instruments.query( { $in : Region.instruments, by:  "_id"} );
 				$scope.region = Region;
 				$scope.pic.value = {'path': regionsConfig.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
 			});
