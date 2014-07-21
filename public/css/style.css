@@ -7251,19 +7251,23 @@ button.close {
   height: 40px;
   margin-top: 2px;
 }
+.composer .sample-dock .sample-controls .sample-list .sample > .sample-dot,
+.composer .track-grid .track-grid-inner .sample > .sample-dot {
+  float: left;
+  background: url(/modules/composer/img/sample-dot.png) center no-repeat;
+  background-size: 6px 6px;
+  width: 6px;
+  height: 6px;
+  margin-right: 2px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-1 > .sample-dot,
+.composer .track-grid .track-grid-inner .sample.beats-1 > .sample-dot {
+  background-size: 7px 2px;
+  width: 7px;
+  height: 3px;
+}
 .composer .sample-dock .sample-controls .sample-list .sample.beats-1,
 .composer .track-grid .track-grid-inner .sample.beats-1 {
-  cursor: pointer;
-  border-style: solid;
-  border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 17px;
-}
-.composer .sample-dock .sample-controls .sample-list .sample.beats-2,
-.composer .track-grid .track-grid-inner .sample.beats-2 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7271,10 +7275,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 34px;
+  width: 25px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-3,
-.composer .track-grid .track-grid-inner .sample.beats-3 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-2,
+.composer .track-grid .track-grid-inner .sample.beats-2 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7282,7 +7286,18 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 51px;
+  width: 50px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-3,
+.composer .track-grid .track-grid-inner .sample.beats-3 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  width: 75px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-4,
 .composer .track-grid .track-grid-inner .sample.beats-4 {
@@ -7293,21 +7308,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 68px;
+  width: 100px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-5,
 .composer .track-grid .track-grid-inner .sample.beats-5 {
-  cursor: pointer;
-  border-style: solid;
-  border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 85px;
-}
-.composer .sample-dock .sample-controls .sample-list .sample.beats-6,
-.composer .track-grid .track-grid-inner .sample.beats-6 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7315,10 +7319,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 102px;
+  width: 125px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-7,
-.composer .track-grid .track-grid-inner .sample.beats-7 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-6,
+.composer .track-grid .track-grid-inner .sample.beats-6 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7326,10 +7330,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 119px;
+  width: 150px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-8,
-.composer .track-grid .track-grid-inner .sample.beats-8 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-7,
+.composer .track-grid .track-grid-inner .sample.beats-7 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7337,10 +7341,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 136px;
+  width: 175px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-9,
-.composer .track-grid .track-grid-inner .sample.beats-9 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-8,
+.composer .track-grid .track-grid-inner .sample.beats-8 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7348,7 +7352,18 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 153px;
+  width: 200px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-9,
+.composer .track-grid .track-grid-inner .sample.beats-9 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  width: 225px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-10,
 .composer .track-grid .track-grid-inner .sample.beats-10 {
@@ -7359,21 +7374,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 170px;
+  width: 250px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-11,
 .composer .track-grid .track-grid-inner .sample.beats-11 {
-  cursor: pointer;
-  border-style: solid;
-  border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 187px;
-}
-.composer .sample-dock .sample-controls .sample-list .sample.beats-12,
-.composer .track-grid .track-grid-inner .sample.beats-12 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7381,10 +7385,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 204px;
+  width: 275px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-13,
-.composer .track-grid .track-grid-inner .sample.beats-13 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-12,
+.composer .track-grid .track-grid-inner .sample.beats-12 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7392,10 +7396,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 221px;
+  width: 300px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-14,
-.composer .track-grid .track-grid-inner .sample.beats-14 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-13,
+.composer .track-grid .track-grid-inner .sample.beats-13 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7403,10 +7407,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 238px;
+  width: 325px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-15,
-.composer .track-grid .track-grid-inner .sample.beats-15 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-14,
+.composer .track-grid .track-grid-inner .sample.beats-14 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7414,7 +7418,18 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 255px;
+  width: 350px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-15,
+.composer .track-grid .track-grid-inner .sample.beats-15 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
+  width: 375px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-16,
 .composer .track-grid .track-grid-inner .sample.beats-16 {
@@ -7425,21 +7440,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 272px;
+  width: 400px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-17,
 .composer .track-grid .track-grid-inner .sample.beats-17 {
-  cursor: pointer;
-  border-style: solid;
-  border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
-  border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 289px;
-}
-.composer .sample-dock .sample-controls .sample-list .sample.beats-18,
-.composer .track-grid .track-grid-inner .sample.beats-18 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7447,10 +7451,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 306px;
+  width: 425px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-19,
-.composer .track-grid .track-grid-inner .sample.beats-19 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-18,
+.composer .track-grid .track-grid-inner .sample.beats-18 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7458,10 +7462,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 323px;
+  width: 450px;
 }
-.composer .sample-dock .sample-controls .sample-list .sample.beats-20,
-.composer .track-grid .track-grid-inner .sample.beats-20 {
+.composer .sample-dock .sample-controls .sample-list .sample.beats-19,
+.composer .track-grid .track-grid-inner .sample.beats-19 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7469,7 +7473,18 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 340px;
+  width: 475px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-20,
+.composer .track-grid .track-grid-inner .sample.beats-20 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
+  width: 500px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-0,
 .composer .track-grid .track-grid-inner .sample.pos-0 {
@@ -7488,7 +7503,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-1,
 .composer .track-grid .track-grid-inner .sample.pos-1 {
-  left: 17px;
+  left: 25px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-1.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-1.ui-draggable-dragging.trash-can:after {
@@ -7503,7 +7518,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-2,
 .composer .track-grid .track-grid-inner .sample.pos-2 {
-  left: 34px;
+  left: 50px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-2.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-2.ui-draggable-dragging.trash-can:after {
@@ -7518,7 +7533,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-3,
 .composer .track-grid .track-grid-inner .sample.pos-3 {
-  left: 51px;
+  left: 75px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-3.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-3.ui-draggable-dragging.trash-can:after {
@@ -7533,7 +7548,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-4,
 .composer .track-grid .track-grid-inner .sample.pos-4 {
-  left: 68px;
+  left: 100px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-4.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-4.ui-draggable-dragging.trash-can:after {
@@ -7548,7 +7563,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-5,
 .composer .track-grid .track-grid-inner .sample.pos-5 {
-  left: 85px;
+  left: 125px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-5.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-5.ui-draggable-dragging.trash-can:after {
@@ -7563,7 +7578,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-6,
 .composer .track-grid .track-grid-inner .sample.pos-6 {
-  left: 102px;
+  left: 150px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-6.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-6.ui-draggable-dragging.trash-can:after {
@@ -7578,7 +7593,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-7,
 .composer .track-grid .track-grid-inner .sample.pos-7 {
-  left: 119px;
+  left: 175px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-7.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-7.ui-draggable-dragging.trash-can:after {
@@ -7593,7 +7608,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-8,
 .composer .track-grid .track-grid-inner .sample.pos-8 {
-  left: 136px;
+  left: 200px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-8.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-8.ui-draggable-dragging.trash-can:after {
@@ -7608,7 +7623,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-9,
 .composer .track-grid .track-grid-inner .sample.pos-9 {
-  left: 153px;
+  left: 225px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-9.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-9.ui-draggable-dragging.trash-can:after {
@@ -7623,7 +7638,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-10,
 .composer .track-grid .track-grid-inner .sample.pos-10 {
-  left: 170px;
+  left: 250px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-10.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-10.ui-draggable-dragging.trash-can:after {
@@ -7638,7 +7653,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-11,
 .composer .track-grid .track-grid-inner .sample.pos-11 {
-  left: 187px;
+  left: 275px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-11.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-11.ui-draggable-dragging.trash-can:after {
@@ -7653,7 +7668,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-12,
 .composer .track-grid .track-grid-inner .sample.pos-12 {
-  left: 204px;
+  left: 300px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-12.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-12.ui-draggable-dragging.trash-can:after {
@@ -7668,7 +7683,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-13,
 .composer .track-grid .track-grid-inner .sample.pos-13 {
-  left: 221px;
+  left: 325px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-13.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-13.ui-draggable-dragging.trash-can:after {
@@ -7683,7 +7698,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-14,
 .composer .track-grid .track-grid-inner .sample.pos-14 {
-  left: 238px;
+  left: 350px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-14.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-14.ui-draggable-dragging.trash-can:after {
@@ -7698,7 +7713,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-15,
 .composer .track-grid .track-grid-inner .sample.pos-15 {
-  left: 255px;
+  left: 375px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-15.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-15.ui-draggable-dragging.trash-can:after {
@@ -7713,7 +7728,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-16,
 .composer .track-grid .track-grid-inner .sample.pos-16 {
-  left: 272px;
+  left: 400px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-16.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-16.ui-draggable-dragging.trash-can:after {
@@ -7728,7 +7743,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-17,
 .composer .track-grid .track-grid-inner .sample.pos-17 {
-  left: 289px;
+  left: 425px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-17.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-17.ui-draggable-dragging.trash-can:after {
@@ -7743,7 +7758,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-18,
 .composer .track-grid .track-grid-inner .sample.pos-18 {
-  left: 306px;
+  left: 450px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-18.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-18.ui-draggable-dragging.trash-can:after {
@@ -7758,7 +7773,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-19,
 .composer .track-grid .track-grid-inner .sample.pos-19 {
-  left: 323px;
+  left: 475px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-19.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-19.ui-draggable-dragging.trash-can:after {
@@ -7773,7 +7788,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-20,
 .composer .track-grid .track-grid-inner .sample.pos-20 {
-  left: 340px;
+  left: 500px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-20.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-20.ui-draggable-dragging.trash-can:after {
@@ -7788,7 +7803,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-21,
 .composer .track-grid .track-grid-inner .sample.pos-21 {
-  left: 357px;
+  left: 525px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-21.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-21.ui-draggable-dragging.trash-can:after {
@@ -7803,7 +7818,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-22,
 .composer .track-grid .track-grid-inner .sample.pos-22 {
-  left: 374px;
+  left: 550px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-22.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-22.ui-draggable-dragging.trash-can:after {
@@ -7818,7 +7833,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-23,
 .composer .track-grid .track-grid-inner .sample.pos-23 {
-  left: 391px;
+  left: 575px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-23.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-23.ui-draggable-dragging.trash-can:after {
@@ -7833,7 +7848,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-24,
 .composer .track-grid .track-grid-inner .sample.pos-24 {
-  left: 408px;
+  left: 600px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-24.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-24.ui-draggable-dragging.trash-can:after {
@@ -7848,7 +7863,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-25,
 .composer .track-grid .track-grid-inner .sample.pos-25 {
-  left: 425px;
+  left: 625px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-25.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-25.ui-draggable-dragging.trash-can:after {
@@ -7863,7 +7878,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-26,
 .composer .track-grid .track-grid-inner .sample.pos-26 {
-  left: 442px;
+  left: 650px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-26.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-26.ui-draggable-dragging.trash-can:after {
@@ -7878,7 +7893,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-27,
 .composer .track-grid .track-grid-inner .sample.pos-27 {
-  left: 459px;
+  left: 675px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-27.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-27.ui-draggable-dragging.trash-can:after {
@@ -7893,7 +7908,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-28,
 .composer .track-grid .track-grid-inner .sample.pos-28 {
-  left: 476px;
+  left: 700px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-28.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-28.ui-draggable-dragging.trash-can:after {
@@ -7908,7 +7923,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-29,
 .composer .track-grid .track-grid-inner .sample.pos-29 {
-  left: 493px;
+  left: 725px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-29.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-29.ui-draggable-dragging.trash-can:after {
@@ -7923,7 +7938,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-30,
 .composer .track-grid .track-grid-inner .sample.pos-30 {
-  left: 510px;
+  left: 750px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-30.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-30.ui-draggable-dragging.trash-can:after {
@@ -7938,7 +7953,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-31,
 .composer .track-grid .track-grid-inner .sample.pos-31 {
-  left: 527px;
+  left: 775px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-31.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-31.ui-draggable-dragging.trash-can:after {
@@ -7953,7 +7968,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-32,
 .composer .track-grid .track-grid-inner .sample.pos-32 {
-  left: 544px;
+  left: 800px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-32.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-32.ui-draggable-dragging.trash-can:after {
@@ -7968,7 +7983,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-33,
 .composer .track-grid .track-grid-inner .sample.pos-33 {
-  left: 561px;
+  left: 825px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-33.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-33.ui-draggable-dragging.trash-can:after {
@@ -7983,7 +7998,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-34,
 .composer .track-grid .track-grid-inner .sample.pos-34 {
-  left: 578px;
+  left: 850px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-34.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-34.ui-draggable-dragging.trash-can:after {
@@ -7998,7 +8013,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-35,
 .composer .track-grid .track-grid-inner .sample.pos-35 {
-  left: 595px;
+  left: 875px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-35.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-35.ui-draggable-dragging.trash-can:after {
@@ -8013,7 +8028,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-36,
 .composer .track-grid .track-grid-inner .sample.pos-36 {
-  left: 612px;
+  left: 900px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-36.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-36.ui-draggable-dragging.trash-can:after {
@@ -8028,7 +8043,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-37,
 .composer .track-grid .track-grid-inner .sample.pos-37 {
-  left: 629px;
+  left: 925px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-37.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-37.ui-draggable-dragging.trash-can:after {
@@ -8043,7 +8058,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-38,
 .composer .track-grid .track-grid-inner .sample.pos-38 {
-  left: 646px;
+  left: 950px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-38.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-38.ui-draggable-dragging.trash-can:after {
@@ -8058,7 +8073,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-39,
 .composer .track-grid .track-grid-inner .sample.pos-39 {
-  left: 663px;
+  left: 975px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-39.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-39.ui-draggable-dragging.trash-can:after {
@@ -8073,7 +8088,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-40,
 .composer .track-grid .track-grid-inner .sample.pos-40 {
-  left: 680px;
+  left: 1000px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-40.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-40.ui-draggable-dragging.trash-can:after {
@@ -8088,7 +8103,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-41,
 .composer .track-grid .track-grid-inner .sample.pos-41 {
-  left: 697px;
+  left: 1025px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-41.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-41.ui-draggable-dragging.trash-can:after {
@@ -8103,7 +8118,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-42,
 .composer .track-grid .track-grid-inner .sample.pos-42 {
-  left: 714px;
+  left: 1050px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-42.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-42.ui-draggable-dragging.trash-can:after {
@@ -8118,7 +8133,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-43,
 .composer .track-grid .track-grid-inner .sample.pos-43 {
-  left: 731px;
+  left: 1075px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-43.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-43.ui-draggable-dragging.trash-can:after {
@@ -8133,7 +8148,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-44,
 .composer .track-grid .track-grid-inner .sample.pos-44 {
-  left: 748px;
+  left: 1100px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-44.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-44.ui-draggable-dragging.trash-can:after {
@@ -8148,7 +8163,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-45,
 .composer .track-grid .track-grid-inner .sample.pos-45 {
-  left: 765px;
+  left: 1125px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-45.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-45.ui-draggable-dragging.trash-can:after {
@@ -8163,7 +8178,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-46,
 .composer .track-grid .track-grid-inner .sample.pos-46 {
-  left: 782px;
+  left: 1150px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-46.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-46.ui-draggable-dragging.trash-can:after {
@@ -8178,7 +8193,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-47,
 .composer .track-grid .track-grid-inner .sample.pos-47 {
-  left: 799px;
+  left: 1175px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-47.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-47.ui-draggable-dragging.trash-can:after {
@@ -8193,7 +8208,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-48,
 .composer .track-grid .track-grid-inner .sample.pos-48 {
-  left: 816px;
+  left: 1200px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-48.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-48.ui-draggable-dragging.trash-can:after {
@@ -8208,7 +8223,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-49,
 .composer .track-grid .track-grid-inner .sample.pos-49 {
-  left: 833px;
+  left: 1225px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-49.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-49.ui-draggable-dragging.trash-can:after {
@@ -8223,7 +8238,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-50,
 .composer .track-grid .track-grid-inner .sample.pos-50 {
-  left: 850px;
+  left: 1250px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-50.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-50.ui-draggable-dragging.trash-can:after {
@@ -8238,7 +8253,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-51,
 .composer .track-grid .track-grid-inner .sample.pos-51 {
-  left: 867px;
+  left: 1275px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-51.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-51.ui-draggable-dragging.trash-can:after {
@@ -8253,7 +8268,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-52,
 .composer .track-grid .track-grid-inner .sample.pos-52 {
-  left: 884px;
+  left: 1300px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-52.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-52.ui-draggable-dragging.trash-can:after {
@@ -8268,7 +8283,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-53,
 .composer .track-grid .track-grid-inner .sample.pos-53 {
-  left: 901px;
+  left: 1325px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-53.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-53.ui-draggable-dragging.trash-can:after {
@@ -8283,7 +8298,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-54,
 .composer .track-grid .track-grid-inner .sample.pos-54 {
-  left: 918px;
+  left: 1350px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-54.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-54.ui-draggable-dragging.trash-can:after {
@@ -8298,7 +8313,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-55,
 .composer .track-grid .track-grid-inner .sample.pos-55 {
-  left: 935px;
+  left: 1375px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-55.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-55.ui-draggable-dragging.trash-can:after {
@@ -8313,7 +8328,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-56,
 .composer .track-grid .track-grid-inner .sample.pos-56 {
-  left: 952px;
+  left: 1400px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-56.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-56.ui-draggable-dragging.trash-can:after {
@@ -8328,7 +8343,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-57,
 .composer .track-grid .track-grid-inner .sample.pos-57 {
-  left: 969px;
+  left: 1425px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-57.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-57.ui-draggable-dragging.trash-can:after {
@@ -8343,7 +8358,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-58,
 .composer .track-grid .track-grid-inner .sample.pos-58 {
-  left: 986px;
+  left: 1450px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-58.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-58.ui-draggable-dragging.trash-can:after {
@@ -8358,7 +8373,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-59,
 .composer .track-grid .track-grid-inner .sample.pos-59 {
-  left: 1003px;
+  left: 1475px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-59.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-59.ui-draggable-dragging.trash-can:after {
@@ -8373,7 +8388,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-60,
 .composer .track-grid .track-grid-inner .sample.pos-60 {
-  left: 1020px;
+  left: 1500px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-60.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-60.ui-draggable-dragging.trash-can:after {
@@ -8388,7 +8403,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-61,
 .composer .track-grid .track-grid-inner .sample.pos-61 {
-  left: 1037px;
+  left: 1525px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-61.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-61.ui-draggable-dragging.trash-can:after {
@@ -8403,7 +8418,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-62,
 .composer .track-grid .track-grid-inner .sample.pos-62 {
-  left: 1054px;
+  left: 1550px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-62.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-62.ui-draggable-dragging.trash-can:after {
@@ -8418,7 +8433,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-63,
 .composer .track-grid .track-grid-inner .sample.pos-63 {
-  left: 1071px;
+  left: 1575px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-63.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-63.ui-draggable-dragging.trash-can:after {
@@ -8433,7 +8448,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-64,
 .composer .track-grid .track-grid-inner .sample.pos-64 {
-  left: 1088px;
+  left: 1600px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-64.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-64.ui-draggable-dragging.trash-can:after {
@@ -8448,7 +8463,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-65,
 .composer .track-grid .track-grid-inner .sample.pos-65 {
-  left: 1105px;
+  left: 1625px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-65.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-65.ui-draggable-dragging.trash-can:after {
@@ -8463,7 +8478,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-66,
 .composer .track-grid .track-grid-inner .sample.pos-66 {
-  left: 1122px;
+  left: 1650px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-66.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-66.ui-draggable-dragging.trash-can:after {
@@ -8478,7 +8493,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-67,
 .composer .track-grid .track-grid-inner .sample.pos-67 {
-  left: 1139px;
+  left: 1675px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-67.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-67.ui-draggable-dragging.trash-can:after {
@@ -8493,7 +8508,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-68,
 .composer .track-grid .track-grid-inner .sample.pos-68 {
-  left: 1156px;
+  left: 1700px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-68.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-68.ui-draggable-dragging.trash-can:after {
@@ -8508,7 +8523,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-69,
 .composer .track-grid .track-grid-inner .sample.pos-69 {
-  left: 1173px;
+  left: 1725px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-69.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-69.ui-draggable-dragging.trash-can:after {
@@ -8523,7 +8538,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-70,
 .composer .track-grid .track-grid-inner .sample.pos-70 {
-  left: 1190px;
+  left: 1750px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-70.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-70.ui-draggable-dragging.trash-can:after {
@@ -8538,7 +8553,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-71,
 .composer .track-grid .track-grid-inner .sample.pos-71 {
-  left: 1207px;
+  left: 1775px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-71.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-71.ui-draggable-dragging.trash-can:after {
@@ -8553,7 +8568,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-72,
 .composer .track-grid .track-grid-inner .sample.pos-72 {
-  left: 1224px;
+  left: 1800px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-72.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-72.ui-draggable-dragging.trash-can:after {
@@ -8568,7 +8583,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-73,
 .composer .track-grid .track-grid-inner .sample.pos-73 {
-  left: 1241px;
+  left: 1825px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-73.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-73.ui-draggable-dragging.trash-can:after {
@@ -8583,7 +8598,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-74,
 .composer .track-grid .track-grid-inner .sample.pos-74 {
-  left: 1258px;
+  left: 1850px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-74.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-74.ui-draggable-dragging.trash-can:after {
@@ -8598,7 +8613,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-75,
 .composer .track-grid .track-grid-inner .sample.pos-75 {
-  left: 1275px;
+  left: 1875px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-75.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-75.ui-draggable-dragging.trash-can:after {
@@ -8613,7 +8628,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-76,
 .composer .track-grid .track-grid-inner .sample.pos-76 {
-  left: 1292px;
+  left: 1900px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-76.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-76.ui-draggable-dragging.trash-can:after {
@@ -8628,7 +8643,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-77,
 .composer .track-grid .track-grid-inner .sample.pos-77 {
-  left: 1309px;
+  left: 1925px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-77.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-77.ui-draggable-dragging.trash-can:after {
@@ -8643,7 +8658,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-78,
 .composer .track-grid .track-grid-inner .sample.pos-78 {
-  left: 1326px;
+  left: 1950px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-78.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-78.ui-draggable-dragging.trash-can:after {
@@ -8658,7 +8673,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-79,
 .composer .track-grid .track-grid-inner .sample.pos-79 {
-  left: 1343px;
+  left: 1975px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-79.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-79.ui-draggable-dragging.trash-can:after {
@@ -8673,7 +8688,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-80,
 .composer .track-grid .track-grid-inner .sample.pos-80 {
-  left: 1360px;
+  left: 2000px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-80.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-80.ui-draggable-dragging.trash-can:after {
@@ -8688,7 +8703,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-81,
 .composer .track-grid .track-grid-inner .sample.pos-81 {
-  left: 1377px;
+  left: 2025px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-81.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-81.ui-draggable-dragging.trash-can:after {
@@ -8703,7 +8718,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-82,
 .composer .track-grid .track-grid-inner .sample.pos-82 {
-  left: 1394px;
+  left: 2050px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-82.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-82.ui-draggable-dragging.trash-can:after {
@@ -8718,7 +8733,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-83,
 .composer .track-grid .track-grid-inner .sample.pos-83 {
-  left: 1411px;
+  left: 2075px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-83.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-83.ui-draggable-dragging.trash-can:after {
@@ -8733,7 +8748,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-84,
 .composer .track-grid .track-grid-inner .sample.pos-84 {
-  left: 1428px;
+  left: 2100px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-84.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-84.ui-draggable-dragging.trash-can:after {
@@ -8748,7 +8763,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-85,
 .composer .track-grid .track-grid-inner .sample.pos-85 {
-  left: 1445px;
+  left: 2125px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-85.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-85.ui-draggable-dragging.trash-can:after {
@@ -8763,7 +8778,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-86,
 .composer .track-grid .track-grid-inner .sample.pos-86 {
-  left: 1462px;
+  left: 2150px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-86.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-86.ui-draggable-dragging.trash-can:after {
@@ -8778,7 +8793,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-87,
 .composer .track-grid .track-grid-inner .sample.pos-87 {
-  left: 1479px;
+  left: 2175px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-87.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-87.ui-draggable-dragging.trash-can:after {
@@ -8793,7 +8808,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-88,
 .composer .track-grid .track-grid-inner .sample.pos-88 {
-  left: 1496px;
+  left: 2200px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-88.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-88.ui-draggable-dragging.trash-can:after {
@@ -8808,7 +8823,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-89,
 .composer .track-grid .track-grid-inner .sample.pos-89 {
-  left: 1513px;
+  left: 2225px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-89.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-89.ui-draggable-dragging.trash-can:after {
@@ -8823,7 +8838,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-90,
 .composer .track-grid .track-grid-inner .sample.pos-90 {
-  left: 1530px;
+  left: 2250px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-90.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-90.ui-draggable-dragging.trash-can:after {
@@ -8838,7 +8853,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-91,
 .composer .track-grid .track-grid-inner .sample.pos-91 {
-  left: 1547px;
+  left: 2275px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-91.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-91.ui-draggable-dragging.trash-can:after {
@@ -8853,7 +8868,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-92,
 .composer .track-grid .track-grid-inner .sample.pos-92 {
-  left: 1564px;
+  left: 2300px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-92.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-92.ui-draggable-dragging.trash-can:after {
@@ -8868,7 +8883,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-93,
 .composer .track-grid .track-grid-inner .sample.pos-93 {
-  left: 1581px;
+  left: 2325px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-93.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-93.ui-draggable-dragging.trash-can:after {
@@ -8883,7 +8898,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-94,
 .composer .track-grid .track-grid-inner .sample.pos-94 {
-  left: 1598px;
+  left: 2350px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-94.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-94.ui-draggable-dragging.trash-can:after {
@@ -8898,7 +8913,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-95,
 .composer .track-grid .track-grid-inner .sample.pos-95 {
-  left: 1615px;
+  left: 2375px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-95.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-95.ui-draggable-dragging.trash-can:after {
@@ -8913,7 +8928,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-96,
 .composer .track-grid .track-grid-inner .sample.pos-96 {
-  left: 1632px;
+  left: 2400px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-96.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-96.ui-draggable-dragging.trash-can:after {
@@ -8928,7 +8943,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-97,
 .composer .track-grid .track-grid-inner .sample.pos-97 {
-  left: 1649px;
+  left: 2425px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-97.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-97.ui-draggable-dragging.trash-can:after {
@@ -8943,7 +8958,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-98,
 .composer .track-grid .track-grid-inner .sample.pos-98 {
-  left: 1666px;
+  left: 2450px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-98.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-98.ui-draggable-dragging.trash-can:after {
@@ -8958,7 +8973,7 @@ button.close {
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-99,
 .composer .track-grid .track-grid-inner .sample.pos-99 {
-  left: 1683px;
+  left: 2475px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-99.ui-draggable-dragging.trash-can:after,
 .composer .track-grid .track-grid-inner .sample.pos-99.ui-draggable-dragging.trash-can:after {
@@ -8994,6 +9009,23 @@ button {
 
 .composer {
   margin-bottom: 50px;
+  transition: opacity 0.5s ease-out;
+}
+.composer.loading {
+  opacity: 0;
+}
+.composer.loaded {
+  opacity: 1;
+}
+
+.composer-loading-screen {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

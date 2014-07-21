@@ -8,7 +8,7 @@
       ng-model="newSample">
       <sample 
         data-ng-repeat="sample in track.samplesBuffer" 
-        instrument="track.name | lowercase" 
+        instrument="track.name" 
         sample="sample"
         track="track" />
     </ul>

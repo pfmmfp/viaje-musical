@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioContext',
-	function(_, TracksConfig, audioContext) {
+angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioContext', '$rootScope',
+	function(_, TracksConfig, audioContext, $rootScope) {
 
 		var SampleTrack = function(name, sampleRefs, sampleComposition, manager) {
 			this.name = name;
@@ -33,8 +33,7 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 	    audioContext.decodeAudioData(request.response, function(buffer) {
 	      $this.samples[sample] = buffer;
 	      if (Object.keys($this.samples).length === $this.sampleRefs.length) {
-	        console.log("All samples retrieved! ", $this.sampleRefs[0]);
-	        // TODO trigger event       
+          $this.manager.onTrackLoaded();
 	      }
 	    }, function() { console.log("Error decoding sample ", sample); }); 
 	  };
@@ -77,8 +76,9 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 	  SampleTrack.prototype.addSample = function(sample, position) {
 	    this.samplesBuffer.push({
 	      beats: sample.beats,
+        file: sample.file,
+        group: sample.group,
 	      buffer: this.samples[sample.file],
-	      file: sample.file,
         pos: position
 	    });
 	    return sample.beats;
@@ -93,8 +93,14 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
     };
 
     SampleTrack.prototype.duration = function() {
-      var last = _.last(this.sourcesBuffer);
+      var last = this.lastSourcesBuffer();
       return (last.pos + last.beats) * this.manager.beat;
+    };
+
+    SampleTrack.prototype.lastSourceBuffer = function() {
+      return _.max(this.sourcesBuffer, function(sourceBuffer) {
+        return sourceBuffer.pos;
+      });
     };
 
     SampleTrack.prototype.stop = function() {
@@ -111,7 +117,7 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 	      this.sourcesBuffer = this.samplesBuffer.map(function(sampleBuffer) {
 	        return this.createSource(sampleBuffer);
 	      }, this);
-        _.last(this.sourcesBuffer).source.onended = function() { this.playing = false; }.bind(this);
+        this.lastSourceBuffer().source.onended = function() { this.playing = false; }.bind(this);
 	      angular.forEach(this.sourcesBuffer, function(sourceBuffer) {
 	        sourceBuffer.source.start(this.manager.playTime + sourceBuffer.pos * this.manager.beat);
 	      }, this);   
@@ -128,6 +134,7 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
       this.maxDuration = this.beat * this.maxBeats;
       this.playTime = null;
       this.playOffset = 0.1;
+      this.loadedTracks = 0;
     };
 
     angular.extend(TrackManager.prototype, {
@@ -159,11 +166,17 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
       cleanUp: function() {
         angular.forEach(this.tracks, function(track) { track.empty(); });        
       },
+      onTrackLoaded: function() {
+        this.loadedTracks++;
+        if(this.loadedTracks === this.tracks.length) {
+          $rootScope.$broadcast('tracks-loaded');
+        }
+      },
       loadExample: function() {
         angular.forEach(this.tracks, function(track) { 
           track.empty(); 
           angular.forEach(track.sampleComposition, function(sample) {
-            var sampleRef = _.find(track.sampleRefs, function(sampleRef) { return sampleRef.file === sample.file });
+            var sampleRef = _.findWhere(track.sampleRefs, { file: sample.file });
             track.addSample(sampleRef, sample.pos);
           });
         });        
@@ -175,12 +188,13 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 		return {
 			tracksConfig: TracksConfig,
       grid: {
-        beatSize: 17, //px
+        beatSize: 25, //px
         beats: trackManager.maxBeats
       },
 			createTrack: function(name) {
-				var track = _.find(this.tracksConfig, function(track) { return track.name === name });
-        return trackManager.createTrack(name, track.samples, track.sampleComposition);
+        var instrument = this.tracksConfig.byName(name);
+        return trackManager.createTrack(name, 
+          instrument.samples, instrument.sampleComposition);
 			},
       playProgress: function() {
         return trackManager.playProgress() * this.grid.beatSize;

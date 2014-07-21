@@ -2,6 +2,10 @@
 
 angular.module('composer').controller('ComposerController', ['$scope', '$interval', '_', 'composer', 
 	function($scope, $interval, _, composer) {
+    $scope.$on('tracks-loaded', function() {
+      angular.element('.composer').removeClass('loading').addClass('loaded');
+      angular.element('.composer-loading-screen').css('display', 'none');
+    });
     angular.extend($scope, {
       instruments : composer.tracksConfig,
       selectedInstrument: composer.tracksConfig[0],
@@ -15,7 +19,7 @@ angular.module('composer').controller('ComposerController', ['$scope', '$interva
         $scope.selectedInstrument = instrument;
       },
       activeSamples: function() {
-        var maxBeats = 72,
+        var maxBeats = 48,
           beatsSum,
           samples = $scope.selectedInstrument.samples,
           pageComplete = false;
@@ -54,7 +58,15 @@ angular.module('composer').controller('ComposerController', ['$scope', '$interva
         this.updateCursor();
       },
       updateCursor: function() {
-        angular.element(".timeline-cursor").css('left', composer.playProgress() + 'px');
+        var grid = angular.element('.track-grids'),
+          cursor = angular.element(".timeline-cursor"),
+          position = composer.playProgress(),
+          scrollMargin = 50;
+        cursor.css('left', position + 'px');
+        if (position > grid.width() + grid.scrollLeft() - scrollMargin) 
+          grid.scrollLeft(grid.scrollLeft() + 100);
+        if (position < grid.scrollLeft()) 
+          grid.scrollLeft(position);
       },
       closeMessage: function() {
         $scope.messageTemplate = null;

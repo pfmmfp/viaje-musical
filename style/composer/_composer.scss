@@ -15,4 +15,18 @@ button { border: none; }
 
 .composer {
   margin-bottom: 50px;
+  transition: opacity 0.5s ease-out;
+  &.loading {
+    opacity: 0;
+  }
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.composer-loading-screen {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  text-align: center;
 }
