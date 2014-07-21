@@ -22,8 +22,17 @@
 
 .mapa-home{
 	background: url('/modules/core/img/app/mapa_home.png');
-	width: 411px; 
-	height: 563px;
+
+	min-width: 411px; 
+	min-height: 563px;
+	
+/*	max-width: 575px; */
+	max-height: 750px;
+	
+	background-size: 100% 100%;
+	width: 43%; 
+	height: 94%;
+		
 	position: absolute;
 	top: 0;
 	right: 0;
