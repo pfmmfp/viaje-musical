@@ -1,3 +1,7 @@
+$timeline-grid-size: 25px;
+$max-sample-beat: 21;
+$max-sample-pos: 100;
+
 @mixin sample-box($sample) {
   cursor: pointer;
   border-style: solid;
@@ -8,33 +12,53 @@
   border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7 fill;
 }
 
-@mixin beat-classes($beat-column-rate) {
-  @for $i from 1 to 20 {
+.composer .sample-dock .sample-controls .sample-list .sample,
+.composer .track-grid .track-grid-inner .sample {
+  height: 40px;
+  margin-top: 2px;
+
+  & > .sample-dot {
+    float:left;
+    background: url(/modules/composer/img/sample-dot.png) center no-repeat;
+    background-size: 6px 6px;
+    width: 6px;
+    height: 6px;
+    margin-right: 2px;
+  }
+
+  &.beats-1 > .sample-dot {
+    background-size: 7px 2px;
+    width: 7px;
+    height: 3px;
+  }
+
+  @for $i from 1 to $max-sample-beat {
     &.beats-#{$i} {
-      @if $i % 3 == 0 {
-        @include sample-box(sample3);
-      } @else if $i % 2 == 0 {
-        @include sample-box(sample2);
-      } @else {
-        @include sample-box(sample1);
+      @include sample-box('sample' + (($i % 3)+1));
+      width: $timeline-grid-size * $i;
+    }       
+  }
+  @for $i from 0 to $max-sample-pos {
+    &.pos-#{$i} {
+      left: $timeline-grid-size * $i;
+      &.ui-draggable-dragging.trash-can:after { 
+        content: " ";
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background-image: url(/modules/composer/img/papelera-sample.png); 
+        background-size: 22px 20px;
+        width: 22px;
+        height: 20px;
       }
-      @include make-xs-column($i / $beat-column-rate, 0);
-      @include make-sm-column($i / $beat-column-rate, 0);
-      @include make-md-column($i / $beat-column-rate, 0);
-    }          
+    }
   }
 }
 
-.composer .sample-dock .sample-controls .sample-list .sample,
-.composer .track .track-bar .sample {
-  height: 40px;
-  margin-top: 2px;
-}
-
 .composer .sample-dock .sample-controls .sample-list .sample {
-  @include beat-classes(2);
+  float: left;
 }
 
-.composer .track .track-bar .sample {
-  @include beat-classes(4.5);
+.composer .track-grid .track-grid-inner .sample {
+  position: absolute;
 }

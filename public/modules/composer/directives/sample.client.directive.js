@@ -1,33 +1,60 @@
 'use strict';
 
-angular.module('composer').directive('sample', [ 
-	function() {
+angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
+	function(composer, TracksConfig, _) {
 		return {
 			templateUrl: '/modules/composer/views/sample.client.directive.html',
 			restrict: 'E',
 			scope: {
-				beats: '=',
 				instrument: '=',
-				file: '='
+				sample: '=',
+				track: '=',
 			},
 			link: function postLink(scope, element, attrs) {
+				var instrumentName = scope.instrument.toLowerCase(),
+					gridSelector = '.track-grid.' + instrumentName + ' .track-grid-inner',
+					tracked = scope.track !== undefined;
 				angular.extend(scope, {
+					indexer: function() {
+		        var samples = _.where(TracksConfig.byName(scope.instrument).samples, 
+		        	{ beats: scope.sample.beats, group: scope.sample.group });
+		        var sample = _.findWhere(samples, { file: scope.sample.file, beats: scope.sample.beats });
+		        return new Array(samples.indexOf(sample));
+		      },
+					gridOffset: function() {
+						return angular.element(gridSelector).offset();
+					},
+					dragToGrid: function(event, ui) {
+						var helper = angular.element(ui.helper),
+							offset = scope.gridOffset(),
+							beatSize = composer.grid.beatSize,
+							magicNumber = tracked ? 0 : 16;
+						if (helper.data('grid')) {
+							ui.position.left = Math.floor(ui.position.left / beatSize) * beatSize - 
+								Math.floor((offset.left - element.offset().left) % beatSize) - magicNumber;
+							ui.position.top = scope.gridOffset().top - element.offset().top;
+						}
+					},
+					delete: function(event, ui) {
+						var helper = angular.element(ui.helper);
+						if (!helper.data('grid')) {
+							helper.remove();
+							scope.track.removeSample(scope.sample);
+						}
+					},
 					jquiOptions: function() {
-						var instrumentName = scope.instrument.toLowerCase();
 						return {
-							grid: [20, 10],
-							revert: 'invalid',
-						  helper: 'clone', 
-						  snap: '.track.' + instrumentName + ' .track-bar', 
-						  snapMode: 'inner', 
-						  scope: instrumentName, 
-						  cursorAt: { top: 20, left: 5 }
+							revert: tracked ? false : 'invalid',
+						  helper: tracked ? 'original' : 'clone', 
+						  scope: instrumentName,
+						  containment: tracked ? '.track-grids' : ''
 						};
 					},
 					draggableOptions: function() {
 						return {
-							// animate: true,
-							placeholder: 'keep'
+							placeholder: 'keep',
+							onDrag: 'dragToGrid',
+							onStop: 'delete'
 						};
 					}
 				});

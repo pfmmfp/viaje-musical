@@ -1,21 +1,20 @@
 'use strict';
 
-angular.module('composer').factory('composer', ['$window', '_',
-	function($window, _) {
+angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioContext', '$rootScope',
+	function(_, TracksConfig, audioContext, $rootScope) {
 
-	  $window.AudioContext = $window.AudioContext || $window.webkitAudioContext;
-	  var audioContext = new $window.AudioContext();
-
-
-		var SampleTrack = function(name, sampleRefs) {
+		var SampleTrack = function(name, sampleRefs, sampleComposition, manager) {
 			this.name = name;
 	    this.sampleRefs = sampleRefs;
+      this.sampleComposition = sampleComposition;
+      this.manager = manager;
 	    this.samples = {};
 	    this.loadSamples();
 	    this.samplesBuffer = [];
 	    this.sourcesBuffer = [];
 	    this.playing = false;
-	    this.KICK_DELTA = 0;
+      this.gainNode = audioContext.createGain();
+      this.gainNode.connect(audioContext.destination);
 	  };
 
 	  SampleTrack.prototype.loadSamples = function() {
@@ -34,10 +33,9 @@ angular.module('composer').factory('composer', ['$window', '_',
 	    audioContext.decodeAudioData(request.response, function(buffer) {
 	      $this.samples[sample] = buffer;
 	      if (Object.keys($this.samples).length === $this.sampleRefs.length) {
-	        console.log("All samples retrieved! ", $this.sampleRefs[0]);
-	        // TODO trigger event       
+          $this.manager.onTrackLoaded();
 	      }
-	    }, function() { console.log("ERROR"); }); 
+	    }, function() { console.log("Error decoding sample ", sample); }); 
 	  };
 
 	  SampleTrack.prototype.empty = function() {
@@ -51,49 +49,59 @@ angular.module('composer').factory('composer', ['$window', '_',
 	  SampleTrack.prototype.createNode = function(buffer) {
 	    var source = audioContext.createBufferSource();
 	    source.buffer = buffer;
-	    source.connect(audioContext.destination);       
+	    source.connect(this.gainNode);       
 	    return source;
 	  };  
 
 	  SampleTrack.prototype.createSource = function(sampleBuffer) {
 	    return { 
+        pos: sampleBuffer.pos,
 	      beats: sampleBuffer.beats,
 	      source: this.createNode(sampleBuffer.buffer)
 	    };
 	  };
 
 	  SampleTrack.prototype.removeSample = function(sample) {
-	    sample = this.samples[sample];
 	    this.samplesBuffer.splice(this.samplesBuffer.indexOf(sample), 1);
 	  };
 
-	  SampleTrack.prototype.addSample = function(sample) {
-	    var beats = beatsFromName(sample);
+    SampleTrack.prototype.moveSample = function(sample, newPos) {
+      var sampleToMove = _.find(this.samplesBuffer, function(sampleBuffer) {
+        return (sample.file === sampleBuffer.file && 
+          sample.pos === sampleBuffer.pos);
+      });
+      sampleToMove.pos = newPos;
+    };
+
+	  SampleTrack.prototype.addSample = function(sample, position) {
 	    this.samplesBuffer.push({
-	      beats: beats,
-	      buffer: this.samples[sample],
-	      file: sample
+	      beats: sample.beats,
+        file: sample.file,
+        group: sample.group,
+	      buffer: this.samples[sample.file],
+        pos: position
 	    });
-	    return beats;
+	    return sample.beats;
 	  };
-
-	  function beatsFromName(name) {
-	    return name.replace(/T.*$/,'')
-	      .replace(/Quena-/, '')
-	      .replace(/Char-/, '')
-	      .replace(/Chas-/, '')
-	      .replace(/Bombo-/, '');
-	  }
-
-	  SampleTrack.prototype.duration = function() {
-	    return _.reduce(this.samplesBuffer, function(memo, sample) {
-	      return memo + sample.duration;
-	    }, 0);
-	  };  
 
 	  SampleTrack.prototype.toggleMute = function() {
-	    // TODO
+      this.gainNode.gain.value = this.isMute() ? 1 : 0;
 	  };
+
+    SampleTrack.prototype.isMute = function() {
+      return this.gainNode.gain.value === 0;
+    };
+
+    SampleTrack.prototype.duration = function() {
+      var last = this.lastSourcesBuffer();
+      return (last.pos + last.beats) * this.manager.beat;
+    };
+
+    SampleTrack.prototype.lastSourceBuffer = function() {
+      return _.max(this.sourcesBuffer, function(sourceBuffer) {
+        return sourceBuffer.pos;
+      });
+    };
 
     SampleTrack.prototype.stop = function() {
       if (this.playing) {
@@ -105,92 +113,96 @@ angular.module('composer').factory('composer', ['$window', '_',
     };
 
 	  SampleTrack.prototype.play = function() {
-	    if (!this.playing) {
+	    if (!this.playing && !_.isEmpty(this.samplesBuffer)) {
 	      this.sourcesBuffer = this.samplesBuffer.map(function(sampleBuffer) {
 	        return this.createSource(sampleBuffer);
 	      }, this);
-	      var time = audioContext.currentTime + 0.1;
-	      var tempo = 96; // BPM (beats per minute)
-	      var beat = (60 / tempo); // negra
+        this.lastSourceBuffer().source.onended = function() { this.playing = false; }.bind(this);
 	      angular.forEach(this.sourcesBuffer, function(sourceBuffer) {
-	        sourceBuffer.source.start(time);
-	        time += sourceBuffer.beats * beat;
-	      });   
+	        sourceBuffer.source.start(this.manager.playTime + sourceBuffer.pos * this.manager.beat);
+	      }, this);   
         this.playing = true;
       }   
 	  };
 
-    var Player = function() {
+
+    var TrackManager = function() {
       this.tracks = [];
-      this.playing = false;
+      this.tempo = 96; // BPM (beats per minute)
+      this.beat = 60 / this.tempo; // negra
+      this.maxBeats = 70;
+      this.maxDuration = this.beat * this.maxBeats;
+      this.playTime = null;
+      this.playOffset = 0.1;
+      this.loadedTracks = 0;
     };
 
-    angular.extend(Player.prototype, {
-      createTrack: function(name, samples) {
-        var newSampleTrack = new SampleTrack(name, samples);
+    angular.extend(TrackManager.prototype, {
+      createTrack: function(name, samples, sampleComposition) {
+        var newSampleTrack = new SampleTrack(name, samples, sampleComposition, this);
         this.tracks.push(newSampleTrack);
         return newSampleTrack;
       },
+      duration: function() {
+        return _.max(this.tracks, function(track) { return track.duration(); }).duration();
+      },
+      playProgress: function() {
+        if(!this.isPlaying()) return 0;
+        return (audioContext.currentTime - this.playTime) / this.beat;
+      },
       play: function() {
-        angular.forEach(this.tracks, function(track) { track.play(); });
+        if (!this.isPlaying()) {
+          this.playTime = audioContext.currentTime + this.playOffset;
+          angular.forEach(this.tracks, function(track) { track.play(); });
+        }
       },
       stop: function() {
-        angular.forEach(this.tracks, function(track) { track.stop(); });
+        if (this.isPlaying())
+          angular.forEach(this.tracks, function(track) { track.stop(); });
+      },
+      isPlaying: function() {
+        return _.some(this.tracks, function(track) { return track.playing; });
       },
       cleanUp: function() {
         angular.forEach(this.tracks, function(track) { track.empty(); });        
+      },
+      onTrackLoaded: function() {
+        this.loadedTracks++;
+        if(this.loadedTracks === this.tracks.length) {
+          $rootScope.$broadcast('tracks-loaded');
+        }
+      },
+      loadExample: function() {
+        angular.forEach(this.tracks, function(track) { 
+          track.empty(); 
+          angular.forEach(track.sampleComposition, function(sample) {
+            var sampleRef = _.findWhere(track.sampleRefs, { file: sample.file });
+            track.addSample(sampleRef, sample.pos);
+          });
+        });        
       }
     });
 
-    var player = new Player();
-
-	  // Samples config
-    var tracksConfig = [{
-        name: 'Quena',
-        samples: [
-          { beats: 2, file: 'Quena-2T-Cel5-06' },
-          { beats: 4, file: 'Quena-4T-Final-A' },
-        ],
-        sampleComposition: []
-      },
-      {
-        name: 'Charango',
-        samples: [
-          { beats: 2, file: 'Char-2T-Am' },
-          { beats: 3, file: 'Char-3T-E7' },
-				],
-        sampleComposition: []
-      },
-      {
-        name: 'Chaschas',
-        samples: [
-          { beats: 4, file: 'Chas-4T-01' },
-          { beats: 4, file: 'Chas-4T-02' },
-          { beats: 4, file: 'Chas-4T-03' },
-        ],
-        sampleComposition: []
-      },
-      {
-        name: 'Bombo',
-        samples: [
-          { beats: 4, file: 'Bombo-4T-01' },
-          { beats: 4, file: 'Bombo-4T-02' },
-          { beats: 4, file: 'Bombo-4T-03' },
-          { beats: 4, file: 'Bombo-4T-04' }
-        ],
-        sampleComposition: []
-      }
-    ];
+    var trackManager = new TrackManager();
 
 		return {
-			tracksConfig: tracksConfig,
+			tracksConfig: TracksConfig,
+      grid: {
+        beatSize: 25, //px
+        beats: trackManager.maxBeats
+      },
 			createTrack: function(name) {
-				var track = _.find(tracksConfig, function(track) { return track.name === name });
-        return player.createTrack(name, track.samples);
+        var instrument = this.tracksConfig.byName(name);
+        return trackManager.createTrack(name, 
+          instrument.samples, instrument.sampleComposition);
 			},
-			play: player.play.bind(player),
-      stop: player.stop.bind(player),
-      cleanUp: player.cleanUp.bind(player)
+      playProgress: function() {
+        return trackManager.playProgress() * this.grid.beatSize;
+      },
+      loadExample: trackManager.loadExample.bind(trackManager),
+			play: trackManager.play.bind(trackManager),
+      stop: trackManager.stop.bind(trackManager),
+      cleanUp: trackManager.cleanUp.bind(trackManager)
 		};
 	}
 ]);

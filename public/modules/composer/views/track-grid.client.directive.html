@@ -1,0 +1,16 @@
+<li class="track-grid {{track.name | lowercase }}">
+  <div class="track-grid-container">
+    <ul 
+      class="track-grid-inner" 
+      data-drop="true" 
+      data-jqyoui-options="jquiOptions()"
+      jqyoui-droppable="droppableOptions()"
+      ng-model="newSample">
+      <sample 
+        data-ng-repeat="sample in track.samplesBuffer" 
+        instrument="track.name" 
+        sample="sample"
+        track="track" />
+    </ul>
+  </div>
+</li>
