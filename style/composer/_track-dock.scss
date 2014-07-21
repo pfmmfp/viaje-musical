@@ -1,0 +1,91 @@
+$track-height: 53px;
+$track-margin-bottom: 10px;
+
+.composer .track-dock {
+  @include make-row();
+
+  & > .track-headers {
+    @include make-xs-column(1);
+    @include make-sm-column(1);
+    @include make-md-column(1);
+    margin: 0;
+
+    & > .track-icon {
+      height: $track-height;
+      margin-bottom: $track-margin-bottom;
+      width: 100%;
+      background: none;
+      & > img { max-height: $track-height - 3px; }
+    }
+
+  }
+
+  & > .track-grids {
+    @include make-xs-column(10, 0);
+    @include make-sm-column(10, 0);
+    @include make-md-column(10, 0);
+    list-style: none;
+    overflow-x: scroll;
+
+    & > .timeline-cursor {
+      position: absolute;
+      top: 0;
+      bottom: $track-margin-bottom;
+      width: 1px;
+      background-color: red;
+      z-index: 99;
+    }
+
+    .track-grid {
+      height: $track-height;
+      margin-bottom: $track-margin-bottom;
+      position: relative;    
+
+      & > .track-grid-container {
+        height: 100%;
+        background-color: #d2d2d2;
+        background-color: rgba(0,0,0,0.1);
+        padding: 5px;
+
+        &, .track-grid-inner {
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;    
+        }
+
+        & > .track-grid-inner {
+          padding: 0;
+          height: 100%;
+          list-style: none;
+          position: relative;
+
+          &.acceptable-sample {
+            background-color: rgba(0,0,0,0.4);
+          }
+
+          &.incoming-sample {
+            background-color: rgba(0,0,0,0.5);
+          }
+        }
+      }
+    }
+  }
+
+  & > .track-controls {
+    @include make-xs-column(1);
+    @include make-sm-column(1);
+    @include make-md-column(1);
+    margin: 0;
+
+    & > .track-control-sound {
+      width: 37px;
+      height: $track-height;
+      margin-bottom: $track-margin-bottom;
+      &.on { background: url(/modules/composer/img/sound-on.png) center no-repeat; }
+      &.off { background: url(/modules/composer/img/sound-off.png) center no-repeat; }
+    }
+  }
+
+}
+
+

@@ -8,10 +8,6 @@ angular.module('composer').config(['$stateProvider',
       .state('composer', {
   			url: '/compositor',
   			templateUrl: 'modules/composer/views/composer.client.view.html'
-  		})
-      .state('player', {
-        url: '/multipista',
-        templateUrl: 'modules/composer/views/player.client.view.html'
-    });
+  		});
 	}
 ]);

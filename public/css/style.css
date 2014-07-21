@@ -6975,7 +6975,7 @@ button.close {
 .composer .sample-dock > .sample-controls:after {
   clear: both;
 }
-.composer .sample-dock > .sample-controls > .move-left, .composer .sample-dock > .sample-controls > .move-right {
+.composer .sample-dock > .sample-controls > .move-container {
   position: relative;
   float: left;
   width: 8.33333%;
@@ -6990,6 +6990,21 @@ button.close {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  .composer .sample-dock > .sample-controls > .move-container {
+    float: left;
+    width: 8.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .sample-dock > .sample-controls > .move-container {
+    float: left;
+    width: 8.33333%;
+  }
+}
+.composer .sample-dock > .sample-controls > .move-container > .move-left, .composer .sample-dock > .sample-controls > .move-container > .move-right {
   width: 36px;
   height: 100%;
   font: 0/0 a;
@@ -7000,22 +7015,10 @@ button.close {
   background-position: center;
   background-repeat: no-repeat;
 }
-@media (min-width: 768px) {
-  .composer .sample-dock > .sample-controls > .move-left, .composer .sample-dock > .sample-controls > .move-right {
-    float: left;
-    width: 8.33333%;
-  }
-}
-@media (min-width: 992px) {
-  .composer .sample-dock > .sample-controls > .move-left, .composer .sample-dock > .sample-controls > .move-right {
-    float: left;
-    width: 8.33333%;
-  }
-}
-.composer .sample-dock > .sample-controls > .move-left {
+.composer .sample-dock > .sample-controls > .move-container > .move-left {
   background-image: url(/modules/composer/img/left.png);
 }
-.composer .sample-dock > .sample-controls > .move-right {
+.composer .sample-dock > .sample-controls > .move-container > .move-right {
   background-image: url(/modules/composer/img/right.png);
 }
 .composer .sample-dock > .sample-controls > .sample-list {
@@ -7087,30 +7090,18 @@ button.close {
   clear: both;
 }
 
-.track {
-  list-style: none;
-  height: 53px;
-  margin-bottom: 10px;
-  position: relative;
+.composer .track-dock {
   margin-left: -15px;
   margin-right: -15px;
 }
-.track:before, .track:after {
+.composer .track-dock:before, .composer .track-dock:after {
   content: " ";
   display: table;
 }
-.track:after {
+.composer .track-dock:after {
   clear: both;
 }
-
-.track > .track-icon,
-.track > .track-sound-control,
-.track > .track-bar-container {
-  float: left;
-}
-
-.track > .track-icon {
-  height: 100%;
+.composer .track-dock > .track-headers {
   position: relative;
   float: left;
   width: 8.33333%;
@@ -7125,100 +7116,143 @@ button.close {
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  background: none;
+  margin: 0;
 }
 @media (min-width: 768px) {
-  .track > .track-icon {
+  .composer .track-dock > .track-headers {
     float: left;
     width: 8.33333%;
   }
 }
 @media (min-width: 992px) {
-  .track > .track-icon {
+  .composer .track-dock > .track-headers {
     float: left;
     width: 8.33333%;
   }
 }
-
-.track > .track-icon > img {
+.composer .track-dock > .track-headers > .track-icon {
+  height: 53px;
+  margin-bottom: 10px;
+  width: 100%;
+  background: none;
+}
+.composer .track-dock > .track-headers > .track-icon > img {
   max-height: 50px;
 }
-
-.track > .track-bar-container {
+.composer .track-dock > .track-grids {
   position: relative;
   float: left;
   width: 83.33333%;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0;
+  padding-right: 0;
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0;
+  padding-right: 0;
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 100%;
-  background-color: #d2d2d2;
-  background-color: rgba(0, 0, 0, 0.1);
-  margin-right: 20px;
-  padding: 5px;
+  padding-left: 0;
+  padding-right: 0;
+  list-style: none;
+  overflow-x: scroll;
 }
 @media (min-width: 768px) {
-  .track > .track-bar-container {
+  .composer .track-dock > .track-grids {
     float: left;
     width: 83.33333%;
   }
 }
 @media (min-width: 992px) {
-  .track > .track-bar-container {
+  .composer .track-dock > .track-grids {
     float: left;
     width: 83.33333%;
   }
 }
-.track > .track-bar-container, .track > .track-bar-container .track-bar {
+.composer .track-dock > .track-grids > .timeline-cursor {
+  position: absolute;
+  top: 0;
+  bottom: 10px;
+  width: 1px;
+  background-color: red;
+  z-index: 99;
+}
+.composer .track-dock > .track-grids .track-grid {
+  height: 53px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.composer .track-dock > .track-grids .track-grid > .track-grid-container {
+  height: 100%;
+  background-color: #d2d2d2;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
+.composer .track-dock > .track-grids .track-grid > .track-grid-container, .composer .track-dock > .track-grids .track-grid > .track-grid-container .track-grid-inner {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-.track > .track-bar-container > .track-bar {
+.composer .track-dock > .track-grids .track-grid > .track-grid-container > .track-grid-inner {
   padding: 0;
   height: 100%;
   list-style: none;
   position: relative;
 }
-.track > .track-bar-container > .track-bar.acceptable-sample {
+.composer .track-dock > .track-grids .track-grid > .track-grid-container > .track-grid-inner.acceptable-sample {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.track > .track-bar-container > .track-bar.incoming-sample {
+.composer .track-dock > .track-grids .track-grid > .track-grid-container > .track-grid-inner.incoming-sample {
   background-color: rgba(0, 0, 0, 0.5);
 }
-
-.track > .track-sound-control {
+.composer .track-dock > .track-controls {
+  position: relative;
+  float: left;
+  width: 8.33333%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .composer .track-dock > .track-controls {
+    float: left;
+    width: 8.33333%;
+  }
+}
+@media (min-width: 992px) {
+  .composer .track-dock > .track-controls {
+    float: left;
+    width: 8.33333%;
+  }
+}
+.composer .track-dock > .track-controls > .track-control-sound {
   width: 37px;
-  height: 32px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  height: 53px;
+  margin-bottom: 10px;
 }
-
-.track > .track-sound-control.on {
-  background: url(/modules/composer/img/sound-on.png);
+.composer .track-dock > .track-controls > .track-control-sound.on {
+  background: url(/modules/composer/img/sound-on.png) center no-repeat;
 }
-
-.track > .track-sound-control.off {
-  background: url(/modules/composer/img/sound-off.png);
+.composer .track-dock > .track-controls > .track-control-sound.off {
+  background: url(/modules/composer/img/sound-off.png) center no-repeat;
 }
 
 .composer .sample-dock .sample-controls .sample-list .sample,
-.composer .track .track-bar .sample {
+.composer .track-grid .track-grid-inner .sample {
   height: 40px;
   margin-top: 2px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-1,
-.composer .track .track-bar .sample.beats-1 {
+.composer .track-grid .track-grid-inner .sample.beats-1 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7226,10 +7260,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 20px;
+  width: 17px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-2,
-.composer .track .track-bar .sample.beats-2 {
+.composer .track-grid .track-grid-inner .sample.beats-2 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7237,10 +7271,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 40px;
+  width: 34px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-3,
-.composer .track .track-bar .sample.beats-3 {
+.composer .track-grid .track-grid-inner .sample.beats-3 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7248,10 +7282,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 60px;
+  width: 51px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-4,
-.composer .track .track-bar .sample.beats-4 {
+.composer .track-grid .track-grid-inner .sample.beats-4 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7259,10 +7293,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 80px;
+  width: 68px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-5,
-.composer .track .track-bar .sample.beats-5 {
+.composer .track-grid .track-grid-inner .sample.beats-5 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7270,10 +7304,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 100px;
+  width: 85px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-6,
-.composer .track .track-bar .sample.beats-6 {
+.composer .track-grid .track-grid-inner .sample.beats-6 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7281,10 +7315,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 120px;
+  width: 102px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-7,
-.composer .track .track-bar .sample.beats-7 {
+.composer .track-grid .track-grid-inner .sample.beats-7 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7292,10 +7326,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 140px;
+  width: 119px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-8,
-.composer .track .track-bar .sample.beats-8 {
+.composer .track-grid .track-grid-inner .sample.beats-8 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7303,10 +7337,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 160px;
+  width: 136px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-9,
-.composer .track .track-bar .sample.beats-9 {
+.composer .track-grid .track-grid-inner .sample.beats-9 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7314,10 +7348,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 180px;
+  width: 153px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-10,
-.composer .track .track-bar .sample.beats-10 {
+.composer .track-grid .track-grid-inner .sample.beats-10 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7325,10 +7359,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 200px;
+  width: 170px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-11,
-.composer .track .track-bar .sample.beats-11 {
+.composer .track-grid .track-grid-inner .sample.beats-11 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7336,10 +7370,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 220px;
+  width: 187px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-12,
-.composer .track .track-bar .sample.beats-12 {
+.composer .track-grid .track-grid-inner .sample.beats-12 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7347,10 +7381,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 240px;
+  width: 204px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-13,
-.composer .track .track-bar .sample.beats-13 {
+.composer .track-grid .track-grid-inner .sample.beats-13 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7358,10 +7392,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 260px;
+  width: 221px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-14,
-.composer .track .track-bar .sample.beats-14 {
+.composer .track-grid .track-grid-inner .sample.beats-14 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7369,10 +7403,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 280px;
+  width: 238px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-15,
-.composer .track .track-bar .sample.beats-15 {
+.composer .track-grid .track-grid-inner .sample.beats-15 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7380,10 +7414,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 300px;
+  width: 255px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-16,
-.composer .track .track-bar .sample.beats-16 {
+.composer .track-grid .track-grid-inner .sample.beats-16 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7391,10 +7425,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
   border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
-  width: 320px;
+  width: 272px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-17,
-.composer .track .track-bar .sample.beats-17 {
+.composer .track-grid .track-grid-inner .sample.beats-17 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7402,10 +7436,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 340px;
+  width: 289px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-18,
-.composer .track .track-bar .sample.beats-18 {
+.composer .track-grid .track-grid-inner .sample.beats-18 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7413,10 +7447,10 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample3.png) 6 9 7;
   border-image: url(/modules/composer/img/sample3.png) 6 9 7 fill;
-  width: 360px;
+  width: 306px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.beats-19,
-.composer .track .track-bar .sample.beats-19 {
+.composer .track-grid .track-grid-inner .sample.beats-19 {
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
@@ -7424,114 +7458,1525 @@ button.close {
   -webkit-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   -o-border-image: url(/modules/composer/img/sample1.png) 6 9 7;
   border-image: url(/modules/composer/img/sample1.png) 6 9 7 fill;
-  width: 380px;
+  width: 323px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.beats-20,
+.composer .track-grid .track-grid-inner .sample.beats-20 {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  -moz-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -webkit-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  -o-border-image: url(/modules/composer/img/sample2.png) 6 9 7;
+  border-image: url(/modules/composer/img/sample2.png) 6 9 7 fill;
+  width: 340px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-0,
-.composer .track .track-bar .sample.pos-0 {
+.composer .track-grid .track-grid-inner .sample.pos-0 {
   left: 0px;
 }
+.composer .sample-dock .sample-controls .sample-list .sample.pos-0.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-0.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
 .composer .sample-dock .sample-controls .sample-list .sample.pos-1,
-.composer .track .track-bar .sample.pos-1 {
-  left: 20px;
+.composer .track-grid .track-grid-inner .sample.pos-1 {
+  left: 17px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-1.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-1.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-2,
-.composer .track .track-bar .sample.pos-2 {
-  left: 40px;
+.composer .track-grid .track-grid-inner .sample.pos-2 {
+  left: 34px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-2.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-2.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-3,
-.composer .track .track-bar .sample.pos-3 {
-  left: 60px;
+.composer .track-grid .track-grid-inner .sample.pos-3 {
+  left: 51px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-3.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-3.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-4,
-.composer .track .track-bar .sample.pos-4 {
-  left: 80px;
+.composer .track-grid .track-grid-inner .sample.pos-4 {
+  left: 68px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-4.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-4.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-5,
-.composer .track .track-bar .sample.pos-5 {
-  left: 100px;
+.composer .track-grid .track-grid-inner .sample.pos-5 {
+  left: 85px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-5.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-5.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-6,
-.composer .track .track-bar .sample.pos-6 {
-  left: 120px;
+.composer .track-grid .track-grid-inner .sample.pos-6 {
+  left: 102px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-6.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-6.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-7,
-.composer .track .track-bar .sample.pos-7 {
-  left: 140px;
+.composer .track-grid .track-grid-inner .sample.pos-7 {
+  left: 119px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-7.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-7.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-8,
-.composer .track .track-bar .sample.pos-8 {
-  left: 160px;
+.composer .track-grid .track-grid-inner .sample.pos-8 {
+  left: 136px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-8.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-8.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-9,
-.composer .track .track-bar .sample.pos-9 {
-  left: 180px;
+.composer .track-grid .track-grid-inner .sample.pos-9 {
+  left: 153px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-9.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-9.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-10,
-.composer .track .track-bar .sample.pos-10 {
-  left: 200px;
+.composer .track-grid .track-grid-inner .sample.pos-10 {
+  left: 170px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-10.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-10.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-11,
-.composer .track .track-bar .sample.pos-11 {
-  left: 220px;
+.composer .track-grid .track-grid-inner .sample.pos-11 {
+  left: 187px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-11.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-11.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-12,
-.composer .track .track-bar .sample.pos-12 {
-  left: 240px;
+.composer .track-grid .track-grid-inner .sample.pos-12 {
+  left: 204px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-12.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-12.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-13,
-.composer .track .track-bar .sample.pos-13 {
-  left: 260px;
+.composer .track-grid .track-grid-inner .sample.pos-13 {
+  left: 221px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-13.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-13.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-14,
-.composer .track .track-bar .sample.pos-14 {
-  left: 280px;
+.composer .track-grid .track-grid-inner .sample.pos-14 {
+  left: 238px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-14.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-14.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-15,
-.composer .track .track-bar .sample.pos-15 {
-  left: 300px;
+.composer .track-grid .track-grid-inner .sample.pos-15 {
+  left: 255px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-15.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-15.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-16,
-.composer .track .track-bar .sample.pos-16 {
-  left: 320px;
+.composer .track-grid .track-grid-inner .sample.pos-16 {
+  left: 272px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-16.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-16.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-17,
-.composer .track .track-bar .sample.pos-17 {
-  left: 340px;
+.composer .track-grid .track-grid-inner .sample.pos-17 {
+  left: 289px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-17.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-17.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-18,
-.composer .track .track-bar .sample.pos-18 {
-  left: 360px;
+.composer .track-grid .track-grid-inner .sample.pos-18 {
+  left: 306px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-18.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-18.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-19,
-.composer .track .track-bar .sample.pos-19 {
-  left: 380px;
+.composer .track-grid .track-grid-inner .sample.pos-19 {
+  left: 323px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-19.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-19.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-20,
-.composer .track .track-bar .sample.pos-20 {
-  left: 400px;
+.composer .track-grid .track-grid-inner .sample.pos-20 {
+  left: 340px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-20.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-20.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-21,
-.composer .track .track-bar .sample.pos-21 {
-  left: 420px;
+.composer .track-grid .track-grid-inner .sample.pos-21 {
+  left: 357px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-21.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-21.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-22,
-.composer .track .track-bar .sample.pos-22 {
-  left: 440px;
+.composer .track-grid .track-grid-inner .sample.pos-22 {
+  left: 374px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-22.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-22.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-23,
-.composer .track .track-bar .sample.pos-23 {
-  left: 460px;
+.composer .track-grid .track-grid-inner .sample.pos-23 {
+  left: 391px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-23.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-23.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 .composer .sample-dock .sample-controls .sample-list .sample.pos-24,
-.composer .track .track-bar .sample.pos-24 {
-  left: 480px;
+.composer .track-grid .track-grid-inner .sample.pos-24 {
+  left: 408px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-24.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-24.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-25,
+.composer .track-grid .track-grid-inner .sample.pos-25 {
+  left: 425px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-25.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-25.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-26,
+.composer .track-grid .track-grid-inner .sample.pos-26 {
+  left: 442px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-26.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-26.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-27,
+.composer .track-grid .track-grid-inner .sample.pos-27 {
+  left: 459px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-27.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-27.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-28,
+.composer .track-grid .track-grid-inner .sample.pos-28 {
+  left: 476px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-28.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-28.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-29,
+.composer .track-grid .track-grid-inner .sample.pos-29 {
+  left: 493px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-29.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-29.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-30,
+.composer .track-grid .track-grid-inner .sample.pos-30 {
+  left: 510px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-30.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-30.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-31,
+.composer .track-grid .track-grid-inner .sample.pos-31 {
+  left: 527px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-31.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-31.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-32,
+.composer .track-grid .track-grid-inner .sample.pos-32 {
+  left: 544px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-32.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-32.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-33,
+.composer .track-grid .track-grid-inner .sample.pos-33 {
+  left: 561px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-33.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-33.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-34,
+.composer .track-grid .track-grid-inner .sample.pos-34 {
+  left: 578px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-34.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-34.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-35,
+.composer .track-grid .track-grid-inner .sample.pos-35 {
+  left: 595px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-35.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-35.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-36,
+.composer .track-grid .track-grid-inner .sample.pos-36 {
+  left: 612px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-36.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-36.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-37,
+.composer .track-grid .track-grid-inner .sample.pos-37 {
+  left: 629px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-37.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-37.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-38,
+.composer .track-grid .track-grid-inner .sample.pos-38 {
+  left: 646px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-38.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-38.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-39,
+.composer .track-grid .track-grid-inner .sample.pos-39 {
+  left: 663px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-39.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-39.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-40,
+.composer .track-grid .track-grid-inner .sample.pos-40 {
+  left: 680px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-40.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-40.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-41,
+.composer .track-grid .track-grid-inner .sample.pos-41 {
+  left: 697px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-41.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-41.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-42,
+.composer .track-grid .track-grid-inner .sample.pos-42 {
+  left: 714px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-42.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-42.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-43,
+.composer .track-grid .track-grid-inner .sample.pos-43 {
+  left: 731px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-43.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-43.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-44,
+.composer .track-grid .track-grid-inner .sample.pos-44 {
+  left: 748px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-44.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-44.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-45,
+.composer .track-grid .track-grid-inner .sample.pos-45 {
+  left: 765px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-45.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-45.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-46,
+.composer .track-grid .track-grid-inner .sample.pos-46 {
+  left: 782px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-46.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-46.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-47,
+.composer .track-grid .track-grid-inner .sample.pos-47 {
+  left: 799px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-47.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-47.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-48,
+.composer .track-grid .track-grid-inner .sample.pos-48 {
+  left: 816px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-48.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-48.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-49,
+.composer .track-grid .track-grid-inner .sample.pos-49 {
+  left: 833px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-49.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-49.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-50,
+.composer .track-grid .track-grid-inner .sample.pos-50 {
+  left: 850px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-50.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-50.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-51,
+.composer .track-grid .track-grid-inner .sample.pos-51 {
+  left: 867px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-51.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-51.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-52,
+.composer .track-grid .track-grid-inner .sample.pos-52 {
+  left: 884px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-52.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-52.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-53,
+.composer .track-grid .track-grid-inner .sample.pos-53 {
+  left: 901px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-53.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-53.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-54,
+.composer .track-grid .track-grid-inner .sample.pos-54 {
+  left: 918px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-54.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-54.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-55,
+.composer .track-grid .track-grid-inner .sample.pos-55 {
+  left: 935px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-55.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-55.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-56,
+.composer .track-grid .track-grid-inner .sample.pos-56 {
+  left: 952px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-56.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-56.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-57,
+.composer .track-grid .track-grid-inner .sample.pos-57 {
+  left: 969px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-57.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-57.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-58,
+.composer .track-grid .track-grid-inner .sample.pos-58 {
+  left: 986px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-58.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-58.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-59,
+.composer .track-grid .track-grid-inner .sample.pos-59 {
+  left: 1003px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-59.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-59.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-60,
+.composer .track-grid .track-grid-inner .sample.pos-60 {
+  left: 1020px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-60.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-60.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-61,
+.composer .track-grid .track-grid-inner .sample.pos-61 {
+  left: 1037px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-61.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-61.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-62,
+.composer .track-grid .track-grid-inner .sample.pos-62 {
+  left: 1054px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-62.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-62.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-63,
+.composer .track-grid .track-grid-inner .sample.pos-63 {
+  left: 1071px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-63.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-63.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-64,
+.composer .track-grid .track-grid-inner .sample.pos-64 {
+  left: 1088px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-64.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-64.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-65,
+.composer .track-grid .track-grid-inner .sample.pos-65 {
+  left: 1105px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-65.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-65.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-66,
+.composer .track-grid .track-grid-inner .sample.pos-66 {
+  left: 1122px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-66.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-66.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-67,
+.composer .track-grid .track-grid-inner .sample.pos-67 {
+  left: 1139px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-67.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-67.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-68,
+.composer .track-grid .track-grid-inner .sample.pos-68 {
+  left: 1156px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-68.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-68.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-69,
+.composer .track-grid .track-grid-inner .sample.pos-69 {
+  left: 1173px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-69.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-69.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-70,
+.composer .track-grid .track-grid-inner .sample.pos-70 {
+  left: 1190px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-70.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-70.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-71,
+.composer .track-grid .track-grid-inner .sample.pos-71 {
+  left: 1207px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-71.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-71.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-72,
+.composer .track-grid .track-grid-inner .sample.pos-72 {
+  left: 1224px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-72.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-72.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-73,
+.composer .track-grid .track-grid-inner .sample.pos-73 {
+  left: 1241px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-73.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-73.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-74,
+.composer .track-grid .track-grid-inner .sample.pos-74 {
+  left: 1258px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-74.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-74.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-75,
+.composer .track-grid .track-grid-inner .sample.pos-75 {
+  left: 1275px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-75.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-75.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-76,
+.composer .track-grid .track-grid-inner .sample.pos-76 {
+  left: 1292px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-76.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-76.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-77,
+.composer .track-grid .track-grid-inner .sample.pos-77 {
+  left: 1309px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-77.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-77.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-78,
+.composer .track-grid .track-grid-inner .sample.pos-78 {
+  left: 1326px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-78.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-78.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-79,
+.composer .track-grid .track-grid-inner .sample.pos-79 {
+  left: 1343px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-79.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-79.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-80,
+.composer .track-grid .track-grid-inner .sample.pos-80 {
+  left: 1360px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-80.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-80.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-81,
+.composer .track-grid .track-grid-inner .sample.pos-81 {
+  left: 1377px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-81.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-81.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-82,
+.composer .track-grid .track-grid-inner .sample.pos-82 {
+  left: 1394px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-82.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-82.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-83,
+.composer .track-grid .track-grid-inner .sample.pos-83 {
+  left: 1411px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-83.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-83.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-84,
+.composer .track-grid .track-grid-inner .sample.pos-84 {
+  left: 1428px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-84.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-84.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-85,
+.composer .track-grid .track-grid-inner .sample.pos-85 {
+  left: 1445px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-85.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-85.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-86,
+.composer .track-grid .track-grid-inner .sample.pos-86 {
+  left: 1462px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-86.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-86.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-87,
+.composer .track-grid .track-grid-inner .sample.pos-87 {
+  left: 1479px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-87.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-87.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-88,
+.composer .track-grid .track-grid-inner .sample.pos-88 {
+  left: 1496px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-88.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-88.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-89,
+.composer .track-grid .track-grid-inner .sample.pos-89 {
+  left: 1513px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-89.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-89.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-90,
+.composer .track-grid .track-grid-inner .sample.pos-90 {
+  left: 1530px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-90.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-90.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-91,
+.composer .track-grid .track-grid-inner .sample.pos-91 {
+  left: 1547px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-91.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-91.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-92,
+.composer .track-grid .track-grid-inner .sample.pos-92 {
+  left: 1564px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-92.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-92.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-93,
+.composer .track-grid .track-grid-inner .sample.pos-93 {
+  left: 1581px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-93.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-93.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-94,
+.composer .track-grid .track-grid-inner .sample.pos-94 {
+  left: 1598px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-94.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-94.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-95,
+.composer .track-grid .track-grid-inner .sample.pos-95 {
+  left: 1615px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-95.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-95.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-96,
+.composer .track-grid .track-grid-inner .sample.pos-96 {
+  left: 1632px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-96.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-96.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-97,
+.composer .track-grid .track-grid-inner .sample.pos-97 {
+  left: 1649px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-97.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-97.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-98,
+.composer .track-grid .track-grid-inner .sample.pos-98 {
+  left: 1666px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-98.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-98.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-99,
+.composer .track-grid .track-grid-inner .sample.pos-99 {
+  left: 1683px;
+}
+.composer .sample-dock .sample-controls .sample-list .sample.pos-99.ui-draggable-dragging.trash-can:after,
+.composer .track-grid .track-grid-inner .sample.pos-99.ui-draggable-dragging.trash-can:after {
+  content: " ";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background-image: url(/modules/composer/img/papelera-sample.png);
+  background-size: 22px 20px;
+  width: 22px;
+  height: 20px;
 }
 
 .composer .sample-dock .sample-controls .sample-list .sample {
   float: left;
 }
 
-.composer .track .track-bar .sample {
+.composer .track-grid .track-grid-inner .sample {
   position: absolute;
 }
 

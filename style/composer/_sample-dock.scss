@@ -17,19 +17,22 @@
     @include make-row();
     height: 100%;
 
-    & > .move-left,
-    & > .move-right {
+    & > .move-container {
       @include make-xs-column(1);
       @include make-sm-column(1);
       @include make-md-column(1);
-      width: 36px;
-      height: 100%; //31px;
-      @include text-hide();
-      background-position: center;
-      background-repeat: no-repeat;
+      height: 100%;
+      & > .move-left,
+      & > .move-right {
+        width: 36px;
+        height: 100%; //31px;
+        @include text-hide();
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      & > .move-left { background-image: url(/modules/composer/img/left.png); }
+      & > .move-right { background-image: url(/modules/composer/img/right.png); }
     }
-    & > .move-left { background-image: url(/modules/composer/img/left.png); }
-    & > .move-right { background-image: url(/modules/composer/img/right.png); }
 
     & > .sample-list {
       @include make-xs-column(10);

@@ -7,20 +7,22 @@
         <!-- <button class="nav-item wipe" data-ng-click="wipe()">Borrar</button> -->
         <button class="nav-item menu" data-ng-click="confirmExample()">Menu</button>
       </menu>
-      <ul>
-        <track data-ng-repeat="instrument in instruments" instrument="instrument" on-choose-instrument="changeInstrument(instrument)" />
-      </ul>
+      <track-dock class="track-dock" instruments="instruments" on-choose-instrument="changeInstrument(instrument)" />
     </div>
     <div class="main-box-common main-box-bottom sample-dock">
       <div class="selected-instrument">
         <img ng-class="selectedInstrument.name | lowercase" title="{{selectedInstrument.name}}" alt="{{selectedInstrument.name}}" data-ng-src="/modules/composer/img/{{selectedInstrument.name | lowercase}}-grande.png">
       </div>
       <div class="sample-controls">
-        <button class="move-left">&lt;-</button>
+        <div class="move-container">
+          <button class="move-left" data-ng-click="prevPage()" data-ng-show="startSample">&lt;-</button>
+        </div>
         <ul class="sample-list">
-          <sample data-ng-repeat="sample in selectedInstrument.samples" instrument="selectedInstrument.name" sample="sample" />
+          <sample data-ng-repeat="sample in activeSamples()" instrument="selectedInstrument.name" sample="sample" />
         </ul>
-        <button class="move-right">-&gt;</button>
+        <div class="move-container">
+          <button class="move-right" data-ng-click="nextPage()" data-ng-show="nextSample">-&gt;</button>
+        </div>
       </div>
       <div class="controls">
         <button data-ng-click="play()" class="control play">Play</button>
@@ -48,7 +50,7 @@
   <script type="text/ng-template" id="example.html">
     <p class="message-text">¿Querés abandonar tu composición e ir a la composición de muestra?</p>
     <menu class="message-options">
-      <button class="message-option ok">Sí</button>
+      <button class="message-option ok" data-ng-click="loadExample()">Sí</button>
       <button class="message-option cancel" data-ng-click="closeMessage()">Cancelar</button>
     </menu>
   </script>

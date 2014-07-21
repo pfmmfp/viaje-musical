@@ -1,6 +1,6 @@
-$timeline-grid-size: 20px;
-$max-sample-beat: 20;
-$max-sample-pos: 25;
+$timeline-grid-size: 17px;
+$max-sample-beat: 21;
+$max-sample-pos: 100;
 
 @mixin sample-box($sample) {
   cursor: pointer;
@@ -13,7 +13,7 @@ $max-sample-pos: 25;
 }
 
 .composer .sample-dock .sample-controls .sample-list .sample,
-.composer .track .track-bar .sample {
+.composer .track-grid .track-grid-inner .sample {
   height: 40px;
   margin-top: 2px;
 
@@ -32,6 +32,16 @@ $max-sample-pos: 25;
   @for $i from 0 to $max-sample-pos {
     &.pos-#{$i} {
       left: $timeline-grid-size * $i;
+      &.ui-draggable-dragging.trash-can:after { 
+        content: " ";
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background-image: url(/modules/composer/img/papelera-sample.png); 
+        background-size: 22px 20px;
+        width: 22px;
+        height: 20px;
+      }
     }
   }
 }
@@ -40,6 +50,6 @@ $max-sample-pos: 25;
   float: left;
 }
 
-.composer .track .track-bar .sample {
+.composer .track-grid .track-grid-inner .sample {
   position: absolute;
 }

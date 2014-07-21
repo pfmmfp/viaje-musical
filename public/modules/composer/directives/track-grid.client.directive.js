@@ -1,43 +1,43 @@
 'use strict';
 
-angular.module('composer').directive('track', ['composer', 
+angular.module('composer').directive('trackGrid', ['composer', 
 	function(composer) {
 		return {
-			templateUrl: '/modules/composer/views/track.client.directive.html',
+			templateUrl: '/modules/composer/views/track-grid.client.directive.html',
 			restrict: 'E',
 			scope: {
-				instrument: '=',
-				choose: '&onChooseInstrument'	
+				track: '='
 			},
 			link: function postLink(scope, element, attrs) {
-				scope.track = composer.createTrack(scope.instrument.name);
-				var instrumentCode = scope.instrument.name.toLowerCase();
+				element.find('.track-grid').css('width', composer.grid.beatSize * composer.grid.beats);
+				var trackName = scope.track.name.toLowerCase();
 				angular.extend(scope, {
 					newSample: null,
-					toggleMute: function(track) {
-						track.toggleMute();
-					},
 					shouldAcceptSample: function(sample) {
 						return true;
 					},
-					trackOffset: function() {
-						return angular.element('.track.'+instrumentCode+' .track-bar').offset();
+					gridOffset: function() {
+						return angular.element('.track-grid.'+trackName+' .track-grid-inner').offset();
 					},
 					disableGrid: function(event, ui) {
-						angular.element(ui.helper).data('grid', false);
+						var helper = angular.element(ui.helper);
+						helper.data('grid', false);
+						helper.addClass('trash-can');
 					},
 					enableGrid: function(event, ui) {
-						angular.element(ui.helper).data('grid', true);
+						var helper = angular.element(ui.helper);
+						helper.data('grid', true);
+						helper.removeClass('trash-can');
 					},
 					incomingSample: function(event, ui) {
-						var magicNumber = 9; //perhaps a jqui bug
+						var magicNumber = 4; //perhaps a jqui bug
 						ui.offset.left = ui.offset.left + magicNumber;
 						var oldPos = this.newSample.pos;
-						var newPos = Math.floor((ui.offset.left - scope.trackOffset().left) / composer.gridSize);
+						var newPos = Math.floor((ui.offset.left - scope.gridOffset().left) / composer.grid.beatSize);
 						if (oldPos === undefined) {
-							this.track.addSample(this.newSample, newPos);
+							scope.track.addSample(this.newSample, newPos);
 						} else {
-							this.track.moveSample(this.newSample, newPos);
+							scope.track.moveSample(this.newSample, newPos);
 						}
 					},
 					droppableOptions: function() {
@@ -50,7 +50,7 @@ angular.module('composer').directive('track', ['composer',
 					},
 					jquiOptions: function() {
 						return {
-							scope: instrumentCode,
+							scope: trackName,
 							activeClass: 'acceptable-sample',
 							hoverClass: 'incoming-sample',
 							tolerance: 'touch',
