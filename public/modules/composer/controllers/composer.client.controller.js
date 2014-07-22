@@ -1,11 +1,14 @@
 'use strict';
 
-angular.module('composer').controller('ComposerController', ['$scope', '$interval', '_', 'composer', 
-	function($scope, $interval, _, composer) {
+angular.module('composer').controller('ComposerController', ['$scope', '$interval', '_', 'composer', '$window', 
+	function($scope, $interval, _, composer, $window) {
     $scope.$on('tracks-loaded', function() {
       angular.element('.composer').removeClass('loading').addClass('loaded');
       angular.element('.composer-loading-screen').css('display', 'none');
     });
+
+    var maxBeats = 48;
+
     angular.extend($scope, {
       instruments : composer.tracksConfig,
       selectedInstrument: composer.tracksConfig[0],
@@ -19,8 +22,7 @@ angular.module('composer').controller('ComposerController', ['$scope', '$interva
         $scope.selectedInstrument = instrument;
       },
       activeSamples: function() {
-        var maxBeats = 48,
-          beatsSum,
+        var beatsSum,
           samples = $scope.selectedInstrument.samples,
           pageComplete = false;
         $scope.nextSample = null;
@@ -50,6 +52,7 @@ angular.module('composer').controller('ComposerController', ['$scope', '$interva
       play: function () {
         composer.play();
         this.updateCursor();
+        // move interval to service and attach to events
         this.intervalRef = $interval(this.updateCursor, 60 / 96);
       },
       stop: function() {

@@ -6822,7 +6822,7 @@ button.close {
 .main-box > .main-box-bottom {
   border-image: url(/modules/composer/img/main-box-bottom.png) 10 10 40 10 stretch;
   border-width: 10px 10px 40px 10px;
-  height: 165px;
+  height: 195px;
   background-color: #DCD4B9;
   margin-top: -25px;
   position: relative;
@@ -9019,6 +9019,7 @@ button {
 }
 
 .composer-loading-screen {
+  padding-top: 50px;
   margin: auto;
   position: absolute;
   top: 0;
@@ -9026,6 +9027,7 @@ button {
   right: 0;
   bottom: 0;
   text-align: center;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=style.css.map */
