@@ -39,7 +39,7 @@
 
 .instrument-text{
 	color: #57380b;
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
 	height: 130px;
 }
 
@@ -47,13 +47,13 @@
 	position: relative;
 	width: 100%;
 	height: 50px;	
+	padding-left: 50%;
 }
 
 .instrument-audio{
 	width: 42px;
 	height: 41px;
-	float: right;
-	margin-left: 10px;
+	float: left;
 	cursor: pointer;
 }
 
