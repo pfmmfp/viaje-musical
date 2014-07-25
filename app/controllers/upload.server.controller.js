@@ -41,19 +41,19 @@ exports.saveModelFiles = function(model, res, next)
 		}
 	});
 
-	fs.exists('public/common/images/'+folderName, function (exists) {
+	fs.exists('public/common/images/'+model.type, function (exists) {
 		if(!exists)
 		{
-			fs.mkdir('public/common/images/'+folderName, function(){
+			fs.mkdir('public/common/images/'+model.type, function(){
 				
 			}); 
 		}
 	});
 
-	fs.exists('public/common/audio/'+folderName, function (exists) {
+	fs.exists('public/common/audio/'+model.type, function (exists) {
 		if(!exists)
 		{
-			fs.mkdir('public/common/audio/'+folderName, function(){
+			fs.mkdir('public/common/audio/'+model.type, function(){
 				
 			}); 
 		}
