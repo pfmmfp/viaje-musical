@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 		mochaTests: ['app/tests/**/*.js'],
 		sass: 'style/{,*/}*.{scss,sass}'
 	};
-
+	
 	// Project Configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -154,7 +154,14 @@ module.exports = function(grunt) {
  		      'public/css/style.css': 'style/*.scss'
  		    }
  		  }
- 		}
+ 		},
+		copy: {
+			main: {
+				files: [
+					{expand: true, flatten: true, src: ['public/lib/bootstrap/dist/fonts/**'], dest: 'public/dist/bootstrap/', filter: 'isFile'}
+				] 
+			}
+		}		
 	});
 
 	// Load NPM tasks 
@@ -182,7 +189,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify', 'sass:dev', 'cssmin']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify', 'sass:dev', 'cssmin', 'copy']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
