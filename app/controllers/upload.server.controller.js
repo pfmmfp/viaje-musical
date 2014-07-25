@@ -12,8 +12,53 @@ exports.uploadfile = function(req, res){
 };
 
 exports.saveModelFiles = function(model, res, next)
-{	
+{		
 
+	fs.exists('public/common', function (exists) {
+		if(!exists)
+		{
+			fs.mkdir('public/common', function(){
+				
+			}); 
+		}
+	});
+
+	fs.exists('public/common/audio', function (exists) {
+		if(!exists)
+		{
+			fs.mkdir('public/common/audio', function(){
+				
+			}); 
+		}
+	});
+
+	fs.exists('public/common/images', function (exists) {
+		if(!exists)
+		{
+			fs.mkdir('public/common/images', function(){
+				
+			}); 
+		}
+	});
+
+	fs.exists('public/common/images/'+folderName, function (exists) {
+		if(!exists)
+		{
+			fs.mkdir('public/common/images/'+folderName, function(){
+				
+			}); 
+		}
+	});
+
+	fs.exists('public/common/audio/'+folderName, function (exists) {
+		if(!exists)
+		{
+			fs.mkdir('public/common/audio/'+folderName, function(){
+				
+			}); 
+		}
+	});
+		
 	var audioFullPath;
 	var picFullPath;
 	
@@ -149,3 +194,4 @@ exports.saveModelFiles = function(model, res, next)
 	}
 	
 };
+
