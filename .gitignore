@@ -8,6 +8,10 @@ public/common
 public/lib
 public/css/
 public/dist/
+icon/
+stats/
+aws*
+build.sh
 app/tests/coverage/
 .bower-*/
 .idea/
