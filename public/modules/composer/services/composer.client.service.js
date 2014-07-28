@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioContext', '$rootScope',
-	function(_, TracksConfig, audioContext, $rootScope) {
+angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioContext', '$rootScope', 'GridHelper',
+	function(_, TracksConfig, audioContext, $rootScope, GridHelper) {
 
 		var SampleTrack = function(name, sampleRefs, sampleComposition, manager) {
 			this.name = name;
@@ -130,8 +130,6 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
       this.tracks = [];
       this.tempo = 96; // BPM (beats per minute)
       this.beat = 60 / this.tempo; // negra
-      this.maxBeats = 70;
-      this.maxDuration = this.beat * this.maxBeats;
       this.playTime = null;
       this.playOffset = 0.1;
       this.loadedTracks = 0;
@@ -187,10 +185,7 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 
 		return {
 			tracksConfig: TracksConfig,
-      grid: {
-        beatSize: 25, //px
-        beats: trackManager.maxBeats
-      },
+      grid: GridHelper,
 			createTrack: function(name) {
         var instrument = this.tracksConfig.byName(name);
         return trackManager.createTrack(name, 

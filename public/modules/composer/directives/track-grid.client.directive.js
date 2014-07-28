@@ -13,12 +13,6 @@ angular.module('composer').directive('trackGrid', ['composer',
 				var trackName = scope.track.name.toLowerCase();
 				angular.extend(scope, {
 					newSample: null,
-					shouldAcceptSample: function(sample) {
-						return true;
-					},
-					gridOffset: function() {
-						return angular.element('.track-grid.'+trackName+' .track-grid-inner').offset();
-					},
 					disableGrid: function(event, ui) {
 						var helper = angular.element(ui.helper);
 						helper.data('grid', false);
@@ -30,14 +24,12 @@ angular.module('composer').directive('trackGrid', ['composer',
 						helper.removeClass('trash-can');
 					},
 					incomingSample: function(event, ui) {
-						var magicNumber = 4; //perhaps a jqui bug
-						ui.offset.left = ui.offset.left + magicNumber;
-						var oldPos = this.newSample.pos;
-						var newPos = Math.floor((ui.offset.left - scope.gridOffset().left) / composer.grid.beatSize);
-						if (oldPos === undefined) {
-							scope.track.addSample(this.newSample, newPos);
-						} else {
+						var tracked = this.newSample.pos !== undefined,
+						  newPos = composer.grid.indexPosition(ui.offset.left, trackName, !tracked);
+						if (tracked) {
 							scope.track.moveSample(this.newSample, newPos);
+						} else {
+							scope.track.addSample(this.newSample, newPos);
 						}
 					},
 					droppableOptions: function() {
@@ -53,8 +45,7 @@ angular.module('composer').directive('trackGrid', ['composer',
 							scope: trackName,
 							activeClass: 'acceptable-sample',
 							hoverClass: 'incoming-sample',
-							tolerance: 'touch',
-							accept: scope.shouldAcceptSample
+							tolerance: 'touch'
 						};
 					}
 				});
