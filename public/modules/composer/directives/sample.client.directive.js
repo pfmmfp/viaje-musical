@@ -12,7 +12,6 @@ angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
 			},
 			link: function postLink(scope, element, attrs) {
 				var instrumentName = scope.instrument.toLowerCase(),
-					gridSelector = '.track-grid.' + instrumentName + ' .track-grid-inner',
 					tracked = scope.track !== undefined;
 				angular.extend(scope, {
 					indexer: function() {
@@ -21,23 +20,17 @@ angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
 		        var sample = _.findWhere(samples, { file: scope.sample.file, beats: scope.sample.beats });
 		        return new Array(samples.indexOf(sample));
 		      },
-					gridOffset: function() {
-						return angular.element(gridSelector).offset();
-					},
 					dragToGrid: function(event, ui) {
-						var helper = angular.element(ui.helper),
-							offset = scope.gridOffset(),
-							beatSize = composer.grid.beatSize,
-							magicNumber = tracked ? 0 : 16;
+						var helper = angular.element(ui.helper);
 						if (helper.data('grid')) {
-							ui.position.left = Math.floor(ui.position.left / beatSize) * beatSize - 
-								Math.floor((offset.left - element.offset().left) % beatSize) - magicNumber;
-							ui.position.top = scope.gridOffset().top - element.offset().top;
+							ui.position.left = composer.grid.snappedPosition(ui.position.left);
+							if (!tracked) ui.position.left += composer.grid.originDelta(instrumentName);
+							ui.position.top = composer.grid.offset(instrumentName).top - element.offset().top;
 						}
 					},
 					delete: function(event, ui) {
 						var helper = angular.element(ui.helper);
-						if (!helper.data('grid')) {
+						if (!helper.data('grid') && tracked) {
 							helper.remove();
 							scope.track.removeSample(scope.sample);
 						}
