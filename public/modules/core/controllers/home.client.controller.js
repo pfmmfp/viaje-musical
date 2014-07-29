@@ -26,7 +26,7 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
 					"height"  : "140px",
 					"width"   : "78px",
 					"top" 	  : "18%",
-                }, 1000, function(){  $window.location.href = '#!/compositor';  } );
+                }, 1000, function(){  $window.location.href = '#!/regions/53d3dbe1abdf107b141803db';  } ); //Hardcoded shit!
             } else {
                 done();
             }
