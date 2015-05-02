@@ -38,6 +38,8 @@
 	padding: 39px 47px 20px 16px;
 	width: 485px; 
 	height: 271px;
+	border: none !important;
+	box-shadow: none !important;
 }
 
 .modal-text{

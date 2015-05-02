@@ -12,7 +12,7 @@ angular.module('core').directive('multiselect', [ function() {
         element.multiselect({ enableFiltering: true });
 		
 		scope.$watch( function(){ 
-			return scope[ItemsList].length > 0 ?  true : false; 
+			return scope[ItemsList] && scope[ItemsList].length > 0 ?  true : false; 
 			}, function(val) {
 			if(val){
 				scope[ItemsList].forEach(function( resource, index ) {
@@ -23,8 +23,9 @@ angular.module('core').directive('multiselect', [ function() {
 			}	
 		});
 		
-		scope.$watch( function(){ 
-			return scope[selectedItems].length > 0 ?  true : false; 
+		scope.$watch( function(){
+
+			return scope[selectedItems] && scope[selectedItems].length > 0 ?  true : false; 
 			}, function(val) {
 			if(val){
 				scope[selectedItems].forEach(function( resource, index ) {

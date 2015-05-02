@@ -57,15 +57,25 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		};
 
 		//////////////// LIST REGIONS ////////////////
-		$scope.find = function() {
+		$scope.find = function()
+		{
 			$scope.regions = Regions.query();
 		};
 
 		//////////////// VIEW REGION ////////////////
-		$scope.findOne = function(){
-			var Region = Regions.get({ regionId: $stateParams.regionId}, function()
+		$scope.findOne = function()
+		{
+			var query = {};
+
+			//if( typeof($stateParams.regionId) != 'undefined' )
+			//	query = { regionId: $stateParams.regionId };
+			//
+			//if( typeof($stateParams.regionId) != 'undefined' )
+			//	query = { regionId: $stateParams.regionName };	
+
+			var Region = Regions.get( { regionId: $stateParams.regionId }, function()
 			{
-				$scope.regionInstruments =  Instruments.query( { $in : Region.instruments, by:  "_id"} );
+				$scope.regionInstruments =  Instruments.query( { "_id": {$in : Region.instruments} } );
 				$scope.region = Region;
 				$scope.pic.value = {'path': regionsConfig.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
 			});
