@@ -3,7 +3,7 @@
 		<h1>Regions</h1>
 	</div>
 	<div class="list-group">
-		<a data-ng-repeat="region in regions" data-ng-href="#!/regions/{{region._id}}" class="list-group-item">
+		<a data-ng-repeat="region in regions" data-ng-href="#!/regions/{{region.name}}" class="list-group-item">
 			<h4 class="list-group-item-heading" data-ng-bind="region.name"></h4>
 			<p class="list-group-item-text" data-ng-bind="region.description"></p>
 		</a>

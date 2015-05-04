@@ -26,7 +26,7 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
 					"height"  : "140px",
 					"width"   : "78px",
 					"top" 	  : "18%",
-                }, 1000, function(){  $window.location.href = '#!/regions/5541016e73c72b123ce7a7a7';  } ); //Hardcoded shit!
+                }, 1000, function(){  $window.location.href = '#!/regions/NOA';  } );
             } else {
                 done();
             }

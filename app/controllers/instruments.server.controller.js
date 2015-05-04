@@ -110,7 +110,7 @@ exports.list = function(req, res) {
 
 	if ( req.query.$in )
 	{
-		query.in( req.query.$in );
+		query.where("_id").in( req.query.$in );
 	}
 
 	query.sort('-created').populate('user', 'displayName');

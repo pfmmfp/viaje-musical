@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
-	function($scope, $stateParams, $location, regionsConfig, Authentication, Regions, openModal, fileupload, Instruments, Subregions) {
+angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'RegionsByName', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
+	function($scope, $stateParams, $location, regionsConfig, Authentication, Regions, RegionsByName, openModal, fileupload, Instruments, Subregions) {
 		
 		$scope.regionsConfig = regionsConfig;
 		$scope.authentication = Authentication;
@@ -66,19 +66,28 @@ angular.module('regions').controller('RegionsController', ['$scope', '$statePara
 		$scope.findOne = function()
 		{
 			var query = {};
+			var Region;
 
-			//if( typeof($stateParams.regionId) != 'undefined' )
-			//	query = { regionId: $stateParams.regionId };
-			//
-			//if( typeof($stateParams.regionId) != 'undefined' )
-			//	query = { regionId: $stateParams.regionName };	
-
-			var Region = Regions.get( { regionId: $stateParams.regionId }, function()
+			if( typeof($stateParams.regionId) !== 'undefined' )
 			{
-				$scope.regionInstruments =  Instruments.query( { "_id": {$in : Region.instruments} } );
-				$scope.region = Region;
-				$scope.pic.value = {'path': regionsConfig.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
-			});
+				Region = Regions.get( { regionId: $stateParams.regionId }, function()
+				{
+					var instruments = Region.instruments.length > 0 ? Region.instruments : 0;
+					$scope.regionInstruments =  Instruments.query( { "$in" : instruments } );
+					$scope.region = Region;
+					$scope.pic.value = {'path': regionsConfig.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
+				});
+			}
+
+			if( typeof($stateParams.regionName) !== 'undefined' )
+			{
+				Region = RegionsByName.get( { regionName: $stateParams.regionName }, function()
+				{
+					$scope.regionInstruments =  Instruments.query( { "_id": {$in : Region.instruments} } );
+					$scope.region = Region;
+					$scope.pic.value = {'path': regionsConfig.PUBLIC_IMAGE_PATH + Region._id + '/', 'name': Region.pic};
+				});
+			}			
 		};
 		
 		//////////////// FileUpload ////////////////

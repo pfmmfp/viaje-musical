@@ -102,6 +102,7 @@ exports.delete = function(req, res) {
  * List of regions
  */
 exports.list = function(req, res) {
+	//console.log("FETCH regions");
 	Region.find().sort('-created').populate('user', 'displayName').exec(function(err, regions) {
 		if (err) {
 			return res.send(400, {
@@ -117,6 +118,7 @@ exports.list = function(req, res) {
  * Region middleware
  */
 exports.regionByID = function(req, res, next, id) {
+	//console.log("GET regionByID");
 	Region.findById(id).populate('user', 'displayName').exec(function(err, region) {
 		if (err) return next(err);
 		if (!region) return next(new Error('Failed to load region ' + id));
@@ -125,6 +127,19 @@ exports.regionByID = function(req, res, next, id) {
 	});
 };
 
+
+/**
+ * Region middleware
+ */
+exports.regionByName = function(req, res, next, name) {
+	//console.log("GET regionByName");
+	Region.findOne({name:name} ).populate('user', 'displayName').exec(function(err, region) {
+		if (err) return next(err);
+		if (!region) return next(new Error('Failed to load region ' + name));
+		req.region = region;
+		next();
+	});
+};
 /**
  * Region authorization middleware
  */
