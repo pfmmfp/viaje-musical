@@ -28,8 +28,19 @@ angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
 							ui.position.top = composer.grid.offset(instrumentName).top - element.offset().top;
 						}
 					},
+					deleteSample: function(event)
+					{
+						event.preventDefault();
+						var helper = angular.element(event.currentTarget);
+						if (!helper.data('grid') && tracked)
+						{
+							helper.remove();
+							scope.track.removeSample(scope.sample);
+						}
+					},
 					delete: function(event, ui) {
 						var helper = angular.element(ui.helper);
+						//console.log(helper.data());
 						if (!helper.data('grid') && tracked) {
 							helper.remove();
 							scope.track.removeSample(scope.sample);
@@ -37,7 +48,7 @@ angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
 					},
 					jquiOptions: function() {
 						return {
-							revert: tracked ? false : 'invalid',
+						  revert: tracked ? false : 'invalid',
 						  helper: tracked ? 'original' : 'clone', 
 						  scope: instrumentName,
 						  containment: tracked ? '.track-grids' : ''
