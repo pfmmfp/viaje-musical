@@ -6,7 +6,7 @@ angular.module('composer').config(['$stateProvider',
 		// Composer state routing
 		$stateProvider
       .state('composer', {
-  			url: '/compositor',
+  			url: '/compositor/:regionName',
   			templateUrl: 'modules/composer/views/composer.client.view.html'
   		});
 	}

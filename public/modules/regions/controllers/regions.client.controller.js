@@ -3,6 +3,7 @@
 angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'RegionsByName', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
 	function($scope, $stateParams, $location, regionsConfig, Authentication, Regions, RegionsByName, openModal, fileupload, Instruments, Subregions) {
 		
+		$scope.regionName = $stateParams.regionName;
 		$scope.regionsConfig = regionsConfig;
 		$scope.authentication = Authentication;
 		$scope.Instruments = Instruments.query();

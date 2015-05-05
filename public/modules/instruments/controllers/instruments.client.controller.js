@@ -2,6 +2,7 @@
 
 angular.module('instruments').controller('InstrumentsController', ['$scope', '$stateParams', '$location', 'instrumentsConfig', 'Authentication', 'Instruments', 'fileupload', 'ngAudio',
 	function($scope, $stateParams, $location, instrumentsConfig, Authentication, Instruments, fileupload, ngAudio) {
+		$scope.regionName = $stateParams.regionName;
 		$scope.authentication = Authentication;
 		$scope.instrumentsConfig = instrumentsConfig;
 		

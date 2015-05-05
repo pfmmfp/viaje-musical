@@ -1,12 +1,6 @@
 <section data-ng-controller="RegionsController" data-ng-init="findOne()">
 
-<div class="botones">
-	<a href="#!/compositor"   class="compositor"></a>
-	<a href="#!/regions/{{region.name}}/instruments" class="instrumentos"></a>
-</div>
-
-<a href="#!/"   class="logo_instrumentos"></a>
-
+<header data-ng-include="'/modules/core/views/public/header.client.view.html'" class="navbar navbar-fixed-top"></header>
 
 <div class="contenedor-instrumentos">
 	<div class="instrumentos-controles izquierda">

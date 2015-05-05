@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('composer').controller('ComposerController', ['$scope', '$interval', '_', 'composer', '$window', 
-	function($scope, $interval, _, composer, $window) {
+angular.module('composer').controller('ComposerController', ['$scope', '$stateParams', '$interval', '_', 'composer', '$window', 
+	function($scope, $stateParams, $interval, _, composer, $window) {
     $scope.$on('tracks-loaded', function() {
       angular.element('.composer').removeClass('loading').addClass('loaded');
       angular.element('.composer-loading-screen').css('display', 'none');
@@ -10,7 +10,8 @@ angular.module('composer').controller('ComposerController', ['$scope', '$interva
     var maxBeats = 48;
 
     angular.extend($scope, {
-      instruments : composer.tracksConfig,
+      regionName : $stateParams.regionName,
+      instruments : composer.tracksConfig.byRegion( $stateParams.regionName ),
       selectedInstrument: composer.tracksConfig[0],
       maxPage: null,
       startSample: null,

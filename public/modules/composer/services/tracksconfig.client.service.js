@@ -5,6 +5,7 @@ angular.module('composer').factory('TracksConfig', ['_',
 
 		var tracksConfig = [{
         name: 'Quena',
+        regions: ['NOA'],
         samples: [
           { beats: 2, file: 'Quena-2T-Cel1-01', group: 1 },
           { beats: 2, file: 'Quena-2T-Cel1-02', group: 1 },
@@ -94,6 +95,7 @@ angular.module('composer').factory('TracksConfig', ['_',
       },
       {
         name: 'Charango',
+        regions: ['NOA'],
         samples: [
           { beats: 1, file: 'Char-1T-Am' },
           { beats: 1, file: 'Char-1T-C' },
@@ -155,6 +157,7 @@ angular.module('composer').factory('TracksConfig', ['_',
       },
       {
         name: 'Chaschas',
+        regions: ['NOA'],
         samples: [
           { beats: 4, file: 'Chas-4T-01' },
           { beats: 4, file: 'Chas-4T-02' },
@@ -177,6 +180,7 @@ angular.module('composer').factory('TracksConfig', ['_',
       },
       {
         name: 'Bombo',
+        regions: ['NOA'],
         samples: [
           { beats: 4, file: 'Bombo-4T-01' },
           { beats: 4, file: 'Bombo-4T-02' },
@@ -207,6 +211,14 @@ angular.module('composer').factory('TracksConfig', ['_',
 
   tracksConfig.byName = function(instrumentName) {
     return _.findWhere(this, { name: instrumentName });
+  };
+
+  tracksConfig.byRegion = function(regionName)
+  {
+    return _.filter(this, function(instrument){
+      console.log(instrument);
+      return instrument.regions.indexOf(regionName) > -1;
+    });
   };
 
 	return tracksConfig;

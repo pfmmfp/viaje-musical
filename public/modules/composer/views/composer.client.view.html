@@ -3,11 +3,9 @@
   <img src="/modules/composer/img/ajax-loader.gif" alt="Cargando...">
 </section>
 <section data-ng-controller="ComposerController" class="composer loading">
-  <h1 class="title">Viaje musical</h1>
-  <div class="botones">
-    <a href="#!/compositor"   class="compositor"></a>
-    <a href="#!/instrumentos" class="instrumentos"></a>
-  </div>
+
+  <header data-ng-include="'/modules/core/views/public/header.client.view.html'" class="navbar navbar-fixed-top"></header>
+
   <div class="main-box">
     <div class="main-box-common main-box-top">
       <menu class="nav-items">
