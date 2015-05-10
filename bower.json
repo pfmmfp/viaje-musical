@@ -19,6 +19,7 @@
     "bootstrap-sass-official": "~3.2.0",
     "angular-dragdrop": "~1.0.7",
     "underscore": "~1.6.0",
-    "angular-underscore-module": "*"
+    "angular-underscore-module": "*",
+    "PxLoader": "~1.0.0"
   }
 }
