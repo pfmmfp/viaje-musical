@@ -1,11 +1,42 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'ImagePreloadFactory', '_', 
+	function($scope, Authentication, ImagePreloadFactory, _) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		$scope.aterrizar = true;
+
+        var _init = function()
+        {
+
+            $.getJSON("/dist/imageList.json", function(data)
+            {
+                
+                var preloader = ImagePreloadFactory.createInstance();
+
+                _.each(data.images, function(image){
+                    preloader.addImage(image);
+                });
+
+                preloader.start( 
+                    function()
+                    {
+                        console.log("Preloading complete"); 
+                        angular.element('.home').removeClass('loading').addClass('loaded');
+                        angular.element('.loading-screen').css('display', 'none');                         
+                    },
+                    function(progress)
+                    {
+                      //console.log(progress); 
+                    }
+                );                
+            });
+
+
+        };
+
+        _init();            
 	}
 ]);
 
