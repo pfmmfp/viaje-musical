@@ -21,6 +21,7 @@ module.exports = {
 			js: [
 				'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/PxLoader/dist/pxloader-all.min.js',
 				'public/lib/bootstrap/dist/js/bootstrap.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 

@@ -161,7 +161,60 @@ module.exports = function(grunt) {
 					{expand: true, flatten: true, src: ['public/lib/bootstrap/dist/fonts/**'], dest: 'public/dist/bootstrap/', filter: 'isFile'}
 				] 
 			}
-		}		
+		},
+		'file-creator':
+		{
+			options: 
+			{
+			  openFlags: 'w'
+			},
+			"folder":
+			{
+				"public/dist/imageList.json": function(fs, fd, done)
+				{
+					var glob = grunt.file.glob;
+					var _ = grunt.util._;
+					glob('public/modules/core/img/app/*', function (err, files)
+					{
+						var widgets = [];
+						_.each(files, function(file)
+						{
+							widgets.push(file);
+						});
+	
+						glob('public/modules/composer/img/*', function (err, files)
+						{
+							_.each(files, function(file)
+							{
+								widgets.push(file);
+							});
+
+							glob('public/common/images/**/**/*+(jpg|jpeg|png|gif)', function (err, files)
+							{
+								_.each(files, function(file)
+								{
+									widgets.push(file);
+								});
+
+								console.log(widgets);
+
+								fs.writeSync(fd, '{ "images":[');
+								_.each(widgets, function(file, i)
+								{
+									if(i === ( widgets.length - 1))
+										fs.writeSync(fd, '"' + file.substr(7) +'"]}');
+									else
+									fs.writeSync(fd, '"' + file.substr(7) +'",');
+								});
+
+								done();
+							});
+						});
+					});
+				}
+			}
+		}
+
 	});
 
 	// Load NPM tasks 
@@ -180,7 +233,8 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'sass:dev', 'concurrent:default']);
+	
+	grunt.registerTask('default', ['file-creator', 'lint', 'sass:dev', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
