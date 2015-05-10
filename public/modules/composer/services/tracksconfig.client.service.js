@@ -216,7 +216,7 @@ angular.module('composer').factory('TracksConfig', ['_',
   tracksConfig.byRegion = function(regionName)
   {
     return _.filter(this, function(instrument){
-      console.log(instrument);
+      //console.log(instrument);
       return instrument.regions.indexOf(regionName) > -1;
     });
   };

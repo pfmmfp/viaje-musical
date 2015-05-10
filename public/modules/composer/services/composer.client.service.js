@@ -62,7 +62,6 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 	  };
 
 	  SampleTrack.prototype.removeSample = function(sample) {
-      console.log("remove sample");
 	    this.samplesBuffer.splice(this.samplesBuffer.indexOf(sample), 1);
 	  };
 
