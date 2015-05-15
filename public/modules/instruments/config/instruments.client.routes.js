@@ -26,7 +26,7 @@ angular.module('instruments').config(['$stateProvider',
 			templateUrl: 'modules/instruments/views/public/list-instruments.client.view.html'
 		}).
 		state('viewInstrumentPublic', {
-			url: '/instruments/:instrumentId',
+			url: '/instruments/:regionName/:instrumentId',
 			templateUrl: 'modules/instruments/views/public/view-instrument.client.view.html'
 		})
 		;

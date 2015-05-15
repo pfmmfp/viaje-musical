@@ -46,4 +46,19 @@ var InstrumentSchema = new Schema({
     }
 });
 
+InstrumentSchema.pre('save', function(next) {
+    if (this.description)
+        this.description = this.sanitizeString(this.description);
+    next();
+});
+
+/**
+ * Create instance method for hashing a password
+ */
+InstrumentSchema.methods.sanitizeString = function(toSanitize) {
+    var string = toSanitize.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+    return string.trim();
+};
+
 mongoose.model('Instrument', InstrumentSchema);
+

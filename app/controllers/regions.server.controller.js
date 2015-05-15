@@ -46,9 +46,8 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			uploadCtrl.saveModelFiles(region, res, function(res, region){
-				res.jsonp(region);	
-			});	
+			uploadCtrl.saveModelFiles(region, res, function(res, region){});	
+			return res.jsonp(region);
 		}
 	});		
 };
@@ -74,9 +73,8 @@ exports.update = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			uploadCtrl.saveModelFiles(region, res, function(res, region){
-				res.jsonp(region);	
-			});	
+			uploadCtrl.saveModelFiles(region, res, function(res, region){});	
+			return res.jsonp(region);
 		}
 	});
 };

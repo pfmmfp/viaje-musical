@@ -41,4 +41,18 @@ var SubregionSchema = new Schema({
     }
 });
 
+SubregionSchema.pre('save', function(next) {
+    if (this.description)
+        this.description = this.sanitizeString(this.description);
+    next();
+});
+
+/**
+ * Create instance method for hashing a password
+ */
+SubregionSchema.methods.sanitizeString = function(toSanitize) {
+    var string = toSanitize.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+    return string.trim();
+};
+
 mongoose.model('Subregion', SubregionSchema);

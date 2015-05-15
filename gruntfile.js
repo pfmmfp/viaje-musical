@@ -243,7 +243,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngmin', 'uglify', 'sass:dev', 'cssmin', 'copy']);
+	grunt.registerTask('build', ['file-creator', 'lint', 'loadConfig', 'ngmin', 'uglify', 'sass:dev', 'cssmin', 'copy']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

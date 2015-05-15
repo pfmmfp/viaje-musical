@@ -46,9 +46,8 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
-			uploadCtrl.saveModelFiles(instrument, res, function(res, instrument){
-				res.jsonp(instrument);	
-			});	
+			uploadCtrl.saveModelFiles(instrument, res, function(res, instrument){});	
+			return res.jsonp(instrument);
 		}
 	});
 };
@@ -68,15 +67,14 @@ exports.update = function(req, res) {
 
 	instrument = _.extend(instrument, req.body);
 
+
+
 	instrument.save(function(err) {
 		if (err) {
-			return res.send(400, {
-				message: getErrorMessage(err)
-			});
+			return res.send(400, { message: getErrorMessage(err) });
 		} else {
-			uploadCtrl.saveModelFiles(instrument, res, function(res, instrument){
-				res.jsonp(instrument);	
-			});	
+			uploadCtrl.saveModelFiles(instrument, res, function(res, instrument){});	
+			return res.jsonp(instrument);
 		}
 	});
 };
