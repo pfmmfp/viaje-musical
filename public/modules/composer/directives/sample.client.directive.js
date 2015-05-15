@@ -28,6 +28,12 @@ angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
 							ui.position.top = composer.grid.offset(instrumentName).top - element.offset().top;
 						}
 					},
+					playSample: function()
+					{
+					    var url = '/modules/composer/audio/samples/'+scope.sample.file+'.mp3';
+					    var sample = new Audio(url);
+					    sample.play();
+					},
 					deleteSample: function(event)
 					{
 						event.preventDefault();

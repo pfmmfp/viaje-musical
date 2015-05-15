@@ -1,3 +1,4 @@
+"use strict";
 /**
  * @author      Christiaan Scheermeijer <christiaan@videodock.com>
  */
