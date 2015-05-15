@@ -10,18 +10,19 @@ module.exports = {
 			js: [
 				'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
-				'public/lib/bootstrap/dist/js/bootstrap.min.js',
-				'public/lib/angular/angular.min.js',
+				'public/lib/PxLoader/dist/pxloader-all.min.js',
+				'public/lib/bootstrap/dist/js/bootstrap.js',
+				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
 				'public/lib/angular-touch/angular-touch.js', 
 				'public/lib/angular-sanitize/angular-sanitize.js', 
-				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
-				'public/lib/angular-ui-utils/ui-utils.min.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
+				'public/lib/angular-ui-router/release/angular-ui-router.js',
+				'public/lib/angular-ui-utils/ui-utils.js',
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/ng-file-upload/angular-file-upload.min.js',
-				'public/lib/angular-carousel/dist/angular-carousel.min.js',
+				'public/lib/angular-carousel/dist/angular-carousel.js',
 				'public/lib/ng-audio/angular.audio.js',
 				'public/lib/underscore/underscore.js',
 				'public/lib/angular-underscore-module/angular-underscore-module.js',
@@ -35,25 +36,5 @@ module.exports = {
 		js: [
 			'public/dist/application.min.js'
 		],
-	},
-	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
-		callbackURL: 'http://localhost:3000/auth/facebook/callback'
-	},
-	twitter: {
-		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
-		callbackURL: 'http://localhost:3000/auth/twitter/callback'
-	},
-	google: {
-		clientID: process.env.GOOGLE_ID || 'APP_ID',
-		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
-		callbackURL: 'http://localhost:3000/auth/google/callback'
-	},
-	linkedin: {
-		clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
-		callbackURL: 'http://localhost:3000/auth/linkedin/callback'
 	}
 };
