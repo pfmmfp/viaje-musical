@@ -18,7 +18,6 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 		    $scope.$on('tracks-loaded', function() {
 				$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
 				$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
-
                 angular.element('.home').removeClass('loading').addClass('loaded');
             	angular.element('.loading-screen').css('display', 'none');                         
 		    });
@@ -53,9 +52,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 		            });					
 				});
 		    }	
-			
-
-		}
+		};
 		
 		_init(); 
 
