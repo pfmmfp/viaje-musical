@@ -170,6 +170,35 @@ module.exports = function(grunt) {
 			},
 			"folder":
 			{
+				/*
+				"public/dist/audioList.json": function(fs, fd, done)
+				{
+					var glob = grunt.file.glob;
+					var _ = grunt.util._;
+					glob('public/common/audio/home/*', function (err, files)
+					{
+						var audio = [];
+						_.each(files, function(file)
+						{
+							audio.push(file);
+						});
+
+						console.log(audio);
+
+						fs.writeSync(fd, '{ "audios":[');
+						_.each(audio, function(file, i)
+						{
+							if(i === ( audio.length - 1))
+								fs.writeSync(fd, '"' + file.substr(7) +'"]}');
+							else
+							fs.writeSync(fd, '"' + file.substr(7) +'",');
+						});
+
+						done();					
+					});
+				},
+				*/
+					
 				"public/dist/imageList.json": function(fs, fd, done)
 				{
 					var glob = grunt.file.glob;

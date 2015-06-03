@@ -1,12 +1,9 @@
 'use strict';
 
-angular.module('composer').controller('ComposerController', ['$scope', '$stateParams', '$interval', '_', 'composer', '$window', 
-	function($scope, $stateParams, $interval, _, composer, $window) {
-    $scope.$on('tracks-loaded', function() {
-      angular.element('.composer').removeClass('loading').addClass('loaded');
-      angular.element('.composer-loading-screen').css('display', 'none');
-    });
+angular.module('composer').controller('ComposerController', ['$scope', '$rootScope', '$stateParams', '$interval', '_', 'composer', '$window', 
+	function($scope, $rootScope, $stateParams, $interval, _, composer, $window) {
 
+    $rootScope.music.stopAll();
     var maxBeats = 48;
 
     angular.extend($scope, {

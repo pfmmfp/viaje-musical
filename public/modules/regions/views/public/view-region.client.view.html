@@ -1,4 +1,9 @@
-<section data-ng-controller="RegionsController" data-ng-init="findOne()">
+<section class="loading-screen">
+  <p>Cargando...</p>
+  <img src="/modules/composer/img/ajax-loader.gif" alt="Cargando...">
+</section>
+
+<section data-ng-controller="RegionsController" data-ng-init="findOne()" class="home loading">
 
 <header data-ng-include="'/modules/core/views/public/header.client.view.html'" class="navbar navbar-fixed-top"></header>
 

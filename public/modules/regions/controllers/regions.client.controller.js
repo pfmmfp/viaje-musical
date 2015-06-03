@@ -1,15 +1,64 @@
 'use strict';
 
-angular.module('regions').controller('RegionsController', ['$scope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'RegionsByName', 'openModal', 'fileupload', 'Instruments', 'Subregions', 
-	function($scope, $stateParams, $location, regionsConfig, Authentication, Regions, RegionsByName, openModal, fileupload, Instruments, Subregions) {
+angular.module('regions').controller('RegionsController', ['$scope', '$rootScope', '$stateParams', '$location', 'regionsConfig', 'Authentication', 'Regions', 'RegionsByName', 'openModal', 'fileupload', 'Instruments', 'Subregions', 'composer', '_', 
+	function($scope, $rootScope, $stateParams, $location, regionsConfig, Authentication, Regions, RegionsByName, openModal, fileupload, Instruments, Subregions, composer, _) {
 		
-		$scope.regionName = $stateParams.regionName;
-		$scope.regionsConfig = regionsConfig;
-		$scope.authentication = Authentication;
-		$scope.Instruments = Instruments.query();
+		$scope.regionName 	     = $stateParams.regionName;
+		$scope.regionsConfig     = regionsConfig;
+		$scope.authentication    = Authentication;
+		$scope.Instruments       = Instruments.query();
 		$scope.regionInstruments = [];
-		$scope.subregions = [];
+		$scope.subregions 		 = [];
+		$rootScope.tracks 		 = $rootScope.tracks ? $rootScope.tracks : [];
+
+		var _init = function()
+		{
+			$rootScope.music.stop('fxMapa');
+		    
+		    $scope.$on('tracks-loaded', function() {
+				$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
+				$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
+
+                angular.element('.home').removeClass('loading').addClass('loaded');
+            	angular.element('.loading-screen').css('display', 'none');                         
+		    });
+
+		    if( typeof($rootScope.tracks[$scope.regionName]) !== 'undefined' )
+		    {
+				$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
+				$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
+
+                angular.element('.home').removeClass('loading').addClass('loaded');
+            	angular.element('.loading-screen').css('display', 'none');                         
+		    }
+		    else
+		    {
+				var samples = [
+					{ 
+						key: 'fx'+$scope.regionName, 
+						path: 'common/audio/home/'+$scope.regionName +'/fx.mp3'
+					},
+					{ 
+						key: 'ambient'+$scope.regionName, 
+						path: 'common/audio/home/'+$scope.regionName +'/ambient.mp3'
+					},				
+				];
+				
+				$rootScope.music.loadSamples(samples, function(err, samplesBuffer)
+				{			
+					//Cargo los tracks del compositor de la region
+		            var instruments = composer.tracksConfig.byRegion( $scope.regionName );
+		            $rootScope.tracks[$scope.regionName] = _.map(instruments, function(instrument){
+		                return composer.createTrack(instrument.name);                    
+		            });					
+				});
+		    }	
+			
+
+		}
 		
+		_init(); 
+
 		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
 			

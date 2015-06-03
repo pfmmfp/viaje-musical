@@ -18,6 +18,8 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 	  };
 
 	  SampleTrack.prototype.loadSamples = function() {
+      console.log(this.sampleRefs);
+      
 	    angular.forEach(this.sampleRefs, function(sampleRef) {
 	      var request = new XMLHttpRequest();
 	      var url = '/modules/composer/audio/samples/' + sampleRef.file + '.mp3';
@@ -168,6 +170,7 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
         this.loadedTracks++;
         if(this.loadedTracks === this.tracks.length) {
           $rootScope.$broadcast('tracks-loaded');
+          console.log("tracks loaded");
         }
       },
       loadExample: function() {

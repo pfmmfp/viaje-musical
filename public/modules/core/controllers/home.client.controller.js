@@ -1,39 +1,54 @@
 'use strict';
 
-
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'ImagePreloadFactory', '_', 
-	function($scope, Authentication, ImagePreloadFactory, _) {
-		// This provides Authentication context.
+angular.module('core').controller('HomeController', ['$scope', '$rootScope', 'Authentication', 'ImagePreloadFactory', 'composer', 'fxAudioFactory', '_', 
+	function($scope, $rootScope, Authentication, ImagePreloadFactory, composer, fxAudioFactory, _)
+    {
+        // This provides Authentication context.
 		$scope.authentication = Authentication;
 		$scope.aterrizar = true;
 
         var _init = function()
         {
-
-            $.getJSON("/dist/imageList.json", function(data)
+            if(!$rootScope.music)
             {
-                
-                var preloader = ImagePreloadFactory.createInstance();
+                var samples = [{ key: 'fxMapa', path: 'common/audio/home/fx_mapa.mp3'}];
+                fxAudioFactory.loadSamples(samples, function(err, samplesBuffer)
+                {
+                    if(err)
+                        console.log("error loading samples");
 
-                _.each(data.images, function(image){
-                    preloader.addImage(image);
+                    $rootScope.music = fxAudioFactory;
+                    
+                    $.getJSON("/dist/imageList.json", function(data)
+                    {
+                        
+                        var preloader = ImagePreloadFactory.createInstance();
+
+                        _.each(data.images, function(image){
+                            preloader.addImage(image);
+                        });        
+
+                        preloader.start( 
+                            function()
+                            {
+                                console.log("Preloading complete"); 
+                                angular.element('.home').removeClass('loading').addClass('loaded');
+                                angular.element('.loading-screen').css('display', 'none');                         
+                                $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+                                $rootScope.loadedFlag = true;
+                            },
+                            function(progress) { /*console.log(progress);*/ }
+                        );                             
+                    });           
                 });
-
-                preloader.start( 
-                    function()
-                    {
-                        console.log("Preloading complete"); 
-                        angular.element('.home').removeClass('loading').addClass('loaded');
-                        angular.element('.loading-screen').css('display', 'none');                         
-                    },
-                    function(progress)
-                    {
-                      //console.log(progress); 
-                    }
-                );                
-            });
-
-
+            }
+            else
+            {
+                $rootScope.music.stopAll();
+                angular.element('.home').removeClass('loading').addClass('loaded');
+                angular.element('.loading-screen').css('display', 'none');                         
+                $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+            }
         };
 
         _init();            
@@ -44,7 +59,6 @@ angular.module('core').animation('.aterrizar', ['$location', '$window', function
     return {
         removeClass: function (element, className, done) {
             if (className === 'volar') {
-                console.log(element);
                 element
                     .css({
 					"width"  : "381px", 
