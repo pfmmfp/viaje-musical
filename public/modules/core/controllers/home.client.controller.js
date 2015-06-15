@@ -11,7 +11,10 @@ angular.module('core').controller('HomeController', ['$scope', '$rootScope', 'Au
         {
             if(!$rootScope.music)
             {
-                var samples = [{ key: 'fxMapa', path: 'common/audio/home/fx_mapa.mp3'}];
+                var samples = [
+                    { key: 'fxMapa', path: 'common/audio/home/fx_mapa.ogg'},
+                    { key: 'fxMapa', path: 'common/audio/home/ambient.ogg'}
+                ];
                 fxAudioFactory.loadSamples(samples, function(err, samplesBuffer)
                 {
                     if(err)

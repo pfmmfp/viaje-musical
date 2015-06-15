@@ -35,11 +35,11 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 				var samples = [
 					{ 
 						key: 'fx'+$scope.regionName, 
-						path: 'common/audio/home/'+$scope.regionName +'/fx.mp3'
+						path: 'common/audio/home/'+$scope.regionName +'/fx.ogg'
 					},
 					{ 
 						key: 'ambient'+$scope.regionName, 
-						path: 'common/audio/home/'+$scope.regionName +'/ambient.mp3'
+						path: 'common/audio/home/'+$scope.regionName +'/ambient.ogg'
 					},				
 				];
 				
