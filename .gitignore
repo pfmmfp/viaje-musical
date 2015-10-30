@@ -4,9 +4,6 @@
 npm-debug.log
 node_modules/
 public/tmp
-public/common/audio/instrument
-public/common/audio/subregion
-public/common/images/instrument
 public/lib
 public/css/
 public/dist/
