@@ -18,7 +18,7 @@ angular.module('composer').factory('composer', ['_', 'TracksConfig', 'AudioConte
 	  };
 
 	  SampleTrack.prototype.loadSamples = function() {
-      console.log(this.sampleRefs);
+      //console.log(this.sampleRefs);
       
 	    angular.forEach(this.sampleRefs, function(sampleRef) {
 	      var request = new XMLHttpRequest();

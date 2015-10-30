@@ -14,13 +14,14 @@
 		<div class="home-fondo"></div>
 
 		<div class="valle-home"></div>
-		<div class="mapa-home"></div>
+		<div id="map" class="mapa-home"></div>
 
-		<div class="globo aterrizar" ng-class="{ volar: !aterrizar }">
+		<div id="globo" class="globo aterrizar" ng-class="{ volar: !aterrizar }">
 			<div ng-hide="aterrizar" class="bienvenido_home"></div>
 		</div>
 
-		<div class="comenzar" ng-click="aterrizar = !aterrizar" ng-init="aterrizar = false"></div>
+		<!-- <div class="comenzar" ng-click="aterrizar = !aterrizar" ng-init="aterrizar = false"></div> -->
+		<div class="comenzar"></div>
 	</div>
 
 </section>

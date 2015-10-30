@@ -13,33 +13,39 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 
 		var _init = function()
 		{
-			$rootScope.music.stop('fxMapa');
-		    
-		    $scope.$on('tracks-loaded', function() {
-				$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
-				$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
-                angular.element('.home').removeClass('loading').addClass('loaded');
-            	angular.element('.loading-screen').css('display', 'none');                         
-		    });
+			if(/admin/.test($location.$$path))
+				return false;
+			
+			$rootScope.music.stopAll();
 
-		    if( typeof($rootScope.tracks[$scope.regionName]) !== 'undefined' )
+		    if( typeof($rootScope.tracks[$scope.regionName]) !== 'undefined')
 		    {
-				$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
-				$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
+		    	if($location.$$path === '/regions/NOA')
+		    	{	
+					$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
+					$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
+				}
 
                 angular.element('.home').removeClass('loading').addClass('loaded');
             	angular.element('.loading-screen').css('display', 'none');                         
 		    }
 		    else
 		    {
+			    $scope.$on('tracks-loaded', function() {
+					$rootScope.music.play('fx'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});
+					$rootScope.music.play('ambient'+$scope.regionName, {loop: true, loopStart: 0, loopEnd: 1000});            	
+	                angular.element('.home').removeClass('loading').addClass('loaded');
+	            	angular.element('.loading-screen').css('display', 'none');                         
+			    });
+
 				var samples = [
 					{ 
 						key: 'fx'+$scope.regionName, 
-						path: 'common/audio/home/'+$scope.regionName +'/fx.ogg'
+						path: 'common/audio/region/'+$scope.regionName +'/fx.ogg'
 					},
 					{ 
 						key: 'ambient'+$scope.regionName, 
-						path: 'common/audio/home/'+$scope.regionName +'/ambient.ogg'
+						path: 'common/audio/region/'+$scope.regionName +'/ambient.ogg'
 					},				
 				];
 				

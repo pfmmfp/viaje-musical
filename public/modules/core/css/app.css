@@ -21,12 +21,13 @@
 }
 
 .mapa-home{
-	background: url('/modules/core/img/app/mapa_home.png');
-
+	background: url('/modules/core/img/app/mapa_home.svg') no-repeat;
+	position: absolute;
+	
+	/*
 	min-width: 411px; 
 	min-height: 563px;
 	
-/*	max-width: 575px; */
 	max-height: 750px;
 	
 	background-size: 100% 100%;
@@ -36,6 +37,7 @@
 	position: absolute;
 	top: 0;
 	right: 0;
+	*/
 }
 
 .globo{
@@ -57,7 +59,6 @@
 	top: 15%;
 	left: 15%;
 	z-index: 2;
-	cursor: pointer;
 }
 
 .botones{

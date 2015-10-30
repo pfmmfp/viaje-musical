@@ -32,7 +32,7 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
 			}			
 			else
 			{
-				console.log('loading ', audioObj);
+				console.log('loading sample %s', audioObj.path);
 				self.getSampleBuffer(audioObj.path, audioObj.key, function(err, buffer)
 				{
 					if(err)
@@ -44,7 +44,7 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
 					{
 						self.samplesBuffer[audioObj.key] = buffer;
 						samplesLoaded++;
-						console.log(samplesLoaded, samplesToLoad);
+						//console.log(samplesLoaded, samplesToLoad);
 						if(samplesLoaded === samplesToLoad)
 							return next(null, self.samplesBuffer);
 					}					
@@ -63,7 +63,7 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
         {   
             self.audioContext.decodeAudioData(request.response, function getAudioBuffer(buffer)
             {
-                console.log("sample loaded");
+                console.log("sample %s loaded ", path);
                 return next(null, buffer);
             }, 
             function playAudioError(err){ 
@@ -108,7 +108,7 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
 	    }
 	    else
 	    {
-	    	console.log(self.samples[key]);
+	    	//console.log(self.samples[key]);
 
 	    	if(!self.samples[key].playing)
 	    		self.samples[key].audio.start(startAt);	
