@@ -15,9 +15,13 @@ angular.module('composer').directive('sample', ['composer', 'TracksConfig', '_',
 					tracked = scope.track !== undefined;
 				angular.extend(scope, {
 					indexer: function() {
-		        var samples = _.where(TracksConfig.byName(scope.instrument).samples, 
-		        	{ beats: scope.sample.beats, group: scope.sample.group });
-		        var sample = _.findWhere(samples, { file: scope.sample.file, beats: scope.sample.beats });
+
+		        if(scope.sample.group)
+		        	var samples = _.where(TracksConfig.byName(scope.instrument).samples, { beats: scope.sample.beats, group: scope.sample.group });
+		        else	
+					var samples = _.where(TracksConfig.byName(scope.instrument).samples, { beats: scope.sample.beats });		        	
+	        	
+	        	var sample = _.findWhere(samples, { file: scope.sample.file, beats: scope.sample.beats });
 		        return new Array(samples.indexOf(sample));
 		      },
 					dragToGrid: function(event, ui) {
