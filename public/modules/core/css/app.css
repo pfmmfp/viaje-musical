@@ -111,3 +111,14 @@
   text-align: center;
   font-weight: bold;
 }
+
+#unityPlayer {
+	cursor: default;
+	height: 600px;
+	width: 960px;
+}
+
+.contenedor-game {
+	height: 600px;
+	width: 960px;	
+}

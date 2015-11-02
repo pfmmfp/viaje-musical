@@ -13,7 +13,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 
 		var _init = function()
 		{
-			if(/admin/.test($location.$$path) || /game/.test($location.$$path) || /instruments/.test($location.$$path))
+			if(/admin/.test($location.$$path))
 				return false;
 			
 			$rootScope.music.stopAll();
@@ -72,7 +72,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 				
 			};
 			
-			
+
 			var u = new UnityObject2(config);
 			var $missingScreen = jQuery("#unityPlayer").find(".missing");
 			var $brokenScreen = jQuery("#unityPlayer").find(".broken");
