@@ -120,5 +120,6 @@
 
 .contenedor-game {
 	height: 600px;
-	width: 960px;	
+	width: 990px;	
+	margin: 100px auto auto;
 }
