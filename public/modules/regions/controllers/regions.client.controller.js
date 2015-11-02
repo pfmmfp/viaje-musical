@@ -72,6 +72,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 				
 			};
 			
+			
 			var u = new UnityObject2(config);
 			var $missingScreen = jQuery("#unityPlayer").find(".missing");
 			var $brokenScreen = jQuery("#unityPlayer").find(".broken");
@@ -109,7 +110,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 					break;
 				}
 			});
-			u.initPlugin(jQuery("#unityPlayer")[0], "TravesiaMusical.unity3d");			
+			u.initPlugin(jQuery("#unityPlayer")[0], "/lib/unity/TravesiaMusical.unity3d");			
 		};
 
 		//////////////// CREATE REGION ////////////////			
