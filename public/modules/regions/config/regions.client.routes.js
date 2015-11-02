@@ -32,7 +32,11 @@ angular.module('regions').config(['$stateProvider',
 		state('viewRegionPublicInstruments', {
 			url: '/regions/:regionName/instruments',
 			templateUrl: 'modules/regions/views/public/view-region-instruments.client.view.html'
-		})
+		}).
+		state('viewRegionPublicGame', {
+			url: '/regions/:regionName/game',
+			templateUrl: 'modules/regions/views/public/view-region-game.client.view.html'
+		})		
 		;
 	}
 ]);

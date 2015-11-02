@@ -13,7 +13,7 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 
 		var _init = function()
 		{
-			if(/admin/.test($location.$$path))
+			if(/admin/.test($location.$$path) || /game/.test($location.$$path) || /instruments/.test($location.$$path))
 				return false;
 			
 			$rootScope.music.stopAll();
@@ -61,6 +61,56 @@ angular.module('regions').controller('RegionsController', ['$scope', '$rootScope
 		};
 		
 		_init(); 
+		
+		//////////////// INIT REGION GAME ////////////////			
+		$scope.initGame = function()
+		{
+			var config = {
+				width: 960, 
+				height: 600,
+				params: { enableDebugging:"0" }
+				
+			};
+			
+			var u = new UnityObject2(config);
+			var $missingScreen = jQuery("#unityPlayer").find(".missing");
+			var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+			$missingScreen.hide();
+			$brokenScreen.hide();
+			
+			u.observeProgress(function (progress) {
+				switch(progress.pluginStatus) {
+					case "broken":
+						console.log(progress.pluginStatus);
+						$brokenScreen.find("a").click(function (e) {
+							e.stopPropagation();
+							e.preventDefault();
+							u.installPlugin();
+							return false;
+						});
+						$brokenScreen.show();
+					break;
+					case "missing":
+						console.log(progress.pluginStatus);
+						$missingScreen.find("a").click(function (e) {
+							e.stopPropagation();
+							e.preventDefault();
+							u.installPlugin();
+							return false;
+						});
+						$missingScreen.show();
+					break;
+					case "installed":
+						console.log(progress.pluginStatus);
+						$missingScreen.remove();
+					break;
+					case "first":
+						console.log(progress.pluginStatus);
+					break;
+				}
+			});
+			u.initPlugin(jQuery("#unityPlayer")[0], "TravesiaMusical.unity3d");			
+		};
 
 		//////////////// CREATE REGION ////////////////			
 		$scope.create = function() {
