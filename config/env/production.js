@@ -28,7 +28,8 @@ module.exports = {
 				'public/lib/raphael/raphael-min.js',
 				'public/lib/angular-underscore-module/angular-underscore-module.js',
 				'public/lib/jquery-ui/jquery-ui.js',
-				'public/lib/angular-dragdrop/src/angular-dragdrop.js'
+				'public/lib/angular-dragdrop/src/angular-dragdrop.js',
+				'public/lib/unity/UnityObject2.js'
 			]
 		},
 		css: [
