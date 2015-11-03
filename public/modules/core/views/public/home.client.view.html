@@ -16,12 +16,21 @@
 		<div class="valle-home"></div>
 		<div id="map" class="mapa-home"></div>
 
-		<div id="globo" class="globo aterrizar" ng-class="{ volar: !aterrizar }">
-			<div ng-hide="aterrizar" class="bienvenido_home"></div>
+		<div id="globo" class="globo aterrizar">
+			<div class="bienvenido_home"></div>
 		</div>
 
 		<!-- <div class="comenzar" ng-click="aterrizar = !aterrizar" ng-init="aterrizar = false"></div> -->
 		<div class="comenzar"></div>
 	</div>
+
+	<script type="text/ng-template" id="myModalContent.html">
+		<div class="subregion-modal">
+			<div >
+				<p class="subregion-title">Ups! esta regi&oacute;n no esta disponible!</p>
+				<p class="subregion-title">Proba con el NOA!</p>
+			</div>
+		</div>
+	</script>
 
 </section>
