@@ -4,39 +4,22 @@
 * Module dependencies.
 */
 var express = require('express'),
-morgan = require('morgan'),
-bodyParser = require('body-parser'),
-session = require('express-session'),
-multer = require('multer'),
-compress = require('compression'),
-methodOverride = require('method-override'),
-cookieParser = require('cookie-parser'),
-helmet = require('helmet'),
-passport = require('passport'),
-mongoStore = require('connect-mongo')({
-  session: session
-}),
-flash = require('connect-flash'),
-config = require('./config'),
-consolidate = require('consolidate'),
-path = require('path');
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  compress = require('compression'),
+  helmet = require('helmet'),
+  config = require('./config'),
+  consolidate = require('consolidate'),
+  path = require('path');
 
 module.exports = function() {
   // Initialize express app
   var app = express();
 
-  app.use(multer({ dest: './public/tmp/'}));
-
-  // Globbing model files
-  config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
-    require(path.resolve(modelPath));
-  });
-
   // Setting application local variables
   app.locals.title = config.app.title;
   app.locals.description = config.app.description;
   app.locals.keywords = config.app.keywords;
-  //app.locals.facebookAppId = config.facebook.clientID;
   app.locals.jsFiles = config.getJavaScriptAssets();
   app.locals.cssFiles = config.getCSSAssets();
 
@@ -76,25 +59,23 @@ module.exports = function() {
   }
 
   // Request body parsing middleware should be above methodOverride
-  app.use(bodyParser.urlencoded());
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-  app.use(methodOverride());
 
   // Enable jsonp
   app.enable('jsonp callback');
 
-  // CookieParser should be above session
-  app.use(cookieParser());
-
-  // connect flash for flash messages
-  app.use(flash());
-
-  // Use helmet to secure Express headers
-  app.use(helmet.xframe());
-  app.use(helmet.iexss());
-  app.use(helmet.contentTypeOptions());
-  app.use(helmet.ienoopen());
-  app.disable('x-powered-by');
+  /*
+  Enable helmet default strategies to secure Express headers
+   - xssFilter adds some small XSS protections
+   - noSniff to keep clients from sniffing the MIME type
+   - ieNoOpen sets X-Download-Options for IE8+
+   - hsts for HTTP Strict Transport Security
+   - hidePoweredBy to remove the X-Powered-By header
+   - frameguard to prevent clickjacking
+   - dnsPrefetchControl controls browser DNS prefetching
+  */
+  app.use(helmet());
 
   // Setting the app router and static folder
   app.use(express.static(path.resolve('./public')));
