@@ -58,6 +58,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
     var MAP_WIDTH  = 601;
     var MAP_HEIGHT = 440;
 
+    if(!window.ScaleRaphael) initRaphael();
     var map = new ScaleRaphael("map", MAP_WIDTH, MAP_HEIGHT);
     var group = map.set();
 
@@ -117,7 +118,8 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   *
   * www.shapevent.com/scaleraphael/
   */
-  (function(){
+  function initRaphael(){
+    console.log("Initializing Raphael");
     window.ScaleRaphael = function(container, width, height){
       var wrapper = document.getElementById(container);
       if (!wrapper.style.position) wrapper.style.position = "absolute";
@@ -223,7 +225,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
       return paper;
     };
-  })();
+  }
 
   //////////////// Modal ////////////////
   var modalCtrl = function ($scope, $modalInstance, items)

@@ -70,6 +70,7 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
           $scope.$apply();
         });
       }else{
+        $scope.showComposerLink = 'hidden';
         done();
       }
     }else{
