@@ -15,10 +15,10 @@
   -moz-border-radius: 100%;
   border-radius: 100%;
   height: 500px;
-  width: 500px;  
+  width: 500px;
 }
 
-.composer .message.ng-hide-add, 
+.composer .message.ng-hide-add,
 .composer .message.ng-hide-remove {
   -webkit-transition:all 0.2s ease-in-out;
   -moz-transition:all 0.2s ease-in-out;
@@ -46,7 +46,7 @@
 }
 
 .composer .message .message-options > .message-option {
-  text-indent: -9999px; 
+  text-indent: -9999px;
   direction: ltr;
   float: left;
   margin-right: 15px;
@@ -55,13 +55,13 @@
 .composer .message .message-options > .ok {
   height: 92px;
   width: 96px;
-  background: url(/modules/composer/img/ok.png);
+  background: url(/modules/viaje/img/ok.png);
 }
 
 .composer .message .message-options > .cancel {
   height: 92px;
   width: 96px;
-  background: url(/modules/composer/img/cancel.png);
+  background: url(/modules/viaje/img/cancel.png);
 }
 
 .composer .message.wipe {

@@ -6,10 +6,10 @@ $max-sample-pos: 100;
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7;
-  -webkit-border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7;
-  -o-border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7;
-  border-image: url(/modules/composer/img/#{$sample}.png) 6 9 7 fill;
+  -moz-border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7;
+  -webkit-border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7;
+  -o-border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7;
+  border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7 fill;
 }
 
 .composer .sample-dock .sample-controls .sample-list .sample,
@@ -19,7 +19,7 @@ $max-sample-pos: 100;
 
   & > .sample-dot {
     float:left;
-    background: url(/modules/composer/img/sample-dot.png) center no-repeat;
+    background: url(/modules/viaje/img/sample-dot.png) center no-repeat;
     background-size: 6px 6px;
     width: 6px;
     height: 6px;
@@ -36,17 +36,17 @@ $max-sample-pos: 100;
     &.beats-#{$i} {
       @include sample-box('sample' + (($i % 3)+1));
       width: $timeline-grid-size * $i;
-    }       
+    }
   }
   @for $i from 0 to $max-sample-pos {
     &.pos-#{$i} {
       left: $timeline-grid-size * $i;
-      &.ui-draggable-dragging.trash-can:after { 
+      &.ui-draggable-dragging.trash-can:after {
         content: " ";
         position: absolute;
         bottom: -20px;
         right: -20px;
-        background-image: url(/modules/composer/img/papelera-sample.png); 
+        background-image: url(/modules/viaje/img/papelera-sample.png);
         background-size: 22px 20px;
         width: 22px;
         height: 20px;

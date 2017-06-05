@@ -4,19 +4,18 @@
 }
 
 .main-box > .main-box-top {
-  border-image: url(/modules/composer/img/main-box-top.png) 50 10 20 10 stretch;
+  border-image: url(/modules/viaje/img/main-box-top.png) 50 10 20 10 stretch;
   border-width: 50px 10px 20px 10px;
   height: 435px;
   background-color: #F9EBB5;
-  padding: 15px;  
+  padding: 15px;
 }
 
 .main-box > .main-box-bottom {
-  border-image: url(/modules/composer/img/main-box-bottom.png) 10 10 40 10 stretch;
+  border-image: url(/modules/viaje/img/main-box-bottom.png) 10 10 40 10 stretch;
   border-width: 10px 10px 40px 10px;
   height: 195px;
   background-color: #DCD4B9;
   margin-top: -25px;
   position: relative;
 }
-

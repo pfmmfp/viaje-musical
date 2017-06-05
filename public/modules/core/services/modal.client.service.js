@@ -1,4 +1,4 @@
-
+/*global angular*/
 'use strict';
 
 var defaultModalInstanceCtrl = function ($scope, $modalInstance, items) {
@@ -17,27 +17,26 @@ var defaultModalInstanceCtrl = function ($scope, $modalInstance, items) {
 };
 
 angular.module('core').factory('openModal', [ '$modal', function($modal) {
-	return function (next, scopeItems, modaCtrl, size)
-	{
-		if (typeof(scopeItems) === 'undefined') scopeItems = [];
-		if (typeof(modaCtrl)   === 'undefined') modaCtrl = defaultModalInstanceCtrl;
+  return function (next, scopeItems, modaCtrl, size)
+  {
+    if (typeof(scopeItems) === 'undefined') scopeItems = [];
+    if (typeof(modaCtrl)   === 'undefined') modaCtrl = defaultModalInstanceCtrl;
 
-		var modalInstance = $modal.open(
-		{
-			templateUrl: 'myModalContent.html',
-			controller: modaCtrl,
-			size: size,
-			resolve:{
-				items: function ()
-				{
-					return scopeItems;
-				}
-			}
-		});
+    var modalInstance = $modal.open(
+      {
+        templateUrl: 'myModalContent.html',
+        controller: modaCtrl,
+        size: size,
+        resolve:{
+          items: function ()
+          {
+            return scopeItems;
+          }
+        }
+      });
 
-		modalInstance.result.then(function (selectedItem) {
-			next(selectedItem);
-		});
-	};	
+    modalInstance.result.then(function (selectedItem) {
+      next(selectedItem);
+    });
+  };
 }]);
-

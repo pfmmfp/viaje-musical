@@ -39,7 +39,7 @@ $track-margin-bottom: 10px;
     .track-grid {
       height: $track-height;
       margin-bottom: $track-margin-bottom;
-      position: relative;    
+      position: relative;
 
       & > .track-grid-container {
         height: 100%;
@@ -50,7 +50,7 @@ $track-margin-bottom: 10px;
         &, .track-grid-inner {
           -webkit-border-radius: 10px;
           -moz-border-radius: 10px;
-          border-radius: 10px;    
+          border-radius: 10px;
         }
 
         & > .track-grid-inner {
@@ -81,11 +81,9 @@ $track-margin-bottom: 10px;
       width: 37px;
       height: $track-height;
       margin-bottom: $track-margin-bottom;
-      &.on { background: url(/modules/composer/img/sound-on.png) center no-repeat; }
-      &.off { background: url(/modules/composer/img/sound-off.png) center no-repeat; }
+      &.on { background: url(/modules/viaje/img/sound-on.png) center no-repeat; }
+      &.off { background: url(/modules/viaje/img/sound-off.png) center no-repeat; }
     }
   }
 
 }
-
-

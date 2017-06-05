@@ -1,0 +1,9 @@
+<li
+  class="sample"
+  data-ng-class="'beats-' + sample.beats + (sample.pos !== undefined ? ' pos-' + sample.pos : '')"
+  data-drag="true"
+  data-jqyoui-options="jquiOptions()"
+  jqyoui-draggable="draggableOptions()"
+  ng-model="sample" ui-event="{ contextmenu : 'deleteSample($event)', click: 'playSample()'}">
+  <span class="sample-dot" data-ng-repeat="i in indexer() track by $index"/>
+</li>

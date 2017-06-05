@@ -12,5 +12,6 @@
 	"unique-headings": false,
 	"universal-selector": false,
 	"unqualified-attributes": false,
-	"import": false
+	"import": false,
+  "order-alphabetical": false
 }

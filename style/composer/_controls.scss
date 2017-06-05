@@ -12,14 +12,14 @@
 }
 
 .composer .controls .stop {
-  background: url(/modules/composer/img/stop.png);
+  background: url(/modules/viaje/img/stop.png);
 }
 
 .composer .controls .play {
-  background: url(/modules/composer/img/play.png);
+  background: url(/modules/viaje/img/play.png);
 }
 
-/* VIAJEROS 
+/* VIAJEROS
 .control:before,
 .control:after {
   content: " ";
@@ -28,7 +28,7 @@
 }
 
 .control:before {
-  background: url(/modules/composer/img/viajera.png);
+  background: url(/modules/viaje/img/viajera.png);
   height: 203px;
   width: 151px;
   top: -80px;
@@ -37,7 +37,7 @@
 
 .control:after {
   content: " ";
-  background: url(/modules/composer/img/viajero.png);
+  background: url(/modules/viaje/img/viajero.png);
   height: 212px;
   width: 125px;
   top: -95px;
