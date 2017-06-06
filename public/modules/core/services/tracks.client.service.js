@@ -204,13 +204,6 @@ function(_) {
       { file: 'Bombo-4T-01', pos: 44 },
       { file: 'Bombo-4T-08', pos: 48 }
     ]
-  },{
-    name: 'Bandoneon',
-    regions: ['NEA'],
-    samples: [
-      { beats: 4, file: 'Bando-4T-01' }
-    ],
-    sampleComposition: []
   }];
 
   Tracks.byName = function(instrumentName) {
