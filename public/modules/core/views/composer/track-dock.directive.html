@@ -5,8 +5,8 @@
 </menu>
 <ul class="track-grids">
   <span class="timeline-cursor" />
-  <track-grid data-ng-repeat="track in trackList()" track="track" />
+  <track-grid data-ng-repeat="track in tracks" track="track" />
 </ul>
 <menu class="track-controls">
-  <button data-ng-repeat="track in trackList()" data-ng-click="track.toggleMute()" class="track-control-sound" data-ng-class="track.isMute() ? 'off' : 'on'" title="Prender / Apagar"></button>
+  <button data-ng-repeat="track in tracks" data-ng-click="track.toggleMute()" class="track-control-sound" data-ng-class="track.isMute() ? 'off' : 'on'" title="Prender / Apagar"></button>
 </menu>

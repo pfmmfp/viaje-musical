@@ -9,6 +9,17 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
     $rootScope.music = null;
   }
 
+
+  if( !$rootScope.tracks ){
+    $rootScope.tracks = [];
+    var tracks = Tracks.byRegion( $stateParams.regionName );
+    if(tracks.length > 0){
+      $rootScope.tracks[$stateParams.regionName] = _.map(tracks, function(track){
+        return composer.createTrack(track.name);
+      });
+    }
+  }
+
   var maxBeats = 48;
 
   angular.extend($scope, {

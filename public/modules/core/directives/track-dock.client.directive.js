@@ -10,15 +10,15 @@ function(_, composer) {
       instruments: '=',
       choose: '&onChooseInstrument'
     },
-    controller: function($scope, $stateParams, $location) {
-      angular.extend($scope, $stateParams, $location, {
-        trackList: function() {
-          if ($scope.$root.tracks && $scope.$root.tracks[$stateParams.regionName]) return $scope.$root.tracks[$stateParams.regionName];
-          if ($scope.tracks) return $scope.tracks;
-          console.log("Tracks not loaded!");
-          $location.path('regions/'+$stateParams.regionName);
-        }
+    controller: function($scope, $rootScope, $stateParams, $location) {
+
+      $scope.$on("tracks-loaded", function(){
+        $scope.tracks = $scope.$root.tracks[$stateParams.regionName];
+        $scope.$apply();
       });
+
+      if($scope.$root.tracks && $scope.$root.tracks[$stateParams.regionName])
+        $scope.tracks = $scope.$root.tracks[$stateParams.regionName];
     }
   };
 }
