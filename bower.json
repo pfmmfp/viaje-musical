@@ -20,5 +20,8 @@
     "PxLoader": "~1.0.0",
     "raphael": "https://github.com/DmitryBaranovskiy/raphael.git#~2.1.4",
     "angular-audio": "~1.7.3"
+  },
+  "resolutions": {
+    "underscore": "~1.8"
   }
 }
