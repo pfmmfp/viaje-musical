@@ -1,5 +1,5 @@
 .composer > .title {
-  background: url(/modules/viaje/img/viaje-musical.png);
+  background: url(/modules/core/img/viaje-musical.png);
   height: 125px;
   width: 172px;
   position: absolute;
@@ -10,7 +10,7 @@
 }
 
 .composer > .back {
-  background: url(/modules/viaje/img/volver.png);
+  background: url(/modules/core/img/volver.png);
   height: 128px;
   width: 142px;
   position: absolute;
@@ -43,19 +43,19 @@
 }
 
 .composer .nav-items > .nav-item.wipe {
-  background: url(/modules/viaje/img/papelera.png);
+  background: url(/modules/core/img/papelera.png);
   width: 53px;
   height: 50px;
 }
 
 .composer .nav-items > .nav-item.menu {
-  background: url(/modules/viaje/img/menu.png);
+  background: url(/modules/core/img/menu.png);
   width: 52px;
   height: 51px;
 }
 
 .composer .nav-items > .nav-item.new {
-  background: url(/modules/viaje/img/new.png);
+  background: url(/modules/core/img/new.png);
   width: 52px;
   height: 51px;
 }

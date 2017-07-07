@@ -81,8 +81,8 @@ $track-margin-bottom: 10px;
       width: 37px;
       height: $track-height;
       margin-bottom: $track-margin-bottom;
-      &.on { background: url(/modules/viaje/img/sound-on.png) center no-repeat; }
-      &.off { background: url(/modules/viaje/img/sound-off.png) center no-repeat; }
+      &.on { background: url(/modules/core/img/sound-on.png) center no-repeat; }
+      &.off { background: url(/modules/core/img/sound-off.png) center no-repeat; }
     }
   }
 

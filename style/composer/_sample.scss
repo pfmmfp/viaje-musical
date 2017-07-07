@@ -6,10 +6,10 @@ $max-sample-pos: 100;
   cursor: pointer;
   border-style: solid;
   border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7;
-  -webkit-border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7;
-  -o-border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7;
-  border-image: url(/modules/viaje/img/#{$sample}.png) 6 9 7 fill;
+  -moz-border-image: url(/modules/core/img/#{$sample}.png) 6 9 7;
+  -webkit-border-image: url(/modules/core/img/#{$sample}.png) 6 9 7;
+  -o-border-image: url(/modules/core/img/#{$sample}.png) 6 9 7;
+  border-image: url(/modules/core/img/#{$sample}.png) 6 9 7 fill;
 }
 
 .composer .sample-dock .sample-controls .sample-list .sample,
@@ -19,7 +19,7 @@ $max-sample-pos: 100;
 
   & > .sample-dot {
     float:left;
-    background: url(/modules/viaje/img/sample-dot.png) center no-repeat;
+    background: url(/modules/core/img/sample-dot.png) center no-repeat;
     background-size: 6px 6px;
     width: 6px;
     height: 6px;
@@ -46,7 +46,7 @@ $max-sample-pos: 100;
         position: absolute;
         bottom: -20px;
         right: -20px;
-        background-image: url(/modules/viaje/img/papelera-sample.png);
+        background-image: url(/modules/core/img/papelera-sample.png);
         background-size: 22px 20px;
         width: 22px;
         height: 20px;
