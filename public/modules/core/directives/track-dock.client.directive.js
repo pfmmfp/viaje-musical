@@ -5,7 +5,7 @@ angular.module('composer').directive('trackDock', ['_', 'composer',
 function(_, composer) {
   return {
     templateUrl: '/modules/core/views/composer/track-dock.directive.html',
-    restrict: 'E',
+    restrict: 'A',
     scope: {
       instruments: '=',
       choose: '&onChooseInstrument'

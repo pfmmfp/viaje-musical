@@ -3,6 +3,7 @@ $track-margin-bottom: 10px;
 
 .composer .track-dock {
   @include make-row();
+  margin-top: 74px;
 
   & > .track-headers {
     @include make-xs-column(1);

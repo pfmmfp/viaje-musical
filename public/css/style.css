@@ -6806,6 +6806,7 @@ button.close {
   margin-left: -15px;
   margin-right: -15px;
   background-clip: padding-box;
+  border-style: solid;
 }
 .main-box > .main-box-common:before, .main-box > .main-box-common:after {
   content: " ";
@@ -7097,6 +7098,7 @@ button.close {
 .composer .track-dock {
   margin-left: -15px;
   margin-right: -15px;
+  margin-top: 74px;
 }
 .composer .track-dock:before, .composer .track-dock:after {
   content: " ";
