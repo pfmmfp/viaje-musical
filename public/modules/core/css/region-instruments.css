@@ -13,6 +13,7 @@
 	padding: 15px;
 	border-image: url(/modules/core/img/app/fondo_instrumentos.png) 30 20 50 20 stretch;
 	border-width: 30px 20px 50px 20px;
+	border-style: solid;
 	width: 90%;
 	min-width: 300px;
 	height: 350px;
