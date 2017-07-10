@@ -19,8 +19,6 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
   };
 
   SampleTrack.prototype.loadSamples = function() {
-    //console.log(this.sampleRefs);
-
     angular.forEach(this.sampleRefs, function(sampleRef) {
       var request = new XMLHttpRequest();
       var url = '/modules/core/audio/samples/' + sampleRef.file + '.mp3';
@@ -171,7 +169,6 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
       this.loadedTracks++;
       if(this.loadedTracks === this.tracks.length) {
         $rootScope.$broadcast('tracks-loaded');
-        console.log("tracks loaded");
       }
     },
     loadExample: function() {
@@ -190,9 +187,8 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
   return {
     tracksConfig: Tracks,
     grid: GridHelper,
-    createTrack: function(name) {
-      var instrument = this.tracksConfig.byName(name);
-      return trackManager.createTrack(name,
+    createTrack: function(instrument) {
+      return trackManager.createTrack(instrument.name,
         instrument.samples, instrument.sampleComposition);
     },
     playProgress: function() {

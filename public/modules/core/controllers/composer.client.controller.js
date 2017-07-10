@@ -12,20 +12,21 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
 
   if( !$rootScope.tracks ){
     $rootScope.tracks = [];
-    var tracks = Tracks.byRegion( $stateParams.regionName );
+    var tracks = Tracks[$stateParams.regionName];
     if(tracks.length > 0){
       $rootScope.tracks[$stateParams.regionName] = _.map(tracks, function(track){
-        return composer.createTrack(track.name);
+        return composer.createTrack(track);
       });
     }
   }
 
-  var maxBeats = 48;
+  var maxBeats = 48,
+    instruments = Tracks[$stateParams.regionName];
 
   angular.extend($scope, {
     regionName : $stateParams.regionName,
-    instruments : Tracks.byRegion( $stateParams.regionName ),
-    selectedInstrument: Tracks[0],
+    instruments : instruments,
+    selectedInstrument: instruments[0],
     maxPage: null,
     startSample: null,
     nextSample: null,

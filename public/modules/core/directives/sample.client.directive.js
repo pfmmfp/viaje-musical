@@ -1,8 +1,8 @@
 /*global angular*/
 'use strict';
 
-angular.module('composer').directive('sample', ['composer', 'Tracks', '_',
-function(composer, Tracks, _) {
+angular.module('composer').directive('sample', ['composer', 'Tracks', '_', '$stateParams',
+function(composer, Tracks, _, $stateParams) {
   return {
     templateUrl: '/modules/core/views/composer/sample.directive.html',
     restrict: 'E',
@@ -16,12 +16,14 @@ function(composer, Tracks, _) {
         tracked = scope.track !== undefined;
       angular.extend(scope, {
         indexer: function() {
-          var samples;
+          if (!$stateParams.regionName) return [];
+          var samples = _.findWhere(Tracks[$stateParams.regionName], { name: scope.instrument }).samples;
 
-          if(scope.sample.group)
-            samples = _.where(Tracks.byName(scope.instrument).samples, { beats: scope.sample.beats, group: scope.sample.group });
-          else
-            samples = _.where(Tracks.byName(scope.instrument).samples, { beats: scope.sample.beats });
+          var query = { beats: scope.sample.beats };          
+          if (scope.sample.group) {
+            query.group = scope.sample.group;
+          }
+          samples = _.where(samples, query);
 
           var sample = _.findWhere(samples, { file: scope.sample.file, beats: scope.sample.beats });
           return new Array(samples.indexOf(sample));
@@ -52,7 +54,6 @@ function(composer, Tracks, _) {
         },
         delete: function(event, ui) {
           var helper = angular.element(ui.helper);
-          //console.log(helper.data());
           if (!helper.data('grid') && tracked) {
             helper.remove();
             scope.track.removeSample(scope.sample);
