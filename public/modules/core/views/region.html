@@ -8,7 +8,7 @@
 <header data-ng-include="'/modules/core/views/header.html'" class="navbar navbar-fixed-top"></header>
 
 <div class="region-map" style="background: url('{{pic.value.path + pic.value.name}}');" >
-	<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY - 50}}px; left: {{ subregion.offsetX - 50 }}px;" data-ng-click="openSubregionModal(subregion)"></div>
+	<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY }}px; left: {{ subregion.offsetX }}px;" data-ng-click="openSubregionModal(subregion)"></div>
 </div>
 
 <div class="region-chicos">
