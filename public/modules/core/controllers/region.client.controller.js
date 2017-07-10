@@ -60,10 +60,10 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
 
   preload().then(function(){
     if( !$rootScope.tracks[$scope.regionName] ){
-      var tracks = Tracks.byRegion( $scope.regionName );
+      var tracks = Tracks[$scope.regionName];
       if(tracks.length > 0){
         $rootScope.tracks[$scope.regionName] = _.map(tracks, function(track){
-          return composer.createTrack(track.name);
+          return composer.createTrack(track);
         });
         $scope.$on('tracks-loaded',function(){
           done();

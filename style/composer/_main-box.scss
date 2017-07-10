@@ -7,7 +7,7 @@
 .main-box > .main-box-top {
   border-image: url(/modules/core/img/main-box-top.png) 50 10 20 10 stretch;
   border-width: 50px 10px 20px 10px;
-  height: 435px;
+  min-height: 435px;
   background-color: #F9EBB5;
   padding: 15px;
 }
