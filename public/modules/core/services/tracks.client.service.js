@@ -5,12 +5,12 @@ angular.module('composer').factory('Tracks', ['_', 'TracksNOA', 'TracksNEA', 'Tr
 function(_, TracksNOA, TracksNEA, TracksPam, TracksSP) {
 
   var Tracks = {
-    NOA: TracksNOA,
-    NEA: TracksNEA,
-    PAMPA: TracksPam,
-    CUYO: [],
-    PATAGONIA: [],
-    'SIERRAS PAMPEANAS': TracksSP,
+    noa: { tracks: TracksNOA, bpm: 96 },
+    nea: { tracks: TracksNEA, bpm: 100 },
+    pampa: { tracks: TracksPam, bpm: 100 },
+    cuyo: { tracks: [], bpm: 100 },
+    patagonia: { tracks: [], bpm: 100 },
+    sierras: { tracks: TracksSP, bpm: 70 },
   };
 
   return Tracks;

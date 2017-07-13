@@ -6,8 +6,9 @@ angular.module('core').controller('RegionController', ['$scope', '$rootScope', '
 function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments, openModal, composer,
   $q, fxAudioFactory, _, ImagePreloadFactory) {
 
-  $scope.regionName 	  = $stateParams.regionName;
+  $scope.regionCode 	  = $stateParams.regionCode;
   $rootScope.tracks 	  = $rootScope.tracks ? $rootScope.tracks : [];
+  var regionComposer = composer.get($stateParams.regionCode);
 
   function preload(){
     var deferred = $q.defer();
@@ -50,7 +51,7 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   }
 
   function done(){
-    var region = Regions.byName($stateParams.regionName);
+    var region = Regions.byCode($stateParams.regionCode);
     $scope.regionInstruments =  Instruments.findByIds(region.instruments);
     $scope.region = region;
     $scope.pic = { value : {path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic} };
@@ -59,11 +60,11 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   }
 
   preload().then(function(){
-    if( !$rootScope.tracks[$scope.regionName] ){
-      var tracks = Tracks[$scope.regionName];
+    if( !$rootScope.tracks[$scope.regionCode] ){
+      var tracks = Tracks[$scope.regionCode].tracks;
       if(tracks.length > 0){
-        $rootScope.tracks[$scope.regionName] = _.map(tracks, function(track){
-          return composer.createTrack(track);
+        $rootScope.tracks[$scope.regionCode] = _.map(tracks, function(track){
+          return regionComposer.createTrack(track.name, track.samples, track.sampleComposition);
         });
         $scope.$on('tracks-loaded',function(){
           done();
@@ -116,8 +117,8 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
 
 .controller('RegionInstrumentsController', ['$scope', '$rootScope', '$stateParams','Regions', 'Instruments',
 function($scope, $rootScope, $stateParams, Regions, Instruments) {
-  var region = Regions.byName($stateParams.regionName);
-  $scope.regionName = $stateParams.regionName;
+  var region = Regions.byCode($stateParams.regionCode);
+  $scope.regionCode = $stateParams.regionCode;
   $scope.regionInstruments =  Instruments.findByIds( region.instruments );
 }])
 
@@ -131,5 +132,5 @@ function($scope, $rootScope, $stateParams, config, Instruments) {
   var instrument = Instruments.byId($stateParams.instrumentId);
   $scope.instrument = instrument;
   $scope.instrumentsConfig = config.instrument;
-  $scope.regionName = $stateParams.regionName;
+  $scope.regionCode = $stateParams.regionCode;
 }]);

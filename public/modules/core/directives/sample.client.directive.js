@@ -16,8 +16,8 @@ function(composer, Tracks, _, $stateParams) {
         tracked = scope.track !== undefined;
       angular.extend(scope, {
         indexer: function() {
-          if (!$stateParams.regionName) return [];
-          var samples = _.findWhere(Tracks[$stateParams.regionName], { name: scope.instrument }).samples;
+          if (!$stateParams.regionCode) return [];
+          var samples = _.findWhere(Tracks[$stateParams.regionCode].tracks, { name: scope.instrument }).samples;
 
           var query = { beats: scope.sample.beats };          
           if (scope.sample.group) {
@@ -38,7 +38,7 @@ function(composer, Tracks, _, $stateParams) {
         },
         playSample: function()
         {
-          var url = '/modules/core/audio/samples/'+scope.sample.file+'.mp3';
+          var url = '/modules/core/audio/samples/'+$stateParams.regionCode+'/'+scope.sample.file+'.mp3';
           var sample = new Audio(url);
           sample.play();
         },

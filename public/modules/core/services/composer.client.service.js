@@ -1,8 +1,8 @@
 /*global angular*/
 'use strict';
 
-angular.module('composer').factory('composer', ['_', 'Tracks', 'AudioContext', '$rootScope', 'GridHelper',
-function(_, Tracks, audioContext, $rootScope, GridHelper) {
+angular.module('composer').factory('composer', ['_', 'Tracks', 'AudioContext', '$rootScope', 'GridHelper', 'Regions',
+function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
 
   var SampleTrack = function(name, sampleRefs, sampleComposition, manager) {
     this.name = name;
@@ -21,7 +21,8 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
   SampleTrack.prototype.loadSamples = function() {
     angular.forEach(this.sampleRefs, function(sampleRef) {
       var request = new XMLHttpRequest();
-      var url = '/modules/core/audio/samples/' + sampleRef.file + '.mp3';
+      var filePath = this.manager.region.code + '/' + sampleRef.file;
+      var url = '/modules/core/audio/samples/' + filePath + '.mp3';
       request.open('GET', url, true);
       request.responseType = 'arraybuffer';
       request.onload = this.storeSample.bind(this, sampleRef.file, request);
@@ -127,10 +128,10 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
   };
 
 
-  var TrackManager = function() {
+  var TrackManager = function(region) {
     this.tracks = [];
-    this.tempo = 96; // BPM (beats per minute)
-    this.beat = 60 / this.tempo; // negra
+    this.region = region;
+    this.beat = 60 / region.composerBPM; // negra
     this.playTime = null;
     this.playOffset = 0.1;
     this.loadedTracks = 0;
@@ -147,7 +148,7 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
     },
     playProgress: function() {
       if(!this.isPlaying()) return 0;
-      return (audioContext.currentTime - this.playTime) / this.beat;
+      return (audioContext.currentTime - this.playTime) / this.beat * GridHelper.beatSize;
     },
     play: function() {
       if (!this.isPlaying()) {
@@ -182,21 +183,15 @@ function(_, Tracks, audioContext, $rootScope, GridHelper) {
     }
   });
 
-  var trackManager = new TrackManager();
-
   return {
+    trackManagers: {},
     tracksConfig: Tracks,
     grid: GridHelper,
-    createTrack: function(instrument) {
-      return trackManager.createTrack(instrument.name,
-        instrument.samples, instrument.sampleComposition);
-    },
-    playProgress: function() {
-      return trackManager.playProgress() * this.grid.beatSize;
-    },
-    loadExample: trackManager.loadExample.bind(trackManager),
-    play: trackManager.play.bind(trackManager),
-    stop: trackManager.stop.bind(trackManager),
-    cleanUp: trackManager.cleanUp.bind(trackManager)
+    get: function(regionCode) {
+      if (!this.trackManagers[regionCode]) {
+        this.trackManagers[regionCode] = new TrackManager(Regions.byCode(regionCode));
+      }
+      return this.trackManagers[regionCode];
+    }
   };
 }]);

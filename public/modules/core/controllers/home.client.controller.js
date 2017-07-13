@@ -84,14 +84,14 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
     Regions.forEach(function(region){
       group.push(
-        map.path(region.path).attr('title', region.name)
+        map.path(region.path).attr('title', region.code)
       );
     });
 
     group.attr(style);
     group.click(function(event){
       var slug = this.attr('title');
-      var region = Regions.byName(slug);
+      var region = Regions.byCode(slug);
       var left = (event.pageX - (78/2)) + "px";
       var top  = (event.pageY - 120)  + "px";
 
@@ -104,7 +104,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
         "top"     : top
       }, 500, function(){
         if(region.available)
-          window.location.href = '#!/regions/'+ slug.toUpperCase();
+          window.location.href = '#!/regions/'+ slug;
         else
           openModal(function(){}, {}, modalCtrl);//  alert("Ups! esta regi&oacute;n no esa disponible prob&aacute; con el NOA!");
       });

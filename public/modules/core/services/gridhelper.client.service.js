@@ -5,7 +5,7 @@ angular.module('composer').factory('GridHelper', [
 
 		return {
       beatSize: 25, //px
-      beats: 70,
+      beats: 270,
       snappedPosition: function(pos) {
       	return Math.floor(pos / this.beatSize) * this.beatSize;
       },

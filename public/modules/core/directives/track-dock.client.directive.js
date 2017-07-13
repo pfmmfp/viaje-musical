@@ -13,12 +13,12 @@ function(_, composer) {
     controller: function($scope, $rootScope, $stateParams, $location) {
 
       $scope.$on("tracks-loaded", function(){
-        $scope.tracks = $scope.$root.tracks[$stateParams.regionName];
+        $scope.tracks = $scope.$root.tracks[$stateParams.regionCode];
         $scope.$apply();
       });
 
-      if($scope.$root.tracks && $scope.$root.tracks[$stateParams.regionName])
-        $scope.tracks = $scope.$root.tracks[$stateParams.regionName];
+      if($scope.$root.tracks && $scope.$root.tracks[$stateParams.regionCode])
+        $scope.tracks = $scope.$root.tracks[$stateParams.regionCode];
     }
   };
 }

@@ -15,22 +15,22 @@ function($stateProvider, $urlRouterProvider) {
     controller: 'HomeController'
   }).
   state('viewRegionPublic', {
-    url: '/regions/:regionName',
+    url: '/regions/:regionCode',
     templateUrl: 'modules/core/views/region.html',
     controller: 'RegionController'
   }).
   state('composer', {
-    url: '/compositor/:regionName',
+    url: '/compositor/:regionCode',
     templateUrl: 'modules/core/views/region-composer.html',
     controller: 'ComposerController'
   }).
   state('viewRegionPublicInstruments', {
-    url: '/regions/:regionName/instruments',
+    url: '/regions/:regionCode/instruments',
     templateUrl: 'modules/core/views/region-instruments.html',
     controller: 'RegionInstrumentsController'
   }).
   state('viewInstrumentPublic', {
-    url: '/instruments/:regionName/:instrumentId',
+    url: '/instruments/:regionCode/:instrumentId',
     templateUrl: 'modules/core/views/instrument.html',
     controller: 'InstrumentController'
   });

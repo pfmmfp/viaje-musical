@@ -9,24 +9,24 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
     $rootScope.music = null;
   }
 
-
+	var regionCode = $stateParams.regionCode;
+	var tracks = Tracks[regionCode].tracks;
+	var regionComposer = composer.get(regionCode);
   if( !$rootScope.tracks ){
     $rootScope.tracks = [];
-    var tracks = Tracks[$stateParams.regionName];
     if(tracks.length > 0){
-      $rootScope.tracks[$stateParams.regionName] = _.map(tracks, function(track){
-        return composer.createTrack(track);
+      $rootScope.tracks[regionCode] = _.map(tracks, function(track){
+        return regionComposer.createTrack(track.name, track.samples, track.sampleComposition);
       });
     }
   }
 
-  var maxBeats = 48,
-    instruments = Tracks[$stateParams.regionName];
+  var maxBeats = 48;
 
   angular.extend($scope, {
-    regionName : $stateParams.regionName,
-    instruments : instruments,
-    selectedInstrument: instruments[0],
+    regionCode : regionCode,
+    instruments : tracks,
+    selectedInstrument: tracks[0],
     maxPage: null,
     startSample: null,
     nextSample: null,
@@ -65,20 +65,20 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
       }
     },
     play: function () {
-      composer.play();
+      regionComposer.play();
       this.updateCursor();
       // move interval to service and attach to events
       this.intervalRef = $interval(this.updateCursor, 60 / 96);
     },
     stop: function() {
       $interval.cancel(this.intervalRef);
-      composer.stop();
+      regionComposer.stop();
       this.updateCursor();
     },
     updateCursor: function() {
       var grid = angular.element('.track-grids'),
         cursor = angular.element(".timeline-cursor"),
-        position = composer.playProgress(),
+        position = regionComposer.playProgress(),
         scrollMargin = 50;
       cursor.css('left', position + 'px');
       if (position > grid.width() + grid.scrollLeft() - scrollMargin)
@@ -99,11 +99,11 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
       $scope.messageTemplate = 'example';
     },
     loadExample: function() {
-      composer.loadExample();
+      regionComposer.loadExample();
       $scope.closeMessage();
     },
     new: function() {
-      composer.cleanUp();
+      regionComposer.cleanUp();
       $scope.closeMessage();
     },
     wipe : function() {
