@@ -4,6 +4,8 @@
   data-drag="true"
   data-jqyoui-options="jquiOptions()"
   jqyoui-draggable="draggableOptions()"
-  ng-model="sample" ui-event="{ contextmenu : 'deleteSample($event)', click: 'playSample()'}">
+  ng-model="sample"
+  ui-event="{ contextmenu : 'deleteSample($event)', click: 'playSample()'}"
+  ng-attr-title="{{sample.file}}">
   <span class="sample-dot" data-ng-repeat="i in indexer() track by $index"/>
 </li>
