@@ -10,7 +10,7 @@
 	<div class="slider-instrumentos">
 	<ul class="instrumentos-lista">
 		<li data-ng-repeat="instrument in regionInstruments"  ng-hide="offset > {{$index}}">
-		<a ng-href="#!/instruments/{{regionCode}}/{{instrument.id}}" class="instrumento-grande" style="background: url('common/images/instrument/{{instrument.id}}/{{ instrument.pic }}') no-repeat center;"></a>
+		<a ng-href="#!/instruments/{{regionCode}}/{{instrument.code}}" class="instrumento-grande" style="background: url('common/images/instrument/{{instrument.code}}/{{ instrument.pic }}') no-repeat center;"></a>
 		</li>
 	</ul>
 	</div>

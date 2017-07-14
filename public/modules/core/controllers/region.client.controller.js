@@ -52,9 +52,11 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
 
   function done(){
     var region = Regions.byCode($stateParams.regionCode);
-    $scope.regionInstruments =  Instruments.findByIds(region.instruments);
+    $scope.regionInstruments =  Instruments.findByCodes(region.instruments);
+    console.log(region);
     $scope.region = region;
     $scope.pic = { value : {path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic} };
+    // ng-class?
     angular.element('.home').removeClass('loading').addClass('loaded');
     angular.element('.loading-screen').css('display', 'none');
   }
@@ -119,7 +121,7 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
 function($scope, $rootScope, $stateParams, Regions, Instruments) {
   var region = Regions.byCode($stateParams.regionCode);
   $scope.regionCode = $stateParams.regionCode;
-  $scope.regionInstruments =  Instruments.findByIds( region.instruments );
+  $scope.regionInstruments =  Instruments.findByCodes( region.instruments );
 }])
 
 .controller('InstrumentController', ['$scope', '$rootScope', '$stateParams','config', 'Instruments',
@@ -129,7 +131,7 @@ function($scope, $rootScope, $stateParams, config, Instruments) {
     $rootScope.music = null;
   }
 
-  var instrument = Instruments.byId($stateParams.instrumentId);
+  var instrument = Instruments.byCode($stateParams.instrumentCode);
   $scope.instrument = instrument;
   $scope.instrumentsConfig = config.instrument;
   $scope.regionCode = $stateParams.regionCode;

@@ -5,7 +5,7 @@
 <div class="contenedor-instrumento">
 
 	<div class="instrument-pic">
-		<img ng-src="common/images/instrument/{{instrument.id}}/{{ instrument.pic }}"/>
+		<img ng-src="common/images/instrument/{{instrument.code}}/{{ instrument.pic }}"/>
 	</div>
 
 	<div class="instrument-text-container">
@@ -14,7 +14,7 @@
 	</div>
 
 	<div class="instrument-audio-player" ng-repeat="audio in instrument.audio">
-		<audio id="{{ audio }}"><source ng-src="{{ instrumentsConfig.PUBLIC_AUDIO_PATH + instrument.id + '/' + audio }}" type="audio/mp3"></audio>
+		<audio id="{{ audio }}"><source ng-src="{{ instrumentsConfig.PUBLIC_AUDIO_PATH + instrument.code + '/' + audio }}" type="audio/mp3"></audio>
 		<a data-ng-audio="{{ audio }}"><div class="instrument-audio play"></div></a>
 		<div class="instrument-audio stop" ng-click="stop()"></div>
 	</div>

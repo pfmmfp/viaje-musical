@@ -30,7 +30,7 @@ function($stateProvider, $urlRouterProvider) {
     controller: 'RegionInstrumentsController'
   }).
   state('viewInstrumentPublic', {
-    url: '/instruments/:regionCode/:instrumentId',
+    url: '/instruments/:regionCode/:instrumentCode',
     templateUrl: 'modules/core/views/instrument.html',
     controller: 'InstrumentController'
   });
