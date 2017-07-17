@@ -169,6 +169,67 @@ function(_) {
     "offsetX":240,
     "offsetY":50
 },
+// Pampa
+{
+    "id": "",
+    "audio":[],
+    "description":"La Ciudad Autónoma de Buenos Aires es la capital de nuestro país y su ciudad más poblada. Se encuentra en la orilla del Río de la Plata. Uno de sus íconos más conocidos es el Obelisco, un monumento histórico construido en 1936 para recordar los 400 años de la primera fundación de la ciudad.",
+    "name":"Ciudad y puerto",
+    "code": "ciudad",
+    "pic":"",
+    "pics":[
+        "Ciudad.jpg",
+        "Ciudad_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":310,
+    "offsetY":160
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Abarca el litoral del mar Argentino y se extiende más allá de la región pampeana, alcanzando las provincias de Río Negro, Chubut y Santa Cruz. Se destaca por sus amplias playas, médanos y bosques perennes que se extienden por kilómetros. La ciudad de Mar del Plata, en la provincia de Buenos Aires, es el destino más visitado cada verano.",
+    "name":"Costa atlántica",
+    "code": "costa-atlantica",
+    "pic":"",
+    "pics":[
+        "Costa_atlántica.jpg",
+        "Costa_atlántica_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":290,
+    "offsetY":295
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Son dos sistemas montañosos ubicados al sudoeste de la provincia de Buenos Aires. Tandilia es un conjunto de sierras de 300km de longitud, donde las Sierras de Tandil son las más importantes. El sistema de Ventania tiene 188km de longitud. Allí encontramos al cerro Tres Picos, el más alto de la provincia con 1239 msnm.",
+    "name":"Sierras de Tandil",
+    "code": "sierras-tandil",
+    "pic":"",
+    "pics":[
+        "Sierras_de_tandil.jpg",
+        "Sierras_de_tandil_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":220,
+    "offsetY":260
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Aquí encontramos la zona agrícola y ganadera más grande, por sus características de clima y suelo. En ella crecen especialmente cereales y oleaginosas. Se cultiva trigo, maíz, lino, avena, cebada, centeno, girasol y soja. Además presenta las mejores pasturas para desarrollar la actividad ganadera, tanto de vacas como de ovejas.",
+    "name":"Campos cultivados",
+    "code": "campos-cultivados",
+    "pic":"",
+    "pics":[
+        "Campos_cultivados.jpg",
+        "Campos_cultivados_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":250,
+    "offsetY":170
+}
 
 ];
   Subregions.byName = function(name) {

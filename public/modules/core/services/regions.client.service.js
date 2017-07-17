@@ -102,9 +102,9 @@ function(_, Subregions) {
     "description":"La Pampa, o la región pampeana, es un área geográfica situada en el centro-este de Argentina, en Uruguay, y el sur del estado brasileño de Río Grande del Sur. Es en su mayor extensión una amplia estepa con sectores septentrionales de sabana, la parte más oriental desde el centroeste de la Provincia de Córdoba hasta el océano Atlántico debido al clima templado y a la relativamente alta humedad, que solo es interrumpida periódicamente por las sequías derivadas de El Niño y La Niña y estas sequías suelen ser compensadas luego por avenidas es decir inundaciones hacen que gran parte del este de la Pampasia sea zona de praderas. En su sector austral presenta antiguos médanos paleoclimáticos, y muestra un relieve levemente escalonado hacia el oeste. En Uruguay y Río Grande del Sur presenta un paisaje más ondulado con sierras de una altura de poco más de 500 msnm. Es una de las regiones más fértiles del mundo.",
     "genres":[],
     "instruments":[
-      "5934836fc47ad2f030ca0d51",
-      "5931d0c4677a485915b38de0",
-      "5931d009677a485915b38ddf"
+      "piano",
+      "bandoneon",
+      "guitarra"
     ],
     "name":"PAMPA",
     "code":"pampa",
@@ -112,7 +112,12 @@ function(_, Subregions) {
     "path": "M232.1,256.3c0.7,0,1.3,0.1,1.8,0.4c0.7,0.4,2.1,1.2,3.7,2.2c2.2,1.4,6.4,4,7.3,4.1c1.6,0,6-1.1,6.7-2.1c1-1.5,10.6-13.6,12.6-15.7c0.6-0.6,1.4-0.8,2.4-0.8c2,0,4.7,1.1,7,2c1.2,0.5,2.3,0.9,3,1.1c1.6,0.3,12.5,0.9,20.3,0.9c5.1,0,6.7-0.2,7.2-0.4c3.3-1,19.2-11.9,22.6-15.2c2.6-2.6,3.8-5.2,3.6-6.4c-0.1-0.3-0.2-0.4-0.3-0.5c-0.3-0.2-0.7-0.3-1.1-0.5c-1.6-0.7-3.5-1.5-4.1-3.2c-0.3-0.8-0.2-1.7,0.3-2.7c1.3-2.7,5.1-3.6,6.9-3.9c-0.5-2.4-3.6-10.1-4.9-12.7c-0.2-0.4-1.8-2-13.9-6c-0.6-0.2-1.1-0.8-1.1-1.5c-0.3-3.6,11.7-16,13.5-16.9c0.9-0.5,5.6-2.3,10.7-4.1c-8.8-2-21.3-5.3-22.8-6.3c-0.8-0.5-2-1.3,3.2-12.5c2.3-4.9,5.2-10.4,6.6-12.7c-2.9-1.4-19.6-1.6-28.7-1.7c-3.3,0-6.2-0.1-8.4-0.2c-5.5,12.4-7.4,15.6-8.2,16.5c-0.3,1.2-1,2.5-1.6,3.6c-0.4,0.7-1,1.8-1,2.2c0.6,0.5,2.6,1.6,4.1,2.4c5.3,2.9,7.9,4.4,7.9,6.1c0,0.6-0.3,1.1-0.8,1.4c-2.1,1.3-7.2,6.7-7.1,9.5c0,0.5,0.2,0.9,0.7,1.1c2.8,1.5,5.9,4.6,6.2,8.1c0.2,1.9-0.5,3.6-2.1,4.9c-2,1.7-14.1,7.2-17.6,8.1c-1,1.8-5.2,9.6-6,12.1c-0.5,1.4-2.5,2-6.8,2c-3.4,0-7.5-0.4-10.8-0.7c-2.5-0.2-4.6-0.4-5.2-0.3c-0.7,0.3-1.9,3.7-2.7,5.7c-1.7,4.5-2.7,7-4.5,7c-1.7,0-5.3-2.4-12.2-7.6c-1.4-1-2.6-1.9-3.4-2.5c-0.7,0.3-1.9,0.4-3.4,0.4c-3.1,0-7.8-0.5-11.6-0.9c-2.8-0.3-5.2-0.5-6.1-0.5c-0.5,0.7-0.9,3.6-1.1,5.5c-0.4,2.7-0.7,4.8-1.2,6.2c4.8,0.2,7,0.7,7,2.4c0,0.2,0,0.4,0,0.6c-0.1,1-0.1,1.6,3.7,3.1l20,8c1.8,0.7,5.2,8.3,6.7,11.8C229.9,256.6,231,256.3,232.1,256.3z",
     "available": true,
     "pic":"9392620d4ecb9f4780d23124cc4d9d7c.png",
-    "subregions":[],
+    "subregions":[
+        Subregions.byCode('ciudad'),
+        Subregions.byCode('sierras-tandil'),
+        Subregions.byCode('costa-atlantica'),
+        Subregions.byCode('campos-cultivados'),
+    ],
     "type":"region"
   }];
 
