@@ -71,11 +71,11 @@ function(_, Subregions) {
     "description":"Sierras Pampeanas es el nombre que recibe una de las regiones naturales geográficas en que se encuentra dividida la República ArgentinaSu área aproximada es de 300 000 km, solapándose algunas zonas del oeste de la región de las Sierras Pampeanas con algunas de las del noroeste argentino NOA y algunas zonas del suroeste de las Sierras Pampeanas con algunas zonas de la región del Cuyo. Esta región pese a su nombre, abarca zonas de penillanuras y mesetas aunque recibe el nombre por los relieves dominantes de esta región, es decir, por el conjunto de sierras serranías que se extienden en el centro-oeste del país argentino, de norte a sur a través de siete provincias Tucumán, Catamarca, La Rioja, Santiago del Estero, San Juan, Córdoba y San Luis.",
     "genres":[],
     "instruments":[
-      "59348909c47ad2f030ca0d54",
-      "593488c6c47ad2f030ca0d53",
-      "5934889cc47ad2f030ca0d52",
-      "5934836fc47ad2f030ca0d51",
-      "5931d009677a485915b38ddf"
+      "bombo",
+      "voz2",
+      "voz1",
+      "piano",
+      "guitarra"
     ],
     "name":"SIERRAS PAMPEANAS",
     "code":"sierras",
@@ -83,7 +83,11 @@ function(_, Subregions) {
     "path":"M216.1,218.9c0.9,0.6,2.1,1.5,3.6,2.6c3.1,2.3,9.4,7,10.9,7.2c0.7-0.4,1.9-3.7,2.7-5.7 c1.6-4.3,2.6-6.7,4.2-7c0.7-0.1,2.8,0.1,5.7,0.3c3.3,0.3,7.4,0.7,10.6,0.7c4.3,0,4.9-0.7,4.9-0.7c1-3,6.2-12.4,6.4-12.8l0.2-0.4 l0.5-0.1c2.2-0.3,15.4-6.3,17.2-7.8c1-0.9,1.5-1.9,1.4-3.2c-0.2-2.3-2.4-5-5.2-6.5c-1.1-0.6-1.7-1.6-1.8-2.8 c-0.1-3.8,5.5-9.4,7.8-11c-0.9-1-4.6-3.1-6.7-4.2c-3.9-2.1-4.9-2.7-5.1-3.6c-0.3-1.1,0.4-2.3,1.2-3.8c0.3-0.6,0.6-1.2,0.9-1.7 c-6.4,1.3-26.2,4-29.8,4c-0.1,0-0.3,0-0.4,0c-1,0.4-3.8,4.2-5.7,6.8c-2.6,3.5-4.4,5.9-5.8,7c0.1,1.4-1.1,3.3-2.2,5.1 c-0.3,0.5-0.6,1-0.8,1.3c-0.6,1.2-2.5,2.8-11.9,2.8c-4.5,0-9.1-0.4-10.5-0.6c-0.2,0-0.2,0-0.2,0c-0.6,0.6-0.3,3.4-0.2,5 c0.1,1,0.2,1.9,0.2,2.6c0,1.9,1.8,4.5,3.5,6.9c0.7,0.9,1.3,1.9,2,2.9C216.2,205.9,216.3,215.9,216.1,218.9z",
     "available": true,
     "pic":"b7b058554ed1dd1633dd48bfc00e151b.png",
-    "subregions":[],
+    "subregions":[
+        Subregions.byCode('sierras'),
+        Subregions.byCode('arroyos'),
+        Subregions.byCode('flora-fauna')
+    ],
     "type":"region"
   },{
     "id": "59317fd1677a485915b38ddb",

@@ -229,6 +229,51 @@ function(_) {
     "type":"subregion",
     "offsetX":250,
     "offsetY":170
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Los animales y vegetación cambian según la zona. En las zonas más áridas, viven zorros, alpacas, vicuñas y guanacos. Por la escasez de agua, la vegetación es pobre. En las zonas más húmedas se encuentran llamas, liebres, pumas y gatos monteses, y abundan los arbustos como el chañar y el algarrobo.",
+    "name":"Su flora y fauna",
+    "code": "flora-fauna",
+    "pic":"",
+    "pics":[
+        "Flora_y_fauna.jpg",
+        "Flora_y_fauna_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":195,
+    "offsetY":110
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Se distinguen por sus aguas claras, de calidad, libres de contaminantes y de lecho arenoso, que descienden desde las montañas. El área de Traslasierra en la provincia de Córdoba se encuentra atravesada por numerosos ríos y arroyos.",
+    "name":"Arroyos de montaña",
+    "code": "arroyos",
+    "pic":"",
+    "pics":[
+        "Arroyos_de_montaña.jpg",
+        "Arroyos_de_montaña_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":180,
+    "offsetY":190
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Son formaciones montañosas de mediana altura, siendo el pico más alto el Cerro Champaquí con 2884 msnm. Se extienden 490km de norte a sur y 150km de este a oeste. En ciertas zonas los suelos erosionados por las lluvias y deshielos originaron sistemas de cuevas y grutas.",
+    "name":"Sierras de Córdoba",
+    "code": "sierras",
+    "pic":"",
+    "pics":[
+        "Sierras_de_córdoba.jpg",
+        "Sierras_de_córdoba_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":90,
+    "offsetY":150
 }
 
 ];
