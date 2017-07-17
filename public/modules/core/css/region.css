@@ -105,4 +105,5 @@
 	padding-left: 10px;
 	padding-right: 10px;
 	height: 135px;
+    overflow-y: auto;
 }

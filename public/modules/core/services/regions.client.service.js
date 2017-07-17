@@ -51,7 +51,13 @@ function(_, Subregions) {
   },{
     "id": "59308188350cbc122c5ae76e",
     "instruments":[],
-    "subregions":[],
+    "subregions":[
+        Subregions.byCode('aconcagua'),
+        Subregions.byCode('valle-luna'),
+        Subregions.byCode('oasis-cultivos'),
+        Subregions.byCode('montanas'),
+        Subregions.byCode('puente-inca')
+    ],
     "genres":[],
     "pic":"87b78354189d0ee8a2af358190004aa6.png",
     "description":"",

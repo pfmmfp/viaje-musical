@@ -93,7 +93,83 @@ function(_) {
     "type":"subregion",
     "offsetX":238,
     "offsetY":140
-}
+},
+// Cuyo
+{
+    "id": "",
+    "audio":[],
+    "description":"Mide 6959 metros y es el pico más alto de América. Se encuentra en la provincia de Mendoza y es la montaña más alta de la Cordillera, donde el clima es frío, seco y ventoso durante todo el año. En cuanto a su vegetación predominan los pastizales abiertos.",
+    "name":"Aconcagua",
+    "code": "aconcagua",
+    "pic":"",
+    "pics":[
+        "aconcagua.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":150,
+    "offsetY":170
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"En quechua significa: Sitio donde se posa la luna. Está ubicado al noroeste de San Juan y su clima es desértico. Allí hay grandes yacimientos ricos en fósiles. La vegetación es poco abundante y su fauna es típica de monte: guanacos, zorros grises, ñandú, aves rapaces.",
+    "name":"Valle de la luna",
+    "code": "valle-luna",
+    "pic":"",
+    "pics":[
+        "Valle_de_la_luna.jpg",
+      "Valle_de_la_luna_2.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":130,
+    "offsetY":100
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Es una formación rocosa ubicada al noroeste de Mendoza. Creada por la erosión del río Las Cuevas, forma un puente natural de 48 metros de largo, suspendido a 27 metros sobre el río. Debe su nombre a las visitas frecuentes que hacían los Incas al lugar.",
+    "name":"Puente del Inca",
+    "code": "puente-inca",
+    "pic":"",
+    "pics":[
+        "Puente_del_inca.jpg",
+      "Puente_del_inca_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":115,
+    "offsetY":225
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Son grandes áreas basadas en el buen aprovechamiento de los ríos y las aguas subterráneas. Allí se cultiva la vid y se elaboran los vinos que hacen de la región de Cuyo la principal productora de vinos de Sudamérica. Además, se cultivan olivares y frutales.",
+    "name":"Oasis de cultivos",
+    "code": "oasis-cultivos",
+    "pic":"",
+    "pics":[
+        "Oasis_de_cultivo.jpg",
+      "Oasis_de_cultivo_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":280,
+    "offsetY":110
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Se encuentran mayormente en la provincia de La Rioja, donde predominan los relieves montañosos y de quebradas. La tierra es colorada por la gran cantidad de hierro que posee. La vegetación es escasa porque el clima es semiárido en casi todo el territorio.",
+    "name":"Montañas y tierra colorada",
+    "code": "montanas",
+    "pic":"",
+    "pics":[
+        "Montañas_y_tierra_colorada.jpg",
+        "Montañas_y_tierra_colorada_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":240,
+    "offsetY":50
+},
+
 ];
   Subregions.byName = function(name) {
     return _.findWhere(this, { name: name });
