@@ -74,7 +74,7 @@ function(_) {
     "family":"",
     "name":"Bandoneón",
     "code":"bandoneon",
-    "pic":"1e2e110f0ec3591a6973928f3cf61e9b.png",
+    "pic":"0aa4332e45a70e7322cdccd0b962b57f.png",
     "pics":[],
     "type":"instrument"
   },{
