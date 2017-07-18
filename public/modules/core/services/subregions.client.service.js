@@ -230,6 +230,7 @@ function(_) {
     "offsetX":250,
     "offsetY":170
 },
+// Sierras pampeanas
 {
     "id": "",
     "audio":[],
@@ -274,8 +275,98 @@ function(_) {
     "type":"subregion",
     "offsetX":90,
     "offsetY":150
+},
+// Patagonia
+{
+    "id": "",
+    "audio":[],
+    "description":"Es una gran masa de hielo que avanza continuamente, provocando la acumulación, ruptura y desprendimiento de gigantescos bloques de hielo. Se ubica al sudoeste de la provincia de Santa Cruz, rodeado de bosques y montañas, integrando el Parque Nacional Los Glaciares. El glaciar mide 5km de frente, pasa 74 ms sobre el lago Argentino y se sumerge 170m en él.",
+    "code":"glaciar-perito-moreno",
+    "name": "Glaciar Perito Moreno",
+    "pic":"",
+    "pics":[
+        "Glaciar_Perito_Moreno.jpg",
+        "Glaciar_Perito_Moreno_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":90,
+    "offsetY":150
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Se extiende desde Neuquén hasta el sur de Tierra del Fuego. Es una región rica en cerros, montañas, volcanes, cascadas, bosques, ríos, concentrando la mayor cuenca lacustre de Argentina. Sus mayores alturas son el volcán Lanín y el cerro Tronador, ninguno sobrepasando los 4000m.",
+    "name":"Cordillera patagónica",
+    "code": "cordillera",
+    "pic":"",
+    "pics":[
+        "Cordillera_patagónica.jpg",
+        "Cordillera_patagónica_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":100,
+    "offsetY":50
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Se encuentra en la provincia de Chubut, sobre el mar Argentino. Todos los años recibe la mayor población de ballenas francas australes. Además, se avistan pingüinos, lobos marinos y una gran variedad de aves.",
+    "name":"Península de Valdés",
+    "code": "peninsula-valdes",
+    "pic":"",
+    "pics":[
+        "Península_de_valdés.jpg",
+        "Península_de_valdés_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetY":70,
+    "offsetX":250
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"La estepa se extiende por 730.000 km² incluyendo llanuras, montañas, valles, cañadones y mesetas, que son planicies con forma escalonada que descienden desde los Andes hasta la plataforma submarina. El clima es frío, árido y muy ventoso. Ocupa distintas áreas de las provincias de Neuquén, Río Negro, Chubut, Santa Cruz y Tierra del Fuego.",
+    "name":"Meseta patagónica",
+    "code": "meseta-patagonica",
+    "pic":"",
+    "pics":[
+        "Meseta_patagónica.jpg",
+        "Meseta_patagónica_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":140,
+    "offsetY":180
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Es el principal paso natural entre los océanos Pacífico y Atlántico, atravesando desde el norte de Tierra del Fuego hasta el extremo sur de Chile. Su longitud aproximada es de 565km. Es una vía difícil de navegar por los vientos y corrientes impredecibles y la estrechez del paso.",
+    "name":"Estrecho de Magallanes",
+    "code": "estrecho-magallanes",
+    "pic":"",
+    "pics":[
+        "Estrecho_de_magallanes.jpg",
+        "Estrecho_de_magallanes_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetX":120,
+    "offsetY":250
+},
+{
+    "id": "",
+    "audio":[],
+    "description":"Conocida como la Capital Nacional del Petróleo por ser el primer lugar donde se descubre petróleo en el territorio nacional en 1907. Se encuentra en la meseta patagónica, en el corazón de la zona hidrocarburífera del golfo San Jorge. Posee una de las cuencas petrolíferas más importantes de Sudamérica.",
+    "name":"Comodoro Rivadavia",
+    "code": "comodoro-rivadavia",
+    "pic":"",
+    "pics":[
+        "Comodoro_Rivadavia.jpg",
+        "Comodoro_Rivadavia_1.jpg"
+    ],
+    "type":"subregion",
+    "offsetY":120,
+    "offsetX":205
 }
-
 ];
   Subregions.byName = function(name) {
     return _.findWhere(this, { name: name });
