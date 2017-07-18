@@ -22,7 +22,10 @@ function(_, Subregions) {
     "available": true,
     "pic":"0824d35b67aea50e05939c780771442c.png",
     "subregions":[
-      Subregions.byCode('quebrada')
+      Subregions.byCode('quebrada'),
+      Subregions.byCode('selva'),
+      Subregions.byCode('cerro-7-colores'),
+      Subregions.byCode('puna')
     ],
     "type":"region"
   },{
