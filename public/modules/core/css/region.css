@@ -37,7 +37,7 @@
 	background: url('/modules/core/img/app/modal.png');
 	padding: 39px 47px 20px 16px;
 	width: 485px;
-	height: 271px;
+	height: 300px;
 	border: none !important;
 	box-shadow: none !important;
 }
@@ -46,6 +46,10 @@
 	float: left;
 	width: 255px;
 	height: 200px;
+}
+
+.modal-text p {
+    margin: 0;
 }
 
 .subregion-pics{
