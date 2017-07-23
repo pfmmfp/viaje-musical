@@ -19,6 +19,11 @@
 	background: url('/modules/core/img/app/marker2.png');
 }
 
+.subregion-marker:hover
+{
+	background: url('/modules/core/img/app/marker2-hover.png');
+}
+
 .logo_mapa{
 	background: url('/modules/core/img/app/logo_mapa.png');
 	width: 247px;
