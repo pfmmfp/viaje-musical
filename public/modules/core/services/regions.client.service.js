@@ -10,10 +10,10 @@ function(_, Subregions) {
     "description":"",
     "genres":[],
     "instruments":[
-      "bomboleguero",
-      "chajchas",
-      "quena",
-      "charango"
+      { "bomboleguero": "default" },
+      { "chajchas": "default" },
+      { "quena": "default" },
+      { "charango": "default" }
     ],
     "name":"NOA",
     "code":"noa",
@@ -33,9 +33,9 @@ function(_, Subregions) {
     "description":"",
     "genres":[],
     "instruments":[
-      "contrabajo",
-      "bandoneon",
-      "guitarra"
+      { "contrabajo": "chamame" },
+      { "bandoneon": "chamame" },
+      { "guitarra": "chamame" }
     ],
     "name":"NEA",
     "code":"nea",
@@ -74,11 +74,11 @@ function(_, Subregions) {
     "description":"Sierras Pampeanas es el nombre que recibe una de las regiones naturales geográficas en que se encuentra dividida la República ArgentinaSu área aproximada es de 300 000 km, solapándose algunas zonas del oeste de la región de las Sierras Pampeanas con algunas de las del noroeste argentino NOA y algunas zonas del suroeste de las Sierras Pampeanas con algunas zonas de la región del Cuyo. Esta región pese a su nombre, abarca zonas de penillanuras y mesetas aunque recibe el nombre por los relieves dominantes de esta región, es decir, por el conjunto de sierras serranías que se extienden en el centro-oeste del país argentino, de norte a sur a través de siete provincias Tucumán, Catamarca, La Rioja, Santiago del Estero, San Juan, Córdoba y San Luis.",
     "genres":[],
     "instruments":[
-      "bombo",
-      "voz2",
-      "voz1",
-      "piano",
-      "guitarra"
+      { "bombo": "zamba" },
+      { "voz2": "default" },
+      { "voz1": "default" },
+      { "piano": "zamba" },
+      { "guitarra": "zamba" }
     ],
     "name":"SIERRAS PAMPEANAS",
     "code":"sierras",
@@ -116,9 +116,9 @@ function(_, Subregions) {
     "description":"La Pampa, o la región pampeana, es un área geográfica situada en el centro-este de Argentina, en Uruguay, y el sur del estado brasileño de Río Grande del Sur. Es en su mayor extensión una amplia estepa con sectores septentrionales de sabana, la parte más oriental desde el centroeste de la Provincia de Córdoba hasta el océano Atlántico debido al clima templado y a la relativamente alta humedad, que solo es interrumpida periódicamente por las sequías derivadas de El Niño y La Niña y estas sequías suelen ser compensadas luego por avenidas es decir inundaciones hacen que gran parte del este de la Pampasia sea zona de praderas. En su sector austral presenta antiguos médanos paleoclimáticos, y muestra un relieve levemente escalonado hacia el oeste. En Uruguay y Río Grande del Sur presenta un paisaje más ondulado con sierras de una altura de poco más de 500 msnm. Es una de las regiones más fértiles del mundo.",
     "genres":[],
     "instruments":[
-      "piano",
-      "bandoneon",
-      "guitarra"
+      { "piano": "milonga" },
+      { "bandoneon": "milonga" },
+      { "guitarra": "milonga" }
     ],
     "name":"PAMPA",
     "code":"pampa",

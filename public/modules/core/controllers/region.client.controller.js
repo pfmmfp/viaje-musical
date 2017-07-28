@@ -124,15 +124,25 @@ function($scope, $rootScope, $stateParams, Regions, Instruments) {
   $scope.regionInstruments =  Instruments.findByCodes( region.instruments );
 }])
 
-.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams','config', 'Instruments',
-function($scope, $rootScope, $stateParams, config, Instruments) {
+.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments',
+function($scope, $rootScope, $stateParams, Regions, config, Instruments) {
   if($rootScope.music){
     $rootScope.music.stopAll();
     $rootScope.music = null;
   }
 
-  var instrument = Instruments.byCode($stateParams.instrumentCode);
-  $scope.instrument = instrument;
+  var region = Regions.byCode($stateParams.regionCode);
+  var instruments = Instruments.findByCodes( region.instruments );
+  $scope.instrument = _.find(instruments, function(instrument) {
+      return $stateParams.instrumentCode === instrument.code;
+  });
   $scope.instrumentsConfig = config.instrument;
   $scope.regionCode = $stateParams.regionCode;
+
+  // $scope.stop = function() {
+  //     if($rootScope.music){
+  //       $rootScope.music.stopAll();
+  //       // $rootScope.music = null;
+  //     }
+  // };
 }]);
