@@ -168,7 +168,7 @@ angular.module('core').factory('Instruments', ['_',
             .each(function(instrument) {
                 var variant = _.find(codes, function(code) {
                     return !_.isUndefined(code[instrument.code]);
-                })
+                });
                 instrument.audioFile = instrument.audio[variant[instrument.code]];
             })
             .value();

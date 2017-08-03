@@ -124,8 +124,8 @@ function($scope, $rootScope, $stateParams, Regions, Instruments) {
   $scope.regionInstruments =  Instruments.findByCodes( region.instruments );
 }])
 
-.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments',
-function($scope, $rootScope, $stateParams, Regions, config, Instruments) {
+.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments', '_', 'ngAudio',
+function($scope, $rootScope, $stateParams, Regions, config, Instruments, _, ngAudio) {
   if($rootScope.music){
     $rootScope.music.stopAll();
     $rootScope.music = null;
@@ -138,6 +138,8 @@ function($scope, $rootScope, $stateParams, Regions, config, Instruments) {
   });
   $scope.instrumentsConfig = config.instrument;
   $scope.regionCode = $stateParams.regionCode;
+  var audioFile = $scope.instrumentsConfig.PUBLIC_AUDIO_PATH + $scope.instrument.code + '/' + $scope.instrument.audioFile;
+  $scope.audio = ngAudio.load(audioFile);
 
   // $scope.stop = function() {
   //     if($rootScope.music){
