@@ -11,8 +11,8 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
     self.audioContext = new $window.AudioContext();
     self.gainNode = self.audioContext.createGain();
     self.gainNode.connect( self.audioContext.destination );
-    self.samplesBuffer = [];
-    self.samples = [];
+    self.samplesBuffer = {};
+    self.samples = {};
   }
 
   AudioHandler.prototype.loadSamples = function(samples, next)
@@ -80,7 +80,7 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
     var self = this;
     var startAt = 0;
 
-    if(!self.samples[key] || !self.samples[key].playing)
+    if(self.samples[key] === undefined || !self.samples[key].playing)
     {
       var source = self.audioContext.createBufferSource();
       source.buffer = self.samplesBuffer[key];
@@ -108,7 +108,6 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
     }
     else
     {
-      //console.log(self.samples[key]);
 
       if(!self.samples[key].playing)
         self.samples[key].audio.start(startAt);
@@ -123,7 +122,7 @@ angular.module('core').factory('fxAudioFactory', ['$window', function($window)
     if(self.samples[key])
     {
       self.samples[key].audio.stop();
-      self.samples[key].audio.playing = false;
+      self.samples[key].playing = false;
     }
     else
     console.log("sample not found");

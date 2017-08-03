@@ -11,7 +11,8 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
     if($rootScope.music) {
         $rootScope.music.muting = !$rootScope.music.muting;
         if($rootScope.music.muting) {
-            $rootScope.music.stopAll();
+            $rootScope.music.stop('fxMapa');
+            $rootScope.music.stop('music');
 
         } else {
             $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
@@ -49,8 +50,15 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
             console.log("Preloading complete");
             angular.element('.home').removeClass('loading').addClass('loaded');
             angular.element('.loading-screen').css('display', 'none');
-            $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
-            $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
+            if (!$rootScope.music.muting) {
+
+                $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+                $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
+            } else {
+                $rootScope.music.stop('fxMapa');
+                $rootScope.music.stop('music');
+
+            }
             $rootScope.loadedFlag = true;
             initMap();
           },
@@ -63,7 +71,14 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   {
     angular.element('.home').removeClass('loading').addClass('loaded');
     angular.element('.loading-screen').css('display', 'none');
-    $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+    if (!$rootScope.music.muting) {
+        $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+        $rootScope.music.play('music', {loop: true, loopStart: 0, loopEnd: 1000});
+    } else {
+        $rootScope.music.stop('fxMapa');
+        $rootScope.music.stop('music');
+
+    }
     initMap();
   }
 

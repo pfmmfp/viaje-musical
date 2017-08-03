@@ -11,11 +11,11 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   var regionComposer = composer.get($stateParams.regionCode);
 
   $scope.toggleMusic = function() {
-      console.log($rootScope.music);
     if($rootScope.music) {
         $rootScope.music.muting = !$rootScope.music.muting;
         if($rootScope.music.muting) {
-            $rootScope.music.stopAll();
+            $rootScope.music.stop('fxMapa');
+            $rootScope.music.stop('music');
 
         } else {
             $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
@@ -140,7 +140,8 @@ function($scope, $rootScope, $stateParams, Regions, Instruments) {
     if($rootScope.music) {
         $rootScope.music.muting = !$rootScope.music.muting;
         if($rootScope.music.muting) {
-            $rootScope.music.stopAll();
+            $rootScope.music.stop('fxMapa');
+            $rootScope.music.stop('music');
 
         } else {
             $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
