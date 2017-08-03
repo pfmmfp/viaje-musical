@@ -22,6 +22,8 @@
 
 		<!-- <div class="comenzar" ng-click="aterrizar = !aterrizar" ng-init="aterrizar = false"></div> -->
 		<div class="comenzar"></div>
+
+        <button data-ng-click="toggleMusic()" class="audio-control" data-ng-class="music.muting ? 'off' : 'on'" title="Prender / Apagar"></button>
 	</div>
 
 	<script type="text/ng-template" id="myModalContent.html">

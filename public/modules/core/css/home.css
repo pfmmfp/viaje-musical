@@ -123,3 +123,20 @@
 	width: 990px;
 	margin: 100px auto auto;
 }
+
+.audio-control {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 37px;
+    height: 32px;
+}
+
+.audio-control.on {
+    background: url('/modules/core/img/sound-on.png');
+}
+
+.audio-control.off {
+    background: url('/modules/core/img/sound-off.png');
+}

@@ -7,6 +7,20 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   // This provides Authentication context.
   $scope.aterrizar = true;
 
+  $scope.toggleMusic = function() {
+    if($rootScope.music) {
+        $rootScope.music.muting = !$rootScope.music.muting;
+        if($rootScope.music.muting) {
+            $rootScope.music.stopAll();
+
+        } else {
+            $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+            $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
+
+        }
+    }
+  };
+
   if(!$rootScope.music)
   {
     var samples = [

@@ -10,7 +10,7 @@
 <div class="region-map" style="background: url('{{pic.value.path + pic.value.name}}');" >
 	<div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY }}px; left: {{ subregion.offsetX }}px;" data-ng-click="openSubregionModal(subregion)"></div>
 </div>
-
+<button data-ng-click="toggleMusic()" class="audio-control" data-ng-class="music.muting ? 'off' : 'on'" title="Prender / Apagar"></button>
 <div class="region-chicos">
 	<div class="region-bienvenido" style="background: url('/modules/core/img/app/bienvenido_{{ region.code }}.png');"></div>
 	<div class="region-chica"></div>

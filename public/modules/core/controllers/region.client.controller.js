@@ -10,6 +10,21 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   $rootScope.tracks 	  = $rootScope.tracks ? $rootScope.tracks : [];
   var regionComposer = composer.get($stateParams.regionCode);
 
+  $scope.toggleMusic = function() {
+      console.log($rootScope.music);
+    if($rootScope.music) {
+        $rootScope.music.muting = !$rootScope.music.muting;
+        if($rootScope.music.muting) {
+            $rootScope.music.stopAll();
+
+        } else {
+            $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+            $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
+
+        }
+    }
+  };
+
   function preload(){
     var deferred = $q.defer();
 
@@ -53,7 +68,6 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   function done(){
     var region = Regions.byCode($stateParams.regionCode);
     $scope.regionInstruments =  Instruments.findByCodes(region.instruments);
-    console.log(region);
     $scope.region = region;
     $scope.pic = { value : {path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic} };
     // ng-class?
@@ -122,6 +136,19 @@ function($scope, $rootScope, $stateParams, Regions, Instruments) {
   var region = Regions.byCode($stateParams.regionCode);
   $scope.regionCode = $stateParams.regionCode;
   $scope.regionInstruments =  Instruments.findByCodes( region.instruments );
+  $scope.toggleMusic = function() {
+    if($rootScope.music) {
+        $rootScope.music.muting = !$rootScope.music.muting;
+        if($rootScope.music.muting) {
+            $rootScope.music.stopAll();
+
+        } else {
+            $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+            $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
+
+        }
+    }
+  };
 }])
 
 .controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments', '_', 'ngAudio',
@@ -141,10 +168,4 @@ function($scope, $rootScope, $stateParams, Regions, config, Instruments, _, ngAu
   var audioFile = $scope.instrumentsConfig.PUBLIC_AUDIO_PATH + $scope.instrument.code + '/' + $scope.instrument.audioFile;
   $scope.audio = ngAudio.load(audioFile);
 
-  // $scope.stop = function() {
-  //     if($rootScope.music){
-  //       $rootScope.music.stopAll();
-  //       // $rootScope.music = null;
-  //     }
-  // };
 }]);
