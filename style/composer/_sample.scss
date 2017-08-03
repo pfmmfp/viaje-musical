@@ -1,21 +1,24 @@
 $timeline-grid-size: 25px;
 $max-sample-beat: 21;
 $max-sample-pos: 269;
-
-@mixin sample-box($sample) {
-  cursor: pointer;
-  border-style: solid;
-  border-width: 6px 9px 7px;
-  -moz-border-image: url(/modules/core/img/#{$sample}.png) 6 9 7;
-  -webkit-border-image: url(/modules/core/img/#{$sample}.png) 6 9 7;
-  -o-border-image: url(/modules/core/img/#{$sample}.png) 6 9 7;
-  border-image: url(/modules/core/img/#{$sample}.png) 6 9 7 fill;
-}
+$sample-colors: "blue", "green", "red", "violet", "yellow", "white";
 
 .composer .sample-dock .sample-controls .sample-list .sample,
 .composer .track-grid .track-grid-inner .sample {
   height: 40px;
   margin-top: 2px;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 6px 9px 7px;
+  
+  @each $color in $sample-colors {
+    &.#{$color} {
+      -moz-border-image: url(/modules/core/img/sample-#{$color}.png) 6 9 7;
+      -webkit-border-image: url(/modules/core/img/sample-#{$color}.png) 6 9 7;
+      -o-border-image: url(/modules/core/img/sample-#{$color}.png) 6 9 7;
+      border-image: url(/modules/core/img/sample-#{$color}.png) 6 9 7 fill;    
+    }
+  }
 
   & > .sample-dot {
     float:left;
@@ -34,22 +37,24 @@ $max-sample-pos: 269;
 
   @for $i from 1 to $max-sample-beat {
     &.beats-#{$i} {
-      @include sample-box('sample' + (($i % 3)+1));
       width: $timeline-grid-size * $i;
     }
   }
-  @for $i from 0 to $max-sample-pos {
-    &.pos-#{$i} {
-      left: $timeline-grid-size * $i;
-      &.ui-draggable-dragging.trash-can:after {
-        content: " ";
-        position: absolute;
-        bottom: -20px;
-        right: -20px;
-        background-image: url(/modules/core/img/papelera-sample.png);
-        background-size: 22px 20px;
-        width: 22px;
-        height: 20px;
+  
+  &.pos {
+    &.ui-draggable-dragging.trash-can:after {
+      content: " ";
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background-image: url(/modules/core/img/papelera-sample.png);
+      background-size: 22px 20px;
+      width: 22px;
+      height: 20px;
+    }    
+    @for $i from 0 to $max-sample-pos {
+      &.pos-#{$i} {
+        left: $timeline-grid-size * $i;
       }
     }
   }

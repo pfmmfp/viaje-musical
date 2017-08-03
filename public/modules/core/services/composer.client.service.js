@@ -76,13 +76,10 @@ function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
   };
 
   SampleTrack.prototype.addSample = function(sample, position) {
-    this.samplesBuffer.push({
-      beats: sample.beats,
-      file: sample.file,
-      group: sample.group,
+    this.samplesBuffer.push(Object.assign({}, sample, {
       buffer: this.samples[sample.file],
       pos: position
-    });
+    }));
     return sample.beats;
   };
 

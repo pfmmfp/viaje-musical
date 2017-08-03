@@ -23,6 +23,9 @@ function(composer, Tracks, _, $stateParams) {
           if (scope.sample.group) {
             query.group = scope.sample.group;
           }
+          if (scope.sample.color) {
+            query.color = scope.sample.color;
+          }
           samples = _.where(samples, query);
 
           var sample = _.findWhere(samples, { file: scope.sample.file, beats: scope.sample.beats });

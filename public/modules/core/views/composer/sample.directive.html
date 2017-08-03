@@ -1,6 +1,6 @@
 <li
   class="sample"
-  data-ng-class="'beats-' + sample.beats + (sample.pos !== undefined ? ' pos-' + sample.pos : '')"
+  data-ng-class="'beats-' + sample.beats + ' ' + (sample.color ? sample.color : 'yellow') + (sample.pos !== undefined ? ' pos pos-' + sample.pos : '')"
   data-drag="true"
   data-jqyoui-options="jquiOptions()"
   jqyoui-draggable="draggableOptions()"

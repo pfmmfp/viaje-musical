@@ -7,7 +7,7 @@
       jqyoui-droppable="droppableOptions()"
       ng-model="newSample">
       <sample
-        data-ng-repeat="sample in track.samplesBuffer"
+        data-ng-repeat="sample in track.samplesBuffer track by $index"
         instrument="track.name"
         sample="sample"
         track="track" />
