@@ -47,7 +47,6 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
         preloader.start(
           function()
           {
-            console.log("Preloading complete");
             angular.element('.home').removeClass('loading').addClass('loaded');
             angular.element('.loading-screen').css('display', 'none');
             if (!$rootScope.music.muting) {
@@ -83,7 +82,6 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   }
 
   function initMap(){
-    console.log("Initializing Map");
     var MAP_WIDTH  = 601;
     var MAP_HEIGHT = 440;
 
@@ -148,7 +146,6 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   * www.shapevent.com/scaleraphael/
   */
   function initRaphael(){
-    console.log("Initializing Raphael");
     window.ScaleRaphael = function(container, width, height){
       var wrapper = document.getElementById(container);
       if (!wrapper.style.position) wrapper.style.position = "absolute";

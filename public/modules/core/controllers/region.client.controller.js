@@ -51,7 +51,6 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
           });
 
           preloader.start(function(){
-            console.log("Preloading complete");
             $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
             $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
             $rootScope.loadedFlag = true;
