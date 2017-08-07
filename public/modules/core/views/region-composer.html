@@ -15,17 +15,9 @@
       <div class="selected-instrument">
         <img ng-class="selectedInstrument.name | lowercase" title="{{selectedInstrument.name}}" alt="{{selectedInstrument.name}}" data-ng-src="/modules/core/img/{{selectedInstrument.name | lowercase}}.png">
       </div>
-      <div class="sample-controls">
-        <div class="move-container">
-          <button class="move-left" data-ng-click="prevPage()" data-ng-show="startSample">&lt;-</button>
-        </div>
-        <ul class="sample-list">
-          <sample data-ng-repeat="sample in activeSamples()" instrument="selectedInstrument.name" sample="sample" />
-        </ul>
-        <div class="move-container">
-          <button class="move-right" data-ng-click="nextPage()" data-ng-show="nextSample">-&gt;</button>
-        </div>
-      </div>
+      <ul class="sample-list">
+        <sample data-ng-repeat="sample in selectedInstrument.samples" instrument="selectedInstrument.name" sample="sample" />
+      </ul>
       <div class="controls">
         <button data-ng-click="play()" class="control play">Play</button>
         <button data-ng-click="stop()" class="control stop">Stop</button>

@@ -6,49 +6,26 @@
     @include make-sm-column(2);
     @include make-md-column(1.5);
     text-align: center;
-    & > * { width: 110px; }
+    & > * { 
+      width: 100%;
+      min-width: 60px; 
+    }
     & > .quena { width: 40px; }
   }
 
-  & > .sample-controls {
+  & > .sample-list {
     @include make-xs-column(7);
     @include make-sm-column(7);
     @include make-md-column(8.5);
     @include make-row();
     height: 100%;
-
-    & > .move-container {
-      @include make-xs-column(1);
-      @include make-sm-column(1);
-      @include make-md-column(1);
-      height: 100%;
-      & > .move-left,
-      & > .move-right {
-        width: 36px;
-        height: 100%; //31px;
-        @include text-hide();
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-      & > .move-left { background-image: url(/modules/core/img/left.png); }
-      & > .move-right { background-image: url(/modules/core/img/right.png); }
-    }
-
-    & > .sample-list {
-      @include make-xs-column(10);
-      @include make-sm-column(10);
-      @include make-md-column(10);
-      list-style: none;
-      height: 100%;
-      padding-top: 20px;
-    }
+    list-style: none;
   }
 
   & > .controls {
     @include make-xs-column(3);
     @include make-sm-column(3);
     @include make-md-column(2);
-    @include make-row();
   }
 
 }

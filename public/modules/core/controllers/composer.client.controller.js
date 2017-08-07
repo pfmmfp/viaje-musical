@@ -36,34 +36,6 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
       $scope.startSample = null;
       $scope.selectedInstrument = instrument;
     },
-    activeSamples: function() {
-      var beatsSum,
-        samples = $scope.selectedInstrument.samples,
-        pageComplete = false;
-      $scope.nextSample = null;
-      if ($scope.startSample) samples = samples.slice(samples.indexOf($scope.startSample));
-      var activeSamples = _.reduce(samples, function(memo, sample) {
-        if (pageComplete) return memo;
-        beatsSum = _.reduce(memo, function(m, s) { return m + s.beats; }, 0);
-        if (beatsSum < maxBeats && beatsSum + sample.beats <= maxBeats) return memo.concat(sample);
-        pageComplete = true;
-        $scope.nextSample = sample;
-        return memo;
-      }, []);
-      return activeSamples;
-    },
-    prevPage: function() {
-      if ($scope.startSample) {
-        $scope.nextSample = $scope.startSample;
-        $scope.startSample = $scope.prevSample.pop();
-      }
-    },
-    nextPage: function() {
-      if ($scope.nextSample) {
-        $scope.prevSample.push($scope.startSample);
-        $scope.startSample = $scope.nextSample;
-      }
-    },
     play: function () {
       regionComposer.play();
       this.updateCursor();

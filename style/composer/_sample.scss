@@ -3,7 +3,7 @@ $max-sample-beat: 21;
 $max-sample-pos: 269;
 $sample-colors: "blue", "green", "red", "violet", "yellow", "white";
 
-.composer .sample-dock .sample-controls .sample-list .sample,
+.composer .sample-dock .sample-list .sample,
 .composer .track-grid .track-grid-inner .sample {
   height: 40px;
   margin-top: 2px;
@@ -60,8 +60,9 @@ $sample-colors: "blue", "green", "red", "violet", "yellow", "white";
   }
 }
 
-.composer .sample-dock .sample-controls .sample-list .sample {
+.composer .sample-dock .sample-list .sample {
   float: left;
+  margin-right: 2px;
 }
 
 .composer .track-grid .track-grid-inner .sample {
