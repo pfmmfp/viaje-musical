@@ -6,6 +6,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 {
   // This provides Authentication context.
   $scope.aterrizar = true;
+  $scope.done = false;
 
   $scope.toggleMusic = function() {
     if($rootScope.music) {
@@ -47,8 +48,6 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
         preloader.start(
           function()
           {
-            angular.element('.home').removeClass('loading').addClass('loaded');
-            angular.element('.loading-screen').css('display', 'none');
             if (!$rootScope.music.muting) {
 
                 $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
@@ -59,6 +58,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
             }
             $rootScope.loadedFlag = true;
+            $scope.done = true;
             initMap();
           },
           function(progress) { /*console.log(progress);*/ }
@@ -68,8 +68,6 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   }
   else
   {
-    angular.element('.home').removeClass('loading').addClass('loaded');
-    angular.element('.loading-screen').css('display', 'none');
     if (!$rootScope.music.muting) {
         $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
         $rootScope.music.play('music', {loop: true, loopStart: 0, loopEnd: 1000});

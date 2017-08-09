@@ -195,3 +195,105 @@
 .audio-control.off {
     background: url('/modules/core/img/sound-off.png');
 }
+
+.loading-screen {
+    padding-top: 50px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.loading-screen .globito {
+    animation: swing 3s infinite;
+}
+
+@keyframes swing {
+    0% { transform: rotate(5deg); animation-timing-function: ease-in-out; }
+    50% { transform: rotate(-5deg); animation-timing-function: ease-in-out; }
+    100% { transform: rotate(5deg); animation-timing-function: ease-in-out; }
+}
+
+.loading-screen .globito img {
+    animation: bounce 9s infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translate3d(10px, 10px, 0px);
+        animation-timing-function: ease-in;
+    }
+    25% {
+        transform: translate3d(70px, 15px, 0px);
+        animation-timing-function: ease-out;
+    }
+    50% {
+        transform: translate3d(60px, -20px, 0px);
+        animation-timing-function: ease-out;
+    }
+    60% {
+        transform: translate3d(50px, -25px, 0px);
+        animation-timing-function: ease-out;
+    }
+    75% {
+        transform: translate3d(-40px, -10px, 0px);
+        animation-timing-function: ease-in;
+    }
+    75% {
+        transform: translate3d(-30px, 20px, 0px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(10px, 10px, 0px);
+    }
+}
+
+.loader-container {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+}
+
+.loading-screen .loader {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    width: 70px;
+}
+
+@keyframes pulse {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.loading-screen .loader-block {
+    background: url('/modules/core/img/loaders/punto-rojo.png');
+    height: 30px;
+    width: 12px;
+    animation: pulse 0.4s ease-in infinite alternate;
+}
+
+.loading-screen .delay1 {
+    animation-delay: 0.1s
+}
+
+.loading-screen .delay2 {
+    animation-delay: 0.2s
+}
+
+.loading-screen .delay3 {
+    animation-delay: 0.3s
+}
+
+.loading-screen .delay4 {
+    animation-delay: 0.4s
+}

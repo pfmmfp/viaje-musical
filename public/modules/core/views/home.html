@@ -1,10 +1,21 @@
-<section class="loading-screen">
+<section class="loading-screen" data-ng-hide="done">
   <p>Cargando...</p>
-  <img src="/modules/core/img/ajax-loader.gif" alt="Cargando...">
+  <div class="globito">
+      <img src="/modules/core/img/loaders/globo.png" alt="Cargando...">
+  </div>
+  <section class="loader-container">
+    <div class="loader">
+      <div class="loader-block"></div>
+      <div class="loader-block delay1"></div>
+      <div class="loader-block delay2"></div>
+      <div class="loader-block delay3"></div>
+      <div class="loader-block delay4"></div>
+    </div>
+  </section>
 </section>
 
 
-<section class="home loading">
+<section class="home" data-ng-show="done">
 
 	<div>
 		<div class="home-fondo"></div>

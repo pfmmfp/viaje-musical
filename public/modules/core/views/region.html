@@ -1,15 +1,25 @@
-<section class="region">
-    <section class="loading-screen" data-ng-hide="done">
-        <p>Cargando...</p>
-        <img src="/modules/core/img/ajax-loader.gif" alt="Cargando..." />
-    </section>
+<section class="loading-screen" data-ng-hide="done">
+  <p>Cargando...</p>
+  <div class="globito">
+      <img src="/modules/core/img/loaders/globo.png" alt="Cargando...">
+  </div>
+  <section class="loader-container">
+    <div class="loader">
+      <div class="loader-block"></div>
+      <div class="loader-block delay1"></div>
+      <div class="loader-block delay2"></div>
+      <div class="loader-block delay3"></div>
+      <div class="loader-block delay4"></div>
+    </div>
+  </section>
+</section>
 
-    <section class="region-content" data-ng-class="{ loading: !done, loaded: done }">
+<section class="region-content" data-ng-show="done" data-ng-class="{ loading: !done, loaded: done }">
 
-        <header data-ng-include="'/modules/core/views/header.html'" class="navbar navbar-fixed-top"></header>
+    <header data-ng-include="'/modules/core/views/header.html'" class="navbar navbar-fixed-top"></header>
 
-        <div class="region-base-map {{ region.code }}" style="background-image: url('common/images/region/{{region.code}}/base.png');">
-        </div>
+    <div class="region-base-map {{ region.code }}" style="background-image: url('common/images/region/{{region.code}}/base.png');">
+    </div>
 
         <div class="region-map {{ region.code }}" style="background-image: url('common/images/region/{{region.code}}/region.png');">
             <div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY }}px; left: {{ subregion.offsetX }}px;" data-ng-click="openSubregionModal(subregion)"></div>
