@@ -1,16 +1,50 @@
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.region {
+    width: 100%;
+}
+
+.region-content {
+    width: 100%;
+    height: 100%;
+}
+
 .region-map
 {
 	z-index: 0;
-	width: 420px;
-	height: 409px;
+	/*width: 420px;
+	height: 409px;*/
+	height: 918px;
+    width: 1680px;
 	position: absolute;
-	top: 25%;
-	left: 15%;
+    /*background-position: center;*/
+    /*background-position-x: -300px;
+    background-position-y: -150px;*/
+	/*top: 25%;
+	left: 15%;*/
+    background-repeat: no-repeat;
+}
+
+.region-map.noa {
+}
+
+.region-base-map {
+    position: absolute;
+    /*width: 1190px;*/
+    height: 918px;
+    width: 1680px;
+    /*background-position-x: -300px;
+    background-position-y: -150px;*/
+    /*background-position: center;*/
+    background-repeat: no-repeat;
 }
 
 .subregion-marker
 {
-	z-index: 9;
+	z-index: 10000;
 	cursor: pointer;
 	position: absolute;
 	width: 40px;
@@ -76,6 +110,35 @@
 	width: 300px;
 }
 
+.region-chicos.pampa {
+    top: 20%;
+    left: 40%;
+}
+
+.region-bienvenido.noa {
+    background: url('/modules/core/img/app/bienvenido_noa.png');
+}
+
+.region-bienvenido.nea {
+    background: url('/modules/core/img/app/bienvenido_nea.png');
+}
+
+.region-bienvenido.sierras {
+    background: url('/modules/core/img/app/bienvenido_sierras.png');
+}
+
+.region-bienvenido.pampa {
+    background: url('/modules/core/img/app/bienvenido_pampa.png');
+}
+
+.region-bienvenido.patagonia {
+    background: url('/modules/core/img/app/bienvenido_patagonia.png');
+}
+
+.region-bienvenido.cuyo {
+    background: url('/modules/core/img/app/bienvenido_cuyo.png');
+}
+
 .region-chico{
 	background: url('/modules/core/img/app/chico.png');
 	width: 108px;
@@ -118,7 +181,7 @@
 }
 .audio-control {
     z-index: 10000;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 37px;

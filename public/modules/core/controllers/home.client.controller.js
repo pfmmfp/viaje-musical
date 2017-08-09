@@ -234,7 +234,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
         }
         else
         {
-          wrapper.style.right = "-10%";
+          wrapper.style.right = "0"; //"-10%";
           wrapper.style.top = "0px";
         }
 

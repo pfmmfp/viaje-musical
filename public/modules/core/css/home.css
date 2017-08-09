@@ -2,7 +2,7 @@
 	overflow: hidden;
 }
 
-.valle-home{
+.valle-home {
 	background: url('/modules/core/img/app/valle.png');
 	width: 615px;
 	height: 375px;
@@ -11,13 +11,17 @@
 	left: -90px;
 }
 
-.home-fondo{
+.home-fondo {
 	background: url('/modules/core/img/app/back-gradient.png');
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-position-x: -200px;
+    background-position-y: 200px;
 	width: 1000px;
-	height: 600px;
+	height: 100%;
 	position: absolute;
-	bottom: -80px;
-	right: -115px;
+	bottom: 0px;
+	right: 0;
 }
 
 .mapa-home{
@@ -35,9 +39,9 @@
 	height: 94%;
 
 	position: absolute;
-	top: 0;
-	right: 0;
 	*/
+    top: 0;
+    right: 0;
 }
 
 .globo{
@@ -126,7 +130,7 @@
 
 .audio-control {
     z-index: 1000;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 37px;
@@ -139,4 +143,8 @@
 
 .audio-control.off {
     background: url('/modules/core/img/sound-off.png');
+}
+
+body {
+    background-color: #89b1ad;
 }

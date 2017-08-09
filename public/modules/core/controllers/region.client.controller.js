@@ -6,6 +6,7 @@ angular.module('core').controller('RegionController', ['$scope', '$rootScope', '
 function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments, openModal, composer,
   $q, fxAudioFactory, _, ImagePreloadFactory) {
 
+  $scope.done = false;
   $scope.regionCode 	  = $stateParams.regionCode;
   $rootScope.tracks 	  = $rootScope.tracks ? $rootScope.tracks : [];
   var regionComposer = composer.get($stateParams.regionCode);
@@ -70,8 +71,7 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
     $scope.region = region;
     $scope.pic = { value : {path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic} };
     // ng-class?
-    angular.element('.home').removeClass('loading').addClass('loaded');
-    angular.element('.loading-screen').css('display', 'none');
+    $scope.done = true;
   }
 
   preload().then(function(){

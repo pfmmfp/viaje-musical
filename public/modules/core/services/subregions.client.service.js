@@ -15,8 +15,8 @@ function(_) {
       "Quebrada_de_Humahuaca.jpg"
     ],
     "type":"subregion",
-    "offsetX":160,
-    "offsetY":50
+    "offsetX":600,
+    "offsetY":240
 },
 {
     "id": "",
@@ -30,8 +30,8 @@ function(_) {
         "Selva_de_las_yungas1.jpg"
     ],
     "type":"subregion",
-    "offsetX":338,
-    "offsetY":140
+    "offsetX":650,
+    "offsetY":350
 },
 {
     "id": "",
@@ -45,7 +45,7 @@ function(_) {
         "La_puna1.jpg"
     ],
     "type":"subregion",
-    "offsetX":155,
+    "offsetX":515,
     "offsetY":200
 },
 {
@@ -60,8 +60,8 @@ function(_) {
         "Cerro_de_los_7_colores1.jpg"
     ],
     "type":"subregion",
-    "offsetX":90,
-    "offsetY":100
+    "offsetX":480,
+    "offsetY":330
 },
 // NEA
 {
@@ -76,8 +76,8 @@ function(_) {
       "Cataratas1.jpg"
     ],
     "type":"subregion",
-    "offsetX":338,
-    "offsetY":140
+    "offsetX":1000,
+    "offsetY":270
 },
 {
     "id": "",
@@ -91,8 +91,8 @@ function(_) {
       "Meseta_misionera_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":270,
-    "offsetY":175
+    "offsetX":900,
+    "offsetY":390
 },
 {
     "id": "",
@@ -106,8 +106,8 @@ function(_) {
       "Esteros_1.jpg"
     ],
     "type":"subregion",
-    "offsetY":247,
-    "offsetX":185
+    "offsetY":400,
+    "offsetX":750
 },
 {
     "id": "",
@@ -121,8 +121,8 @@ function(_) {
       "Chaco_seco_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":50,
-    "offsetY":110
+    "offsetX":560,
+    "offsetY":230
 },
 {
     "id": "",
@@ -136,8 +136,8 @@ function(_) {
       "Chaco_húmedo_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":238,
-    "offsetY":140
+    "offsetX":750,
+    "offsetY":230
 },
 // Cuyo
 {
@@ -151,8 +151,8 @@ function(_) {
         "aconcagua.jpg"
     ],
     "type":"subregion",
-    "offsetX":150,
-    "offsetY":170
+    "offsetX":600,
+    "offsetY":300
 },
 {
     "id": "",
@@ -166,8 +166,8 @@ function(_) {
       "Valle_de_la_luna_2.jpg"
     ],
     "type":"subregion",
-    "offsetX":130,
-    "offsetY":100
+    "offsetX":630,
+    "offsetY":200
 },
 {
     "id": "",
@@ -181,8 +181,8 @@ function(_) {
       "Puente_del_inca_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":115,
-    "offsetY":225
+    "offsetX":615,
+    "offsetY":345
 },
 {
     "id": "",
@@ -196,8 +196,8 @@ function(_) {
       "Oasis_de_cultivo_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":280,
-    "offsetY":110
+    "offsetX":800,
+    "offsetY":200
 },
 {
     "id": "",
@@ -211,8 +211,8 @@ function(_) {
         "Montañas_y_tierra_colorada_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":240,
-    "offsetY":50
+    "offsetX":750,
+    "offsetY":150
 },
 // Pampa
 {
@@ -227,8 +227,8 @@ function(_) {
         "Ciudad_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":310,
-    "offsetY":160
+    "offsetX":1165,
+    "offsetY":340
 },
 {
     "id": "",
@@ -242,8 +242,8 @@ function(_) {
         "Costa_atlántica_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":290,
-    "offsetY":295
+    "offsetX":1170,
+    "offsetY":430
 },
 {
     "id": "",
@@ -257,8 +257,8 @@ function(_) {
         "Sierras_de_tandil_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":220,
-    "offsetY":260
+    "offsetX":1050,
+    "offsetY":400
 },
 {
     "id": "",
@@ -272,8 +272,8 @@ function(_) {
         "Campos_cultivados_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":250,
-    "offsetY":170
+    "offsetX":1000,
+    "offsetY":350
 },
 // Sierras pampeanas
 {
@@ -288,8 +288,8 @@ function(_) {
         "Flora_y_fauna_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":195,
-    "offsetY":110
+    "offsetX":700,
+    "offsetY":340
 },
 {
     "id": "",
@@ -303,8 +303,8 @@ function(_) {
         "Arroyos_de_montaña_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":180,
-    "offsetY":190
+    "offsetX":760,
+    "offsetY":230
 },
 {
     "id": "",
@@ -318,8 +318,8 @@ function(_) {
         "Sierras_de_córdoba_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":90,
-    "offsetY":150
+    "offsetX":600,
+    "offsetY":290
 },
 // Patagonia
 {
@@ -334,8 +334,8 @@ function(_) {
         "Glaciar_Perito_Moreno_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":90,
-    "offsetY":150
+    "offsetX":580,
+    "offsetY":290
 },
 {
     "id": "",
@@ -349,8 +349,8 @@ function(_) {
         "Cordillera_patagónica_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":100,
-    "offsetY":50
+    "offsetX":600,
+    "offsetY":150
 },
 {
     "id": "",
@@ -364,8 +364,8 @@ function(_) {
         "Península_de_valdés_1.jpg"
     ],
     "type":"subregion",
-    "offsetY":70,
-    "offsetX":250
+    "offsetY":170,
+    "offsetX":910
 },
 {
     "id": "",
@@ -379,8 +379,8 @@ function(_) {
         "Meseta_patagónica_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":140,
-    "offsetY":180
+    "offsetX":680,
+    "offsetY":350
 },
 {
     "id": "",
@@ -394,8 +394,8 @@ function(_) {
         "Estrecho_de_magallanes_1.jpg"
     ],
     "type":"subregion",
-    "offsetX":120,
-    "offsetY":250
+    "offsetX":630,
+    "offsetY":450
 },
 {
     "id": "",
@@ -409,8 +409,8 @@ function(_) {
         "Comodoro_Rivadavia_1.jpg"
     ],
     "type":"subregion",
-    "offsetY":120,
-    "offsetX":205
+    "offsetY":280,
+    "offsetX":730
 }
 ];
   Subregions.byName = function(name) {
