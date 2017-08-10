@@ -6,6 +6,7 @@ node_modules/
 public/tmp
 public/lib
 public/dist/
+public/css/style.css*
 icon/
 stats/
 aws*
