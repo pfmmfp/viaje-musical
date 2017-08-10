@@ -173,7 +173,9 @@ function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
       angular.forEach(this.tracks, function(track) {
         track.empty();
         angular.forEach(track.sampleComposition, function(sample) {
-          var sampleRef = _.findWhere(track.sampleRefs, { file: sample.file });
+          var query = { file: sample.file };
+          if (sample.color) query = Object.assign(query, { color: sample.color });
+          var sampleRef = _.findWhere(track.sampleRefs, query);
           track.addSample(sampleRef, sample.pos);
         });
       });
