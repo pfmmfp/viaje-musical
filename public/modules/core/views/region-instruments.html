@@ -10,7 +10,7 @@
 	<div class="slider-instrumentos">
 	<ul class="instrumentos-lista">
 		<li data-ng-repeat="instrument in regionInstruments"  ng-hide="offset > {{$index}}">
-		<a ng-href="#!/instruments/{{regionCode}}/{{instrument.code}}" class="instrumento-grande" style="background: url('common/images/instrument/{{instrument.code}}/{{ instrument.pic }}') no-repeat center;"></a>
+		<a data-ng-href="/#!/instruments/{{regionCode}}/{{instrument.code}}" class="instrumento-grande" style="background: url('common/images/instrument/{{instrument.code}}/{{ instrument.pic }}') no-repeat center;"></a>
 		</li>
 	</ul>
 	</div>
@@ -20,6 +20,6 @@
 	</div>
 </div>
 <button data-ng-click="toggleMusic()" class="audio-control" data-ng-class="music.muting ? 'off' : 'on'" title="Prender / Apagar"></button>
-<a href="#!/regions/{{regionCode}}" class="volver"></a>
+<a data-ng-href="/#!/regions/{{regionCode}}" class="volver"></a>
 
 </section>

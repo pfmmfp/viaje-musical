@@ -58,8 +58,8 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
             }
             $rootScope.loadedFlag = true;
-            $scope.done = true;
             initMap();
+            done();
           },
           function(progress) { /*console.log(progress);*/ }
         );
@@ -77,6 +77,11 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
     }
     initMap();
+    done();
+  }
+
+  function done(){
+    $scope.done = true;
   }
 
   function initMap(){
