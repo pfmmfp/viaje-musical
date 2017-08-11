@@ -1,6 +1,6 @@
 <a data-ng-href="/#!/"   class="logo_instrumentos"></a>
 
 <div class="botones">
-	<a data-ng-href="/#!/compositor/{{regionCode}}"   class="compositor {{showComposerLink}}"></a>
-	<a data-ng-href="/#!/regions/{{regionCode}}/instruments" class="instrumentos"></a>
+	<a data-ng-href="/#!/compositor/{{regionCode}}" data-ng-show="hasTracks" class="compositor"></a>
+	<a data-ng-href="/#!/regions/{{regionCode}}/instruments" data-ng-show="hasInstruments" class="instrumentos"></a>
 </div>

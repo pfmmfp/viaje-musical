@@ -9,6 +9,8 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   $scope.done = false;
   $scope.regionCode 	  = $stateParams.regionCode;
   $rootScope.tracks 	  = $rootScope.tracks ? $rootScope.tracks : [];
+  $scope.hasTracks = false;
+  $scope.hasInstruments = false;
   var regionComposer = composer.get($stateParams.regionCode);
 
   $scope.toggleMusic = function() {
@@ -68,25 +70,27 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   function done(){
     var region = Regions.byCode($stateParams.regionCode);
     $scope.regionInstruments =  Instruments.findByCodes(region.instruments);
+    $scope.hasInstruments = $scope.regionInstruments.length > 0;
     $scope.region = region;
     $scope.pic = { value : {path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic} };
     // ng-class?
     $scope.done = true;
+    $scope.$apply();
   }
 
   preload().then(function(){
     if( !$rootScope.tracks[$scope.regionCode] ){
       var tracks = Tracks[$scope.regionCode].tracks;
-      if(tracks.length > 0){
+      $scope.hasTracks = tracks.length > 0;
+      if($scope.hasTracks) {
         $rootScope.tracks[$scope.regionCode] = _.map(tracks, function(track){
           return regionComposer.createTrack(track.name, track.samples, track.sampleComposition);
         });
         $scope.$on('tracks-loaded',function(){
           done();
-          $scope.$apply();
         });
       }else{
-        $scope.showComposerLink = 'hidden';
+        $scope.hasTracks = false;
         done();
       }
     }else{
@@ -137,16 +141,14 @@ function($scope, $rootScope, $stateParams, Regions, Instruments) {
   $scope.regionInstruments =  Instruments.findByCodes( region.instruments );
   $scope.toggleMusic = function() {
     if($rootScope.music) {
-        $rootScope.music.muting = !$rootScope.music.muting;
-        if($rootScope.music.muting) {
-            $rootScope.music.stop('fxMapa');
-            $rootScope.music.stop('music');
-
-        } else {
-            $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
-            $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
-
-        }
+      $rootScope.music.muting = !$rootScope.music.muting;
+      if($rootScope.music.muting) {
+        $rootScope.music.stop('fxMapa');
+        $rootScope.music.stop('music');
+      } else {
+        $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
+        $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
+      }
     }
   };
 }])
