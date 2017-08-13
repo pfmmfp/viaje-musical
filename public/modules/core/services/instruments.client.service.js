@@ -87,7 +87,8 @@ angular.module('core').factory('Instruments', ['_',
         }, {
             "id": "5931d134677a485915b38de1",
             "audio": {
-                "default": "5ec1730fea452c530d1ced6209d19b98.mp3"
+                "default": "5ec1730fea452c530d1ced6209d19b98.mp3",
+                "chamame": "contrabajo-chamame.mp3"
             },
             "description": "El contrabajo es un instrumento musical de cuerda frotada de tesitura grave. Suele tener cuatro cuerdas. El músico que toca el contrabajo recibe el nombre de contrabajista.En otros instrumentos de su familia, como el violín, la viola y el violonchelo, las cuerdas se afinan por quintas ascendentes. En el contrabajo se afinan por cuartas mi-la-re-sol.",
             "family": "",
