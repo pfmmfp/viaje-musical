@@ -5,3 +5,22 @@
 body {
   background-color: #89b1ad;
 }
+
+.audio-control {
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 74px;
+    height: 64px;
+    background-size: 100%;
+    background-color: transparent;
+}
+
+.audio-control.on {
+    background-image: url('/modules/core/img/sound-on.png');
+}
+
+.audio-control.off {
+    background-image: url('/modules/core/img/sound-off.png');
+}

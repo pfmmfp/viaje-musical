@@ -171,23 +171,6 @@
 	height: 135px;
     overflow-y: auto;
 }
-.audio-control {
-    z-index: 10000;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 37px;
-    height: 32px;
-}
-
-.audio-control.on {
-    background: url('/modules/core/img/sound-on.png');
-}
-
-.audio-control.off {
-    background: url('/modules/core/img/sound-off.png');
-}
-
 .loading-screen {
     padding-top: 50px;
     margin: auto;
