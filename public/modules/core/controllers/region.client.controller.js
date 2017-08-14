@@ -55,9 +55,9 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
   }
 
   preload().then(function() {
+    var tracks = Tracks[$scope.regionCode].tracks;
+    $scope.hasTracks = tracks.length > 0;
     if (!$rootScope.tracks[$scope.regionCode]) {
-      var tracks = Tracks[$scope.regionCode].tracks;
-      $scope.hasTracks = tracks.length > 0;
       if ($scope.hasTracks) {
         $rootScope.tracks[$scope.regionCode] = _.map(tracks, function(track) {
           return regionComposer.createTrack(track.name, track.samples, track.sampleComposition);
@@ -66,7 +66,6 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
           done();
         });
       } else {
-        $scope.hasTracks = false;
         done();
       }
     } else {
