@@ -1,94 +1,51 @@
 /*global angular, ScaleRaphael, Raphael*/
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$rootScope', '$location', 'openModal', 'ImagePreloadFactory', 'fxAudioFactory', '_', 'Regions',
-function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioFactory, _, Regions)
-{
+angular.module('core').controller('HomeController', ['$scope', '$rootScope', '$location', 'openModal', 'ImagePreloadFactory', 'AmbientMusic', '_', 'Regions',
+function($scope, $rootScope, $location, openModal, ImagePreloadFactory, AmbientMusic, _, Regions) {
   // This provides Authentication context.
   $scope.aterrizar = true;
   $scope.done = false;
 
+  $scope.ambient = !AmbientMusic.muted;
+
   $scope.toggleMusic = function() {
-    if($rootScope.music) {
-        $rootScope.music.muting = !$rootScope.music.muting;
-        if($rootScope.music.muting) {
-            $rootScope.music.stop('fxMapa');
-            $rootScope.music.stop('music');
-
-        } else {
-            $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
-            $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
-
-        }
-    }
+    AmbientMusic.toggle();
+    $scope.ambient = !AmbientMusic.muted;
   };
 
-  if(!$rootScope.music)
-  {
-    var samples = [
-      { key: 'fxMapa', path: 'common/audio/home/fx_mapa.ogg'},
-      { key: 'music', path: 'common/audio/home/ambient.ogg'}
-    ];
-    fxAudioFactory.loadSamples(samples, function(err, samplesBuffer)
-    {
-      if(err)
-        console.log("error loading samples");
+  $.getJSON("/dist/imageList.json", function(data) {
 
-      $rootScope.music = fxAudioFactory;
+    var preloader = ImagePreloadFactory.createInstance();
 
-      $.getJSON("/dist/imageList.json", function(data)
-      {
-
-        var preloader = ImagePreloadFactory.createInstance();
-
-        _.each(data.images, function(image){
-          preloader.addImage(image);
-        });
-
-        preloader.start(
-          function()
-          {
-            if (!$rootScope.music.muting) {
-
-                $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
-                $rootScope.music.play('music',  {loop: true, loopStart: 0, loopEnd: 1000});
-            } else {
-                $rootScope.music.stop('fxMapa');
-                $rootScope.music.stop('music');
-
-            }
-            $rootScope.loadedFlag = true;
-            initMap();
-            done();
-          },
-          function(progress) { /*console.log(progress);*/ }
-        );
-      });
+    _.each(data.images, function(image) {
+      preloader.addImage(image);
     });
-  }
-  else
-  {
-    if (!$rootScope.music.muting) {
-        $rootScope.music.play('fxMapa', {loop: true, loopStart: 0, loopEnd: 1000});
-        $rootScope.music.play('music', {loop: true, loopStart: 0, loopEnd: 1000});
-    } else {
-        $rootScope.music.stop('fxMapa');
-        $rootScope.music.stop('music');
 
-    }
-    initMap();
-    done();
-  }
+    preloader.start(
+      function() {
+        AmbientMusic.play();
+        $rootScope.loadedFlag = true;
+        initMap();
+        done();
+      },
+      function(progress) { /*console.log(progress);*/ }
+    );
+  });
 
-  function done(){
+  AmbientMusic.play();
+  initMap();
+  done();
+
+  function done() {
     $scope.done = true;
   }
 
-  function initMap(){
-    var MAP_WIDTH  = 601;
+  function initMap() {
+    var MAP_WIDTH = 601;
     var MAP_HEIGHT = 440;
 
-    if(!window.ScaleRaphael) initRaphael();
+    if (!window.ScaleRaphael) initRaphael();
     var map = new ScaleRaphael("map", MAP_WIDTH, MAP_HEIGHT);
     var group = map.set();
 
@@ -112,44 +69,44 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
     $(window).resize(resizeMap);
 
-    Regions.forEach(function(region){
+    Regions.forEach(function(region) {
       group.push(
         map.path(region.path).attr('title', region.code)
       );
     });
 
     group.attr(style);
-    group.click(function(event){
+    group.click(function(event) {
       var slug = this.attr('title');
       var region = Regions.byCode(slug);
-      var left = (event.pageX - (78/2)) + "px";
-      var top  = (event.pageY - 120)  + "px";
+      var left = (event.pageX - (78 / 2)) + "px";
+      var top = (event.pageY - 120) + "px";
 
       $(".bienvenido_home").hide();
 
       $('#globo').animate({
-        "left"    : left,
-        "height"  : "140px",
-        "width"   : "78px",
-        "top"     : top
-      }, 500, function(){
-        if(region.available)
-          window.location.href = '#!/regions/'+ slug;
+        "left": left,
+        "height": "140px",
+        "width": "78px",
+        "top": top
+      }, 500, function() {
+        if (region.available)
+          window.location.href = '#!/regions/' + slug;
         else
-          openModal(function(){}, {}, modalCtrl);//  alert("Ups! esta regi&oacute;n no esa disponible prob&aacute; con el NOA!");
+          openModal(function() {}, {}, modalCtrl); //  alert("Ups! esta regi&oacute;n no esa disponible prob&aacute; con el NOA!");
       });
     });
   }
 
   /*
-  * ScaleRaphael 0.8 by Zevan Rosser 2010
-  * For use with Raphael library : www.raphaeljs.com
-  * Licensed under the MIT license.
-  *
-  * www.shapevent.com/scaleraphael/
-  */
-  function initRaphael(){
-    window.ScaleRaphael = function(container, width, height){
+   * ScaleRaphael 0.8 by Zevan Rosser 2010
+   * For use with Raphael library : www.raphaeljs.com
+   * Licensed under the MIT license.
+   *
+   * www.shapevent.com/scaleraphael/
+   */
+  function initRaphael() {
+    window.ScaleRaphael = function(container, width, height) {
       var wrapper = document.getElementById(container);
       if (!wrapper.style.position) wrapper.style.position = "absolute";
       wrapper.style.width = width + "px";
@@ -158,10 +115,10 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
       var nestedWrapper;
 
-      if (Raphael.type === "VML"){
+      if (Raphael.type === "VML") {
         wrapper.innerHTML = "<rvml:group style='position : absolute; width: 1000px; height: 1000px; top: 0px; left: 0px' coordsize='1000,1000' class='rvml' id='vmlgroup'><\/rvml:group>";
         nestedWrapper = document.getElementById("vmlgroup");
-      }else{
+      } else {
         wrapper.innerHTML = "<div id='svggroup'><\/div>";
         nestedWrapper = document.getElementById("svggroup");
       }
@@ -169,13 +126,13 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
       var paper = new Raphael(nestedWrapper, width, height);
       var vmlDiv;
 
-      if (Raphael.type === "SVG"){
-        paper.canvas.setAttribute("viewBox", "0 0 "+width+" "+height);
-      }else{
+      if (Raphael.type === "SVG") {
+        paper.canvas.setAttribute("viewBox", "0 0 " + width + " " + height);
+      } else {
         vmlDiv = wrapper.getElementsByTagName("div")[0];
       }
 
-      paper.changeSize = function(w, h, center, clipping){
+      paper.changeSize = function(w, h, center, clipping) {
         clipping = !clipping;
 
         var ratioW = w / width;
@@ -185,13 +142,13 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
         var newHeight = parseInt(height * scale);
         var newWidth = parseInt(width * scale);
 
-        if (Raphael.type === "VML"){
+        if (Raphael.type === "VML") {
           // scale the textpaths
           var txt = document.getElementsByTagName("textpath");
-          for (var i in txt){
+          for (var i in txt) {
             var curr = txt[i];
-            if (curr.style){
-              if(!curr._fontSize){
+            if (curr.style) {
+              if (!curr._fontSize) {
                 var mod = curr.style.font.split("px");
                 curr._fontSize = parseInt(mod[0]);
                 curr._font = mod[1];
@@ -200,15 +157,15 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
             }
           }
           var newSize;
-          if (newWidth < newHeight){
+          if (newWidth < newHeight) {
             newSize = newWidth * 1000 / width;
-          }else{
+          } else {
             newSize = newHeight * 1000 / height;
           }
           newSize = parseInt(newSize);
           nestedWrapper.style.width = newSize + "px";
           nestedWrapper.style.height = newSize + "px";
-          if (clipping){
+          if (clipping) {
             nestedWrapper.style.right = parseInt((w - newWidth) / 2) + "px";
             nestedWrapper.style.top = parseInt((h - newHeight) / 2) + "px";
           }
@@ -221,7 +178,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
           vmlDiv.style.overflow = "visible";
         }
 
-        if (clipping){
+        if (clipping) {
           newWidth = w;
           newHeight = h;
         }
@@ -230,7 +187,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
         wrapper.style.height = newHeight + "px";
         paper.setSize(newWidth, newHeight);
 
-        if (center){
+        if (center) {
           wrapper.style.position = "absolute";
           wrapper.style.right = parseInt((w - newWidth) / 2) + "px";
           wrapper.style.top = parseInt((h - newHeight) / 2) + "px";
@@ -243,7 +200,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
 
       };
 
-      paper.scaleAll = function(amount){
+      paper.scaleAll = function(amount) {
         paper.changeSize(width * amount, height * amount);
       };
 
@@ -257,7 +214,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
   }
 
   //////////////// Modal ////////////////
-  var modalCtrl = function ($scope, $modalInstance, items)
+  var modalCtrl = function($scope, $modalInstance, items)
   {
     $scope.close = function()
     {
@@ -265,8 +222,8 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, fxAudioF
     };
   };
 
-  $scope.openModal = function(marker){
-    openModal(function(){}, {}, modalCtrl);
+  $scope.openModal = function(marker) {
+    openModal(function() {}, {}, modalCtrl);
   };
 }
 ]);

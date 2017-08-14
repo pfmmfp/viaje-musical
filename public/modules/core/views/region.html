@@ -24,7 +24,7 @@
         <div class="region-map {{ region.code }}" style="background-image: url('common/images/region/{{region.code}}/region.png');">
             <div class="subregion-marker" data-ng-repeat="subregion in region.subregions" style="top: {{ subregion.offsetY }}px; left: {{ subregion.offsetX }}px;" data-ng-click="openSubregionModal(subregion)"></div>
         </div>
-        <button data-ng-click="toggleMusic()" class="audio-control" data-ng-class="music.muting ? 'off' : 'on'" title="Prender / Apagar"></button>
+        <button data-ng-click="toggleMusic()" class="audio-control" data-ng-class="ambient ? 'on' : 'off'" title="Prender / Apagar"></button>
         <div class="region-chicos {{ region.code }}">
             <div class="region-bienvenido {{ region.code }}" ng-if="region.code"></div>
             <div class="region-chica"></div>
