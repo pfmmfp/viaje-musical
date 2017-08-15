@@ -33,6 +33,10 @@ function($stateProvider, $urlRouterProvider) {
     url: '/instruments/:regionCode/:instrumentCode',
     templateUrl: 'modules/core/views/instrument.html',
     controller: 'InstrumentController'
+  }).
+  state('credits', {
+    url: '/credits',
+    templateUrl: 'modules/core/views/credits.html'
   });
 }
 ]);

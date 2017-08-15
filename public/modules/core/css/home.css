@@ -207,3 +207,12 @@
     width: 990px;
     margin: 100px auto auto;
 }
+
+.credits-button {
+    z-index: 10000;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 156px;
+    height: 48px;
+}

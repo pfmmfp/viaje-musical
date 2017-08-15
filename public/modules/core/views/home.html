@@ -1,7 +1,7 @@
 <section class="loading-screen" data-ng-hide="done">
   <p>Cargando...</p>
   <div class="globito">
-      <img src="/modules/core/img/loaders/globo.png" alt="Cargando...">
+      <img src="/modules/core/img/loaders/globo.png" alt="Cargando..."/>
   </div>
   <section class="loader-container">
     <div class="loader">
@@ -37,7 +37,9 @@
 
 	</div>
     <button data-ng-click="toggleMusic()" class="audio-control" data-ng-class="ambient ? 'on' : 'off'" title="Prender / Apagar"></button>
-
+    <div class="credits-button">
+        <a data-ng-href="/#!/credits"><img src="/modules/core/img/credits.png" alt="Créditos"/></a>
+    </div>
 	<script type="text/ng-template" id="myModalContent.html">
 		<div class="subregion-modal">
 			<div >

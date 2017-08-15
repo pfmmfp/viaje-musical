@@ -1,0 +1,55 @@
+.credits .globito {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    z-index: 1000;
+    animation: credits-swing 3s infinite;
+}
+
+.credits-container {
+    background-clip: padding-box;
+    padding: 15px;
+    border-image: url(/modules/core/img/app/fondo_instrumento.png) 30 20 50 20 stretch;
+    border-width: 30px 20px 50px 20px;
+    border-style: solid;
+    width: 70%;
+    min-width: 300px;
+    height: 350px;
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    background-color: #dfd7a9;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.credits-container h3 {
+    color: #57380b;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.credits-container h4 {
+    color: #57380b;
+    font-size: 1.25em;
+}
+
+.credits-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.credits-container ul li {
+    /*color: #57380b;*/
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes credits-swing {
+    0% { transform: rotate(5deg); animation-timing-function: ease-in-out; }
+    50% { transform: rotate(-20deg); animation-timing-function: ease-in-out; }
+    100% { transform: rotate(5deg); animation-timing-function: ease-in-out; }
+}
