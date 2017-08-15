@@ -124,12 +124,9 @@ function($scope, $rootScope, $stateParams, Regions, Instruments, AmbientMusic) {
 }
 ])
 
-.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments', '_', 'ngAudio',
-function($scope, $rootScope, $stateParams, Regions, config, Instruments, _, ngAudio) {
-  if ($rootScope.music) {
-    $rootScope.music.stopAll();
-    $rootScope.music = null;
-  }
+.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments', '_', 'ngAudio', 'AmbientMusic',
+function($scope, $rootScope, $stateParams, Regions, config, Instruments, _, ngAudio, AmbientMusic) {
+  AmbientMusic.stop();
 
   var region = Regions.byCode($stateParams.regionCode);
   var instruments = Instruments.findByCodes(region.instruments);
