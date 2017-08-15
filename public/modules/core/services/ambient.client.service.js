@@ -4,11 +4,11 @@
 angular.module('core').factory('AmbientMusic', ['fxAudioFactory', function(fxAudioFactory) {
   var samples = [{
       key: 'fxMapa',
-      path: 'common/audio/home/fx_mapa.ogg'
+      path: 'common/audio/home/fx_mapa.mp3'
     },
     {
       key: 'music',
-      path: 'common/audio/home/ambient.ogg'
+      path: 'common/audio/home/ambient.mp3'
     }
   ];
 
