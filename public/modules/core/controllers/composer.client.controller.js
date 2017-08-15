@@ -1,14 +1,18 @@
 /*global angular*/
 'use strict';
 
-angular.module('core').controller('ComposerController', ['$scope', '$rootScope', '$stateParams', '$interval', '_', 'composer', '$window', 'Tracks', 'AmbientMusic',
-	function($scope, $rootScope, $stateParams, $interval, _, composer, $window, Tracks, AmbientMusic) {
+angular.module('core').controller('ComposerController', ['$scope', '$rootScope', '$stateParams', '$interval', '_', 'composer', '$window', 'Tracks', 'Regions', 'Instruments', 'AmbientMusic',
+	function($scope, $rootScope, $stateParams, $interval, _, composer, $window, Tracks, Regions, Instruments, AmbientMusic) {
 
   AmbientMusic.stop();
 
-	var regionCode = $stateParams.regionCode;
-	var tracks = Tracks[regionCode].tracks;
-	var regionComposer = composer.get(regionCode);
+  var regionCode = $stateParams.regionCode;
+  var tracks = Tracks[regionCode].tracks;
+  var regionComposer = composer.get(regionCode);
+  var region = Regions.byCode(regionCode);
+  var instruments = Instruments.findByCodes(region.instruments);
+  $scope.hasTracks = tracks.length > 0;
+  $scope.hasInstruments = instruments.length > 0;
   if( !$rootScope.tracks ){
     $rootScope.tracks = [];
     if(tracks.length > 0){

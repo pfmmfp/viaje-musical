@@ -110,12 +110,14 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
 }
 ])
 
-.controller('RegionInstrumentsController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'Instruments', 'AmbientMusic',
-function($scope, $rootScope, $stateParams, Regions, Instruments, AmbientMusic) {
+.controller('RegionInstrumentsController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'Instruments', 'AmbientMusic', 'Tracks',
+function($scope, $rootScope, $stateParams, Regions, Instruments, AmbientMusic, Tracks) {
   var region = Regions.byCode($stateParams.regionCode);
   $scope.regionCode = $stateParams.regionCode;
   $scope.regionInstruments = Instruments.findByCodes(region.instruments);
   $scope.ambient = !AmbientMusic.muted;
+  $scope.hasTracks = Tracks[$scope.regionCode].tracks.length > 0;
+  $scope.hasInstruments = $scope.regionInstruments.length > 0;
 
   $scope.toggleMusic = function() {
     AmbientMusic.toggle();
@@ -124,12 +126,14 @@ function($scope, $rootScope, $stateParams, Regions, Instruments, AmbientMusic) {
 }
 ])
 
-.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments', '_', 'ngAudio', 'AmbientMusic',
-function($scope, $rootScope, $stateParams, Regions, config, Instruments, _, ngAudio, AmbientMusic) {
+.controller('InstrumentController', ['$scope', '$rootScope', '$stateParams', 'Regions', 'config', 'Instruments', '_', 'ngAudio', 'AmbientMusic', 'Tracks',
+function($scope, $rootScope, $stateParams, Regions, config, Instruments, _, ngAudio, AmbientMusic, Tracks) {
   AmbientMusic.stop();
 
   var region = Regions.byCode($stateParams.regionCode);
   var instruments = Instruments.findByCodes(region.instruments);
+  $scope.hasTracks = Tracks[$stateParams.regionCode].tracks.length > 0;
+  $scope.hasInstruments = instruments.length > 0;
   $scope.instrument = _.find(instruments, function(instrument) {
     return $stateParams.instrumentCode === instrument.code;
   });
