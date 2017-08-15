@@ -10,22 +10,25 @@ function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
     this.sampleComposition = sampleComposition;
     this.manager = manager;
     this.samples = {};
-    this.loadSamples();
     this.samplesBuffer = [];
     this.sourcesBuffer = [];
     this.playing = false;
     this.gainNode = audioContext.createGain();
     this.gainNode.connect(audioContext.destination);
+    this.sampleFilenames = _.uniq(this.sampleRefs.map(function(sampleRef) {
+      return sampleRef.file;
+    }));
+    this.loadSamples();
   };
 
   SampleTrack.prototype.loadSamples = function() {
-    angular.forEach(this.sampleRefs, function(sampleRef) {
+    angular.forEach(this.sampleFilenames, function(sampleFilename) {
       var request = new XMLHttpRequest();
-      var filePath = this.manager.region.code + '/' + sampleRef.file;
+      var filePath = this.manager.region.code + '/' + sampleFilename;
       var url = '/modules/core/audio/samples/' + filePath + '.mp3';
       request.open('GET', url, true);
       request.responseType = 'arraybuffer';
-      request.onload = this.storeSample.bind(this, sampleRef.file, request);
+      request.onload = this.storeSample.bind(this, sampleFilename, request);
       request.send();
     }, this);
   };
@@ -34,7 +37,7 @@ function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
     var $this = this;
     audioContext.decodeAudioData(request.response, function(buffer) {
       $this.samples[sample] = buffer;
-      if (Object.keys($this.samples).length === $this.sampleRefs.length) {
+      if (Object.keys($this.samples).length === $this.sampleFilenames.length) {
         $this.manager.onTrackLoaded();
       }
     }, function() { console.log("Error decoding sample ", sample); });
