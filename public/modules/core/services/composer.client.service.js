@@ -119,7 +119,10 @@ function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
       this.sourcesBuffer = this.samplesBuffer.map(function(sampleBuffer) {
         return this.createSource(sampleBuffer);
       }, this);
-      this.lastSourceBuffer().source.onended = function() { this.playing = false; }.bind(this);
+      this.lastSourceBuffer().source.onended = function() {
+        this.playing = false;
+        this.manager.onTrackEnded();
+      }.bind(this);
       angular.forEach(this.sourcesBuffer, function(sourceBuffer) {
         sourceBuffer.source.start(this.manager.playTime + sourceBuffer.pos * this.manager.beat);
       }, this);
@@ -170,6 +173,11 @@ function(_, Tracks, audioContext, $rootScope, GridHelper, Regions) {
       this.loadedTracks++;
       if(this.loadedTracks === this.tracks.length) {
         $rootScope.$broadcast('tracks-loaded');
+      }
+    },
+    onTrackEnded: function() {
+      if(!this.isPlaying()) {
+        $rootScope.$broadcast('tracks-ended');
       }
     },
     loadExample: function() {

@@ -22,7 +22,9 @@ angular.module('core').controller('ComposerController', ['$scope', '$rootScope',
     }
   }
 
-  var maxBeats = 48;
+  $scope.$on('tracks-ended', function() {
+    $scope.stop();
+  });
 
   angular.extend($scope, {
     regionCode : regionCode,
