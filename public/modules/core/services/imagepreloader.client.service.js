@@ -65,8 +65,8 @@ angular.module('core').factory('ImagePreloadFactory', ['$q', '$rootScope', funct
         if (progressCallback) progressCallback(evt.completedCount/evt.totalCount);
         if (evt.completedCount === evt.totalCount) {
           if (completeCallback) completeCallback();
-          defer.resolve();
           $rootScope.$apply();
+          defer.resolve();
         }
       });
 
