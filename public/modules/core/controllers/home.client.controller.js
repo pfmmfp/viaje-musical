@@ -46,7 +46,7 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, AmbientM
     var MAP_HEIGHT = 440;
 
     if (!window.ScaleRaphael) initRaphael();
-    var map = new ScaleRaphael("map", MAP_WIDTH, MAP_HEIGHT);
+    var map = new ScaleRaphael("#map", MAP_WIDTH, MAP_HEIGHT);
     var group = map.set();
 
     var style = {
@@ -71,13 +71,13 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, AmbientM
 
     Regions.forEach(function(region) {
       group.push(
-        map.path(region.path).attr('title', region.code)
+        map.path(region.path).attr('title', region.name).data('code', region.code)
       );
     });
 
     group.attr(style);
     group.click(function(event) {
-      var slug = this.attr('title');
+      var slug = this.data('code');
       var region = Regions.byCode(slug);
       var left = (event.pageX - (78 / 2)) + "px";
       var top = (event.pageY - 120) + "px";
@@ -107,19 +107,19 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, AmbientM
    */
   function initRaphael() {
     window.ScaleRaphael = function(container, width, height) {
-      var wrapper = document.getElementById(container);
-      if (!wrapper.style.position) wrapper.style.position = "absolute";
-      wrapper.style.width = width + "px";
-      wrapper.style.height = height + "px";
-      wrapper.style.overflow = "hidden";
+      var wrapper = angular.element( document.querySelector(container));
+      if (!wrapper.css('position')) wrapper.css('position', "absolute");
+      wrapper.css('width', width + "px");
+      wrapper.css('height', height + "px");
+      wrapper.css('overflow', "hidden");
 
       var nestedWrapper;
 
       if (Raphael.type === "VML") {
-        wrapper.innerHTML = "<rvml:group style='position : absolute; width: 1000px; height: 1000px; top: 0px; left: 0px' coordsize='1000,1000' class='rvml' id='vmlgroup'><\/rvml:group>";
+        wrapper.html("<rvml:group style='position : absolute; width: 1000px; height: 1000px; top: 0px; left: 0px' coordsize='1000,1000' class='rvml' id='vmlgroup'><\/rvml:group>");
         nestedWrapper = document.getElementById("vmlgroup");
       } else {
-        wrapper.innerHTML = "<div id='svggroup'><\/div>";
+        wrapper.html("<div id='svggroup'><\/div>");
         nestedWrapper = document.getElementById("svggroup");
       }
 
@@ -183,19 +183,19 @@ function($scope, $rootScope, $location, openModal, ImagePreloadFactory, AmbientM
           newHeight = h;
         }
 
-        wrapper.style.width = newWidth + "px";
-        wrapper.style.height = newHeight + "px";
+        wrapper.css('width', newWidth + "px");
+        wrapper.css('height', newHeight + "px");
         paper.setSize(newWidth, newHeight);
 
         if (center) {
-          wrapper.style.position = "absolute";
-          wrapper.style.right = parseInt((w - newWidth) / 2) + "px";
-          wrapper.style.top = parseInt((h - newHeight) / 2) + "px";
+          wrapper.css('position', "absolute");
+          wrapper.css('right', parseInt((w - newWidth) / 2) + "px");
+          wrapper.css('top', parseInt((h - newHeight) / 2) + "px");
         }
         else
         {
-          wrapper.style.right = "0"; //"-10%";
-          wrapper.style.top = "0px";
+          wrapper.css('right', "0"); //-10%
+          wrapper.css('top', "0");
         }
 
       };
