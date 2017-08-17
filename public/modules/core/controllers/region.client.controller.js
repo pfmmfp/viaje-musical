@@ -20,7 +20,7 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
     $scope.ambient = !AmbientMusic.muted;
   };
 
-  function preload() {
+  function preloadImages() {
     var deferred = $q.defer();
 
     $.getJSON("/dist/imageList.json", function(data) {
@@ -43,37 +43,40 @@ function($scope, $rootScope, $stateParams, config, Tracks, Regions, Instruments,
     return deferred.promise;
   }
 
-  function done() {
-    var region = Regions.byCode($stateParams.regionCode);
-    $scope.regionInstruments = Instruments.findByCodes(region.instruments);
-    $scope.hasInstruments = $scope.regionInstruments.length > 0;
-    $scope.region = region;
-    $scope.pic = { value: { path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic } };
-    // ng-class?
-    $scope.done = true;
-    $scope.$apply();
+  function preloadComposer() {
+    var deferred = $q.defer(),
+      tracks = Tracks[$scope.regionCode].tracks,
+      tracksAlreadyLoaded = $rootScope.tracks[$scope.regionCode];
+    if (tracksAlreadyLoaded || tracks.length === 0) {
+      return deferred.resolve();
+    }
+
+    $rootScope.tracks[$scope.regionCode] = _.map(tracks, function(track) {
+      return regionComposer.createTrack(track.name, track.samples, track.sampleComposition);
+    });
+    $scope.$on('tracks-loaded', function() {
+      $scope.$apply();
+      deferred.resolve();
+    });
+    return deferred.promise;    
   }
 
-  preload().then(function() {
-    var tracks = Tracks[$scope.regionCode].tracks;
-    $scope.hasTracks = tracks.length > 0;
-    if (!$rootScope.tracks[$scope.regionCode]) {
-      if ($scope.hasTracks) {
-        $rootScope.tracks[$scope.regionCode] = _.map(tracks, function(track) {
-          return regionComposer.createTrack(track.name, track.samples, track.sampleComposition);
-        });
-        $scope.$on('tracks-loaded', function() {
-          done();
-        });
-      } else {
-        done();
-      }
-    } else {
-      done();
-    }
-  }).catch(function(err) {
-    console.log(err);
-  });
+  preloadImages()
+    .then(function() {
+      return preloadComposer();
+    })
+    .then(function() {
+      var region = Regions.byCode($stateParams.regionCode);
+      $scope.regionInstruments = Instruments.findByCodes(region.instruments);
+      $scope.hasInstruments = $scope.regionInstruments.length > 0;
+      $scope.region = region;
+      $scope.pic = { value: { path: config.region.PUBLIC_IMAGE_PATH + region.id + '/', 'name': region.pic } };
+      $scope.hasTracks = Tracks[region.code].tracks.length > 0;
+      $scope.done = true;
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 
   //////////////// Modal ////////////////
   var subregionModalCtrl = function($scope, $modalInstance, items)
